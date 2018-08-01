@@ -1,0 +1,6 @@
+{
+	"name": "gambio/admin-feed",
+	"description": "Admin Feed for the Gambio Shop.",
+	"minimum-stability": "dev",
+	"license": "GPL-2.0"
+}
