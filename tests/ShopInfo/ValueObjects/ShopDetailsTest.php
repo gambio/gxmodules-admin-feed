@@ -42,60 +42,54 @@ class ShopDetailsTest extends TestCase
 	 */
 	private $countries = ['de', 'at', 'ch'];
 	
+	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails
+	 */
+	private $shopDetails;
+	
+	#
+	# SETUP
+	#
+	
+	public function setUp()
+	{
+		$this->shopDetails = ShopDetails::create($this->version, $this->url, $this->key, $this->languages,
+		                                         $this->countries);
+	}
+	
 	#
 	# TESTS
 	#
 	
-	public function testCreation()
+	public function testVersionIsAccessible()
 	{
-		$shopDetails  = ShopDetails::create($this->version, $this->url, $this->key, $this->languages, $this->countries);
-		$shopDetails2 = ShopDetails::create($this->version, $this->url, $this->key, $this->languages, $this->countries);
-		
-		$this->assertNotSame($shopDetails, $shopDetails2, 'Created shop details are identical/the same.');
+		$this->assertEquals($this->shopDetails->version(), $this->version,
+		                    'Given and returned versions are not equals.');
 	}
 	
 	
-	public function testReturnValues()
+	public function testUrlIsAccessible()
 	{
-		$shopDetails = ShopDetails::create($this->version, $this->url, $this->key, $this->languages, $this->countries);
-		
-		$this->assertVersion($shopDetails, $this->version);
-		$this->assertUrl($shopDetails, $this->url);
-		$this->assertKey($shopDetails, $this->key);
-		$this->assertLanguages($shopDetails, $this->languages);
-		$this->assertCountries($shopDetails, $this->countries);
-	}
-	
-	#
-	# ASSERTIONS
-	#
-	
-	private function assertVersion(ShopDetails $shopDetails, $version)
-	{
-		$this->assertEquals($shopDetails->version(), $version, 'Given and returned versions are not equals.');
+		$this->assertEquals($this->shopDetails->url(), $this->url, 'Given and returned urls are not equals.');
 	}
 	
 	
-	private function assertUrl(ShopDetails $shopDetails, $url)
+	public function testKeyIsAccessible()
 	{
-		$this->assertEquals($shopDetails->url(), $url, 'Given and returned urls are not equals.');
+		$this->assertEquals($this->shopDetails->key(), $this->key, 'Given and returned keys are not equals.');
 	}
 	
 	
-	private function assertKey(ShopDetails $shopDetails, $key)
+	public function testLanguagesIsAccessible()
 	{
-		$this->assertEquals($shopDetails->key(), $key, 'Given and returned keys are not equals.');
+		$this->assertEquals($this->shopDetails->languages(), $this->languages,
+		                    'Given and returned languages are not equals.');
 	}
 	
 	
-	private function assertLanguages(ShopDetails $shopDetails, array $languages)
+	public function testCountriesIsAccessible()
 	{
-		$this->assertEquals($shopDetails->languages(), $languages, 'Given and returned languages are not equals.');
-	}
-	
-	
-	private function assertCountries(ShopDetails $shopDetails, array $countries)
-	{
-		$this->assertEquals($shopDetails->countries(), $countries, 'Given and returned countries are not equals.');
+		$this->assertEquals($this->shopDetails->countries(), $this->countries,
+		                    'Given and returned countries are not equals.');
 	}
 }

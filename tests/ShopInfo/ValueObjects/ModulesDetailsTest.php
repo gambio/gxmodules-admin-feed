@@ -38,6 +38,11 @@ class ModulesDetailsTest extends TestCase
 	 */
 	private $other;
 	
+	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModulesDetails
+	 */
+	private $modulesDetails;
+	
 	#
 	# SETUP
 	#
@@ -48,59 +53,39 @@ class ModulesDetailsTest extends TestCase
 		$this->shipping   = $this->createMock(ModuleDetailsCollection::class);
 		$this->orderTotal = $this->createMock(ModuleDetailsCollection::class);
 		$this->other      = $this->createMock(ModuleDetailsCollection::class);
+		
+		$this->modulesDetails = ModulesDetails::create($this->payment, $this->shipping, $this->orderTotal,
+		                                               $this->other);
 	}
 	
 	#
 	# TESTS
 	#
 	
-	public function testCreation()
+	public function testPaymentModulesAreAccessible()
 	{
-		$modulesDetails  = ModulesDetails::create($this->payment, $this->shipping, $this->orderTotal, $this->other);
-		$modulesDetails2 = ModulesDetails::create($this->payment, $this->shipping, $this->orderTotal, $this->other);
-		
-		$this->assertNotSame($modulesDetails, $modulesDetails2, 'Created modules details are identical/the same.');
-	}
-	
-	
-	public function testReturnValues()
-	{
-		$modulesDetails = ModulesDetails::create($this->payment, $this->shipping, $this->orderTotal, $this->other);
-		
-		$this->assertPaymentModules($modulesDetails, $this->payment);
-		$this->assertShippingModules($modulesDetails, $this->shipping);
-		$this->assertOrderTotalsModules($modulesDetails, $this->orderTotal);
-		$this->assertOthersModules($modulesDetails, $this->other);
-	}
-	
-	#
-	# ASSERTIONS
-	#
-	
-	private function assertPaymentModules(ModulesDetails $modulesDetails, ModuleDetailsCollection $payment)
-	{
-		$this->assertEquals($modulesDetails->payment(), $payment,
+		$this->assertEquals($this->modulesDetails->payment(), $this->payment,
 		                    'Given and returned payment modules collection are not equals.');
 	}
 	
 	
-	private function assertShippingModules(ModulesDetails $modulesDetails, ModuleDetailsCollection $shipping)
+	public function testShippingModulesAreAccessible()
 	{
-		$this->assertEquals($modulesDetails->shipping(), $shipping,
+		$this->assertEquals($this->modulesDetails->shipping(), $this->shipping,
 		                    'Given and returned shipping modules collection are not equals.');
 	}
 	
 	
-	private function assertOrderTotalsModules(ModulesDetails $modulesDetails, ModuleDetailsCollection $orderTotal)
+	public function testOrderTotalsModulesAreAccessible()
 	{
-		$this->assertEquals($modulesDetails->orderTotal(), $orderTotal,
+		$this->assertEquals($this->modulesDetails->orderTotal(), $this->orderTotal,
 		                    'Given and returned order totals modules collection are not equals.');
 	}
 	
 	
-	private function assertOthersModules(ModulesDetails $modulesDetails, ModuleDetailsCollection $other)
+	public function testOthersModulesAreAccessible()
 	{
-		$this->assertEquals($modulesDetails->other(), $other,
+		$this->assertEquals($this->modulesDetails->other(), $this->other,
 		                    'Given and returned other modules collection are not equals.');
 	}
 }

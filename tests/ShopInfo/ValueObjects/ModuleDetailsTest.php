@@ -37,54 +37,48 @@ class ModuleDetailsTest extends TestCase
 	 */
 	private $version = 'v1.0.1';
 	
+	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModuleDetails
+	 */
+	private $moduleDetails;
+	
+	#
+	# SETUP
+	#
+	
+	public function setUp()
+	{
+		$this->moduleDetails = ModuleDetails::create($this->name, $this->installed, $this->active, $this->version);
+	}
+	
 	#
 	# TESTS
 	#
 	
-	public function testCreation()
+	public function testNameIsAccessible()
 	{
-		$moduleDetails  = ModuleDetails::create($this->name, $this->installed, $this->active, $this->version);
-		$moduleDetails2 = ModuleDetails::create($this->name, $this->installed, $this->active, $this->version);
-		
-		$this->assertNotSame($moduleDetails, $moduleDetails2, 'Created mysql module details are identical/the same.');
+		$this->assertEquals($this->moduleDetails->name(), $this->name,
+		                    'Given and returned module names are not equals.');
 	}
 	
 	
-	public function testReturnValues()
+	public function testInstalledFlagIsAccessible()
 	{
-		$moduleDetails = ModuleDetails::create($this->name, $this->installed, $this->active, $this->version);
-		
-		$this->assertName($moduleDetails, $this->name);
-		$this->assertInstalledFlag($moduleDetails, $this->installed);
-		$this->assertActiveFlag($moduleDetails, $this->active);
-		$this->assertVersion($moduleDetails, $this->version);
-	}
-	
-	#
-	# ASSERTIONS
-	#
-	
-	private function assertName(ModuleDetails $moduleDetails, $name)
-	{
-		$this->assertEquals($moduleDetails->name(), $name, 'Given and returned module names are not equals.');
-	}
-	
-	
-	private function assertInstalledFlag(ModuleDetails $moduleDetails, $installed)
-	{
-		$this->assertEquals($moduleDetails->installed(), $installed,
+		$this->assertEquals($this->moduleDetails->installed(), $this->installed,
 		                    'Given and returned installed flags are not equals.');
 	}
 	
 	
-	private function assertActiveFlag(ModuleDetails $moduleDetails, $active)
+	public function testActiveFlagIsAccessible()
 	{
-		$this->assertEquals($moduleDetails->active(), $active, 'Given and returned active flags are not equals.');
+		$this->assertEquals($this->moduleDetails->active(), $this->active,
+		                    'Given and returned active flags are not equals.');
 	}
 	
 	
-	private function assertVersion(ModuleDetails $moduleDetails, $version)
+	public function testVersionIsAccessible()
 	{
-		$this->assertEquals($moduleDetails->version(), $version, 'Given and returned module versions are not equals.');
+		$this->assertEquals($this->moduleDetails->version(), $this->version,
+		                    'Given and returned module versions are not equals.');
 	}
 }

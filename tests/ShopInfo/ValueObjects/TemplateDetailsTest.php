@@ -37,60 +37,49 @@ class TemplateDetailsTest extends TestCase
 	 */
 	private $mobileCandyInstalled = false;
 	
+	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\TemplateDetails
+	 */
+	private $templateDetails;
+	
+	#
+	# SETUP
+	#
+	
+	public function setUp()
+	{
+		$this->templateDetails = TemplateDetails::create($this->available, $this->selected, $this->configuration,
+		                                                 $this->mobileCandyInstalled);
+	}
+	
 	#
 	# TESTS
 	#
 	
-	public function testCreation()
+	public function testAvailableTemplatesAreAccessible()
 	{
-		$templateDetails  = TemplateDetails::create($this->available, $this->selected, $this->configuration,
-		                                            $this->mobileCandyInstalled);
-		$templateDetails2 = TemplateDetails::create($this->available, $this->selected, $this->configuration,
-		                                            $this->mobileCandyInstalled);
-		
-		$this->assertNotSame($templateDetails, $templateDetails2, 'Created template details are identical/the same.');
-	}
-	
-	
-	public function testReturnValues()
-	{
-		$templateDetails = TemplateDetails::create($this->available, $this->selected, $this->configuration,
-		                                           $this->mobileCandyInstalled);
-		
-		$this->assertAvailableTemplates($templateDetails, $this->available);
-		$this->assertSelectedTemplate($templateDetails, $this->selected);
-		$this->assertTemplateConfiguration($templateDetails, $this->configuration);
-		$this->assertMobileCandyInstalledFlag($templateDetails, $this->mobileCandyInstalled);
-	}
-	
-	#
-	# ASSERTIONS
-	#
-	
-	private function assertAvailableTemplates(TemplateDetails $templateDetails, array $available)
-	{
-		$this->assertEquals($templateDetails->available(), $available,
+		$this->assertEquals($this->templateDetails->available(), $this->available,
 		                    'Given and returned available templates are not equals.');
 	}
 	
 	
-	private function assertSelectedTemplate(TemplateDetails $templateDetails, $selected)
+	public function testSelectedTemplateIsAccessible()
 	{
-		$this->assertEquals($templateDetails->selected(), $selected,
+		$this->assertEquals($this->templateDetails->selected(), $this->selected,
 		                    'Given and returned selected templates are not equals.');
 	}
 	
 	
-	private function assertTemplateConfiguration(TemplateDetails $templateDetails, array $configuration)
+	public function testTemplateConfigurationIsAccessible()
 	{
-		$this->assertEquals($templateDetails->configuration(), $configuration,
+		$this->assertEquals($this->templateDetails->configuration(), $this->configuration,
 		                    'Given and returned template configurations are not equals.');
 	}
 	
 	
-	private function assertMobileCandyInstalledFlag(TemplateDetails $templateDetails, $mobileCandyInstalled)
+	public function testMobileCandyInstalledFlagIsAccessible()
 	{
-		$this->assertEquals($templateDetails->mobileCandyInstalled(), $mobileCandyInstalled,
+		$this->assertEquals($this->templateDetails->mobileCandyInstalled(), $this->mobileCandyInstalled,
 		                    'Given and returned mobile candy installed flags are not equals.');
 	}
 }

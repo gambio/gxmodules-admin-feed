@@ -29,6 +29,11 @@ class ServerDetailsTest extends TestCase
 	 */
 	private $mysql;
 	
+	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ServerDetails
+	 */
+	private $serverDetails;
+	
 	#
 	# SETUP
 	#
@@ -37,41 +42,24 @@ class ServerDetailsTest extends TestCase
 	{
 		$this->php   = $this->createMock(PhpServerDetailsInterface::class);
 		$this->mysql = $this->createMock(MysqlServerDetailsInterface::class);
+		
+		$this->serverDetails = ServerDetails::create($this->php, $this->mysql);
 	}
 	
 	#
 	# TESTS
 	#
 	
-	public function testCreation()
+	public function testPhpServerDetailsAreAccessible()
 	{
-		$serverDetails  = ServerDetails::create($this->php, $this->mysql);
-		$serverDetails2 = ServerDetails::create($this->php, $this->mysql);
-		
-		$this->assertNotSame($serverDetails, $serverDetails2, 'Created server details are identical/the same.');
+		$this->assertEquals($this->serverDetails->php(), $this->php,
+		                    'Given and returned php server details are not equals.');
 	}
 	
 	
-	public function testReturnValues()
+	public function testMysqlServerDetailsAreAccessible()
 	{
-		$serverDetails = ServerDetails::create($this->php, $this->mysql);
-		
-		$this->assertPhpServerDetails($serverDetails, $this->php);
-		$this->assertMysqlServerDetails($serverDetails, $this->mysql);
-	}
-	
-	#
-	# ASSERTIONS
-	#
-	
-	private function assertPhpServerDetails(ServerDetails $serverDetails, PhpServerDetailsInterface $php)
-	{
-		$this->assertEquals($serverDetails->php(), $php, 'Given and returned php server details are not equals.');
-	}
-	
-	
-	private function assertMysqlServerDetails(ServerDetails $serverDetails, MysqlServerDetailsInterface $mysql)
-	{
-		$this->assertEquals($serverDetails->mysql(), $mysql, 'Given and returned mysql server details are not equals.');
+		$this->assertEquals($this->serverDetails->mysql(), $this->mysql,
+		                    'Given and returned mysql server details are not equals.');
 	}
 }

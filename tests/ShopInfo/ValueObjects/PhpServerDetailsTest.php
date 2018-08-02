@@ -27,41 +27,34 @@ class PhpServerDetailsTest extends TestCase
 	 */
 	private $extensions = ['curl', 'xml', 'zip'];
 	
+	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\PhpServerDetails
+	 */
+	private $phpServerDetails;
+	
+	#
+	# SETUP
+	#
+	
+	public function setUp()
+	{
+		$this->phpServerDetails = PhpServerDetails::create($this->version, $this->extensions);
+	}
+	
 	#
 	# TESTS
 	#
 	
-	public function testCreation()
+	public function testVersionIsAccessible()
 	{
-		$phpServerDetails  = PhpServerDetails::create($this->version, $this->extensions);
-		$phpServerDetails2 = PhpServerDetails::create($this->version, $this->extensions);
-		
-		$this->assertNotSame($phpServerDetails, $phpServerDetails2,
-		                     'Created php server details are identical/the same.');
+		$this->assertEquals($this->phpServerDetails->version(), $this->version,
+		                    'Given and returned versions are not equals.');
 	}
 	
 	
-	public function testReturnValues()
+	public function testExtensionsAreAccessible()
 	{
-		$phpServerDetails = PhpServerDetails::create($this->version, $this->extensions);
-		
-		$this->assertVersion($phpServerDetails, $this->version);
-		$this->assertExtensions($phpServerDetails, $this->extensions);
-	}
-	
-	#
-	# ASSERTIONS
-	#
-	
-	private function assertVersion(PhpServerDetails $phpServerDetails, $version)
-	{
-		$this->assertEquals($phpServerDetails->version(), $version, 'Given and returned versions are not equals.');
-	}
-	
-	
-	private function assertExtensions(PhpServerDetails $phpServerDetails, $extensions)
-	{
-		$this->assertEquals($phpServerDetails->extensions(), $extensions,
+		$this->assertEquals($this->phpServerDetails->extensions(), $this->extensions,
 		                    'Given and returned extensions are not equals.');
 	}
 }

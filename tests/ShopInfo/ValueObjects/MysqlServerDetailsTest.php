@@ -22,33 +22,27 @@ class MysqlServerDetailsTest extends TestCase
 	 */
 	private $version = 'v1.0.1';
 	
+	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MysqlServerDetails
+	 */
+	private $mysqlServerDetails;
+	
+	#
+	# SETUP
+	#
+	
+	public function setUp()
+	{
+		$this->mysqlServerDetails = MysqlServerDetails::create($this->version);
+	}
+	
 	#
 	# TESTS
 	#
 	
-	public function testCreation()
+	public function testVersionIsAccessible()
 	{
-		$mysqlServerDetails  = MysqlServerDetails::create($this->version);
-		$mysqlServerDetails2 = MysqlServerDetails::create($this->version);
-		
-		$this->assertNotSame($mysqlServerDetails, $mysqlServerDetails2,
-		                     'Created mysql server details are identical/the same.');
-	}
-	
-	
-	public function testReturnValues()
-	{
-		$mysqlServerDetails = MysqlServerDetails::create($this->version);
-		
-		$this->assertVersion($mysqlServerDetails, $this->version);
-	}
-	
-	#
-	# ASSERTIONS
-	#
-	
-	private function assertVersion(MysqlServerDetails $mysqlServerDetails, $version)
-	{
-		$this->assertEquals($mysqlServerDetails->version(), $version, 'Given and returned versions are not equals.');
+		$this->assertEquals($this->mysqlServerDetails->version(), $this->version,
+		                    'Given and returned versions are not equals.');
 	}
 }

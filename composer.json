@@ -8,7 +8,7 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"Gambio\\AdminFeed\\": "src/GXModules"
+			"Gambio\\AdminFeed\\": "src"
 		}
 	}
 }

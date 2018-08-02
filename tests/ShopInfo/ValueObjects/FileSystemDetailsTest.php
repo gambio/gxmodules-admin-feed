@@ -37,61 +37,50 @@ class FileSystemDetailsTest extends TestCase
 	 */
 	private $globalUsermodDirectoryExists = false;
 	
+	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\FileSystemDetails
+	 */
+	private $fileSystemDetails;
+	
+	#
+	# SETUP
+	#
+	
+	public function setUp()
+	{
+		$this->fileSystemDetails = FileSystemDetails::create($this->usermods, $this->gxModules, $this->dangerousTools,
+		                                                     $this->globalUsermodDirectoryExists);
+	}
+	
 	#
 	# TESTS
 	#
 	
-	public function testCreation()
+	public function testUsermodsAreAccessible()
 	{
-		$fileSystemDetails  = FileSystemDetails::create($this->usermods, $this->gxModules, $this->dangerousTools,
-		                                                $this->globalUsermodDirectoryExists);
-		$fileSystemDetails2 = FileSystemDetails::create($this->usermods, $this->gxModules, $this->dangerousTools,
-		                                                $this->globalUsermodDirectoryExists);
-		
-		$this->assertNotSame($fileSystemDetails, $fileSystemDetails2,
-		                     'Created file system details are identical/the same.');
+		$this->assertEquals($this->fileSystemDetails->usermods(), $this->usermods,
+		                    'Given and returned usermods are not equals.');
 	}
 	
 	
-	public function testReturnValues()
+	public function testGxModulesAreAccessible()
 	{
-		$fileSystemDetails = FileSystemDetails::create($this->usermods, $this->gxModules, $this->dangerousTools,
-		                                               $this->globalUsermodDirectoryExists);
-		
-		$this->assertUsermods($fileSystemDetails, $this->usermods);
-		$this->assertGxModules($fileSystemDetails, $this->gxModules);
-		$this->assertDangerousTools($fileSystemDetails, $this->dangerousTools);
-		$this->assertGlobalUsermodDirectoryExistsFlag($fileSystemDetails, $this->globalUsermodDirectoryExists);
-	}
-	
-	#
-	# ASSERTIONS
-	#
-	
-	private function assertUsermods(FileSystemDetails $fileSystemDetails, $usermods)
-	{
-		$this->assertEquals($fileSystemDetails->usermods(), $usermods, 'Given and returned usermods are not equals.');
-	}
-	
-	
-	private function assertGxModules(FileSystemDetails $fileSystemDetails, $gxModules)
-	{
-		$this->assertEquals($fileSystemDetails->gxModules(), $gxModules,
+		$this->assertEquals($this->fileSystemDetails->gxModules(), $this->gxModules,
 		                    'Given and returned gx modules are not equals.');
 	}
 	
 	
-	private function assertDangerousTools(FileSystemDetails $fileSystemDetails, $dangerousTools)
+	public function testDangerousToolsAreAccessible()
 	{
-		$this->assertEquals($fileSystemDetails->dangerousTools(), $dangerousTools,
+		$this->assertEquals($this->fileSystemDetails->dangerousTools(), $this->dangerousTools,
 		                    'Given and returned dangerous tools are not equals.');
 	}
 	
 	
-	private function assertGlobalUsermodDirectoryExistsFlag(FileSystemDetails $fileSystemDetails,
-	                                                        $globalUsermodDirectoryExists)
+	public function testGlobalUsermodDirectoryExistsFlagIsAccessible()
 	{
-		$this->assertEquals($fileSystemDetails->globalUsermodDirectoryExists(), $globalUsermodDirectoryExists,
+		$this->assertEquals($this->fileSystemDetails->globalUsermodDirectoryExists(),
+		                    $this->globalUsermodDirectoryExists,
 		                    'Given and returned global usermod directory exists flags are not equals.');
 	}
 }
