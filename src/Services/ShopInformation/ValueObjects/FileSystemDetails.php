@@ -50,20 +50,20 @@ class FileSystemDetails implements FileSystemDetailsInterface
 	 * @param array $usermods
 	 * @param array $gxModules
 	 * @param array $dangerousTools
-	 * @param bool  $globalUsermodDirectoryExists
 	 * @param array $receiptFiles
+	 * @param bool  $globalUsermodDirectoryExists
 	 */
 	public function __construct(array $usermods,
 	                            array $gxModules,
 	                            array $dangerousTools,
-	                            $globalUsermodDirectoryExists,
-	                            array $receiptFiles)
+	                            array $receiptFiles,
+	                            $globalUsermodDirectoryExists)
 	{
 		$this->usermods                     = $usermods;
 		$this->gxModules                    = $gxModules;
 		$this->dangerousTools               = $dangerousTools;
-		$this->globalUsermodDirectoryExists = $globalUsermodDirectoryExists;
 		$this->receiptFiles                 = $receiptFiles;
+		$this->globalUsermodDirectoryExists = $globalUsermodDirectoryExists;
 	}
 	
 	
@@ -71,18 +71,18 @@ class FileSystemDetails implements FileSystemDetailsInterface
 	 * @param array $usermods
 	 * @param array $gxModules
 	 * @param array $dangerousTools
-	 * @param bool  $globalUsermodDirectoryExists
 	 * @param array $receiptFiles
+	 * @param bool  $globalUsermodDirectoryExists
 	 *
 	 * @return self
 	 */
 	static function create(array $usermods,
 	                       array $gxModules,
 	                       array $dangerousTools,
-	                       $globalUsermodDirectoryExists,
-	                       array $receiptFiles)
+	                       array $receiptFiles,
+	                       $globalUsermodDirectoryExists)
 	{
-		return new self($usermods, $gxModules, $dangerousTools, $globalUsermodDirectoryExists, $receiptFiles);
+		return new self($usermods, $gxModules, $dangerousTools, $receiptFiles, $globalUsermodDirectoryExists);
 	}
 	
 	
