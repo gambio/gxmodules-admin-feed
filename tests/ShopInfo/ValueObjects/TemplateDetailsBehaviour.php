@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   TemplateDetailsTest.inc.php 2018-08-01
+   TemplateDetailsBehaviour.inc.php 2018-08-01
    Gambio GmbH
    http://www.gambio.de
    Copyright (c) 2018 Gambio GmbH
@@ -13,9 +13,9 @@ use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\TemplateDetails;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Class TemplateDetailsTest
+ * Class TemplateDetailsBehaviour
  */
-class TemplateDetailsTest extends TestCase
+class TemplateDetailsBehaviour extends TestCase
 {
 	/**
 	 * @var array
@@ -42,9 +42,6 @@ class TemplateDetailsTest extends TestCase
 	 */
 	private $templateDetails;
 	
-	#
-	# SETUP
-	#
 	
 	public function setUp()
 	{
@@ -52,34 +49,39 @@ class TemplateDetailsTest extends TestCase
 		                                                 $this->mobileCandyInstalled);
 	}
 	
-	#
-	# TESTS
-	#
 	
-	public function testAvailableTemplatesAreAccessible()
+	/**
+	 * @test
+	 */
+	public function shouldReturnGivenAvailableTemplates()
 	{
-		$this->assertEquals($this->templateDetails->available(), $this->available,
-		                    'Given and returned available templates are not equals.');
+		$this->assertEquals($this->templateDetails->available(), $this->available);
 	}
 	
 	
-	public function testSelectedTemplateIsAccessible()
+	/**
+	 * @test
+	 */
+	public function shouldReturnGivenSelectedTemplate()
 	{
-		$this->assertEquals($this->templateDetails->selected(), $this->selected,
-		                    'Given and returned selected templates are not equals.');
+		$this->assertEquals($this->templateDetails->selected(), $this->selected);
 	}
 	
 	
-	public function testTemplateConfigurationIsAccessible()
+	/**
+	 * @test
+	 */
+	public function shouldReturnGivenTemplateConfiguration()
 	{
-		$this->assertEquals($this->templateDetails->configuration(), $this->configuration,
-		                    'Given and returned template configurations are not equals.');
+		$this->assertEquals($this->templateDetails->configuration(), $this->configuration);
 	}
 	
 	
-	public function testMobileCandyInstalledFlagIsAccessible()
+	/**
+	 * @test
+	 */
+	public function shouldReturnGivenMobileCandyInstalledFlag()
 	{
-		$this->assertEquals($this->templateDetails->mobileCandyInstalled(), $this->mobileCandyInstalled,
-		                    'Given and returned mobile candy installed flags are not equals.');
+		$this->assertEquals($this->templateDetails->mobileCandyInstalled(), $this->mobileCandyInstalled);
 	}
 }

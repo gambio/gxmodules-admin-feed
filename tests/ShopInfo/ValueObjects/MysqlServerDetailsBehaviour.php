@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   MysqlServerDetailsTest.inc.php 2018-08-01
+   MysqlServerDetailsBehaviour.inc.php 2018-08-01
    Gambio GmbH
    http://www.gambio.de
    Copyright (c) 2018 Gambio GmbH
@@ -13,9 +13,9 @@ use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MysqlServerDetails;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Class MysqlServerDetailsTest
+ * Class MysqlServerDetailsBehaviour
  */
-class MysqlServerDetailsTest extends TestCase
+class MysqlServerDetailsBehaviour extends TestCase
 {
 	/**
 	 * @var string
@@ -27,22 +27,18 @@ class MysqlServerDetailsTest extends TestCase
 	 */
 	private $mysqlServerDetails;
 	
-	#
-	# SETUP
-	#
 	
 	public function setUp()
 	{
 		$this->mysqlServerDetails = MysqlServerDetails::create($this->version);
 	}
 	
-	#
-	# TESTS
-	#
 	
-	public function testVersionIsAccessible()
+	/**
+	 * @test
+	 */
+	public function shouldReturnGivenVersion()
 	{
-		$this->assertEquals($this->mysqlServerDetails->version(), $this->version,
-		                    'Given and returned versions are not equals.');
+		$this->assertEquals($this->mysqlServerDetails->version(), $this->version);
 	}
 }

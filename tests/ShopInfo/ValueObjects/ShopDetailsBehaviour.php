@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   ShopDetailsTest.inc.php 2018-08-01
+   ShopDetailsBehaviour.inc.php 2018-08-01
    Gambio GmbH
    http://www.gambio.de
    Copyright (c) 2018 Gambio GmbH
@@ -13,9 +13,9 @@ use PHPUnit\Framework\TestCase;
 use \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails;
 
 /**
- * Class ShopDetailsTest
+ * Class ShopDetailsBehaviour
  */
-class ShopDetailsTest extends TestCase
+class ShopDetailsBehaviour extends TestCase
 {
 	/**
 	 * @var string
@@ -47,9 +47,6 @@ class ShopDetailsTest extends TestCase
 	 */
 	private $shopDetails;
 	
-	#
-	# SETUP
-	#
 	
 	public function setUp()
 	{
@@ -57,39 +54,48 @@ class ShopDetailsTest extends TestCase
 		                                         $this->countries);
 	}
 	
-	#
-	# TESTS
-	#
 	
-	public function testVersionIsAccessible()
+	/**
+	 * @test
+	 */
+	public function shouldReturnGivenVersion()
 	{
-		$this->assertEquals($this->shopDetails->version(), $this->version,
-		                    'Given and returned versions are not equals.');
+		$this->assertEquals($this->shopDetails->version(), $this->version);
 	}
 	
 	
-	public function testUrlIsAccessible()
+	/**
+	 * @test
+	 */
+	public function shouldReturnGivenUrl()
 	{
-		$this->assertEquals($this->shopDetails->url(), $this->url, 'Given and returned urls are not equals.');
+		$this->assertEquals($this->shopDetails->url(), $this->url);
 	}
 	
 	
-	public function testKeyIsAccessible()
+	/**
+	 * @test
+	 */
+	public function shouldReturnGivenKey()
 	{
-		$this->assertEquals($this->shopDetails->key(), $this->key, 'Given and returned keys are not equals.');
+		$this->assertEquals($this->shopDetails->key(), $this->key);
 	}
 	
 	
-	public function testLanguagesIsAccessible()
+	/**
+	 * @test
+	 */
+	public function shouldReturnGivenLanguages()
 	{
-		$this->assertEquals($this->shopDetails->languages(), $this->languages,
-		                    'Given and returned languages are not equals.');
+		$this->assertEquals($this->shopDetails->languages(), $this->languages);
 	}
 	
 	
-	public function testCountriesIsAccessible()
+	/**
+	 * @test
+	 */
+	public function shouldReturnGivenCountries()
 	{
-		$this->assertEquals($this->shopDetails->countries(), $this->countries,
-		                    'Given and returned countries are not equals.');
+		$this->assertEquals($this->shopDetails->countries(), $this->countries);
 	}
 }

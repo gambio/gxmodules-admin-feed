@@ -39,41 +39,50 @@ class ModulesDetails implements ModulesDetailsInterface
 	/**
 	 * @var \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection
 	 */
-	private $other;
+	private $hub;
 	
 	
 	/**
+	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $hub
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $payment
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $shipping
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $orderTotal
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $other
 	 */
-	public function __construct(ModuleDetailsCollection $payment,
+	public function __construct(ModuleDetailsCollection $hub,
+	                            ModuleDetailsCollection $payment,
 	                            ModuleDetailsCollection $shipping,
-	                            ModuleDetailsCollection $orderTotal,
-	                            ModuleDetailsCollection $other)
+	                            ModuleDetailsCollection $orderTotal)
 	{
+		$this->hub        = $hub;
 		$this->payment    = $payment;
 		$this->shipping   = $shipping;
 		$this->orderTotal = $orderTotal;
-		$this->other      = $other;
 	}
 	
 	
 	/**
+	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $hub
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $payment
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $shipping
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $orderTotal
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $other
 	 *
 	 * @return self
 	 */
-	static function create(ModuleDetailsCollection $payment,
+	static function create(ModuleDetailsCollection $hub,
+	                       ModuleDetailsCollection $payment,
 	                       ModuleDetailsCollection $shipping,
-	                       ModuleDetailsCollection $orderTotal,
-	                       ModuleDetailsCollection $other)
+	                       ModuleDetailsCollection $orderTotal)
 	{
-		return new self($payment, $shipping, $orderTotal, $other);
+		return new self($hub, $payment, $shipping, $orderTotal);
+	}
+	
+	
+	/**
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection
+	 */
+	public function hub()
+	{
+		return $this->hub;
 	}
 	
 	
@@ -101,14 +110,5 @@ class ModulesDetails implements ModulesDetailsInterface
 	public function orderTotal()
 	{
 		return $this->orderTotal;
-	}
-	
-	
-	/**
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection
-	 */
-	public function other()
-	{
-		return $this->other;
 	}
 }

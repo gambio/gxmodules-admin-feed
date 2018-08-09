@@ -11,8 +11,16 @@
 	<!-- PHPUnit Test Suites -->
 	<testsuites>
 		<testsuite name="default">
-			<directory suffix="Test.php">tests</directory>
+			<directory suffix="Behaviour.php">tests</directory>
 		</testsuite>
 	</testsuites>
+	
+	
+	<!-- PHPUnit filter for code coverage -->
+	<filter>
+		<whitelist processUncoveredFilesFromWhitelist="false">
+			<directory suffix=".php">src</directory>
+		</whitelist>
+	</filter>
 	
 </phpunit>

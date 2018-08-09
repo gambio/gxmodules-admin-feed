@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   ModuleDetailsInterface.php 2018-08-01
+   UpdateDetailsInterface.php 2018-08-01
    Gambio GmbH
    http://www.gambio.de
    Copyright (c) 2018 Gambio GmbH
@@ -12,20 +12,19 @@
 namespace Gambio\AdminFeed\Services\ShopInformation\ValueObjects\Interfaces;
 
 /**
- * Interface ModuleDetailsInterface
+ * Interface UpdateDetailsInterface
  *
  * @package Gambio\AdminFeed\Services\ShopInformation\ValueObjects\Interfaces
  */
-interface ModuleDetailsInterface
+interface UpdateDetailsInterface
 {
 	/**
 	 * @param string $name
-	 * @param bool   $installed
-	 * @param bool   $enabled
+	 * @param string $version
 	 *
 	 * @return self
 	 */
-	static function create($name, $installed, $enabled);
+	static function create($name, $version);
 	
 	
 	/**
@@ -35,13 +34,7 @@ interface ModuleDetailsInterface
 	
 	
 	/**
-	 * @return bool
+	 * @return string
 	 */
-	public function installed();
-	
-	
-	/**
-	 * @return bool
-	 */
-	public function enabled();
+	public function version();
 }

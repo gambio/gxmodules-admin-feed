@@ -23,13 +23,15 @@ interface FileSystemDetailsInterface
 	 * @param array $gxModules
 	 * @param array $dangerousTools
 	 * @param bool  $globalUsermodDirectoryExists
+	 * @param array $receiptFiles
 	 *
 	 * @return self
 	 */
 	static function create(array $usermods,
 	                       array $gxModules,
 	                       array $dangerousTools,
-	                       $globalUsermodDirectoryExists);
+	                       $globalUsermodDirectoryExists,
+	                       array $receiptFiles);
 	
 	
 	/**
@@ -54,4 +56,10 @@ interface FileSystemDetailsInterface
 	 * @return bool
 	 */
 	public function globalUsermodDirectoryExists();
+	
+	
+	/**
+	 * @return array
+	 */
+	public function receiptFiles();
 }

@@ -33,40 +33,32 @@ class ModuleDetails implements ModuleDetailsInterface
 	/**
 	 * @var bool
 	 */
-	private $active;
-	
-	/**
-	 * @var string
-	 */
-	private $version;
+	private $enabled;
 	
 	
 	/**
 	 * @param string $name
 	 * @param bool   $installed
-	 * @param bool   $active
-	 * @param string $version
+	 * @param bool   $enabled
 	 */
-	public function __construct($name, $installed, $active, $version)
+	public function __construct($name, $installed, $enabled)
 	{
 		$this->name      = $name;
 		$this->installed = $installed;
-		$this->active    = $active;
-		$this->version   = $version;
+		$this->active    = $enabled;
 	}
 	
 	
 	/**
 	 * @param string $name
 	 * @param bool   $installed
-	 * @param bool   $active
-	 * @param string $version
+	 * @param bool   $enabled
 	 *
 	 * @return self
 	 */
-	static function create($name, $installed, $active, $version)
+	static function create($name, $installed, $enabled)
 	{
-		return new self($name, $installed, $active, $version);
+		return new self($name, $installed, $enabled);
 	}
 	
 	
@@ -91,17 +83,8 @@ class ModuleDetails implements ModuleDetailsInterface
 	/**
 	 * @return bool
 	 */
-	public function active()
+	public function enabled()
 	{
-		return $this->active;
-	}
-	
-	
-	/**
-	 * @return string
-	 */
-	public function version()
-	{
-		return $this->version;
+		return $this->enabled;
 	}
 }

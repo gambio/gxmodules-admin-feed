@@ -21,17 +21,23 @@ use Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollectio
 interface ModulesDetailsInterface
 {
 	/**
+	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $hub
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $payment
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $shipping
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $orderTotal
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $other
 	 *
 	 * @return self
 	 */
-	static function create(ModuleDetailsCollection $payment,
+	static function create(ModuleDetailsCollection $hub,
+	                       ModuleDetailsCollection $payment,
 	                       ModuleDetailsCollection $shipping,
-	                       ModuleDetailsCollection $orderTotal,
-	                       ModuleDetailsCollection $other);
+	                       ModuleDetailsCollection $orderTotal);
+	
+	
+	/**
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection
+	 */
+	public function hub();
 	
 	
 	/**
@@ -50,11 +56,5 @@ interface ModulesDetailsInterface
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection
 	 */
 	public function orderTotal();
-	
-	
-	/**
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection
-	 */
-	public function other();
 	
 }

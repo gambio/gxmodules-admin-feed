@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   FileSystemDetailsTest.inc.php 2018-08-01
+   FileSystemDetailsBehaviour.inc.php 2018-08-01
    Gambio GmbH
    http://www.gambio.de
    Copyright (c) 2018 Gambio GmbH
@@ -13,9 +13,9 @@ use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\FileSystemDetails;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Class FileSystemDetailsTest
+ * Class FileSystemDetailsBehaviour
  */
-class FileSystemDetailsTest extends TestCase
+class FileSystemDetailsBehaviour extends TestCase
 {
 	/**
 	 * @var array
@@ -42,9 +42,6 @@ class FileSystemDetailsTest extends TestCase
 	 */
 	private $fileSystemDetails;
 	
-	#
-	# SETUP
-	#
 	
 	public function setUp()
 	{
@@ -52,35 +49,40 @@ class FileSystemDetailsTest extends TestCase
 		                                                     $this->globalUsermodDirectoryExists);
 	}
 	
-	#
-	# TESTS
-	#
 	
-	public function testUsermodsAreAccessible()
+	/**
+	 * @test
+	 */
+	public function shouldReturnGivenUsermods()
 	{
-		$this->assertEquals($this->fileSystemDetails->usermods(), $this->usermods,
-		                    'Given and returned usermods are not equals.');
+		$this->assertEquals($this->fileSystemDetails->usermods(), $this->usermods);
 	}
 	
 	
-	public function testGxModulesAreAccessible()
+	/**
+	 * @test
+	 */
+	public function shouldReturnGivenGxModules()
 	{
-		$this->assertEquals($this->fileSystemDetails->gxModules(), $this->gxModules,
-		                    'Given and returned gx modules are not equals.');
+		$this->assertEquals($this->fileSystemDetails->gxModules(), $this->gxModules);
 	}
 	
 	
-	public function testDangerousToolsAreAccessible()
+	/**
+	 * @test
+	 */
+	public function shouldReturnGivenDangerousTools()
 	{
-		$this->assertEquals($this->fileSystemDetails->dangerousTools(), $this->dangerousTools,
-		                    'Given and returned dangerous tools are not equals.');
+		$this->assertEquals($this->fileSystemDetails->dangerousTools(), $this->dangerousTools);
 	}
 	
 	
-	public function testGlobalUsermodDirectoryExistsFlagIsAccessible()
+	/**
+	 * @test
+	 */
+	public function shouldReturnGivenGlobalUsermodDirectoryExistsFlag()
 	{
 		$this->assertEquals($this->fileSystemDetails->globalUsermodDirectoryExists(),
-		                    $this->globalUsermodDirectoryExists,
-		                    'Given and returned global usermod directory exists flags are not equals.');
+		                    $this->globalUsermodDirectoryExists);
 	}
 }

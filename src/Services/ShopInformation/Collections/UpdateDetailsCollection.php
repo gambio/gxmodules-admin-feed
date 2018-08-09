@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   ModuleDetailsCollection.php 2018-08-01
+   UpdateDetailsCollection.php 2018-08-01
    Gambio GmbH
    http://www.gambio.de
    Copyright (c) 2018 Gambio GmbH
@@ -11,14 +11,14 @@
 
 namespace Gambio\AdminFeed\Services\ShopInformation\Collections;
 
-use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModuleDetails;
+use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdateDetails;
 
 /**
- * Class ModuleDetailsCollection
+ * Class UpdateDetailsCollection
  *
  * @package Gambio\AdminFeed\Services\ShopInformation\Collections
  */
-class ModuleDetailsCollection implements \IteratorAggregate, \Countable
+class UpdateDetailsCollection implements \IteratorAggregate, \Countable
 {
 	/**
 	 * @var array
@@ -79,9 +79,9 @@ class ModuleDetailsCollection implements \IteratorAggregate, \Countable
 	
 	
 	/**
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModuleDetails $item
+	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdateDetails $item
 	 */
-	public function add(ModuleDetails $item)
+	public function add(UpdateDetails $item)
 	{
 		$this->items[] = $item;
 	}

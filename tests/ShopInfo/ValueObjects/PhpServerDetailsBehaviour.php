@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   PhpServerDetailsTest.inc.php 2018-08-01
+   PhpServerDetailsBehaviour.inc.php 2018-08-01
    Gambio GmbH
    http://www.gambio.de
    Copyright (c) 2018 Gambio GmbH
@@ -13,9 +13,9 @@ use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\PhpServerDetails;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Class PhpServerDetailsTest
+ * Class PhpServerDetailsBehaviour
  */
-class PhpServerDetailsTest extends TestCase
+class PhpServerDetailsBehaviour extends TestCase
 {
 	/**
 	 * @var string
@@ -32,29 +32,27 @@ class PhpServerDetailsTest extends TestCase
 	 */
 	private $phpServerDetails;
 	
-	#
-	# SETUP
-	#
 	
 	public function setUp()
 	{
 		$this->phpServerDetails = PhpServerDetails::create($this->version, $this->extensions);
 	}
 	
-	#
-	# TESTS
-	#
 	
-	public function testVersionIsAccessible()
+	/**
+	 * @test
+	 */
+	public function shouldReturnGivenVersion()
 	{
-		$this->assertEquals($this->phpServerDetails->version(), $this->version,
-		                    'Given and returned versions are not equals.');
+		$this->assertEquals($this->phpServerDetails->version(), $this->version);
 	}
 	
 	
-	public function testExtensionsAreAccessible()
+	/**
+	 * @test
+	 */
+	public function shouldReturnGivenExtensions()
 	{
-		$this->assertEquals($this->phpServerDetails->extensions(), $this->extensions,
-		                    'Given and returned extensions are not equals.');
+		$this->assertEquals($this->phpServerDetails->extensions(), $this->extensions);
 	}
 }

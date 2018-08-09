@@ -40,22 +40,30 @@ class FileSystemDetails implements FileSystemDetailsInterface
 	 */
 	private $globalUsermodDirectoryExists;
 	
+	/**
+	 * @var bool
+	 */
+	private $receiptFiles;
+	
 	
 	/**
 	 * @param array $usermods
 	 * @param array $gxModules
 	 * @param array $dangerousTools
 	 * @param bool  $globalUsermodDirectoryExists
+	 * @param array $receiptFiles
 	 */
 	public function __construct(array $usermods,
 	                            array $gxModules,
 	                            array $dangerousTools,
-	                            $globalUsermodDirectoryExists)
+	                            $globalUsermodDirectoryExists,
+	                            array $receiptFiles)
 	{
 		$this->usermods                     = $usermods;
 		$this->gxModules                    = $gxModules;
 		$this->dangerousTools               = $dangerousTools;
 		$this->globalUsermodDirectoryExists = $globalUsermodDirectoryExists;
+		$this->receiptFiles                 = $receiptFiles;
 	}
 	
 	
@@ -64,15 +72,17 @@ class FileSystemDetails implements FileSystemDetailsInterface
 	 * @param array $gxModules
 	 * @param array $dangerousTools
 	 * @param bool  $globalUsermodDirectoryExists
+	 * @param array $receiptFiles
 	 *
 	 * @return self
 	 */
 	static function create(array $usermods,
 	                       array $gxModules,
 	                       array $dangerousTools,
-	                       $globalUsermodDirectoryExists)
+	                       $globalUsermodDirectoryExists,
+	                       array $receiptFiles)
 	{
-		return new self($usermods, $gxModules, $dangerousTools, $globalUsermodDirectoryExists);
+		return new self($usermods, $gxModules, $dangerousTools, $globalUsermodDirectoryExists, $receiptFiles);
 	}
 	
 	
@@ -109,5 +119,14 @@ class FileSystemDetails implements FileSystemDetailsInterface
 	public function globalUsermodDirectoryExists()
 	{
 		return $this->globalUsermodDirectoryExists;
+	}
+	
+	
+	/**
+	 * @return array
+	 */
+	public function receiptFiles()
+	{
+		return $this->receiptFiles;
 	}
 }

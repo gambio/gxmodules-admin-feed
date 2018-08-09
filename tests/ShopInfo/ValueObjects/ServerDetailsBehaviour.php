@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   ServerDetailsTest.inc.php 2018-08-01
+   ServerDetailsBehaviour.inc.php 2018-08-01
    Gambio GmbH
    http://www.gambio.de
    Copyright (c) 2018 Gambio GmbH
@@ -15,9 +15,9 @@ use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ServerDetails;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Class ServerDetailsTest
+ * Class ServerDetailsBehaviour
  */
-class ServerDetailsTest extends TestCase
+class ServerDetailsBehaviour extends TestCase
 {
 	/**
 	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\Interfaces\PhpServerDetailsInterface
@@ -34,9 +34,6 @@ class ServerDetailsTest extends TestCase
 	 */
 	private $serverDetails;
 	
-	#
-	# SETUP
-	#
 	
 	public function setUp()
 	{
@@ -46,20 +43,21 @@ class ServerDetailsTest extends TestCase
 		$this->serverDetails = ServerDetails::create($this->php, $this->mysql);
 	}
 	
-	#
-	# TESTS
-	#
 	
-	public function testPhpServerDetailsAreAccessible()
+	/**
+	 * @test
+	 */
+	public function shouldReturnGivenPhpServerDetails()
 	{
-		$this->assertEquals($this->serverDetails->php(), $this->php,
-		                    'Given and returned php server details are not equals.');
+		$this->assertEquals($this->serverDetails->php(), $this->php);
 	}
 	
 	
-	public function testMysqlServerDetailsAreAccessible()
+	/**
+	 * @test
+	 */
+	public function shouldReturnGivenMysqlServerDetails()
 	{
-		$this->assertEquals($this->serverDetails->mysql(), $this->mysql,
-		                    'Given and returned mysql server details are not equals.');
+		$this->assertEquals($this->serverDetails->mysql(), $this->mysql);
 	}
 }

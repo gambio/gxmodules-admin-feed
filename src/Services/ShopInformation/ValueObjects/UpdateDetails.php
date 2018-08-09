@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   MysqlServerDetails.php 2018-08-01
+   UpdateDetails.php 2018-08-01
    Gambio GmbH
    http://www.gambio.de
    Copyright (c) 2018 Gambio GmbH
@@ -11,15 +11,20 @@
 
 namespace Gambio\AdminFeed\Services\ShopInformation\ValueObjects;
 
-use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\Interfaces\MysqlServerDetailsInterface;
+use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\Interfaces\UpdateDetailsInterface;
 
 /**
- * Class MysqlServerDetails
+ * Class UpdateDetails
  *
  * @package Gambio\AdminFeed\Services\ShopInformation\ValueObjects
  */
-class MysqlServerDetails implements MysqlServerDetailsInterface
+class UpdateDetails implements UpdateDetailsInterface
 {
+	/**
+	 * @var string
+	 */
+	private $name;
+	
 	/**
 	 * @var string
 	 */
@@ -27,22 +32,34 @@ class MysqlServerDetails implements MysqlServerDetailsInterface
 	
 	
 	/**
+	 * @param string $name
 	 * @param string $version
 	 */
-	public function __construct($version)
+	public function __construct($name, $version)
 	{
+		$this->name    = $name;
 		$this->version = $version;
 	}
 	
 	
 	/**
+	 * @param string $name
 	 * @param string $version
 	 *
 	 * @return self
 	 */
-	static function create($version)
+	static function create($name, $version)
 	{
-		return new self($version);
+		return new self($name, $version);
+	}
+	
+	
+	/**
+	 * @return string
+	 */
+	public function name()
+	{
+		return $this->name;
 	}
 	
 	
@@ -53,5 +70,4 @@ class MysqlServerDetails implements MysqlServerDetailsInterface
 	{
 		return $this->version;
 	}
-	
 }
