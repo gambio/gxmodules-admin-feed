@@ -22,4 +22,40 @@ interface ShopInformationServiceInterface
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\Entities\Interfaces\ShopInformationInterface
 	 */
 	public function getShopInformation();
+	
+	
+	/**
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\Interfaces\ShopDetailsInterface
+	 */
+	public function getShopDetails();
+	
+	
+	/**
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\Interfaces\ServerDetailsInterface
+	 */
+	public function getServerDetails();
+	
+	
+	/**
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\Interfaces\ModulesDetailsInterface
+	 */
+	public function getModulesDetails();
+	
+	
+	/**
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\Interfaces\TemplateDetailsInterface
+	 */
+	public function getTemplateDetails();
+	
+	
+	/**
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\Interfaces\FileSystemDetailsInterface
+	 */
+	public function getFileSystemDetails();
+	
+	
+	/**
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\Interfaces\UpdateDetailsInterface
+	 */
+	public function getUpdateDetails();
 }

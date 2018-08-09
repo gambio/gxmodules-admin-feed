@@ -11,6 +11,8 @@
 
 namespace Gambio\AdminFeed\Services\ShopInformation\Repositories\Interfaces;
 
+use Gambio\AdminFeed\Services\ShopInformation\Mapper\Interfaces\ModulesDetailsMapperInterface;
+
 /**
  * Interface ModulesDetailsRepositoryInterface
  *
@@ -18,6 +20,14 @@ namespace Gambio\AdminFeed\Services\ShopInformation\Repositories\Interfaces;
  */
 interface ModulesDetailsRepositoryInterface
 {
+	/**
+	 * @param \Gambio\AdminFeed\Services\ShopInformation\Mapper\Interfaces\ModulesDetailsMapperInterface $mapper
+	 *
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\Interfaces\TemplateDetailsInterface
+	 */
+	public function create(ModulesDetailsMapperInterface $mapper);
+	
+	
 	/**
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\Interfaces\ModulesDetailsInterface
 	 */

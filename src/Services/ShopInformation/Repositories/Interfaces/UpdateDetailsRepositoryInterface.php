@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   TemplateDetailsRepositoryInterface.php 2018-08-01
+   UpdateDetailsRepositoryInterface.php 2018-08-01
    Gambio GmbH
    http://www.gambio.de
    Copyright (c) 2018 Gambio GmbH
@@ -11,25 +11,25 @@
 
 namespace Gambio\AdminFeed\Services\ShopInformation\Repositories\Interfaces;
 
-use Gambio\AdminFeed\Services\ShopInformation\Mapper\Interfaces\TemplateDetailsMapperInterface;
+use Gambio\AdminFeed\Services\ShopInformation\Mapper\Interfaces\UpdateDetailsMapperInterface;
 
 /**
- * Interface TemplateDetailsRepositoryInterface
+ * Interface UpdateDetailsRepositoryInterface
  *
  * @package Gambio\AdminFeed\Services\ShopInformation\Repositories\Interfaces
  */
-interface TemplateDetailsRepositoryInterface
+interface UpdateDetailsRepositoryInterface
 {
 	/**
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Mapper\Interfaces\TemplateDetailsMapperInterface $mapper
+	 * @param \Gambio\AdminFeed\Services\ShopInformation\Mapper\Interfaces\UpdateDetailsMapperInterface $mapper
 	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\Interfaces\TemplateDetailsInterface
 	 */
-	public function create(TemplateDetailsMapperInterface $mapper);
+	public function create(UpdateDetailsMapperInterface $mapper);
 	
 	
 	/**
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\Interfaces\TemplateDetailsInterface
 	 */
-	public function templateDetails();
+	public function updateDetails();
 }
