@@ -27,7 +27,7 @@ interface UpdateDetailsReaderInterface
 	
 	
 	/**
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\Interfaces\TemplateDetailsInterface
+	 * @return array
 	 */
-	public function getUpdateDetails();
+	public function getUpdates();
 }

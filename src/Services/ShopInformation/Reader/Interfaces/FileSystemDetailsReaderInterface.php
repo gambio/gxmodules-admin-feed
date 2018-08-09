@@ -27,7 +27,31 @@ interface FileSystemDetailsReaderInterface
 	
 	
 	/**
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\Interfaces\FileSystemDetailsInterface
+	 * @return array
 	 */
-	public function fileSystemDetails();
+	public function getUserMods();
+	
+	
+	/**
+	 * @return array
+	 */
+	public function getGxModules();
+	
+	
+	/**
+	 * @return array
+	 */
+	public function getDangerousTools();
+	
+	
+	/**
+	 * @return array
+	 */
+	public function doesGlobalUsermodDirectoryExist();
+	
+	
+	/**
+	 * @return array
+	 */
+	public function getReceiptFiles();
 }

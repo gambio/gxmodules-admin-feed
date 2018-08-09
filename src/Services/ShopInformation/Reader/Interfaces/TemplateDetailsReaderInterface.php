@@ -27,7 +27,25 @@ interface TemplateDetailsReaderInterface
 	
 	
 	/**
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\Interfaces\TemplateDetailsInterface
+	 * @return array
 	 */
-	public function templateDetails();
+	public function getAvailableTemplates();
+	
+	
+	/**
+	 * @return string
+	 */
+	public function getSelectedTemplate();
+	
+	
+	/**
+	 * @return array
+	 */
+	public function getTemplateConfiguration();
+	
+	
+	/**
+	 * @return bool
+	 */
+	public function isMobileCandyInstalled();
 }

@@ -27,7 +27,25 @@ interface ModulesDetailsReaderInterface
 	
 	
 	/**
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\Interfaces\ModulesDetailsInterface
+	 * @return array
 	 */
-	public function modulesDetails();
+	public function getHubModules();
+	
+	
+	/**
+	 * @return array
+	 */
+	public function getPaymentModules();
+	
+	
+	/**
+	 * @return array
+	 */
+	public function getShippingModules();
+	
+	
+	/**
+	 * @return array
+	 */
+	public function getOrderTotalModules();
 }

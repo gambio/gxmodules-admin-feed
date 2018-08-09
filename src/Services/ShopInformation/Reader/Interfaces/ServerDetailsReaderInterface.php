@@ -27,7 +27,25 @@ interface ServerDetailsReaderInterface
 	
 	
 	/**
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\Interfaces\ServerDetailsInterface
+	 * @return string
 	 */
-	public function serverDetails();
+	public function getPhpVersion();
+	
+	
+	/**
+	 * @return array
+	 */
+	public function getPhpExtensions();
+	
+	
+	/**
+	 * @return string
+	 */
+	public function getMysqlVersion();
+	
+	
+	/**
+	 * @return string
+	 */
+	public function getOperatingSystem();
 }

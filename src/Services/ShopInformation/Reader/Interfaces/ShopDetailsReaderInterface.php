@@ -27,7 +27,31 @@ interface ShopDetailsReaderInterface
 	
 	
 	/**
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\Interfaces\ShopDetailsInterface
+	 * @return string
 	 */
-	public function shopDetails();
+	public function getVersion();
+	
+	
+	/**
+	 * @return string
+	 */
+	public function getUrl();
+	
+	
+	/**
+	 * @return string
+	 */
+	public function getKey();
+	
+	
+	/**
+	 * @return array
+	 */
+	public function getLanguages();
+	
+	
+	/**
+	 * @return array
+	 */
+	public function getCountries();
 }
