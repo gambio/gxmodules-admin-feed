@@ -11,7 +11,8 @@
 	<!-- PHPUnit Test Suites -->
 	<testsuites>
 		<testsuite name="default">
-			<directory suffix="Behaviour.php">tests</directory>
+			<directory suffix="Behaviour.php">tests/Services</directory>
+			<directory suffix="Test.php">tests/Services</directory>
 		</testsuite>
 	</testsuites>
 	

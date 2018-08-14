@@ -11,15 +11,23 @@
 
 namespace Gambio\AdminFeed\Services\ShopInformation\ValueObjects;
 
-use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\Interfaces\ShopDetailsInterface;
-
 /**
  * Class ShopDetails
  *
  * @package Gambio\AdminFeed\Services\ShopInformation\ValueObjects
  */
-class ShopDetails implements ShopDetailsInterface
+class ShopDetails
 {
+	/**
+	 * @var string
+	 */
+	private $name;
+	
+	/**
+	 * @var string
+	 */
+	private $owner;
+	
 	/**
 	 * @var string
 	 */
@@ -47,18 +55,24 @@ class ShopDetails implements ShopDetailsInterface
 	
 	
 	/**
+	 * @param string $name
+	 * @param string $owner
 	 * @param string $version
 	 * @param string $url
 	 * @param string $key
 	 * @param array  $languages
 	 * @param array  $countries
 	 */
-	public function __construct($version,
+	public function __construct($name,
+	                            $owner,
+	                            $version,
 	                            $url,
 	                            $key,
 	                            array $languages,
 	                            array $countries)
 	{
+		$this->name      = $name;
+		$this->owner     = $owner;
 		$this->version   = $version;
 		$this->url       = $url;
 		$this->key       = $key;
@@ -68,6 +82,8 @@ class ShopDetails implements ShopDetailsInterface
 	
 	
 	/**
+	 * @param string $name
+	 * @param string $owner
 	 * @param string $version
 	 * @param string $url
 	 * @param string $key
@@ -76,13 +92,33 @@ class ShopDetails implements ShopDetailsInterface
 	 *
 	 * @return self
 	 */
-	static function create($version,
+	static function create($name,
+	                       $owner,
+	                       $version,
 	                       $url,
 	                       $key,
 	                       array $languages,
 	                       array $countries)
 	{
-		return new self($version, $url, $key, $languages, $countries);
+		return new self($name, $owner, $version, $url, $key, $languages, $countries);
+	}
+	
+	
+	/**
+	 * @return string
+	 */
+	public function name()
+	{
+		return $this->name;
+	}
+	
+	
+	/**
+	 * @return string
+	 */
+	public function owner()
+	{
+		return $this->owner;
 	}
 	
 	
@@ -129,5 +165,4 @@ class ShopDetails implements ShopDetailsInterface
 	{
 		return $this->countries;
 	}
-	
 }

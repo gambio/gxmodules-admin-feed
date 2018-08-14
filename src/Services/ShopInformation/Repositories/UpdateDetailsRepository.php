@@ -11,18 +11,29 @@
 
 namespace Gambio\AdminFeed\Services\ShopInformation\Repositories;
 
+use Gambio\AdminFeed\Services\ShopInformation\Mapper\UpdateDetailsMapper;
+
 /**
  * Class UpdateDetailsRepository
  *
- * @package Gambio\AdminFeed\Services\ShopInformation\Repositories\Interfaces
+ * @package Gambio\AdminFeed\Services\ShopInformation\Repositories
  */
 class UpdateDetailsRepository
 {
 	/**
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\Interfaces\TemplateDetailsInterface
+	 * @param \Gambio\AdminFeed\Services\ShopInformation\Mapper\UpdateDetailsMapper $mapper
+	 *
+	 * @return self
+	 */
+	static function create(UpdateDetailsMapper $mapper)
+	{
+	}
+	
+	
+	/**
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\TemplateDetails
 	 */
 	public function updateDetails()
 	{
-	
 	}
 }

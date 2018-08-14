@@ -3,12 +3,21 @@
 	"description": "Admin Feed for the Gambio Shop.",
 	"minimum-stability": "dev",
 	"license": "GPL-2.0",
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "https://sources.gambio-server.net/gambio/codeigniter-db.git"
+		}
+	],
 	"require": {
-		"phpunit/phpunit": "7.1"
+		"phpunit/phpunit": "7.1",
+		"phpunit/dbunit": "^4.0@dev",
+		"gambio/codeigniter-db": "dev-master"
 	},
 	"autoload": {
 		"psr-4": {
-			"Gambio\\AdminFeed\\": "src"
+			"Gambio\\AdminFeed\\": "src",
+			"Gambio\\AdminFeed\\Tests\\": "tests"
 		}
 	}
 }

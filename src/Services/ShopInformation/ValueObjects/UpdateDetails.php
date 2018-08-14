@@ -11,14 +11,12 @@
 
 namespace Gambio\AdminFeed\Services\ShopInformation\ValueObjects;
 
-use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\Interfaces\UpdateDetailsInterface;
-
 /**
  * Class UpdateDetails
  *
  * @package Gambio\AdminFeed\Services\ShopInformation\ValueObjects
  */
-class UpdateDetails implements UpdateDetailsInterface
+class UpdateDetails
 {
 	/**
 	 * @var string

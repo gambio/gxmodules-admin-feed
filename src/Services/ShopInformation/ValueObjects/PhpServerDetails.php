@@ -11,14 +11,12 @@
 
 namespace Gambio\AdminFeed\Services\ShopInformation\ValueObjects;
 
-use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\Interfaces\PhpServerDetailsInterface;
-
 /**
  * Class PhpServerDetails
  *
  * @package Gambio\AdminFeed\Services\ShopInformation\ValueObjects
  */
-class PhpServerDetails implements PhpServerDetailsInterface
+class PhpServerDetails
 {
 	/**
 	 * @var string

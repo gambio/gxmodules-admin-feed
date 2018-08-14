@@ -11,14 +11,12 @@
 
 namespace Gambio\AdminFeed\Services\ShopInformation\ValueObjects;
 
-use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\Interfaces\MysqlServerDetailsInterface;
-
 /**
  * Class MysqlServerDetails
  *
  * @package Gambio\AdminFeed\Services\ShopInformation\ValueObjects
  */
-class MysqlServerDetails implements MysqlServerDetailsInterface
+class MysqlServerDetails
 {
 	/**
 	 * @var string

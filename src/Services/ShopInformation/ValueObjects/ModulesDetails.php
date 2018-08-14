@@ -12,14 +12,13 @@
 namespace Gambio\AdminFeed\Services\ShopInformation\ValueObjects;
 
 use Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection;
-use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\Interfaces\ModulesDetailsInterface;
 
 /**
  * Class ModulesDetails
  *
  * @package Gambio\AdminFeed\Services\ShopInformation\ValueObjects
  */
-class ModulesDetails implements ModulesDetailsInterface
+class ModulesDetails
 {
 	/**
 	 * @var \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection

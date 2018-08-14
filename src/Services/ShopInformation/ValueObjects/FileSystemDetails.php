@@ -11,14 +11,12 @@
 
 namespace Gambio\AdminFeed\Services\ShopInformation\ValueObjects;
 
-use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\Interfaces\FileSystemDetailsInterface;
-
 /**
  * Class FileSystemDetails
  *
  * @package Gambio\AdminFeed\Services\ShopInformation\ValueObjects
  */
-class FileSystemDetails implements FileSystemDetailsInterface
+class FileSystemDetails
 {
 	/**
 	 * @var array
@@ -36,6 +34,11 @@ class FileSystemDetails implements FileSystemDetailsInterface
 	private $dangerousTools;
 	
 	/**
+	 * @var array
+	 */
+	private $receiptFiles;
+	
+	/**
 	 * @var bool
 	 */
 	private $globalUsermodDirectoryExists;
@@ -43,7 +46,7 @@ class FileSystemDetails implements FileSystemDetailsInterface
 	/**
 	 * @var bool
 	 */
-	private $receiptFiles;
+	private $upmDirectoryExists;
 	
 	
 	/**
@@ -52,18 +55,21 @@ class FileSystemDetails implements FileSystemDetailsInterface
 	 * @param array $dangerousTools
 	 * @param array $receiptFiles
 	 * @param bool  $globalUsermodDirectoryExists
+	 * @param bool  $upmDirectoryExists
 	 */
 	public function __construct(array $usermods,
 	                            array $gxModules,
 	                            array $dangerousTools,
 	                            array $receiptFiles,
-	                            $globalUsermodDirectoryExists)
+	                            $globalUsermodDirectoryExists,
+	                            $upmDirectoryExists)
 	{
 		$this->usermods                     = $usermods;
 		$this->gxModules                    = $gxModules;
 		$this->dangerousTools               = $dangerousTools;
 		$this->receiptFiles                 = $receiptFiles;
 		$this->globalUsermodDirectoryExists = $globalUsermodDirectoryExists;
+		$this->upmDirectoryExists           = $upmDirectoryExists;
 	}
 	
 	
@@ -73,6 +79,7 @@ class FileSystemDetails implements FileSystemDetailsInterface
 	 * @param array $dangerousTools
 	 * @param array $receiptFiles
 	 * @param bool  $globalUsermodDirectoryExists
+	 * @param bool  $upmDirectoryExists
 	 *
 	 * @return self
 	 */
@@ -80,9 +87,11 @@ class FileSystemDetails implements FileSystemDetailsInterface
 	                       array $gxModules,
 	                       array $dangerousTools,
 	                       array $receiptFiles,
-	                       $globalUsermodDirectoryExists)
+	                       $globalUsermodDirectoryExists,
+	                       $upmDirectoryExists)
 	{
-		return new self($usermods, $gxModules, $dangerousTools, $receiptFiles, $globalUsermodDirectoryExists);
+		return new self($usermods, $gxModules, $dangerousTools, $receiptFiles, $globalUsermodDirectoryExists,
+		                $upmDirectoryExists);
 	}
 	
 	
@@ -114,6 +123,15 @@ class FileSystemDetails implements FileSystemDetailsInterface
 	
 	
 	/**
+	 * @return array
+	 */
+	public function receiptFiles()
+	{
+		return $this->receiptFiles;
+	}
+	
+	
+	/**
 	 * @return bool
 	 */
 	public function globalUsermodDirectoryExists()
@@ -123,10 +141,10 @@ class FileSystemDetails implements FileSystemDetailsInterface
 	
 	
 	/**
-	 * @return array
+	 * @return bool
 	 */
-	public function receiptFiles()
+	public function upmDirectoryExists()
 	{
-		return $this->receiptFiles;
+		return $this->upmDirectoryExists;
 	}
 }

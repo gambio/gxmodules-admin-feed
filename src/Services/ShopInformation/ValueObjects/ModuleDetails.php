@@ -11,14 +11,12 @@
 
 namespace Gambio\AdminFeed\Services\ShopInformation\ValueObjects;
 
-use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\Interfaces\ModuleDetailsInterface;
-
 /**
  * Class ModuleDetails
  *
  * @package Gambio\AdminFeed\Services\ShopInformation\ValueObjects
  */
-class ModuleDetails implements ModuleDetailsInterface
+class ModuleDetails
 {
 	/**
 	 * @var string
@@ -31,15 +29,15 @@ class ModuleDetails implements ModuleDetailsInterface
 	private $installed;
 	
 	/**
-	 * @var bool
+	 * @var bool|null
 	 */
 	private $enabled;
 	
 	
 	/**
-	 * @param string $name
-	 * @param bool   $installed
-	 * @param bool   $enabled
+	 * @param string    $name
+	 * @param bool      $installed
+	 * @param bool|null $enabled
 	 */
 	public function __construct($name, $installed, $enabled)
 	{
@@ -50,9 +48,9 @@ class ModuleDetails implements ModuleDetailsInterface
 	
 	
 	/**
-	 * @param string $name
-	 * @param bool   $installed
-	 * @param bool   $enabled
+	 * @param string    $name
+	 * @param bool      $installed
+	 * @param bool|null $enabled
 	 *
 	 * @return self
 	 */
@@ -81,7 +79,7 @@ class ModuleDetails implements ModuleDetailsInterface
 	
 	
 	/**
-	 * @return bool
+	 * @return bool|null
 	 */
 	public function enabled()
 	{

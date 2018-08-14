@@ -11,14 +11,12 @@
 
 namespace Gambio\AdminFeed\Services\ShopInformation\ValueObjects;
 
-use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\Interfaces\TemplateDetailsInterface;
-
 /**
  * Class TemplateDetails
  *
  * @package Gambio\AdminFeed\Services\ShopInformation\ValueObjects
  */
-class TemplateDetails implements TemplateDetailsInterface
+class TemplateDetails
 {
 	/**
 	 * @var array
@@ -35,24 +33,17 @@ class TemplateDetails implements TemplateDetailsInterface
 	 */
 	private $configuration;
 	
-	/**
-	 * @var bool
-	 */
-	private $mobileCandyInstalled;
-	
 	
 	/**
 	 * @param array  $available
 	 * @param string $selected
 	 * @param array  $configuration
-	 * @param bool   $mobileCandyInstalled
 	 */
-	public function __construct(array $available, $selected, array $configuration, $mobileCandyInstalled)
+	public function __construct(array $available, $selected, array $configuration)
 	{
 		$this->available            = $available;
 		$this->selected             = $selected;
 		$this->configuration        = $configuration;
-		$this->mobileCandyInstalled = $mobileCandyInstalled;
 	}
 	
 	
@@ -64,9 +55,9 @@ class TemplateDetails implements TemplateDetailsInterface
 	 *
 	 * @return self
 	 */
-	static function create(array $available, $selected, array $configuration, $mobileCandyInstalled)
+	static function create(array $available, $selected, array $configuration)
 	{
-		return new self($available, $selected, $configuration, $mobileCandyInstalled);
+		return new self($available, $selected, $configuration);
 	}
 	
 	
@@ -94,14 +85,5 @@ class TemplateDetails implements TemplateDetailsInterface
 	public function configuration()
 	{
 		return $this->configuration;
-	}
-	
-	
-	/**
-	 * @return bool
-	 */
-	public function mobileCandyInstalled()
-	{
-		return $this->mobileCandyInstalled;
 	}
 }

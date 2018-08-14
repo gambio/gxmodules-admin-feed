@@ -1,0 +1,1 @@
+<?php $expectedHtaccessVersion = 2.7; ?>

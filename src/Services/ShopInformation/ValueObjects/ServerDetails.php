@@ -11,33 +11,29 @@
 
 namespace Gambio\AdminFeed\Services\ShopInformation\ValueObjects;
 
-use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\Interfaces\MysqlServerDetailsInterface;
-use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\Interfaces\PhpServerDetailsInterface;
-use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\Interfaces\ServerDetailsInterface;
-
 /**
  * Class ServerDetails
  *
  * @package Gambio\AdminFeed\Services\ShopInformation\ValueObjects
  */
-class ServerDetails implements ServerDetailsInterface
+class ServerDetails
 {
 	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\Interfaces\PhpServerDetailsInterface
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\PhpServerDetails
 	 */
 	private $php;
 	
 	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\Interfaces\MysqlServerDetailsInterface
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MysqlServerDetails
 	 */
 	private $mysql;
 	
 	
 	/**
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\Interfaces\PhpServerDetailsInterface   $php
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\Interfaces\MysqlServerDetailsInterface $mysql
+	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\PhpServerDetails   $php
+	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MysqlServerDetails $mysql
 	 */
-	public function __construct(PhpServerDetailsInterface $php, MysqlServerDetailsInterface $mysql)
+	public function __construct(PhpServerDetails $php, MysqlServerDetails $mysql)
 	{
 		$this->php   = $php;
 		$this->mysql = $mysql;
@@ -45,19 +41,19 @@ class ServerDetails implements ServerDetailsInterface
 	
 	
 	/**
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\Interfaces\PhpServerDetailsInterface   $php
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\Interfaces\MysqlServerDetailsInterface $mysql
+	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\PhpServerDetails   $php
+	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MysqlServerDetails $mysql
 	 *
 	 * @return self
 	 */
-	static function create(PhpServerDetailsInterface $php, MysqlServerDetailsInterface $mysql)
+	static function create(PhpServerDetails $php, MysqlServerDetails $mysql)
 	{
 		return new self($php, $mysql);
 	}
 	
 	
 	/**
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\Interfaces\PhpServerDetailsInterface
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\PhpServerDetails
 	 */
 	public function php()
 	{
@@ -66,7 +62,7 @@ class ServerDetails implements ServerDetailsInterface
 	
 	
 	/**
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\Interfaces\MysqlServerDetailsInterface
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MysqlServerDetails
 	 */
 	public function mysql()
 	{
