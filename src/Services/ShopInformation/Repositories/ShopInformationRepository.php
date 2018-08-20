@@ -86,31 +86,6 @@ class ShopInformationRepository
 	
 	
 	/**
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Repositories\ShopDetailsRepository       $shopDetailsRepository
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Repositories\ServerDetailsRepository     $serverDetailsRepository
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Repositories\ModulesDetailsRepository    $modulesDetailsRepository
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Repositories\TemplateDetailsRepository   $templateDetailsRepository
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Repositories\FileSystemDetailsRepository $fileSystemDetailsRepository
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Repositories\MerchantDetailsRepository   $merchantDetailsRepository
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Repositories\UpdatesDetailsRepository    $updatesDetailsRepository
-	 *
-	 * @return self
-	 */
-	static function create(ShopDetailsRepository $shopDetailsRepository,
-	                       ServerDetailsRepository $serverDetailsRepository,
-	                       ModulesDetailsRepository $modulesDetailsRepository,
-	                       TemplateDetailsRepository $templateDetailsRepository,
-	                       FileSystemDetailsRepository $fileSystemDetailsRepository,
-	                       MerchantDetailsRepository $merchantDetailsRepository,
-	                       UpdatesDetailsRepository $updatesDetailsRepository)
-	{
-		return new self($shopDetailsRepository, $serverDetailsRepository, $modulesDetailsRepository,
-		                $templateDetailsRepository, $fileSystemDetailsRepository, $merchantDetailsRepository,
-		                $updatesDetailsRepository);
-	}
-	
-	
-	/**
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\Entities\ShopInformation
 	 */
 	public function getShopInformation()

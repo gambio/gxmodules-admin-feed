@@ -39,17 +39,6 @@ class TemplateDetailsMapper
 	
 	
 	/**
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Reader\TemplateDetailsReader $reader
-	 *
-	 * @return self
-	 */
-	static function create(TemplateDetailsReader $reader)
-	{
-		return new self($reader);
-	}
-	
-	
-	/**
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\TemplateDetails
 	 */
 	public function getTemplateDetails()

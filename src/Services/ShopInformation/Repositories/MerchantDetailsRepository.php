@@ -38,17 +38,6 @@ class MerchantDetailsRepository
 	
 	
 	/**
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Mapper\MerchantDetailsMapper $mapper
-	 *
-	 * @return self
-	 */
-	static function create(MerchantDetailsMapper $mapper)
-	{
-		return new self($mapper);
-	}
-	
-	
-	/**
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MerchantDetails
 	 */
 	public function getMerchantDetails()

@@ -41,17 +41,6 @@ class UpdatesDetailsMapper
 	
 	
 	/**
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Reader\UpdatesDetailsReader $reader
-	 *
-	 * @return self
-	 */
-	static function create(UpdatesDetailsReader $reader)
-	{
-		return new self($reader);
-	}
-	
-	
-	/**
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdatesDetails
 	 */
 	public function getUpdatesDetails()

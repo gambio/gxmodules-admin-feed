@@ -41,17 +41,6 @@ class ModulesDetailsMapper
 	
 	
 	/**
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Reader\ModulesDetailsReader $reader
-	 *
-	 * @return self
-	 */
-	static function create(ModulesDetailsReader $reader)
-	{
-		return new self($reader);
-	}
-	
-	
-	/**
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModulesDetails
 	 */
 	public function getModulesDetails()

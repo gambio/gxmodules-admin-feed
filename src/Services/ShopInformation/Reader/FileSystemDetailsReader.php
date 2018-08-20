@@ -38,17 +38,6 @@ class FileSystemDetailsReader
 	
 	
 	/**
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Settings $settings
-	 *
-	 * @return self
-	 */
-	static function create(Settings $settings)
-	{
-		return new self($settings);
-	}
-	
-	
-	/**
 	 * @return array
 	 */
 	public function getUserMods()
@@ -154,11 +143,10 @@ class FileSystemDetailsReader
 	}
 	
 	
-	
 	/**
 	 * Searches for user mods in the given directory and returns them
 	 *
-	 * @param string $directory.
+	 * @param string $directory .
 	 *
 	 * @return array
 	 */

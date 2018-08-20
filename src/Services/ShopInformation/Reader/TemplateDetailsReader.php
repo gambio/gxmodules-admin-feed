@@ -41,17 +41,6 @@ class TemplateDetailsReader
 	
 	
 	/**
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Settings $settings
-	 *
-	 * @return self
-	 */
-	static function create(Settings $settings)
-	{
-		return new self($settings);
-	}
-	
-	
-	/**
 	 * @return array
 	 */
 	public function getAvailableTemplates()

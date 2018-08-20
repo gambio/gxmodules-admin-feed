@@ -46,18 +46,6 @@ class ShopDetailsReader
 	
 	
 	/**
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Settings $settings
-	 * @param \CI_DB_query_builder                                $db
-	 *
-	 * @return self
-	 */
-	static function create(Settings $settings, \CI_DB_query_builder $db)
-	{
-		return new self($settings, $db);
-	}
-	
-	
-	/**
 	 * @return string
 	 */
 	public function getVersion()

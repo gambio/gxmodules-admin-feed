@@ -38,17 +38,6 @@ class UpdatesDetailsRepository
 	
 	
 	/**
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Mapper\UpdatesDetailsMapper $mapper
-	 *
-	 * @return self
-	 */
-	static function create(UpdatesDetailsMapper $mapper)
-	{
-		return new self($mapper);
-	}
-	
-	
-	/**
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdatesDetails
 	 */
 	public function getUpdatesDetails()

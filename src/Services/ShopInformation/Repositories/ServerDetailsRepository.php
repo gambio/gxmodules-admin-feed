@@ -38,17 +38,6 @@ class ServerDetailsRepository
 	
 	
 	/**
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Mapper\ServerDetailsMapper $mapper
-	 *
-	 * @return self
-	 */
-	static function create(ServerDetailsMapper $mapper)
-	{
-		return new self($mapper);
-	}
-	
-	
-	/**
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ServerDetails
 	 */
 	public function getServerDetails()

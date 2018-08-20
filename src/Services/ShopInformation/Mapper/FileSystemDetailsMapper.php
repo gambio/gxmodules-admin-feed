@@ -39,17 +39,6 @@ class FileSystemDetailsMapper
 	
 	
 	/**
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Reader\FileSystemDetailsReader $reader
-	 *
-	 * @return self
-	 */
-	static function create(FileSystemDetailsReader $reader)
-	{
-		return new self($reader);
-	}
-	
-	
-	/**
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\FileSystemDetails
 	 */
 	public function getFileSystemDetails()

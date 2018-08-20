@@ -39,17 +39,6 @@ class ShopDetailsMapper
 	
 	
 	/**
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Reader\ShopDetailsReader $reader
-	 *
-	 * @return self
-	 */
-	static function create(ShopDetailsReader $reader)
-	{
-		return new self($reader);
-	}
-	
-	
-	/**
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails
 	 */
 	public function getShopDetails()

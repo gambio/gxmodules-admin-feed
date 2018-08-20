@@ -38,17 +38,6 @@ class ShopDetailsRepository
 	
 	
 	/**
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Mapper\ShopDetailsMapper $mapper
-	 *
-	 * @return self
-	 */
-	static function create(ShopDetailsMapper $mapper)
-	{
-		return new self($mapper);
-	}
-	
-	
-	/**
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails
 	 */
 	public function getShopDetails()

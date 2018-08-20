@@ -47,17 +47,6 @@ class ModulesDetailsReader
 	
 	
 	/**
-	 * @param \CI_DB_query_builder $db
-	 *
-	 * @return self
-	 */
-	static function create(Settings $settings, \CI_DB_query_builder $db)
-	{
-		return new self($settings, $db);
-	}
-	
-	
-	/**
 	 * @return array
 	 */
 	public function getHubModulesData()
@@ -221,7 +210,8 @@ class ModulesDetailsReader
 	{
 		$modules = [];
 		
-		$moduleFiles = (array)glob($this->settings->getBaseDirectory() . 'GXMainComponents/Modules/*ModuleCenterModule.inc.php');
+		$moduleFiles = (array)glob($this->settings->getBaseDirectory()
+		                           . 'GXMainComponents/Modules/*ModuleCenterModule.inc.php');
 		foreach($moduleFiles as $file)
 		{
 			$moduleName = strtok(basename($file), '.');
@@ -247,7 +237,8 @@ class ModulesDetailsReader
 	{
 		$modules = [];
 		
-		$moduleFiles = (array)glob($this->settings->getBaseDirectory() . 'GXUserComponents/modules/**/*ModuleCenterModule.inc.php');
+		$moduleFiles = (array)glob($this->settings->getBaseDirectory()
+		                           . 'GXUserComponents/modules/**/*ModuleCenterModule.inc.php');
 		foreach($moduleFiles as $file)
 		{
 			$moduleName = strtok(basename($file), '.');

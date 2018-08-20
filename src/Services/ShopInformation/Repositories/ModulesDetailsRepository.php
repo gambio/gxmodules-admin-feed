@@ -38,17 +38,6 @@ class ModulesDetailsRepository
 	
 	
 	/**
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Mapper\ModulesDetailsMapper $mapper
-	 *
-	 * @return self
-	 */
-	static function create(ModulesDetailsMapper $mapper)
-	{
-		return new self($mapper);
-	}
-	
-	
-	/**
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModulesDetails
 	 */
 	public function getModulesDetails()

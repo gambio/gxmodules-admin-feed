@@ -267,7 +267,7 @@ abstract class DbTestCase extends TestCase
 	{
 		if(self::$ciDb === null)
 		{
-			self::$ciDb = CIDB(self::getCiDbConnectionString());
+			self::$ciDb = \CIDB(self::getCiDbConnectionString());
 			self::$ciDb->query('SET SESSION sql_mode = ""');
 		}
 		
@@ -287,7 +287,7 @@ abstract class DbTestCase extends TestCase
 	{
 		if(self::$ciDbUtils === null)
 		{
-			self::$ciDbUtils = CIDBUtils(self::getCiDbConnectionString());
+			self::$ciDbUtils = \CIDBUtils(self::getCiDbConnectionString());
 		}
 		
 		return self::$ciDbUtils;
@@ -306,7 +306,7 @@ abstract class DbTestCase extends TestCase
 	{
 		if(self::$ciDbForge === null)
 		{
-			self::$ciDbForge = CIDBForge(self::getCiDbConnectionString());
+			self::$ciDbForge = \CIDBForge(self::getCiDbConnectionString());
 		}
 		
 		return self::$ciDbForge;

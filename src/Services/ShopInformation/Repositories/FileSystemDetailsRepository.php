@@ -38,17 +38,6 @@ class FileSystemDetailsRepository
 	
 	
 	/**
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Mapper\FileSystemDetailsMapper $mapper
-	 *
-	 * @return self
-	 */
-	static function create(FileSystemDetailsMapper $mapper)
-	{
-		return new self($mapper);
-	}
-	
-	
-	/**
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\FileSystemDetails
 	 */
 	public function getFileSystemDetails()

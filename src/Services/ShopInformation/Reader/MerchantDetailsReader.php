@@ -40,17 +40,6 @@ class MerchantDetailsReader
 	
 	
 	/**
-	 * @param \CI_DB_query_builder $db
-	 *
-	 * @return self
-	 */
-	static function create(\CI_DB_query_builder $db)
-	{
-		return new self($db);
-	}
-	
-	
-	/**
 	 * @return string
 	 */
 	public function getCompany()
