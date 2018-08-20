@@ -30,6 +30,17 @@ class ServerDetailsBehaviour extends TestCase
 	private $mysql;
 	
 	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MysqlServerDetails
+	 */
+	private $webserver = 'Apache';
+	
+	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MysqlServerDetails
+	 */
+	private $os = 'Linux';
+	
+	
+	/**
 	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ServerDetails
 	 */
 	private $serverDetails;
@@ -40,7 +51,7 @@ class ServerDetailsBehaviour extends TestCase
 		$this->php   = $this->createMock(PhpServerDetails::class);
 		$this->mysql = $this->createMock(MysqlServerDetails::class);
 		
-		$this->serverDetails = ServerDetails::create($this->php, $this->mysql);
+		$this->serverDetails = ServerDetails::create($this->php, $this->mysql, $this->webserver, $this->os);
 	}
 	
 	
@@ -59,5 +70,23 @@ class ServerDetailsBehaviour extends TestCase
 	public function shouldReturnGivenMysqlServerDetails()
 	{
 		$this->assertEquals($this->serverDetails->mysql(), $this->mysql);
+	}
+	
+	
+	/**
+	 * @test
+	 */
+	public function shouldReturnGivenWebserver()
+	{
+		$this->assertEquals($this->serverDetails->webserver(), $this->webserver);
+	}
+	
+	
+	/**
+	 * @test
+	 */
+	public function shouldReturnGivenOperatingSystem()
+	{
+		$this->assertEquals($this->serverDetails->os(), $this->os);
 	}
 }

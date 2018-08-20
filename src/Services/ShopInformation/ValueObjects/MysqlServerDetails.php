@@ -23,24 +23,40 @@ class MysqlServerDetails
 	 */
 	private $version;
 	
+	/**
+	 * @var array
+	 */
+	private $engines;
+	
+	/**
+	 * @var string
+	 */
+	private $defaultEngine;
+	
 	
 	/**
 	 * @param string $version
+	 * @param array  $engines
+	 * @param string $defaultEngine
 	 */
-	public function __construct($version)
+	public function __construct($version, array $engines, $defaultEngine)
 	{
-		$this->version = $version;
+		$this->version       = $version;
+		$this->engines       = $engines;
+		$this->defaultEngine = $defaultEngine;
 	}
 	
 	
 	/**
 	 * @param string $version
+	 * @param array  $engines
+	 * @param string $defaultEngine
 	 *
 	 * @return self
 	 */
-	static function create($version)
+	static function create($version, array $engines, $defaultEngine)
 	{
-		return new self($version);
+		return new self($version, $engines, $defaultEngine);
 	}
 	
 	
@@ -52,4 +68,21 @@ class MysqlServerDetails
 		return $this->version;
 	}
 	
+	
+	/**
+	 * @return array
+	 */
+	public function engines()
+	{
+		return $this->engines;
+	}
+	
+	
+	/**
+	 * @return string
+	 */
+	public function defaultEngine()
+	{
+		return $this->defaultEngine;
+	}
 }

@@ -34,7 +34,7 @@ class TemplateDetailsReaderBehaviour extends TestCase
 		$this->settings = $this->createMock(Settings::class);
 		$this->settings->method('getBaseDirectory')->willReturn(__DIR__ . '/fixtures/template_details/shop_files/');
 		$this->settings->method('getActiveTemplate')->willReturn('Honeygrid');
-		$this->settings->method('getTemplateVersion')->willReturn('3.0');
+		$this->settings->method('getActiveTemplateVersion')->willReturn('3.0');
 		
 		$this->reader = TemplateDetailsReader::create($this->settings);
 	}
@@ -70,7 +70,7 @@ class TemplateDetailsReaderBehaviour extends TestCase
 	public function shouldReturnExpectedVersionData()
 	{
 		$expectedData = '3.0';
-		$actualData   = $this->reader->getVersion();
+		$actualData   = $this->reader->getSelectedTemplateVersion();
 		
 		$this->assertEquals($expectedData, $actualData);
 	}

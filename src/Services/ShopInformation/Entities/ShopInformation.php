@@ -17,6 +17,7 @@ use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ServerDetails;
 use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails;
 use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\TemplateDetails;
 use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MerchantDetails;
+use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdatesDetails;
 
 /**
  * Class ShopInformation
@@ -32,6 +33,7 @@ class ShopInformation
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\TemplateDetails   $templates
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\FileSystemDetails $filesystem
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MerchantDetails   $merchant
+	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdatesDetails    $updates
 	 *
 	 * @return self
 	 */
@@ -40,7 +42,8 @@ class ShopInformation
 	                       ModulesDetails $modules,
 	                       TemplateDetails $templates,
 	                       FileSystemDetails $filesystem,
-	                       MerchantDetails $merchant)
+	                       MerchantDetails $merchant,
+	                       UpdatesDetails $updates)
 	{
 	}
 	
@@ -89,6 +92,14 @@ class ShopInformation
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MerchantDetails
 	 */
 	public function merchant()
+	{
+	}
+	
+	
+	/**
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdatesDetails
+	 */
+	public function updates()
 	{
 	}
 }

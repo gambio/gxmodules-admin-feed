@@ -38,9 +38,24 @@ class ShopDetailsBehaviour extends TestCase
 	private $languages = ['de', 'en'];
 	
 	/**
+	 * @var string
+	 */
+	private $defaultLanguage = 'de';
+	
+	/**
 	 * @var array
 	 */
 	private $countries = ['de', 'at', 'ch'];
+	
+	/**
+	 * @var string
+	 */
+	private $name = 'Testshop';
+	
+	/**
+	 * @var string
+	 */
+	private $owner = 'Gambio GmbH';
 	
 	/**
 	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails
@@ -50,8 +65,26 @@ class ShopDetailsBehaviour extends TestCase
 	
 	public function setUp()
 	{
-		$this->shopDetails = ShopDetails::create($this->version, $this->url, $this->key, $this->languages,
+		$this->shopDetails = ShopDetails::create($this->name, $this->owner, $this->version, $this->url, $this->key, $this->languages, $this->defaultLanguage,
 		                                         $this->countries);
+	}
+	
+	
+	/**
+	 * @test
+	 */
+	public function shouldReturnGivenName()
+	{
+		$this->assertEquals($this->shopDetails->name(), $this->name);
+	}
+	
+	
+	/**
+	 * @test
+	 */
+	public function shouldReturnGivenOwner()
+	{
+		$this->assertEquals($this->shopDetails->owner(), $this->owner);
 	}
 	
 	
@@ -88,6 +121,15 @@ class ShopDetailsBehaviour extends TestCase
 	public function shouldReturnGivenLanguages()
 	{
 		$this->assertEquals($this->shopDetails->languages(), $this->languages);
+	}
+	
+	
+	/**
+	 * @test
+	 */
+	public function shouldReturnGivenDefaultLanguage()
+	{
+		$this->assertEquals($this->shopDetails->defaultLanguage(), $this->defaultLanguage);
 	}
 	
 	

@@ -12,6 +12,7 @@
 namespace Gambio\AdminFeed\Services\ShopInformation\Mapper;
 
 use Gambio\AdminFeed\Services\ShopInformation\Reader\FileSystemDetailsReader;
+use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\FileSystemDetails;
 
 /**
  * Class FileSystemDetailsMapper
@@ -21,19 +22,45 @@ use Gambio\AdminFeed\Services\ShopInformation\Reader\FileSystemDetailsReader;
 class FileSystemDetailsMapper
 {
 	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\Reader\FileSystemDetailsReader
+	 */
+	private $reader;
+	
+	
+	/**
+	 * FileSystemDetailsMapper constructor.
+	 *
+	 * @param \Gambio\AdminFeed\Services\ShopInformation\Reader\FileSystemDetailsReader $reader
+	 */
+	public function __construct(FileSystemDetailsReader $reader)
+	{
+		$this->reader = $reader;
+	}
+	
+	
+	/**
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Reader\FileSystemDetailsReader $reader
 	 *
 	 * @return self
 	 */
 	static function create(FileSystemDetailsReader $reader)
 	{
+		return new self($reader);
 	}
 	
 	
 	/**
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\FileSystemDetails
 	 */
-	public function fileSystemDetails()
+	public function getFileSystemDetails()
 	{
+		return FileSystemDetails::create(
+			$this->reader->getUserMods(),
+			$this->reader->getGxModules(),
+			$this->reader->getDangerousTools(),
+			$this->reader->getReceiptFiles(),
+			$this->reader->doesGlobalUsermodDirectoryExist(),
+			$this->reader->doesUpmDirectoryExist()
+		);
 	}
 }

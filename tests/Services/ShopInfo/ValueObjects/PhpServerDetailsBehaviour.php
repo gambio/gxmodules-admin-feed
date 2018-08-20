@@ -28,6 +28,11 @@ class PhpServerDetailsBehaviour extends TestCase
 	private $extensions = ['curl', 'xml', 'zip'];
 	
 	/**
+	 * @var array
+	 */
+	private $configuration = ['max_execution_time' => 30];
+	
+	/**
 	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\PhpServerDetails
 	 */
 	private $phpServerDetails;
@@ -35,7 +40,7 @@ class PhpServerDetailsBehaviour extends TestCase
 	
 	public function setUp()
 	{
-		$this->phpServerDetails = PhpServerDetails::create($this->version, $this->extensions);
+		$this->phpServerDetails = PhpServerDetails::create($this->version, $this->extensions, $this->configuration);
 	}
 	
 	
@@ -54,5 +59,14 @@ class PhpServerDetailsBehaviour extends TestCase
 	public function shouldReturnGivenExtensions()
 	{
 		$this->assertEquals($this->phpServerDetails->extensions(), $this->extensions);
+	}
+	
+	
+	/**
+	 * @test
+	 */
+	public function shouldReturnGivenConfiguration()
+	{
+		$this->assertEquals($this->phpServerDetails->configuration(), $this->configuration);
 	}
 }

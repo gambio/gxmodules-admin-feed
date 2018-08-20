@@ -55,7 +55,7 @@ class Settings
 	}
 	
 	
-	public function getTemplateVersion()
+	public function getActiveTemplateVersion()
 	{
 		return gm_get_env_info('TEMPLATE_VERSION');
 	}

@@ -65,7 +65,7 @@ class ServerDetailsReader
 	
 	
 	/**
-	 * @return string
+	 * @return array
 	 */
 	public function getPhpConfiguration()
 	{

@@ -9,12 +9,12 @@
    --------------------------------------------------------------
 */
 
-namespace Gambio\AdminFeed\Tests\GxMockClasses;
+namespace Gambio\AdminFeed\Tests\GxMockInterfaces;
 
 /**
  * Interface TemplateControl
  *
- * @package Gambio\AdminFeed\Tests\GxMockClasses
+ * @package Gambio\AdminFeed\Tests\GxMockInterfaces
  */
 interface TemplateControlInterface
 {

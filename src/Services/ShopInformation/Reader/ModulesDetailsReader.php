@@ -60,15 +60,16 @@ class ModulesDetailsReader
 	/**
 	 * @return array
 	 */
-	public function getHubModules()
+	public function getHubModulesData()
 	{
+		return [];
 	}
 	
 	
 	/**
 	 * @return array
 	 */
-	public function getPaymentModules()
+	public function getPaymentModulesData()
 	{
 		$modules     = [];
 		$moduleFiles = (array)glob($this->settings->getBaseDirectory() . 'includes/modules/payment/*.php');
@@ -91,7 +92,7 @@ class ModulesDetailsReader
 	/**
 	 * @return array
 	 */
-	public function getShippingModules()
+	public function getShippingModulesData()
 	{
 		$modules     = [];
 		$moduleFiles = (array)glob($this->settings->getBaseDirectory() . 'includes/modules/shipping/*.php');
@@ -114,7 +115,7 @@ class ModulesDetailsReader
 	/**
 	 * @return array
 	 */
-	public function getOrderTotalModules()
+	public function getOrderTotalModulesData()
 	{
 		$modules     = [];
 		$moduleFiles = (array)glob($this->settings->getBaseDirectory() . 'includes/modules/order_total/*.php');
@@ -138,7 +139,7 @@ class ModulesDetailsReader
 	/**
 	 * @return array
 	 */
-	public function getModuleCenterModules()
+	public function getModuleCenterModulesData()
 	{
 		$modules          = [];
 		$moduleCollection = $this->collectModuleCenterModules();

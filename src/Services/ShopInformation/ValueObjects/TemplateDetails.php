@@ -29,35 +29,34 @@ class TemplateDetails
 	private $selected;
 	
 	/**
-	 * @var array
+	 * @var string
 	 */
-	private $configuration;
+	private $version;
 	
 	
 	/**
 	 * @param array  $available
 	 * @param string $selected
-	 * @param array  $configuration
+	 * @param string $configuration
 	 */
-	public function __construct(array $available, $selected, array $configuration)
+	public function __construct(array $available, $selected, $version)
 	{
-		$this->available            = $available;
-		$this->selected             = $selected;
-		$this->configuration        = $configuration;
+		$this->available = $available;
+		$this->selected  = $selected;
+		$this->version   = $version;
 	}
 	
 	
 	/**
 	 * @param array  $available
 	 * @param string $selected
-	 * @param array  $configuration
-	 * @param bool   $mobileCandyInstalled
+	 * @param string $version
 	 *
 	 * @return self
 	 */
-	static function create(array $available, $selected, array $configuration)
+	static function create(array $available, $selected, $version)
 	{
-		return new self($available, $selected, $configuration);
+		return new self($available, $selected, $version);
 	}
 	
 	
@@ -82,8 +81,8 @@ class TemplateDetails
 	/**
 	 * @return array
 	 */
-	public function configuration()
+	public function version()
 	{
-		return $this->configuration;
+		return $this->version;
 	}
 }

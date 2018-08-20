@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   UpdateDetailsReader.php 2018-08-01
+   UpdatesDetailsReader.php 2018-08-01
    Gambio GmbH
    http://www.gambio.de
    Copyright (c) 2018 Gambio GmbH
@@ -11,13 +11,17 @@
 
 namespace Gambio\AdminFeed\Services\ShopInformation\Reader;
 
+use Gambio\AdminFeed\Adapters\GxAdapterTrait;
+
 /**
- * Class UpdateDetailsReader
+ * Class UpdatesDetailsReader
  *
  * @package Gambio\AdminFeed\Services\ShopInformation\Reader
  */
-class UpdateDetailsReader
+class UpdatesDetailsReader
 {
+	use GxAdapterTrait;
+	
 	/**
 	 * @var \CI_DB_query_builder
 	 */
@@ -49,7 +53,7 @@ class UpdateDetailsReader
 	/**
 	 * @return array
 	 */
-	public function getUpdates()
+	public function getInstalledUpdatesData()
 	{
 		$updates = $this->db->select('*')
 		                    ->from('version_history')
@@ -58,5 +62,22 @@ class UpdateDetailsReader
 		                    ->result_array();
 		
 		return $updates;
+	}
+	
+	
+	/**
+	 * @return array
+	 */
+	public function getDownloadedUpdatesData()
+	{
+		$gxAdapter = $this->gxAdapter();
+		$dataCache = $gxAdapter->getDataCache();
+		
+		if($dataCache->key_exists('auto-updater', true))
+		{
+			return $dataCache->get_data('auto-updater', true);
+		}
+		
+		return [];
 	}
 }

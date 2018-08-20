@@ -28,14 +28,9 @@ class TemplateDetailsBehaviour extends TestCase
 	private $selected = 'HoneyGrid';
 	
 	/**
-	 * @var array
+	 * @var string
 	 */
-	private $configuration = ['primary-color' => '#00ffff'];
-	
-	/**
-	 * @var bool
-	 */
-	private $mobileCandyInstalled = false;
+	private $version = '3';
 	
 	/**
 	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\TemplateDetails
@@ -45,8 +40,7 @@ class TemplateDetailsBehaviour extends TestCase
 	
 	public function setUp()
 	{
-		$this->templateDetails = TemplateDetails::create($this->available, $this->selected, $this->configuration,
-		                                                 $this->mobileCandyInstalled);
+		$this->templateDetails = TemplateDetails::create($this->available, $this->selected, $this->version);
 	}
 	
 	
@@ -71,17 +65,8 @@ class TemplateDetailsBehaviour extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnGivenTemplateConfiguration()
+	public function shouldReturnGivenTemplateVersion()
 	{
-		$this->assertEquals($this->templateDetails->configuration(), $this->configuration);
-	}
-	
-	
-	/**
-	 * @test
-	 */
-	public function shouldReturnGivenMobileCandyInstalledFlag()
-	{
-		$this->assertEquals($this->templateDetails->mobileCandyInstalled(), $this->mobileCandyInstalled);
+		$this->assertEquals($this->templateDetails->version(), $this->version);
 	}
 }

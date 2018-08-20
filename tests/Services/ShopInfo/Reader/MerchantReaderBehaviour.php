@@ -12,7 +12,7 @@
 use Gambio\AdminFeed\Adapters\GxAdapter;
 use Gambio\AdminFeed\Services\ShopInformation\Reader\MerchantDetailsReader;
 use Gambio\AdminFeed\Tests\DbTestCase;
-use Gambio\AdminFeed\Tests\GxMockClasses\LanguageTextManagerInterface;
+use Gambio\AdminFeed\Tests\GxMockInterfaces\LanguageTextManagerInterface;
 
 /**
  * Class MerchantReaderBehaviour

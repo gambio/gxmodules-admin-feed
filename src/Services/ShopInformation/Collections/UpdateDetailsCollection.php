@@ -31,7 +31,7 @@ class UpdateDetailsCollection implements \IteratorAggregate, \Countable
 	 *
 	 * @param array $items
 	 */
-	public function __construct(array $items)
+	public function __construct(array $items = [])
 	{
 		foreach($items as $item)
 		{

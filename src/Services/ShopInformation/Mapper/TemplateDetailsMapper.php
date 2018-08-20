@@ -12,6 +12,7 @@
 namespace Gambio\AdminFeed\Services\ShopInformation\Mapper;
 
 use Gambio\AdminFeed\Services\ShopInformation\Reader\TemplateDetailsReader;
+use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\TemplateDetails;
 
 /**
  * Class TemplateDetailsMapper
@@ -21,19 +22,38 @@ use Gambio\AdminFeed\Services\ShopInformation\Reader\TemplateDetailsReader;
 class TemplateDetailsMapper
 {
 	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\Reader\TemplateDetailsReader
+	 */
+	private $reader;
+	
+	
+	/**
+	 * TemplateDetailsMapper constructor.
+	 *
+	 * @param \Gambio\AdminFeed\Services\ShopInformation\Reader\TemplateDetailsReader $reader
+	 */
+	public function __construct(TemplateDetailsReader $reader)
+	{
+		$this->reader = $reader;
+	}
+	
+	
+	/**
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Reader\TemplateDetailsReader $reader
 	 *
 	 * @return self
 	 */
 	static function create(TemplateDetailsReader $reader)
 	{
+		return new self($reader);
 	}
 	
 	
 	/**
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\TemplateDetails
 	 */
-	public function templateDetails()
+	public function getTemplateDetails()
 	{
+		return new TemplateDetails($this->reader->getAvailableTemplates(), $this->reader->getSelectedTemplate(), $this->reader->getSelectedTemplateVersion());
 	}
 }

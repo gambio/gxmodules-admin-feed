@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   LanguageTextManagerInterface.inc.php 2018-08-01
+   InitialDataSet.php 2018-08-09
    Gambio GmbH
    http://www.gambio.de
    Copyright (c) 2018 Gambio GmbH
@@ -9,17 +9,11 @@
    --------------------------------------------------------------
 */
 
-namespace Gambio\AdminFeed\Tests\GxMockInterfaces;
-
-/**
- * Interface LanguageTextManagerInterface
- *
- * @package Gambio\AdminFeed\Tests\GxMockInterfaces
- */
-interface LanguageTextManagerInterface
-{
-	/**
-	 * @return string
-	 */
-	public function get_text($phraseName);
-}
+return [
+	[
+		'name'        => 'Ovisto',
+		'date'        => '2018-08-08',
+		'receiptFile' => 'ovisto-2_0_0.php',
+		'version'     => 'v2.0.0',
+	],
+];

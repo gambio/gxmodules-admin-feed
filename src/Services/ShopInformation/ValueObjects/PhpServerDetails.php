@@ -28,28 +28,39 @@ class PhpServerDetails
 	 */
 	private $extensions;
 	
+	/**
+	 * @var array
+	 */
+	private $configuration;
+	
 	
 	/**
 	 * @param string $version
 	 * @param array  $extensions
+	 * @param array  $configuration
 	 */
 	public function __construct($version,
-	                            array $extensions)
+	                            array $extensions,
+	                            array $configuration)
 	{
-		$this->version    = $version;
-		$this->extensions = $extensions;
+		$this->version       = $version;
+		$this->extensions    = $extensions;
+		$this->configuration = $configuration;
 	}
 	
 	
 	/**
 	 * @param string $version
 	 * @param array  $extensions
+	 * @param array  $configuration
 	 *
 	 * @return self
 	 */
-	static function create($version, array $extensions)
+	static function create($version,
+	                       array $extensions,
+	                       array $configuration)
 	{
-		return new self($version, $extensions);
+		return new self($version, $extensions, $configuration);
 	}
 	
 	
@@ -70,4 +81,12 @@ class PhpServerDetails
 		return $this->extensions;
 	}
 	
+	
+	/**
+	 * @return array
+	 */
+	public function configuration()
+	{
+		return $this->configuration;
+	}
 }

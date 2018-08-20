@@ -13,7 +13,7 @@ use Gambio\AdminFeed\Adapters\GxAdapter;
 use Gambio\AdminFeed\Services\ShopInformation\Reader\ModulesDetailsReader;
 use Gambio\AdminFeed\Services\ShopInformation\Settings;
 use Gambio\AdminFeed\Tests\DbTestCase;
-use Gambio\AdminFeed\Tests\GxMockClasses\ModuleCenterModuleInterface;
+use Gambio\AdminFeed\Tests\GxMockInterfaces\ModuleCenterModuleInterface;
 
 /**
  * Class ModulesDetailsReaderBehaviour
@@ -55,7 +55,7 @@ class ModulesDetailsReaderBehaviour extends DbTestCase
 	public function shouldReturnExpectedHubModulesData()
 	{
 		$expectedData = [];
-		$actualData   = $this->reader->getHubModules();
+		$actualData   = $this->reader->getHubModulesData();
 		
 		$this->assertEquals($expectedData, $actualData);
 	}
@@ -67,7 +67,7 @@ class ModulesDetailsReaderBehaviour extends DbTestCase
 	public function shouldReturnExpectedPaymentModulesData()
 	{
 		$expectedData = include __DIR__ . '/fixtures/modules_details/expected_payment_modules.php';
-		$actualData   = $this->reader->getPaymentModules();
+		$actualData   = $this->reader->getPaymentModulesData();
 		
 		$this->assertEquals($expectedData, $actualData);
 	}
@@ -79,7 +79,7 @@ class ModulesDetailsReaderBehaviour extends DbTestCase
 	public function shouldReturnExpectedShippingModulesData()
 	{
 		$expectedData = include __DIR__ . '/fixtures/modules_details/expected_shipping_modules.php';
-		$actualData   = $this->reader->getShippingModules();
+		$actualData   = $this->reader->getShippingModulesData();
 		
 		$this->assertEquals($expectedData, $actualData);
 	}
@@ -91,7 +91,7 @@ class ModulesDetailsReaderBehaviour extends DbTestCase
 	public function shouldReturnExpectedOrderTotalModulesData()
 	{
 		$expectedData = include __DIR__ . '/fixtures/modules_details/expected_order_total_modules.php';
-		$actualData   = $this->reader->getOrderTotalModules();
+		$actualData   = $this->reader->getOrderTotalModulesData();
 		
 		$this->assertEquals($expectedData, $actualData);
 	}
@@ -105,7 +105,7 @@ class ModulesDetailsReaderBehaviour extends DbTestCase
 		$this->reader->setGxAdapter($this->mockGxAdapter());
 		
 		$expectedData = include __DIR__ . '/fixtures/modules_details/expected_module_center_modules.php';
-		$actualData   = $this->reader->getModuleCenterModules();
+		$actualData   = $this->reader->getModuleCenterModulesData();
 		
 		$this->assertEquals($expectedData, $actualData);
 	}

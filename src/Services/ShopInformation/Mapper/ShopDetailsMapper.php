@@ -12,6 +12,7 @@
 namespace Gambio\AdminFeed\Services\ShopInformation\Mapper;
 
 use Gambio\AdminFeed\Services\ShopInformation\Reader\ShopDetailsReader;
+use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails;
 
 /**
  * Class ShopDetailsMapper
@@ -21,19 +22,40 @@ use Gambio\AdminFeed\Services\ShopInformation\Reader\ShopDetailsReader;
 class ShopDetailsMapper
 {
 	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\Reader\ShopDetailsReader
+	 */
+	private $reader;
+	
+	
+	/**
+	 * ShopDetailsMapper constructor.
+	 *
+	 * @param \Gambio\AdminFeed\Services\ShopInformation\Reader\ShopDetailsReader $reader
+	 */
+	public function __construct(ShopDetailsReader $reader)
+	{
+		$this->reader = $reader;
+	}
+	
+	
+	/**
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Reader\ShopDetailsReader $reader
 	 *
 	 * @return self
 	 */
 	static function create(ShopDetailsReader $reader)
 	{
+		return new self($reader);
 	}
 	
 	
 	/**
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails
 	 */
-	public function shopDetails()
+	public function getShopDetails()
 	{
+		return new ShopDetails($this->reader->getName(), $this->reader->getOwner(), $this->reader->getVersion(),
+		                       $this->reader->getUrl(), $this->reader->getKey(), $this->reader->getLanguages(),
+		                       $this->reader->getDefaultLanguage(), $this->reader->getCountries());
 	}
 }

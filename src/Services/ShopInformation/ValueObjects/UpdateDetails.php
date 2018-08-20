@@ -28,27 +28,35 @@ class UpdateDetails
 	 */
 	private $version;
 	
+	/**
+	 * @var \DateTime|null
+	 */
+	private $installationDate;
+	
 	
 	/**
-	 * @param string $name
-	 * @param string $version
+	 * @param string         $name
+	 * @param string         $version
+	 * @param \DateTime|null $installationDate
 	 */
-	public function __construct($name, $version)
+	public function __construct($name, $version, \DateTime $installationDate)
 	{
-		$this->name    = $name;
-		$this->version = $version;
+		$this->name             = $name;
+		$this->version          = $version;
+		$this->installationDate = $installationDate;
 	}
 	
 	
 	/**
-	 * @param string $name
-	 * @param string $version
+	 * @param string         $name
+	 * @param string         $version
+	 * @param \DateTime|null $installationDate
 	 *
 	 * @return self
 	 */
-	static function create($name, $version)
+	static function create($name, $version, $installationDate)
 	{
-		return new self($name, $version);
+		return new self($name, $version, $installationDate);
 	}
 	
 	
@@ -67,5 +75,14 @@ class UpdateDetails
 	public function version()
 	{
 		return $this->version;
+	}
+	
+	
+	/**
+	 * @return \DateTime|null
+	 */
+	public function installationDate()
+	{
+		return $this->installationDate;
 	}
 }

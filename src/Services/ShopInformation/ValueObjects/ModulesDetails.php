@@ -40,22 +40,30 @@ class ModulesDetails
 	 */
 	private $hub;
 	
+	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection
+	 */
+	private $moduleCenter;
+	
 	
 	/**
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $hub
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $payment
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $shipping
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $orderTotal
+	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $moduleCenter
 	 */
 	public function __construct(ModuleDetailsCollection $hub,
 	                            ModuleDetailsCollection $payment,
 	                            ModuleDetailsCollection $shipping,
-	                            ModuleDetailsCollection $orderTotal)
+	                            ModuleDetailsCollection $orderTotal,
+	                            ModuleDetailsCollection $moduleCenter)
 	{
-		$this->hub        = $hub;
-		$this->payment    = $payment;
-		$this->shipping   = $shipping;
-		$this->orderTotal = $orderTotal;
+		$this->hub          = $hub;
+		$this->payment      = $payment;
+		$this->shipping     = $shipping;
+		$this->orderTotal   = $orderTotal;
+		$this->moduleCenter = $moduleCenter;
 	}
 	
 	
@@ -64,15 +72,17 @@ class ModulesDetails
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $payment
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $shipping
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $orderTotal
+	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $moduleCenter
 	 *
 	 * @return self
 	 */
 	static function create(ModuleDetailsCollection $hub,
 	                       ModuleDetailsCollection $payment,
 	                       ModuleDetailsCollection $shipping,
-	                       ModuleDetailsCollection $orderTotal)
+	                       ModuleDetailsCollection $orderTotal,
+	                       ModuleDetailsCollection $moduleCenter)
 	{
-		return new self($hub, $payment, $shipping, $orderTotal);
+		return new self($hub, $payment, $shipping, $orderTotal, $moduleCenter);
 	}
 	
 	
@@ -109,5 +119,14 @@ class ModulesDetails
 	public function orderTotal()
 	{
 		return $this->orderTotal;
+	}
+	
+	
+	/**
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection
+	 */
+	public function moduleCenter()
+	{
+		return $this->moduleCenter;
 	}
 }

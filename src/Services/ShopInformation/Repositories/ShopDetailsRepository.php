@@ -14,12 +14,29 @@ namespace Gambio\AdminFeed\Services\ShopInformation\Repositories;
 use Gambio\AdminFeed\Services\ShopInformation\Mapper\ShopDetailsMapper;
 
 /**
- * Class ShopDetailsRepository
+ * Interface ShopDetailsRepository
  *
- * @package Gambio\AdminFeed\Services\ShopInformation\Repositories
+ * @package Gambio\AdminFeed\Services\ShopInformation\Repositories\Interfaces
  */
 class ShopDetailsRepository
 {
+	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\Mapper\ShopDetailsMapper
+	 */
+	private $mapper;
+	
+	
+	/**
+	 * ShopDetailsRepository constructor.
+	 *
+	 * @param \Gambio\AdminFeed\Services\ShopInformation\Mapper\ShopDetailsMapper $mapper
+	 */
+	public function __construct(ShopDetailsMapper $mapper)
+	{
+		$this->mapper = $mapper;
+	}
+	
+	
 	/**
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Mapper\ShopDetailsMapper $mapper
 	 *
@@ -27,13 +44,15 @@ class ShopDetailsRepository
 	 */
 	static function create(ShopDetailsMapper $mapper)
 	{
+		return new self($mapper);
 	}
 	
 	
 	/**
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails
 	 */
-	public function shopDetails()
+	public function getShopDetails()
 	{
+		return $this->mapper->getShopDetails();
 	}
 }

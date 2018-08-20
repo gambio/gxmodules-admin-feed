@@ -23,6 +23,17 @@ class MysqlServerDetailsBehaviour extends TestCase
 	private $version = 'v1.0.1';
 	
 	/**
+	 * @var array
+	 */
+	private $engines = ['innodb', 'myisam'];
+	
+	/**
+	 * @var string
+	 */
+	private $defaultEngine = 'innodb';
+	
+	
+	/**
 	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MysqlServerDetails
 	 */
 	private $mysqlServerDetails;
@@ -30,7 +41,7 @@ class MysqlServerDetailsBehaviour extends TestCase
 	
 	public function setUp()
 	{
-		$this->mysqlServerDetails = MysqlServerDetails::create($this->version);
+		$this->mysqlServerDetails = MysqlServerDetails::create($this->version, $this->engines, $this->defaultEngine);
 	}
 	
 	
@@ -40,5 +51,23 @@ class MysqlServerDetailsBehaviour extends TestCase
 	public function shouldReturnGivenVersion()
 	{
 		$this->assertEquals($this->mysqlServerDetails->version(), $this->version);
+	}
+	
+	
+	/**
+	 * @test
+	 */
+	public function shouldReturnGivenEngines()
+	{
+		$this->assertEquals($this->mysqlServerDetails->engines(), $this->engines);
+	}
+	
+	
+	/**
+	 * @test
+	 */
+	public function shouldReturnGivenDefaultEngine()
+	{
+		$this->assertEquals($this->mysqlServerDetails->defaultEngine(), $this->defaultEngine);
 	}
 }

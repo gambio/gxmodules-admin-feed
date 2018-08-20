@@ -12,6 +12,9 @@
 namespace Gambio\AdminFeed\Services\ShopInformation\Mapper;
 
 use Gambio\AdminFeed\Services\ShopInformation\Reader\ServerDetailsReader;
+use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MysqlServerDetails;
+use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\PhpServerDetails;
+use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ServerDetails;
 
 /**
  * Class ServerDetailsMapper
@@ -21,19 +24,45 @@ use Gambio\AdminFeed\Services\ShopInformation\Reader\ServerDetailsReader;
 class ServerDetailsMapper
 {
 	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\Reader\ServerDetailsReader
+	 */
+	private $reader;
+	
+	
+	/**
+	 * ServerDetailsMapper constructor.
+	 *
+	 * @param \Gambio\AdminFeed\Services\ShopInformation\Reader\ServerDetailsReader $reader
+	 */
+	public function __construct(ServerDetailsReader $reader)
+	{
+		$this->reader = $reader;
+	}
+	
+	
+	/**
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Reader\ServerDetailsReader $reader
 	 *
 	 * @return self
 	 */
 	static function create(ServerDetailsReader $reader)
 	{
+		return new self($reader);
 	}
 	
 	
 	/**
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ServerDetails
 	 */
-	public function serverDetails()
+	public function getServerDetails()
 	{
+		$phpDetails   = new PhpServerDetails($this->reader->getPhpVersion(), $this->reader->getPhpExtensions(),
+		                                     $this->reader->getPhpConfiguration());
+		$mysqlDetails = new MysqlServerDetails($this->reader->getMysqlVersion(), $this->reader->getMysqlEngines(),
+		                                       $this->reader->getMysqlDefaultEngine());
+		$webserver    = $this->reader->getWebserver();
+		$os           = $this->reader->getOperatingSystem();
+		
+		return new ServerDetails($phpDetails, $mysqlDetails, $webserver, $os);
 	}
 }

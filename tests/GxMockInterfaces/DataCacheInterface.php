@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   ModuleCenterModuleInterface.inc.php 2018-08-01
+   DataCacheInterface.inc.php 2018-08-01
    Gambio GmbH
    http://www.gambio.de
    Copyright (c) 2018 Gambio GmbH
@@ -12,28 +12,19 @@
 namespace Gambio\AdminFeed\Tests\GxMockInterfaces;
 
 /**
- * Interface ModuleCenterModuleInterface
+ * Interface DataCacheInterface
  *
  * @package Gambio\AdminFeed\Tests\GxMockInterfaces
  */
-interface ModuleCenterModuleInterface
+interface DataCacheInterface
 {
+	/**
+	 * @return mixed
+	 */
+	public function get_data($p_key, $p_persistent = false);
+	
 	/**
 	 * @return bool
 	 */
-	public function isInstalled();
-	
-	
-	/**
-	 * @return string
-	 */
-	public function getName();
-	
-	
-	/**
-	 * @param $name
-	 *
-	 * @return mixed
-	 */
-	public function setName($name);
+	public function key_exists($p_key, $p_persistent = false);
 }

@@ -73,4 +73,13 @@ class GxAdapter
 	{
 		return $_SESSION[$key];
 	}
+	
+	
+	/**
+	 * @return \DataCache
+	 */
+	public function getDataCache()
+	{
+		return \DataCache::get_instance();
+	}
 }

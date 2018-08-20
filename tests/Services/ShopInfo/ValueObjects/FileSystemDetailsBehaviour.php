@@ -43,6 +43,11 @@ class FileSystemDetailsBehaviour extends TestCase
 	private $globalUsermodDirectoryExists = false;
 	
 	/**
+	 * @var bool
+	 */
+	private $upmDirectoryExists = true;
+	
+	/**
 	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\FileSystemDetails
 	 */
 	private $fileSystemDetails;
@@ -51,7 +56,8 @@ class FileSystemDetailsBehaviour extends TestCase
 	public function setUp()
 	{
 		$this->fileSystemDetails = FileSystemDetails::create($this->usermods, $this->gxModules, $this->dangerousTools,
-		                                                     $this->receiptFiles, $this->globalUsermodDirectoryExists);
+		                                                     $this->receiptFiles, $this->globalUsermodDirectoryExists,
+		                                                     $this->upmDirectoryExists);
 	}
 	
 	
@@ -89,5 +95,15 @@ class FileSystemDetailsBehaviour extends TestCase
 	{
 		$this->assertEquals($this->fileSystemDetails->globalUsermodDirectoryExists(),
 		                    $this->globalUsermodDirectoryExists);
+	}
+	
+	
+	/**
+	 * @test
+	 */
+	public function shouldReturnGivenUpmDirectoryExistsFlag()
+	{
+		$this->assertEquals($this->fileSystemDetails->upmDirectoryExists(),
+		                    $this->upmDirectoryExists);
 	}
 }

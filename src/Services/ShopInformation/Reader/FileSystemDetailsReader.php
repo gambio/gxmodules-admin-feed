@@ -123,7 +123,7 @@ class FileSystemDetailsReader
 	
 	
 	/**
-	 * @return array
+	 * @return bool
 	 */
 	public function doesGlobalUsermodDirectoryExist()
 	{
@@ -146,7 +146,7 @@ class FileSystemDetailsReader
 	
 	
 	/**
-	 * @return array
+	 * @return bool
 	 */
 	public function doesUpmDirectoryExist()
 	{

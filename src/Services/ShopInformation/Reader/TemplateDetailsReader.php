@@ -77,8 +77,8 @@ class TemplateDetailsReader
 	/**
 	 * @return string
 	 */
-	public function getVersion()
+	public function getSelectedTemplateVersion()
 	{
-		return $this->settings->getTemplateVersion();
+		return $this->settings->getActiveTemplateVersion();
 	}
 }

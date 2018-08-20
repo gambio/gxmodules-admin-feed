@@ -39,6 +39,11 @@ class ModulesDetailsBehaviour extends TestCase
 	private $hub;
 	
 	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection
+	 */
+	private $moduleCenter;
+	
+	/**
 	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModulesDetails
 	 */
 	private $modulesDetails;
@@ -46,12 +51,14 @@ class ModulesDetailsBehaviour extends TestCase
 	
 	public function setUp()
 	{
-		$this->payment    = $this->createMock(ModuleDetailsCollection::class);
-		$this->shipping   = $this->createMock(ModuleDetailsCollection::class);
-		$this->orderTotal = $this->createMock(ModuleDetailsCollection::class);
-		$this->hub        = $this->createMock(ModuleDetailsCollection::class);
+		$this->payment      = $this->createMock(ModuleDetailsCollection::class);
+		$this->shipping     = $this->createMock(ModuleDetailsCollection::class);
+		$this->orderTotal   = $this->createMock(ModuleDetailsCollection::class);
+		$this->hub          = $this->createMock(ModuleDetailsCollection::class);
+		$this->moduleCenter = $this->createMock(ModuleDetailsCollection::class);
 		
-		$this->modulesDetails = ModulesDetails::create($this->payment, $this->shipping, $this->orderTotal, $this->hub);
+		$this->modulesDetails = ModulesDetails::create($this->payment, $this->shipping, $this->orderTotal, $this->hub,
+		                                               $this->moduleCenter);
 	}
 	
 	

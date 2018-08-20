@@ -21,16 +21,6 @@ class ShopDetails
 	/**
 	 * @var string
 	 */
-	private $name;
-	
-	/**
-	 * @var string
-	 */
-	private $owner;
-	
-	/**
-	 * @var string
-	 */
 	private $version;
 	
 	/**
@@ -49,9 +39,24 @@ class ShopDetails
 	private $languages;
 	
 	/**
+	 * @var string
+	 */
+	private $defaultLanguage = '';
+	
+	/**
 	 * @var array
 	 */
 	private $countries;
+	
+	/**
+	 * @var string
+	 */
+	private $name;
+	
+	/**
+	 * @var string
+	 */
+	private $owner;
 	
 	
 	/**
@@ -61,6 +66,7 @@ class ShopDetails
 	 * @param string $url
 	 * @param string $key
 	 * @param array  $languages
+	 * @param string  $defaultLanguage
 	 * @param array  $countries
 	 */
 	public function __construct($name,
@@ -69,6 +75,7 @@ class ShopDetails
 	                            $url,
 	                            $key,
 	                            array $languages,
+	                            $defaultLanguage,
 	                            array $countries)
 	{
 		$this->name      = $name;
@@ -77,6 +84,7 @@ class ShopDetails
 		$this->url       = $url;
 		$this->key       = $key;
 		$this->languages = $languages;
+		$this->defaultLanguage = $defaultLanguage;
 		$this->countries = $countries;
 	}
 	
@@ -88,6 +96,7 @@ class ShopDetails
 	 * @param string $url
 	 * @param string $key
 	 * @param array  $languages
+	 * @param string $defaultLanguage
 	 * @param array  $countries
 	 *
 	 * @return self
@@ -98,9 +107,10 @@ class ShopDetails
 	                       $url,
 	                       $key,
 	                       array $languages,
+	                       $defaultLanguage,
 	                       array $countries)
 	{
-		return new self($name, $owner, $version, $url, $key, $languages, $countries);
+		return new self($name, $owner, $version, $url, $key, $languages, $defaultLanguage, $countries);
 	}
 	
 	
@@ -155,6 +165,15 @@ class ShopDetails
 	public function languages()
 	{
 		return $this->languages;
+	}
+	
+	
+	/**
+	 * @return string
+	 */
+	public function defaultLanguage()
+	{
+		return $this->defaultLanguage;
 	}
 	
 	
