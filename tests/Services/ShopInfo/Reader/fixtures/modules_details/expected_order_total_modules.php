@@ -14,7 +14,7 @@ return [
 		'installed' => true,
 		'enabled'   => true,
 	],
-	'ot_total' => [
+	'ot_total'    => [
 		'installed' => true,
 		'enabled'   => false,
 	],

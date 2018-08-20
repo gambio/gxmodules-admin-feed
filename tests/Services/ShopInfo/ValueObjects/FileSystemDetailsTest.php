@@ -103,7 +103,6 @@ class FileSystemDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenUpmDirectoryExistsFlag()
 	{
-		$this->assertEquals($this->fileSystemDetails->upmDirectoryExists(),
-		                    $this->upmDirectoryExists);
+		$this->assertEquals($this->fileSystemDetails->upmDirectoryExists(), $this->upmDirectoryExists);
 	}
 }

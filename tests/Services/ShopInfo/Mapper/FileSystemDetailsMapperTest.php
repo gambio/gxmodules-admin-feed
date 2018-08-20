@@ -74,14 +74,9 @@ class FileSystemDetailsMapperTest extends TestCase
 	 */
 	public function shouldReturnExpectedFileSystemDetails()
 	{
-		$expectedDetails = FileSystemDetails::create(
-			$this->userMods,
-			$this->gxModules,
-			$this->dangerousTools,
-			$this->receiptFiles,
-			$this->globalUsermodDirectoryFlag,
-			$this->upmDirectoryFlag
-		);
+		$expectedDetails = FileSystemDetails::create($this->userMods, $this->gxModules, $this->dangerousTools,
+		                                             $this->receiptFiles, $this->globalUsermodDirectoryFlag,
+		                                             $this->upmDirectoryFlag);
 		
 		$this->assertEquals($this->mapper->getFileSystemDetails(), $expectedDetails);
 	}

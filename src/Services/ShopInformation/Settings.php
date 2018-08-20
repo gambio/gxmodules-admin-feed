@@ -11,6 +11,11 @@
 
 namespace Gambio\AdminFeed\Services\ShopInformation;
 
+/**
+ * Class Settings
+ *
+ * @package Gambio\AdminFeed\Services\ShopInformation
+ */
 class Settings
 {
 	public function getBaseDirectory()

@@ -66,7 +66,7 @@ class ShopDetails
 	 * @param string $url
 	 * @param string $key
 	 * @param array  $languages
-	 * @param string  $defaultLanguage
+	 * @param string $defaultLanguage
 	 * @param array  $countries
 	 */
 	public function __construct($name,
@@ -78,14 +78,14 @@ class ShopDetails
 	                            $defaultLanguage,
 	                            array $countries)
 	{
-		$this->name      = $name;
-		$this->owner     = $owner;
-		$this->version   = $version;
-		$this->url       = $url;
-		$this->key       = $key;
-		$this->languages = $languages;
+		$this->name            = $name;
+		$this->owner           = $owner;
+		$this->version         = $version;
+		$this->url             = $url;
+		$this->key             = $key;
+		$this->languages       = $languages;
 		$this->defaultLanguage = $defaultLanguage;
-		$this->countries = $countries;
+		$this->countries       = $countries;
 	}
 	
 	

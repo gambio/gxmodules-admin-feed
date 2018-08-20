@@ -23,6 +23,7 @@ interface DataCacheInterface
 	 */
 	public function get_data($p_key, $p_persistent = false);
 	
+	
 	/**
 	 * @return bool
 	 */

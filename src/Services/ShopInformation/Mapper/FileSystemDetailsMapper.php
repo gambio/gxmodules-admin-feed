@@ -43,13 +43,9 @@ class FileSystemDetailsMapper
 	 */
 	public function getFileSystemDetails()
 	{
-		return FileSystemDetails::create(
-			$this->reader->getUserMods(),
-			$this->reader->getGxModules(),
-			$this->reader->getDangerousTools(),
-			$this->reader->getReceiptFiles(),
-			$this->reader->doesGlobalUsermodDirectoryExist(),
-			$this->reader->doesUpmDirectoryExist()
-		);
+		return FileSystemDetails::create($this->reader->getUserMods(), $this->reader->getGxModules(),
+		                                 $this->reader->getDangerousTools(), $this->reader->getReceiptFiles(),
+		                                 $this->reader->doesGlobalUsermodDirectoryExist(),
+		                                 $this->reader->doesUpmDirectoryExist());
 	}
 }

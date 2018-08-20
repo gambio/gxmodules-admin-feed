@@ -16,27 +16,27 @@ namespace Gambio\AdminFeed\Tests;
  *
  * Contains the test configuration data (url, credentials ...). Before running the
  * tests create a copy of this file and rename it to "TestsConfig.php".
- * 
+ *
  * DO NOT PUSH "TestsConfig.php" TO THE REPOSITORY.
  */
-class TestsConfig 
+class TestsConfig
 {
 	// ------------------------------------------------------------------------
 	// GENERAL INFORMATION
 	// ------------------------------------------------------------------------
 	
-	const SHOP_URL 				= ''; // Shop base URL *** without the trailing slash ***.
-	const ADMIN_USER 			= '';
-	const ADMIN_PASSWORD 		= '';
+	const SHOP_URL       = ''; // Shop base URL *** without the trailing slash ***.
+	const ADMIN_USER     = '';
+	const ADMIN_PASSWORD = '';
 	
-	const HUB_CLIENT_KEY        = '';
-
+	const HUB_CLIENT_KEY = '';
+	
 	// ------------------------------------------------------------------------
 	// DATABASE CREDENTIALS
 	// ------------------------------------------------------------------------
 	
-	const DB_HOST 				= '';
-	const DB_USER 				= '';
-	const DB_PASSWORD 			= ''; 
-	const DB_NAME 				= '';
+	const DB_HOST     = '';
+	const DB_USER     = '';
+	const DB_PASSWORD = '';
+	const DB_NAME     = '';
 }

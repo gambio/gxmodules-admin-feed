@@ -20,6 +20,7 @@ trait GxAdapterTrait
 {
 	private $gxAdapter;
 	
+	
 	/**
 	 * @param \Gambio\AdminFeed\Adapters\GxAdapter $adapter
 	 */

@@ -27,6 +27,71 @@ use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdatesDetails;
 class ShopInformation
 {
 	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails
+	 */
+	private $shop;
+	
+	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ServerDetails
+	 */
+	private $server;
+	
+	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModulesDetails
+	 */
+	private $modules;
+	
+	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\TemplateDetails
+	 */
+	private $templates;
+	
+	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\FileSystemDetails
+	 */
+	private $filesystem;
+	
+	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MerchantDetails
+	 */
+	private $merchant;
+	
+	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdatesDetails
+	 */
+	private $updates;
+	
+	
+	/**
+	 * ShopInformation constructor.
+	 *
+	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails       $shop
+	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ServerDetails     $server
+	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModulesDetails    $modules
+	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\TemplateDetails   $templates
+	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\FileSystemDetails $filesystem
+	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MerchantDetails   $merchant
+	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdatesDetails    $updates
+	 */
+	public function __construct(ShopDetails $shop,
+	                            ServerDetails $server,
+	                            ModulesDetails $modules,
+	                            TemplateDetails $templates,
+	                            FileSystemDetails $filesystem,
+	                            MerchantDetails $merchant,
+	                            UpdatesDetails $updates)
+	{
+		$this->shop       = $shop;
+		$this->server     = $server;
+		$this->modules    = $modules;
+		$this->templates  = $templates;
+		$this->filesystem = $filesystem;
+		$this->merchant   = $merchant;
+		$this->updates    = $updates;
+	}
+	
+	
+	/**
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails       $shop
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ServerDetails     $server
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModulesDetails    $modules
@@ -45,6 +110,7 @@ class ShopInformation
 	                       MerchantDetails $merchant,
 	                       UpdatesDetails $updates)
 	{
+		return new self($shop, $server, $modules, $templates, $filesystem, $merchant, $updates);
 	}
 	
 	
@@ -53,6 +119,7 @@ class ShopInformation
 	 */
 	public function shop()
 	{
+		return $this->shop;
 	}
 	
 	
@@ -61,6 +128,7 @@ class ShopInformation
 	 */
 	public function server()
 	{
+		return $this->server;
 	}
 	
 	
@@ -69,6 +137,7 @@ class ShopInformation
 	 */
 	public function modules()
 	{
+		return $this->modules;
 	}
 	
 	
@@ -77,6 +146,7 @@ class ShopInformation
 	 */
 	public function templates()
 	{
+		return $this->templates;
 	}
 	
 	
@@ -85,6 +155,7 @@ class ShopInformation
 	 */
 	public function filesystem()
 	{
+		return $this->filesystem;
 	}
 	
 	
@@ -93,6 +164,7 @@ class ShopInformation
 	 */
 	public function merchant()
 	{
+		return $this->merchant;
 	}
 	
 	
@@ -101,5 +173,6 @@ class ShopInformation
 	 */
 	public function updates()
 	{
+		return $this->updates;
 	}
 }

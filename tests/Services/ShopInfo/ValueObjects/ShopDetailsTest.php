@@ -65,8 +65,8 @@ class ShopDetailsTest extends TestCase
 	
 	public function setUp()
 	{
-		$this->shopDetails = ShopDetails::create($this->name, $this->owner, $this->version, $this->url, $this->key, $this->languages, $this->defaultLanguage,
-		                                         $this->countries);
+		$this->shopDetails = ShopDetails::create($this->name, $this->owner, $this->version, $this->url, $this->key,
+		                                         $this->languages, $this->defaultLanguage, $this->countries);
 	}
 	
 	

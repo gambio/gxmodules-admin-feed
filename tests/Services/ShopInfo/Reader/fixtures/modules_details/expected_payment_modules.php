@@ -10,7 +10,7 @@
 */
 
 return [
-	'cod' => [
+	'cod'        => [
 		'installed' => true,
 		'enabled'   => true,
 	],

@@ -42,6 +42,7 @@ class ModuleDetailsTest extends TestCase
 	 */
 	private $moduleDetails;
 	
+	
 	public function setUp()
 	{
 		$this->moduleDetails = ModuleDetails::create($this->name, $this->installed, $this->enabled);

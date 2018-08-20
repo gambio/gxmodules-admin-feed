@@ -43,6 +43,7 @@ class TemplateDetailsMapper
 	 */
 	public function getTemplateDetails()
 	{
-		return new TemplateDetails($this->reader->getAvailableTemplates(), $this->reader->getSelectedTemplate(), $this->reader->getSelectedTemplateVersion());
+		return new TemplateDetails($this->reader->getAvailableTemplates(), $this->reader->getSelectedTemplate(),
+		                           $this->reader->getSelectedTemplateVersion());
 	}
 }
