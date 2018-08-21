@@ -10,6 +10,7 @@
 */
 
 use Gambio\AdminFeed\Adapters\GxAdapter;
+use Gambio\AdminFeed\Services\ShopInformation\HubClient;
 use Gambio\AdminFeed\Services\ShopInformation\Reader\ModulesDetailsReader;
 use Gambio\AdminFeed\Services\ShopInformation\Settings;
 use Gambio\AdminFeed\Tests\DbTestCase;
@@ -35,6 +36,11 @@ class ModulesDetailsReaderTest extends DbTestCase
 	 */
 	private $reader;
 	
+	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\HubClient
+	 */
+	private $hubClient;
+	
 	
 	public function setUp(): void
 	{
@@ -45,7 +51,26 @@ class ModulesDetailsReaderTest extends DbTestCase
 		
 		$this->db = static::getCiDbQueryBuilder();
 		
-		$this->reader = new ModulesDetailsReader($this->settings, $this->db);
+		$this->hubClient = $this->createMock(HubClient::class);
+		$this->hubClient->method('getHubModulesData')->willReturn([
+			                                                          [
+				                                                          'code'        => 'MoneyOrderHub',
+				                                                          'isInstalled' => true,
+				                                                          'isActive'    => true,
+			                                                          ],
+			                                                          [
+				                                                          'code'        => 'CashHub',
+				                                                          'isInstalled' => true,
+				                                                          'isActive'    => false,
+			                                                          ],
+			                                                          [
+				                                                          'code'        => 'InvoiceHub',
+				                                                          'isInstalled' => false,
+				                                                          'isActive'    => false,
+			                                                          ],
+		                                                          ]);
+		
+		$this->reader = new ModulesDetailsReader($this->settings, $this->db, $this->hubClient);
 	}
 	
 	
@@ -54,7 +79,20 @@ class ModulesDetailsReaderTest extends DbTestCase
 	 */
 	public function shouldReturnExpectedHubModulesData()
 	{
-		$expectedData = [];
+		$expectedData = [
+			'MoneyOrderHub' => [
+				'installed' => true,
+				'enabled'   => true,
+			],
+			'CashHub'       => [
+				'installed' => true,
+				'enabled'   => false,
+			],
+			'InvoiceHub'    => [
+				'installed' => false,
+				'enabled'   => false,
+			],
+		];
 		$actualData   = $this->reader->getHubModulesData();
 		
 		$this->assertSame($expectedData, $actualData);

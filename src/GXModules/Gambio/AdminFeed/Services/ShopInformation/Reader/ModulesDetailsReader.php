@@ -12,6 +12,7 @@
 namespace Gambio\AdminFeed\Services\ShopInformation\Reader;
 
 use Gambio\AdminFeed\Adapters\GxAdapterTrait;
+use Gambio\AdminFeed\Services\ShopInformation\HubClient;
 use Gambio\AdminFeed\Services\ShopInformation\Settings;
 
 /**
@@ -33,16 +34,24 @@ class ModulesDetailsReader
 	 */
 	private $db;
 	
+	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\HubClient
+	 */
+	private $hubClient;
+	
 	
 	/**
-	 * @param \CI_DB_query_builder $db
+	 * ModulesDetailsReader constructor.
 	 *
-	 * @return self
+	 * @param \Gambio\AdminFeed\Services\ShopInformation\Settings  $settings
+	 * @param \CI_DB_query_builder                                 $db
+	 * @param \Gambio\AdminFeed\Services\ShopInformation\HubClient $hubClient
 	 */
-	public function __construct(Settings $settings, \CI_DB_query_builder $db)
+	public function __construct(Settings $settings, \CI_DB_query_builder $db, HubClient $hubClient)
 	{
-		$this->settings = $settings;
-		$this->db       = $db;
+		$this->settings  = $settings;
+		$this->db        = $db;
+		$this->hubClient = $hubClient;
 	}
 	
 	
@@ -51,7 +60,23 @@ class ModulesDetailsReader
 	 */
 	public function getHubModulesData()
 	{
-		return [];
+		$modules     = [];
+		$modulesData = $this->hubClient->getHubModulesData();
+		
+		if(!is_array($modulesData) || count($modulesData) === 0)
+		{
+			return [];
+		}
+		
+		foreach($modulesData as $moduleData)
+		{
+			$modules[$moduleData['code']] = [
+				'installed' => $moduleData['isInstalled'],
+				'enabled'   => $moduleData['isActive'],
+			];
+		}
+		
+		return $modules;
 	}
 	
 	

@@ -42,6 +42,12 @@ class Settings
 	}
 	
 	
+	public function getShopUrl()
+	{
+		return $this->getHttpServer() . $this->getShopDirectory();
+	}
+	
+	
 	public function getShopKey()
 	{
 		return defined('GAMBIO_SHOP_KEY') ? GAMBIO_SHOP_KEY : '';
@@ -63,5 +69,29 @@ class Settings
 	public function getActiveTemplateVersion()
 	{
 		return gm_get_env_info('TEMPLATE_VERSION');
+	}
+	
+	
+	public function getGambioHubCurlTimeout()
+	{
+		return gm_get_conf('GAMBIO_HUB_CURL_TIMEOUT');
+	}
+	
+	
+	public function getGambioHubUrl()
+	{
+		return defined('MODULE_PAYMENT_GAMBIO_HUB_URL') ? MODULE_PAYMENT_GAMBIO_HUB_URL : '';
+	}
+	
+	
+	public function getGambioHubConfigUrl()
+	{
+		return 'https://config-api.gambiohub.com/a/api.php/api/v1';
+	}
+	
+	
+	public function getHubClientKey()
+	{
+		return gm_get_conf('GAMBIO_HUB_CLIENT_KEY');
 	}
 }

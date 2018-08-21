@@ -12,11 +12,12 @@
 	"require": {
 		"phpunit/phpunit": "7.1",
 		"phpunit/dbunit": "^4.0@dev",
-		"gambio/codeigniter-db": "dev-master"
+		"gambio/codeigniter-db": "dev-master",
+		"guzzlehttp/guzzle": "^6.3@dev"
 	},
 	"autoload": {
 		"psr-4": {
-			"Gambio\\AdminFeed\\": "src",
+			"Gambio\\AdminFeed\\": "src/GXModules/Gambio/AdminFeed",
 			"Gambio\\AdminFeed\\Tests\\": "tests"
 		}
 	}

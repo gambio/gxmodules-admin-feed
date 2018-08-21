@@ -82,4 +82,31 @@ class GxAdapter
 	{
 		return \DataCache::get_instance();
 	}
+	
+	
+	/**
+	 * @return \LogControl
+	 */
+	public function getLogControl()
+	{
+		return \LogControl::get_instance();
+	}
+	
+	
+	/**
+	 * @return \LanguageCode
+	 */
+	public function getCurrentLanguageCode()
+	{
+		return new \LanguageCode(new \StringType($_SESSION['language_code']));
+	}
+	
+	
+	/**
+	 * @return \HubPublic\Http\CurlRequest
+	 */
+	public function getHubCurlRequest()
+	{
+		return new \HubPublic\Http\CurlRequest();
+	}
 }

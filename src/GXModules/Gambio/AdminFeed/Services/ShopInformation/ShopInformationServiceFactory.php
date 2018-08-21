@@ -11,6 +11,7 @@
 
 namespace Gambio\AdminFeed\Services\ShopInformation;
 
+use Gambio\AdminFeed\Adapters\GxAdapter;
 use Gambio\AdminFeed\Adapters\GxAdapterTrait;
 use Gambio\AdminFeed\Services\ShopInformation\Mapper\FileSystemDetailsMapper;
 use Gambio\AdminFeed\Services\ShopInformation\Mapper\MerchantDetailsMapper;
@@ -34,6 +35,7 @@ use Gambio\AdminFeed\Services\ShopInformation\Repositories\ShopDetailsRepository
 use Gambio\AdminFeed\Services\ShopInformation\Repositories\ShopInformationRepository;
 use Gambio\AdminFeed\Services\ShopInformation\Repositories\TemplateDetailsRepository;
 use Gambio\AdminFeed\Services\ShopInformation\Repositories\UpdatesDetailsRepository;
+use GuzzleHttp\Client;
 
 /**
  * Class ShopInformationServiceFactory
@@ -108,8 +110,9 @@ class ShopInformationServiceFactory
 	{
 		if($this->service === null)
 		{
-			$this->db       = $this->gxAdapter()->getQueryBuilder();
-			$this->settings = new Settings();
+			$this->db        = $this->gxAdapter()->getQueryBuilder();
+			$this->settings  = new Settings();
+			$this->hubClient = new HubClient($this->settings, $this->gxAdapter(), new Client());
 			
 			$this->service = new ShopInformationService($this->createShopInformationRepository());
 		}
@@ -179,7 +182,7 @@ class ShopInformationServiceFactory
 	{
 		if($this->modulesDetailsRepository === null)
 		{
-			$reader = new ModulesDetailsReader($this->settings, $this->db);
+			$reader = new ModulesDetailsReader($this->settings, $this->db, $this->hubClient);
 			$mapper = new ModulesDetailsMapper($reader);
 			
 			$this->modulesDetailsRepository = new ModulesDetailsRepository($mapper);
