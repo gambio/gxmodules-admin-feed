@@ -57,7 +57,7 @@ class ModulesDetailsReaderTest extends DbTestCase
 		$expectedData = [];
 		$actualData   = $this->reader->getHubModulesData();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	
@@ -69,7 +69,7 @@ class ModulesDetailsReaderTest extends DbTestCase
 		$expectedData = include __DIR__ . '/fixtures/modules_details/expected_payment_modules.php';
 		$actualData   = $this->reader->getPaymentModulesData();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	
@@ -81,7 +81,7 @@ class ModulesDetailsReaderTest extends DbTestCase
 		$expectedData = include __DIR__ . '/fixtures/modules_details/expected_shipping_modules.php';
 		$actualData   = $this->reader->getShippingModulesData();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	
@@ -93,7 +93,7 @@ class ModulesDetailsReaderTest extends DbTestCase
 		$expectedData = include __DIR__ . '/fixtures/modules_details/expected_order_total_modules.php';
 		$actualData   = $this->reader->getOrderTotalModulesData();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	
@@ -107,7 +107,7 @@ class ModulesDetailsReaderTest extends DbTestCase
 		$expectedData = include __DIR__ . '/fixtures/modules_details/expected_module_center_modules.php';
 		$actualData   = $this->reader->getModuleCenterModulesData();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	

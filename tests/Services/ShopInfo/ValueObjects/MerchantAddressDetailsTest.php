@@ -66,7 +66,7 @@ class MerchantAddressDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenStreet()
 	{
-		$this->assertEquals($this->merchantAddressDetails->street(), $this->street);
+		$this->assertSame($this->merchantAddressDetails->street(), $this->street);
 	}
 	
 	
@@ -75,7 +75,7 @@ class MerchantAddressDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenHouseNumber()
 	{
-		$this->assertEquals($this->merchantAddressDetails->houseNumber(), $this->houseNumber);
+		$this->assertSame($this->merchantAddressDetails->houseNumber(), $this->houseNumber);
 	}
 	
 	
@@ -84,7 +84,7 @@ class MerchantAddressDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenPostalCode()
 	{
-		$this->assertEquals($this->merchantAddressDetails->postalCode(), $this->postalCode);
+		$this->assertSame($this->merchantAddressDetails->postalCode(), $this->postalCode);
 	}
 	
 	
@@ -93,7 +93,7 @@ class MerchantAddressDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenCity()
 	{
-		$this->assertEquals($this->merchantAddressDetails->city(), $this->city);
+		$this->assertSame($this->merchantAddressDetails->city(), $this->city);
 	}
 	
 	
@@ -102,7 +102,7 @@ class MerchantAddressDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenState()
 	{
-		$this->assertEquals($this->merchantAddressDetails->state(), $this->state);
+		$this->assertSame($this->merchantAddressDetails->state(), $this->state);
 	}
 	
 	
@@ -111,6 +111,6 @@ class MerchantAddressDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenCountry()
 	{
-		$this->assertEquals($this->merchantAddressDetails->country(), $this->country);
+		$this->assertSame($this->merchantAddressDetails->country(), $this->country);
 	}
 }

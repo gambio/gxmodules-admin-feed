@@ -75,7 +75,7 @@ class ShopDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenName()
 	{
-		$this->assertEquals($this->shopDetails->name(), $this->name);
+		$this->assertSame($this->shopDetails->name(), $this->name);
 	}
 	
 	
@@ -84,7 +84,7 @@ class ShopDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenOwner()
 	{
-		$this->assertEquals($this->shopDetails->owner(), $this->owner);
+		$this->assertSame($this->shopDetails->owner(), $this->owner);
 	}
 	
 	
@@ -93,7 +93,7 @@ class ShopDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenVersion()
 	{
-		$this->assertEquals($this->shopDetails->version(), $this->version);
+		$this->assertSame($this->shopDetails->version(), $this->version);
 	}
 	
 	
@@ -102,7 +102,7 @@ class ShopDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenUrl()
 	{
-		$this->assertEquals($this->shopDetails->url(), $this->url);
+		$this->assertSame($this->shopDetails->url(), $this->url);
 	}
 	
 	
@@ -111,7 +111,7 @@ class ShopDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenKey()
 	{
-		$this->assertEquals($this->shopDetails->key(), $this->key);
+		$this->assertSame($this->shopDetails->key(), $this->key);
 	}
 	
 	
@@ -120,7 +120,7 @@ class ShopDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenLanguages()
 	{
-		$this->assertEquals($this->shopDetails->languages(), $this->languages);
+		$this->assertSame($this->shopDetails->languages(), $this->languages);
 	}
 	
 	
@@ -129,7 +129,7 @@ class ShopDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenDefaultLanguage()
 	{
-		$this->assertEquals($this->shopDetails->defaultLanguage(), $this->defaultLanguage);
+		$this->assertSame($this->shopDetails->defaultLanguage(), $this->defaultLanguage);
 	}
 	
 	
@@ -138,6 +138,6 @@ class ShopDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenCountries()
 	{
-		$this->assertEquals($this->shopDetails->countries(), $this->countries);
+		$this->assertSame($this->shopDetails->countries(), $this->countries);
 	}
 }

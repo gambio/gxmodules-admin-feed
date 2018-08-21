@@ -162,12 +162,12 @@ class ModulesDetailsReader
 		                   ->get()
 		                   ->row_array();
 		
-		if(is_array($status) && !empty($status['configuration_value']))
+		if(!isset($status) || !is_array($status) || !empty($status['configuration_value']))
 		{
-			$status = $status['configuration_value'];
+			return null;
 		}
 		
-		return $status;
+		return $status['configuration_value'];
 	}
 	
 	

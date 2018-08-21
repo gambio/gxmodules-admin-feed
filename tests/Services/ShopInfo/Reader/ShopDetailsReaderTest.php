@@ -60,7 +60,7 @@ class ShopDetailsReaderTest extends DbTestCase
 		$expectedData = '3.10.0.0';
 		$actualData   = $this->reader->getVersion();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	
@@ -72,7 +72,7 @@ class ShopDetailsReaderTest extends DbTestCase
 		$expectedData = 'https://example.org/shop/';
 		$actualData   = $this->reader->getUrl();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	
@@ -84,7 +84,7 @@ class ShopDetailsReaderTest extends DbTestCase
 		$expectedData = '1234-5678-9012-3456-7890';
 		$actualData   = $this->reader->getKey();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	
@@ -96,7 +96,7 @@ class ShopDetailsReaderTest extends DbTestCase
 		$expectedData = ['de', 'en'];
 		$actualData   = $this->reader->getLanguages();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	
@@ -108,7 +108,7 @@ class ShopDetailsReaderTest extends DbTestCase
 		$expectedData = 'de';
 		$actualData   = $this->reader->getDefaultLanguage();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	
@@ -120,7 +120,7 @@ class ShopDetailsReaderTest extends DbTestCase
 		$expectedData = ['AT', 'CH', 'DE'];
 		$actualData   = $this->reader->getCountries();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	
@@ -132,7 +132,7 @@ class ShopDetailsReaderTest extends DbTestCase
 		$expectedData = 'Mein Test-Shop';
 		$actualData   = $this->reader->getName();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	
@@ -144,7 +144,7 @@ class ShopDetailsReaderTest extends DbTestCase
 		$expectedData = 'Testshop GmbH';
 		$actualData   = $this->reader->getOwner();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	

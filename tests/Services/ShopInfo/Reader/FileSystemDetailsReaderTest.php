@@ -51,7 +51,7 @@ class FileSystemDetailsReaderTest extends TestCase
 		];
 		$actualData   = $this->reader->getUserMods();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	
@@ -71,7 +71,7 @@ class FileSystemDetailsReaderTest extends TestCase
 		];
 		$actualData   = $this->reader->getGxModules();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	
@@ -83,7 +83,7 @@ class FileSystemDetailsReaderTest extends TestCase
 		$expectedData = ['__hackers.php', 'adminer.php',];
 		$actualData   = $this->reader->getDangerousTools();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	
@@ -95,7 +95,7 @@ class FileSystemDetailsReaderTest extends TestCase
 		$expectedData = true;
 		$actualData   = $this->reader->doesGlobalUsermodDirectoryExist();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	
@@ -114,7 +114,7 @@ class FileSystemDetailsReaderTest extends TestCase
 		];
 		$actualData   = $this->reader->getReceiptFiles();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	
@@ -126,6 +126,6 @@ class FileSystemDetailsReaderTest extends TestCase
 		$expectedData = true;
 		$actualData   = $this->reader->doesUpmDirectoryExist();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 }

@@ -73,7 +73,7 @@ class MerchantDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenCompany()
 	{
-		$this->assertEquals($this->merchantDetails->company(), $this->company);
+		$this->assertSame($this->merchantDetails->company(), $this->company);
 	}
 	
 	
@@ -82,7 +82,7 @@ class MerchantDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenFirstname()
 	{
-		$this->assertEquals($this->merchantDetails->firstname(), $this->firstname);
+		$this->assertSame($this->merchantDetails->firstname(), $this->firstname);
 	}
 	
 	
@@ -91,7 +91,7 @@ class MerchantDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenLastname()
 	{
-		$this->assertEquals($this->merchantDetails->lastname(), $this->lastname);
+		$this->assertSame($this->merchantDetails->lastname(), $this->lastname);
 	}
 	
 	
@@ -100,7 +100,7 @@ class MerchantDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenAddress()
 	{
-		$this->assertEquals($this->merchantDetails->address(), $this->address);
+		$this->assertSame($this->merchantDetails->address(), $this->address);
 	}
 	
 	
@@ -109,7 +109,7 @@ class MerchantDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenTelefon()
 	{
-		$this->assertEquals($this->merchantDetails->telefon(), $this->telefon);
+		$this->assertSame($this->merchantDetails->telefon(), $this->telefon);
 	}
 	
 	
@@ -118,7 +118,7 @@ class MerchantDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenTelefax()
 	{
-		$this->assertEquals($this->merchantDetails->telefax(), $this->telefax);
+		$this->assertSame($this->merchantDetails->telefax(), $this->telefax);
 	}
 	
 	
@@ -127,6 +127,6 @@ class MerchantDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenEmail()
 	{
-		$this->assertEquals($this->merchantDetails->email(), $this->email);
+		$this->assertSame($this->merchantDetails->email(), $this->email);
 	}
 }

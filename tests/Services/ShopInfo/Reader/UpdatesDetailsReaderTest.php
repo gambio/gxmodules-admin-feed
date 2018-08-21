@@ -48,7 +48,7 @@ class UpdatesDetailsReaderTest extends DbTestCase
 		$expectedData = include __DIR__ . '/fixtures/update_details/expected_installed_updates.php';
 		$actualData   = $this->reader->getInstalledUpdatesData();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	
@@ -62,7 +62,7 @@ class UpdatesDetailsReaderTest extends DbTestCase
 		$expectedData = include __DIR__ . '/fixtures/update_details/expected_downloaded_updates.php';
 		$actualData   = $this->reader->getDownloadedUpdatesData();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	

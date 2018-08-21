@@ -49,7 +49,7 @@ class PhpServerDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenVersion()
 	{
-		$this->assertEquals($this->phpServerDetails->version(), $this->version);
+		$this->assertSame($this->phpServerDetails->version(), $this->version);
 	}
 	
 	
@@ -58,7 +58,7 @@ class PhpServerDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenExtensions()
 	{
-		$this->assertEquals($this->phpServerDetails->extensions(), $this->extensions);
+		$this->assertSame($this->phpServerDetails->extensions(), $this->extensions);
 	}
 	
 	
@@ -67,6 +67,6 @@ class PhpServerDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenConfiguration()
 	{
-		$this->assertEquals($this->phpServerDetails->configuration(), $this->configuration);
+		$this->assertSame($this->phpServerDetails->configuration(), $this->configuration);
 	}
 }

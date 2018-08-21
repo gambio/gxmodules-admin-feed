@@ -48,7 +48,7 @@ class MerchantReaderTest extends DbTestCase
 		$expectedData = 'Gambio Testshop';
 		$actualData   = $this->reader->getCompany();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	
@@ -60,7 +60,7 @@ class MerchantReaderTest extends DbTestCase
 		$expectedData = 'John';
 		$actualData   = $this->reader->getFirstname();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	
@@ -72,7 +72,7 @@ class MerchantReaderTest extends DbTestCase
 		$expectedData = 'Doe';
 		$actualData   = $this->reader->getLastname();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	
@@ -84,7 +84,7 @@ class MerchantReaderTest extends DbTestCase
 		$expectedData = 'Parallelweg';
 		$actualData   = $this->reader->getStreet();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	
@@ -96,7 +96,7 @@ class MerchantReaderTest extends DbTestCase
 		$expectedData = '30';
 		$actualData   = $this->reader->getHouseNumber();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	
@@ -108,7 +108,7 @@ class MerchantReaderTest extends DbTestCase
 		$expectedData = '28219';
 		$actualData   = $this->reader->getPostalCode();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	
@@ -120,7 +120,7 @@ class MerchantReaderTest extends DbTestCase
 		$expectedData = 'Bremen';
 		$actualData   = $this->reader->getCity();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	
@@ -132,7 +132,7 @@ class MerchantReaderTest extends DbTestCase
 		$expectedData = 'Bremen';
 		$actualData   = $this->reader->getState();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	
@@ -148,7 +148,7 @@ class MerchantReaderTest extends DbTestCase
 		$expectedData = 'Deutschland';
 		$actualData   = $this->reader->getCountry();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	
@@ -164,7 +164,7 @@ class MerchantReaderTest extends DbTestCase
 		$expectedData = 'Germany';
 		$actualData   = $this->reader->getCountry();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	
@@ -176,7 +176,7 @@ class MerchantReaderTest extends DbTestCase
 		$expectedData = '0421 - 22 34 678';
 		$actualData   = $this->reader->getTelefon();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	
@@ -188,7 +188,7 @@ class MerchantReaderTest extends DbTestCase
 		$expectedData = '0421 - 123456789';
 		$actualData   = $this->reader->getTelefax();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	
@@ -200,7 +200,7 @@ class MerchantReaderTest extends DbTestCase
 		$expectedData = 'admin@shop.de';
 		$actualData   = $this->reader->getEmail();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	

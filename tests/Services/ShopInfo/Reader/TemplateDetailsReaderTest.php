@@ -48,7 +48,7 @@ class TemplateDetailsReaderTest extends TestCase
 		$expectedData = ['EyeCandy', 'Honeygrid', 'MyTemplate'];
 		$actualData   = $this->reader->getAvailableTemplates();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	
@@ -60,7 +60,7 @@ class TemplateDetailsReaderTest extends TestCase
 		$expectedData = 'Honeygrid';
 		$actualData   = $this->reader->getSelectedTemplate();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	
@@ -72,6 +72,6 @@ class TemplateDetailsReaderTest extends TestCase
 		$expectedData = '3.0';
 		$actualData   = $this->reader->getSelectedTemplateVersion();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 }

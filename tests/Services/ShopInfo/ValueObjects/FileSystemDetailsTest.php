@@ -66,7 +66,7 @@ class FileSystemDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenUsermods()
 	{
-		$this->assertEquals($this->fileSystemDetails->usermods(), $this->usermods);
+		$this->assertSame($this->fileSystemDetails->usermods(), $this->usermods);
 	}
 	
 	
@@ -75,7 +75,7 @@ class FileSystemDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenGxModules()
 	{
-		$this->assertEquals($this->fileSystemDetails->gxModules(), $this->gxModules);
+		$this->assertSame($this->fileSystemDetails->gxModules(), $this->gxModules);
 	}
 	
 	
@@ -84,7 +84,7 @@ class FileSystemDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenDangerousTools()
 	{
-		$this->assertEquals($this->fileSystemDetails->dangerousTools(), $this->dangerousTools);
+		$this->assertSame($this->fileSystemDetails->dangerousTools(), $this->dangerousTools);
 	}
 	
 	
@@ -93,7 +93,7 @@ class FileSystemDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenGlobalUsermodDirectoryExistsFlag()
 	{
-		$this->assertEquals($this->fileSystemDetails->globalUsermodDirectoryExists(),
+		$this->assertSame($this->fileSystemDetails->globalUsermodDirectoryExists(),
 		                    $this->globalUsermodDirectoryExists);
 	}
 	
@@ -103,6 +103,6 @@ class FileSystemDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenUpmDirectoryExistsFlag()
 	{
-		$this->assertEquals($this->fileSystemDetails->upmDirectoryExists(), $this->upmDirectoryExists);
+		$this->assertSame($this->fileSystemDetails->upmDirectoryExists(), $this->upmDirectoryExists);
 	}
 }

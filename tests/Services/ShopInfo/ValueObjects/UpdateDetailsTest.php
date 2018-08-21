@@ -52,7 +52,7 @@ class UpdateDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenName()
 	{
-		$this->assertEquals($this->updateDetails->name(), $this->name);
+		$this->assertSame($this->updateDetails->name(), $this->name);
 	}
 	
 	
@@ -61,7 +61,7 @@ class UpdateDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenVersion()
 	{
-		$this->assertEquals($this->updateDetails->version(), $this->version);
+		$this->assertSame($this->updateDetails->version(), $this->version);
 	}
 	
 	
@@ -70,6 +70,6 @@ class UpdateDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenInstallationDate()
 	{
-		$this->assertEquals($this->updateDetails->installationDate(), $this->installationDate);
+		$this->assertSame($this->updateDetails->installationDate(), $this->installationDate);
 	}
 }

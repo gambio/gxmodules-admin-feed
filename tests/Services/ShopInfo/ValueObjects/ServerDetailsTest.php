@@ -60,7 +60,7 @@ class ServerDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenPhpServerDetails()
 	{
-		$this->assertEquals($this->serverDetails->php(), $this->php);
+		$this->assertSame($this->serverDetails->php(), $this->php);
 	}
 	
 	
@@ -69,7 +69,7 @@ class ServerDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenMysqlServerDetails()
 	{
-		$this->assertEquals($this->serverDetails->mysql(), $this->mysql);
+		$this->assertSame($this->serverDetails->mysql(), $this->mysql);
 	}
 	
 	
@@ -78,7 +78,7 @@ class ServerDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenWebserver()
 	{
-		$this->assertEquals($this->serverDetails->webserver(), $this->webserver);
+		$this->assertSame($this->serverDetails->webserver(), $this->webserver);
 	}
 	
 	
@@ -87,6 +87,6 @@ class ServerDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenOperatingSystem()
 	{
-		$this->assertEquals($this->serverDetails->os(), $this->os);
+		$this->assertSame($this->serverDetails->os(), $this->os);
 	}
 }

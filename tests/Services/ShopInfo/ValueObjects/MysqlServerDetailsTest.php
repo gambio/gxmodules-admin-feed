@@ -50,7 +50,7 @@ class MysqlServerDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenVersion()
 	{
-		$this->assertEquals($this->mysqlServerDetails->version(), $this->version);
+		$this->assertSame($this->mysqlServerDetails->version(), $this->version);
 	}
 	
 	
@@ -59,7 +59,7 @@ class MysqlServerDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenEngines()
 	{
-		$this->assertEquals($this->mysqlServerDetails->engines(), $this->engines);
+		$this->assertSame($this->mysqlServerDetails->engines(), $this->engines);
 	}
 	
 	
@@ -68,6 +68,6 @@ class MysqlServerDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenDefaultEngine()
 	{
-		$this->assertEquals($this->mysqlServerDetails->defaultEngine(), $this->defaultEngine);
+		$this->assertSame($this->mysqlServerDetails->defaultEngine(), $this->defaultEngine);
 	}
 }

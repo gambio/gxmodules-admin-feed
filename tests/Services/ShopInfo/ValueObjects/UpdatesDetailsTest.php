@@ -50,7 +50,7 @@ class UpdatesDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenInstalledUpdates()
 	{
-		$this->assertEquals($this->updatesDetails->installed(), $this->installed);
+		$this->assertSame($this->updatesDetails->installed(), $this->installed);
 	}
 	
 	
@@ -59,6 +59,6 @@ class UpdatesDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenDownloadedUpdates()
 	{
-		$this->assertEquals($this->updatesDetails->downloaded(), $this->downloaded);
+		$this->assertSame($this->updatesDetails->downloaded(), $this->downloaded);
 	}
 }

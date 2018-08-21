@@ -43,7 +43,7 @@ class ModuleDetails
 	{
 		$this->name      = $name;
 		$this->installed = $installed;
-		$this->active    = $enabled;
+		$this->enabled   = $enabled;
 	}
 	
 	

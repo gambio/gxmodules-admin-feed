@@ -47,7 +47,7 @@ class ServerDetailsReaderTest extends DbTestCase
 		$expectedData = phpversion();
 		$actualData   = $this->reader->getPhpVersion();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	
@@ -59,7 +59,7 @@ class ServerDetailsReaderTest extends DbTestCase
 		$expectedData = get_loaded_extensions();
 		$actualData   = $this->reader->getPhpExtensions();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	
@@ -71,7 +71,7 @@ class ServerDetailsReaderTest extends DbTestCase
 		$expectedData = ini_get_all();
 		$actualData   = $this->reader->getPhpConfiguration();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	
@@ -83,7 +83,7 @@ class ServerDetailsReaderTest extends DbTestCase
 		$expectedData = $this->db->version();
 		$actualData   = $this->reader->getMysqlVersion();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	
@@ -102,7 +102,7 @@ class ServerDetailsReaderTest extends DbTestCase
 		
 		$actualData = $this->reader->getMysqlEngines();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	
@@ -125,7 +125,7 @@ class ServerDetailsReaderTest extends DbTestCase
 		
 		$actualData = $this->reader->getMysqlDefaultEngine();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	
@@ -137,7 +137,7 @@ class ServerDetailsReaderTest extends DbTestCase
 		$expectedData = isset($_SERVER['SERVER_SOFTWARE']) ? $_SERVER['SERVER_SOFTWARE'] : '';
 		$actualData   = $this->reader->getWebserver();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	
@@ -149,7 +149,7 @@ class ServerDetailsReaderTest extends DbTestCase
 		$expectedData = defined('PHP_OS') ? PHP_OS : '';
 		$actualData   = $this->reader->getOperatingSystem();
 		
-		$this->assertEquals($expectedData, $actualData);
+		$this->assertSame($expectedData, $actualData);
 	}
 	
 	

@@ -33,11 +33,6 @@ class ModuleDetailsTest extends TestCase
 	private $enabled = false;
 	
 	/**
-	 * @var string
-	 */
-	private $version = 'v1.0.1';
-	
-	/**
 	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModuleDetails
 	 */
 	private $moduleDetails;
@@ -54,7 +49,7 @@ class ModuleDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenName()
 	{
-		$this->assertEquals($this->moduleDetails->name(), $this->name);
+		$this->assertSame($this->moduleDetails->name(), $this->name);
 	}
 	
 	
@@ -63,7 +58,7 @@ class ModuleDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenInstalledFlag()
 	{
-		$this->assertEquals($this->moduleDetails->installed(), $this->installed);
+		$this->assertSame($this->moduleDetails->installed(), $this->installed);
 	}
 	
 	
@@ -72,6 +67,6 @@ class ModuleDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenEnabledFlag()
 	{
-		$this->assertEquals($this->moduleDetails->enabled(), $this->enabled);
+		$this->assertSame($this->moduleDetails->enabled(), $this->enabled);
 	}
 }

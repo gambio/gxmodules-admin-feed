@@ -49,7 +49,7 @@ class TemplateDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenAvailableTemplates()
 	{
-		$this->assertEquals($this->templateDetails->available(), $this->available);
+		$this->assertSame($this->templateDetails->available(), $this->available);
 	}
 	
 	
@@ -58,7 +58,7 @@ class TemplateDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenSelectedTemplate()
 	{
-		$this->assertEquals($this->templateDetails->selected(), $this->selected);
+		$this->assertSame($this->templateDetails->selected(), $this->selected);
 	}
 	
 	
@@ -67,6 +67,6 @@ class TemplateDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenTemplateVersion()
 	{
-		$this->assertEquals($this->templateDetails->version(), $this->version);
+		$this->assertSame($this->templateDetails->version(), $this->version);
 	}
 }
