@@ -61,8 +61,7 @@ class UpdatesDetailsMapper
 		$installedUpdates = [];
 		foreach($this->reader->getInstalledUpdatesData() as $updateData)
 		{
-			$installedUpdates[] = new UpdateDetails($updateData['name'], $updateData['version'],
-			                                        new \DateTime($updateData['installation_date']));
+			$installedUpdates[] = new UpdateDetails($updateData['name'], $updateData['version'], $updateData['installation_date']);
 		}
 		
 		return new UpdateDetailsCollection($installedUpdates);
@@ -77,8 +76,7 @@ class UpdatesDetailsMapper
 		$downloadedUpdates = [];
 		foreach($this->reader->getDownloadedUpdatesData() as $updateData)
 		{
-			$downloadedUpdates[] = new UpdateDetails($updateData['name'], $updateData['version'],
-			                                         new \DateTime($updateData['date']));
+			$downloadedUpdates[] = new UpdateDetails($updateData['name'], $updateData['version'], $updateData['date']);
 		}
 		
 		return new UpdateDetailsCollection($downloadedUpdates);

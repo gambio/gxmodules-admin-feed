@@ -162,7 +162,7 @@ class ModulesDetailsReader
 		                   ->get()
 		                   ->row_array();
 		
-		if(!isset($status) || !is_array($status) || !empty($status['configuration_value']))
+		if(!isset($status) || !is_array($status) || empty($status['configuration_value']))
 		{
 			return null;
 		}
@@ -262,7 +262,6 @@ class ModulesDetailsReader
 	                                              $languageTextManager,
 	                                              $cacheControl)
 	{
-		$adapter = $this->gxAdapter();
 		$modules = [];
 		
 		$gxModuleFiles = $adapter->getGxModulesFiles();

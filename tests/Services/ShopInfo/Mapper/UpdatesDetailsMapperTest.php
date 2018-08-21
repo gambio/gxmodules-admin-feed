@@ -97,14 +97,14 @@ class UpdatesDetailsMapperTest extends TestCase
 	{
 		$installedUpdates = new UpdateDetailsCollection([
 			                                                new UpdateDetails('AutoUpdater v2.0.5', '2.0.5',
-			                                                                  new \DateTime('2018-08-01 12:01:00')),
+			                                                                  '2018-08-01 12:01:00'),
 			                                                new UpdateDetails('v3.10.0.0', '3.10.0.0',
-			                                                                  new \DateTime('2018-08-01 12:00:00')),
+			                                                                  '2018-08-01 12:00:00'),
 		                                                ]);
 		
 		$downloadedUpdates = new UpdateDetailsCollection([
 			                                                 new UpdateDetails('Ovisto v2.0.0', '2.0.0',
-			                                                                   new \DateTime('2018-08-08 00:00:00')),
+			                                                                   '2018-08-08 00:00:00'),
 		                                                 ]);
 		
 		return new UpdatesDetails($installedUpdates, $downloadedUpdates);

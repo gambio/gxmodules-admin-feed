@@ -28,9 +28,9 @@ class UpdateDetailsTest extends TestCase
 	private $version = '2.0.5';
 	
 	/**
-	 * @var \DateTime
+	 * @var string
 	 */
-	private $installationDate;
+	private $installationDate = '2018-01-01 00:00:00';
 	
 	
 	/**
@@ -41,8 +41,6 @@ class UpdateDetailsTest extends TestCase
 	
 	public function setUp()
 	{
-		$this->installationDate = new \DateTime();
-		
 		$this->updateDetails = UpdateDetails::create($this->name, $this->version, $this->installationDate);
 	}
 	
