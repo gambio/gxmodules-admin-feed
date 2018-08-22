@@ -56,6 +56,11 @@ class ModuleDetails
 	 */
 	static function create($name, $installed, $enabled)
 	{
+		if(empty($name))
+		{
+			throw new \InvalidArgumentException('Name can not be empty.');
+		}
+		
 		return new self($name, $installed, $enabled);
 	}
 	

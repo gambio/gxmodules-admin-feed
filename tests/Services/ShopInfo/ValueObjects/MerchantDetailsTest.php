@@ -71,6 +71,18 @@ class MerchantDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
+	public function shouldThrowInvalidArgumentExceptionIfGivenEmailIsInvalid()
+	{
+		$this->expectException(\InvalidArgumentException::class);
+		
+		MerchantDetails::create($this->company, $this->firstname, $this->lastname,
+		                        $this->address, $this->telefon, $this->telefax, '');
+	}
+	
+	
+	/**
+	 * @test
+	 */
 	public function shouldReturnGivenCompany()
 	{
 		$this->assertSame($this->merchantDetails->company(), $this->company);

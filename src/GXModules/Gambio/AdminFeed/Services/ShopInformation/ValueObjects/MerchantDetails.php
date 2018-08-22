@@ -96,6 +96,11 @@ class MerchantDetails
 	 */
 	static function create($company, $firstname, $lastname, MerchantAddressDetails $address, $telefon, $telefax, $email)
 	{
+		if(empty($email))
+		{
+			throw new \InvalidArgumentException('Email can not be empty.');
+		}
+		
 		return new self($company, $firstname, $lastname, $address, $telefon, $telefax, $email);
 	}
 	

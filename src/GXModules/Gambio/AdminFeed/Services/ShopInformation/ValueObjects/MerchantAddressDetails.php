@@ -82,6 +82,15 @@ class MerchantAddressDetails
 	 */
 	static function create($street, $houseNumber, $postalCode, $city, $state, $country)
 	{
+		if(empty($state))
+		{
+			throw new \InvalidArgumentException('State can not be empty.');
+		}
+		elseif(empty($country))
+		{
+			throw new \InvalidArgumentException('Country can not be empty.');
+		}
+		
 		return new self($street, $houseNumber, $postalCode, $city, $state, $country);
 	}
 	

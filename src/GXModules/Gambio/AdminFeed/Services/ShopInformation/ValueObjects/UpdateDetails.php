@@ -56,6 +56,15 @@ class UpdateDetails
 	 */
 	static function create($name, $version, $installationDate)
 	{
+		if(empty($name))
+		{
+			throw new \InvalidArgumentException('Name can not be empty.');
+		}
+		elseif(empty($version))
+		{
+			throw new \InvalidArgumentException('Version can not be empty.');
+		}
+		
 		return new self($name, $version, $installationDate);
 	}
 	

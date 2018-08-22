@@ -25,7 +25,7 @@ class ShopDetailsTest extends TestCase
 	/**
 	 * @var string
 	 */
-	private $url = 'http://www.example.org';
+	private $url = 'https://www.example.org';
 	
 	/**
 	 * @var string
@@ -67,6 +67,42 @@ class ShopDetailsTest extends TestCase
 	{
 		$this->shopDetails = ShopDetails::create($this->name, $this->owner, $this->version, $this->url, $this->key,
 		                                         $this->languages, $this->defaultLanguage, $this->countries);
+	}
+	
+	
+	/**
+	 * @test
+	 */
+	public function shouldThrowInvalidArgumentExceptionIfGivenVersionIsEmpty()
+	{
+		$this->expectException(\InvalidArgumentException::class);
+		
+		ShopDetails::create($this->name, $this->owner, '', $this->url, $this->key, $this->languages,
+		                    $this->defaultLanguage, $this->countries);
+	}
+	
+	
+	/**
+	 * @test
+	 */
+	public function shouldThrowInvalidArgumentExceptionIfGivenUrlIsEmpty()
+	{
+		$this->expectException(\InvalidArgumentException::class);
+		
+		ShopDetails::create($this->name, $this->owner, $this->version, '', $this->key, $this->languages,
+		                    $this->defaultLanguage, $this->countries);
+	}
+	
+	
+	/**
+	 * @test
+	 */
+	public function shouldThrowInvalidArgumentExceptionIfGivenUrlIsInvalid()
+	{
+		$this->expectException(\InvalidArgumentException::class);
+		
+		ShopDetails::create($this->name, $this->owner, $this->version, 'invalid-url', $this->key, $this->languages,
+		                    $this->defaultLanguage, $this->countries);
 	}
 	
 	

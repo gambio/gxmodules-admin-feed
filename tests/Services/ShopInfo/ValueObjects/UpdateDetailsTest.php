@@ -48,6 +48,28 @@ class UpdateDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
+	public function shouldThrowInvalidArgumentExceptionIfGivenNameIsEmpty()
+	{
+		$this->expectException(\InvalidArgumentException::class);
+		
+		UpdateDetails::create('', $this->version, $this->installationDate);
+	}
+	
+	
+	/**
+	 * @test
+	 */
+	public function shouldThrowInvalidArgumentExceptionIfGivenVersionIsEmpty()
+	{
+		$this->expectException(\InvalidArgumentException::class);
+		
+		UpdateDetails::create($this->name, '', $this->installationDate);
+	}
+	
+	
+	/**
+	 * @test
+	 */
 	public function shouldReturnGivenName()
 	{
 		$this->assertSame($this->updateDetails->name(), $this->name);

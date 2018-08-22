@@ -47,6 +47,17 @@ class ModuleDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
+	public function shouldThrowInvalidArgumentExceptionIfGivenNameIsEmpty()
+	{
+		$this->expectException(\InvalidArgumentException::class);
+		
+		ModuleDetails::create('', $this->installed, $this->enabled);
+	}
+	
+	
+	/**
+	 * @test
+	 */
 	public function shouldReturnGivenName()
 	{
 		$this->assertSame($this->moduleDetails->name(), $this->name);

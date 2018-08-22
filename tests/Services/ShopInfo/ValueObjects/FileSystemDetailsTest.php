@@ -25,7 +25,7 @@ class FileSystemDetailsTest extends TestCase
 	/**
 	 * @var array
 	 */
-	private $gxModules = ['Gambio' => ['AdminFeed', 'Hub']];
+	private $gxModules = ['Gambio/AdminFeed', 'Gambio/Hub'];
 	
 	/**
 	 * @var array
@@ -94,7 +94,7 @@ class FileSystemDetailsTest extends TestCase
 	public function shouldReturnGivenGlobalUsermodDirectoryExistsFlag()
 	{
 		$this->assertSame($this->fileSystemDetails->globalUsermodDirectoryExists(),
-		                    $this->globalUsermodDirectoryExists);
+		                  $this->globalUsermodDirectoryExists);
 	}
 	
 	

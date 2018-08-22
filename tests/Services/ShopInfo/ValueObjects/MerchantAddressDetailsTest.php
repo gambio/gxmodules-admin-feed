@@ -64,6 +64,30 @@ class MerchantAddressDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
+	public function shouldThrowInvalidArgumentExceptionIfGivenStateIsEmpty()
+	{
+		$this->expectException(\InvalidArgumentException::class);
+		
+		MerchantAddressDetails::create($this->street, $this->houseNumber, $this->postalCode, $this->city, '',
+		                               $this->country);
+	}
+	
+	
+	/**
+	 * @test
+	 */
+	public function shouldThrowInvalidArgumentExceptionIfGivenCountryIsEmpty()
+	{
+		$this->expectException(\InvalidArgumentException::class);
+		
+		MerchantAddressDetails::create($this->street, $this->houseNumber, $this->postalCode, $this->city, $this->state,
+		                               '');
+	}
+	
+	
+	/**
+	 * @test
+	 */
 	public function shouldReturnGivenStreet()
 	{
 		$this->assertSame($this->merchantAddressDetails->street(), $this->street);

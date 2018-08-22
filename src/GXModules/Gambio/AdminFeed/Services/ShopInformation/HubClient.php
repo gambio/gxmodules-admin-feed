@@ -59,7 +59,16 @@ class HubClient
 		try
 		{
 			$hubClientKey  = $this->settings->getHubClientKey();
+			if(empty($hubClientKey))
+			{
+				return [];
+			}
+			
 			$hubSessionKey = $this->startHubSession();
+			if(empty($hubSessionKey))
+			{
+				return [];
+			}
 			
 			$url      = $this->settings->getGambioHubConfigUrl() . '/clients/' . $hubClientKey . '/sessions/'
 			            . $hubSessionKey . '/payment_modules?language=en';
@@ -74,10 +83,6 @@ class HubClient
 			}
 			$modulesData = json_decode($response->getBody()->getContents(), true);
 		}
-		catch(\Exception $e)
-		{
-			return [];
-		}
 		catch(\GuzzleHttp\Exception\GuzzleException $e)
 		{
 			return [];
@@ -89,8 +94,6 @@ class HubClient
 	
 	/**
 	 * @return string
-	 *
-	 * @throws \Exception If session key could not be created.
 	 */
 	private function startHubSession()
 	{
@@ -125,6 +128,6 @@ class HubClient
 			\AuthHashCreator::invalidate($authHash);
 		}
 		
-		throw new \Exception('Could not create hub session key.');
+		return '';
 	}
 }
