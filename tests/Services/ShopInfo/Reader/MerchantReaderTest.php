@@ -142,7 +142,7 @@ class MerchantReaderTest extends DbTestCase
 	public function shouldReturnExpectedCountryDataIfCountryCanBeTranslated()
 	{
 		$langTextManager = $this->createMock(LanguageTextManagerInterface::class);
-		$langTextManager->method('get_text')->with('DE')->willReturn('Deutschland');
+		$langTextManager->method('get_text')->with($this->equalTo('DE'))->willReturn('Deutschland');
 		$this->reader->setGxAdapter($this->mockGxAdapter($langTextManager));
 		
 		$expectedData = 'Deutschland';
@@ -158,7 +158,7 @@ class MerchantReaderTest extends DbTestCase
 	public function shouldReturnExpectedCountryDataIfCountryCanNotBeTranslated()
 	{
 		$langTextManager = $this->createMock(LanguageTextManagerInterface::class);
-		$langTextManager->method('get_text')->with('DE')->willReturn('DE');
+		$langTextManager->method('get_text')->with($this->equalTo('DE'))->willReturn('DE');
 		$this->reader->setGxAdapter($this->mockGxAdapter($langTextManager));
 		
 		$expectedData = 'Germany';
@@ -208,9 +208,9 @@ class MerchantReaderTest extends DbTestCase
 	{
 		$gxAdapter = $this->createMock(GxAdapter::class);
 		$gxAdapter->method('mainFactoryCreateObject')
-		          ->with('LanguageTextManager', ['countries', 2])
+		          ->with($this->equalTo('LanguageTextManager'), $this->equalTo(['countries', 2]))
 		          ->willReturn($langTextManager);
-		$gxAdapter->method('getSessionValue')->with('languages_id')->willReturn(2);
+		$gxAdapter->method('getSessionValue')->with($this->equalTo('languages_id'))->willReturn(2);
 		
 		return $gxAdapter;
 	}

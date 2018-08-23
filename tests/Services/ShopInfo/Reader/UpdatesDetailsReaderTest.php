@@ -68,16 +68,20 @@ class UpdatesDetailsReaderTest extends DbTestCase
 	
 	private function mochGxAdpater()
 	{
+		$updatesData = [
+			[
+				'name'        => 'Ovisto',
+				'date'        => '2018-08-08',
+				'receiptFile' => 'ovisto-2_0_0.php',
+				'version'     => 'v2.0.0',
+			],
+		];
+		
 		$dataCache = $this->createMock(DataCacheInterface::class);
-		$dataCache->method('key_exists')->with('auto-updater', true)->willReturn(true);
-		$dataCache->method('get_data')->with('auto-updater', true)->willReturn([
-			                                                                       [
-				                                                                       'name'        => 'Ovisto',
-				                                                                       'date'        => '2018-08-08',
-				                                                                       'receiptFile' => 'ovisto-2_0_0.php',
-				                                                                       'version'     => 'v2.0.0',
-			                                                                       ],
-		                                                                       ]);
+		$dataCache->method('key_exists')->with($this->equalTo('auto-updater'), $this->equalTo(true))->willReturn(true);
+		$dataCache->method('get_data')
+		          ->with($this->equalTo('auto-updater'), $this->equalTo(true))
+		          ->willReturn($updatesData);
 		
 		$gxAdapter = $this->createMock(GxAdapter::class);
 		$gxAdapter->method('getDataCache')->willReturn($dataCache);

@@ -162,7 +162,7 @@ class ModulesDetailsReaderTest extends DbTestCase
 			                                                  'GXModules/test/someModule/Admin/Classes/GXModulesModuleModuleCenterModule.inc.php',
 		                                                  ]);
 		$adapter->method('getQueryBuilder')->willReturn($db);
-		$adapter->method('mainFactoryCreateObject')->with('CacheControl')->willReturn($cacheControl);
+		$adapter->method('mainFactoryCreateObject')->with($this->equalTo('CacheControl'))->willReturn($cacheControl);
 		$adapter->method('mainFactoryCreate')
 		        ->withConsecutive(['LanguageTextManager', 'module_center_module'], [
 			        'MainModuleModuleCenterModule',

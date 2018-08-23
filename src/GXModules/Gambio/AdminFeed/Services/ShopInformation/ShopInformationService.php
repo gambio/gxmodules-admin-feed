@@ -13,6 +13,7 @@ namespace Gambio\AdminFeed\Services\ShopInformation;
 
 use Gambio\AdminFeed\Services\ShopInformation\Entities\ShopInformation;
 use Gambio\AdminFeed\Services\ShopInformation\Repositories\ShopInformationRepository;
+use Gambio\AdminFeed\Services\ShopInformation\Repositories\TokenRepository;
 
 /**
  * Class ShopInformationService
@@ -24,17 +25,48 @@ class ShopInformationService
 	/**
 	 * @var \Gambio\AdminFeed\Services\ShopInformation\Repositories\ShopInformationRepository
 	 */
-	private $repository;
+	private $shopInformationRepository;
+	
+	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\Repositories\TokenRepository
+	 */
+	private $tokenRepository;
 	
 	
 	/**
 	 * ShopInformationService constructor.
 	 *
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Repositories\ShopInformationRepository $repository
+	 * @param \Gambio\AdminFeed\Services\ShopInformation\Repositories\ShopInformationRepository $shopInformationRepository
+	 * @param \Gambio\AdminFeed\Services\ShopInformation\Repositories\TokenRepository           $tokenRepository
 	 */
-	public function __construct(ShopInformationRepository $repository)
+	public function __construct(ShopInformationRepository $shopInformationRepository, TokenRepository $tokenRepository)
 	{
-		$this->repository = $repository;
+		$this->shopInformationRepository = $shopInformationRepository;
+		$this->tokenRepository           = $tokenRepository;
+	}
+	
+	
+	/**
+	 * @return string
+	 */
+	public function createRequestToken()
+	{
+		$token = uniqid();
+		
+		$this->tokenRepository->addToken($token);
+		
+		return $token;
+	}
+	
+	
+	/**
+	 * @param string $token
+	 *
+	 * @return bool
+	 */
+	public function verifyRequestToken($token)
+	{
+		return $this->tokenRepository->verifyToken($token);
 	}
 	
 	
@@ -54,7 +86,7 @@ class ShopInformationService
 	 */
 	public function getShopDetails()
 	{
-		return $this->repository->getShopDetails();
+		return $this->shopInformationRepository->getShopDetails();
 	}
 	
 	
@@ -63,7 +95,7 @@ class ShopInformationService
 	 */
 	public function getServerDetails()
 	{
-		return $this->repository->getServerDetails();
+		return $this->shopInformationRepository->getServerDetails();
 	}
 	
 	
@@ -72,7 +104,7 @@ class ShopInformationService
 	 */
 	public function getModulesDetails()
 	{
-		return $this->repository->getModulesDetails();
+		return $this->shopInformationRepository->getModulesDetails();
 	}
 	
 	
@@ -81,7 +113,7 @@ class ShopInformationService
 	 */
 	public function getTemplateDetails()
 	{
-		return $this->repository->getTemplateDetails();
+		return $this->shopInformationRepository->getTemplateDetails();
 	}
 	
 	
@@ -90,7 +122,7 @@ class ShopInformationService
 	 */
 	public function getFileSystemDetails()
 	{
-		return $this->repository->getFileSystemDetails();
+		return $this->shopInformationRepository->getFileSystemDetails();
 	}
 	
 	
@@ -99,7 +131,7 @@ class ShopInformationService
 	 */
 	public function getMerchantDetails()
 	{
-		return $this->repository->getMerchantDetails();
+		return $this->shopInformationRepository->getMerchantDetails();
 	}
 	
 	
@@ -108,6 +140,6 @@ class ShopInformationService
 	 */
 	public function getUpdatesDetails()
 	{
-		return $this->repository->getUpdatesDetails();
+		return $this->shopInformationRepository->getUpdatesDetails();
 	}
 }

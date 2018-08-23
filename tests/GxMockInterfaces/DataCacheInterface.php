@@ -25,6 +25,18 @@ interface DataCacheInterface
 	
 	
 	/**
+	 * @return void
+	 */
+	public function add_data($p_key, $p_value, $p_persistent = false, $p_persistence_tags_array = false);
+	
+	
+	/**
+	 * @return void
+	 */
+	public function set_data($p_key, $p_value, $p_persistent = false, $p_persistence_tags_array = false);
+	
+	
+	/**
 	 * @return bool
 	 */
 	public function key_exists($p_key, $p_persistent = false);
