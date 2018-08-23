@@ -133,22 +133,4 @@ class Settings
 	{
 		return gm_get_conf('GAMBIO_HUB_CLIENT_KEY');
 	}
-	
-	
-	/**
-	 * @return string
-	 */
-	public function getTokenDataCacheKey()
-	{
-		return 'admin-feed-shop-information-tokens';
-	}
-	
-	
-	/**
-	 * @return int
-	 */
-	public function getTokensLifespan()
-	{
-		return 60 * 5; # 5 minutes
-	}
 }

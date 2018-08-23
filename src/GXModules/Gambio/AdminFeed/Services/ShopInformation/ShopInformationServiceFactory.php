@@ -11,7 +11,6 @@
 
 namespace Gambio\AdminFeed\Services\ShopInformation;
 
-use Gambio\AdminFeed\Adapters\GxAdapter;
 use Gambio\AdminFeed\Adapters\GxAdapterTrait;
 use Gambio\AdminFeed\Services\ShopInformation\Mapper\FileSystemDetailsMapper;
 use Gambio\AdminFeed\Services\ShopInformation\Mapper\MerchantDetailsMapper;
@@ -19,7 +18,6 @@ use Gambio\AdminFeed\Services\ShopInformation\Mapper\ModulesDetailsMapper;
 use Gambio\AdminFeed\Services\ShopInformation\Mapper\ServerDetailsMapper;
 use Gambio\AdminFeed\Services\ShopInformation\Mapper\ShopDetailsMapper;
 use Gambio\AdminFeed\Services\ShopInformation\Mapper\TemplateDetailsMapper;
-use Gambio\AdminFeed\Services\ShopInformation\Mapper\TokenMapper;
 use Gambio\AdminFeed\Services\ShopInformation\Mapper\UpdatesDetailsMapper;
 use Gambio\AdminFeed\Services\ShopInformation\Reader\FileSystemDetailsReader;
 use Gambio\AdminFeed\Services\ShopInformation\Reader\MerchantDetailsReader;
@@ -27,7 +25,6 @@ use Gambio\AdminFeed\Services\ShopInformation\Reader\ModulesDetailsReader;
 use Gambio\AdminFeed\Services\ShopInformation\Reader\ServerDetailsReader;
 use Gambio\AdminFeed\Services\ShopInformation\Reader\ShopDetailsReader;
 use Gambio\AdminFeed\Services\ShopInformation\Reader\TemplateDetailsReader;
-use Gambio\AdminFeed\Services\ShopInformation\Reader\TokenReader;
 use Gambio\AdminFeed\Services\ShopInformation\Reader\UpdatesDetailsReader;
 use Gambio\AdminFeed\Services\ShopInformation\Repositories\FileSystemDetailsRepository;
 use Gambio\AdminFeed\Services\ShopInformation\Repositories\MerchantDetailsRepository;
@@ -36,9 +33,7 @@ use Gambio\AdminFeed\Services\ShopInformation\Repositories\ServerDetailsReposito
 use Gambio\AdminFeed\Services\ShopInformation\Repositories\ShopDetailsRepository;
 use Gambio\AdminFeed\Services\ShopInformation\Repositories\ShopInformationRepository;
 use Gambio\AdminFeed\Services\ShopInformation\Repositories\TemplateDetailsRepository;
-use Gambio\AdminFeed\Services\ShopInformation\Repositories\TokenRepository;
 use Gambio\AdminFeed\Services\ShopInformation\Repositories\UpdatesDetailsRepository;
-use Gambio\AdminFeed\Services\ShopInformation\Writer\TokenWriter;
 use GuzzleHttp\Client;
 
 /**
@@ -106,11 +101,6 @@ class ShopInformationServiceFactory
 	 */
 	private $updatesDetailsRepository;
 	
-	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\Repositories\TokenRepository
-	 */
-	private $tokenRepository;
-	
 	
 	/**
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ShopInformationService
@@ -123,7 +113,7 @@ class ShopInformationServiceFactory
 			$this->settings  = new Settings();
 			$this->hubClient = new HubClient($this->settings, $this->gxAdapter(), new Client());
 			
-			$this->service = new ShopInformationService($this->createShopInformationRepository(), $this->createTokenRepository());
+			$this->service = new ShopInformationService($this->createShopInformationRepository());
 		}
 		
 		return $this->service;
@@ -266,23 +256,5 @@ class ShopInformationServiceFactory
 		}
 		
 		return $this->updatesDetailsRepository;
-	}
-	
-	
-	/**
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\Repositories\TokenRepository
-	 */
-	private function createTokenRepository()
-	{
-		if($this->tokenRepository === null)
-		{
-			$reader = new TokenReader($this->settings);
-			$writer = new TokenWriter($this->settings);
-			$mapper = new TokenMapper($reader, $writer);
-			
-			$this->tokenRepository = new TokenRepository($mapper);
-		}
-		
-		return $this->tokenRepository;
 	}
 }

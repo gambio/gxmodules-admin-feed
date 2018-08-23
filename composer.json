@@ -18,7 +18,7 @@
 	"autoload": {
 		"psr-4": {
 			"Gambio\\AdminFeed\\": "src/GXModules/Gambio/AdminFeed",
-			"Gambio\\AdminFeed\\Tests\\": "tests"
+			"Gambio\\AdminFeed\\Tests\\": "tests/framework"
 		}
 	}
 }

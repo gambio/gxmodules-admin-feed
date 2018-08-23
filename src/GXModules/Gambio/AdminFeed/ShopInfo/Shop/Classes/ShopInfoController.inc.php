@@ -9,13 +9,33 @@
    --------------------------------------------------------------
 */
 
+use Gambio\AdminFeed\Services\ShopInformation\ShopInformationServiceFactory;
+
 /**
  * Class ShopInfoController
  */
 class ShopInfoController extends HttpViewController
 {
+	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\ShopInformationService
+	 */
+	protected $shopInfoService;
+	
+	
+	public function __construct(\HttpContextReaderInterface $httpContextReader,
+	                            \HttpResponseProcessorInterface $httpResponseProcessor,
+	                            \ContentViewInterface $defaultContentView)
+	{
+		parent::__construct($httpContextReader, $httpResponseProcessor, $defaultContentView);
+		
+		$shopInfoServiceFactory = new ShopInformationServiceFactory();
+		$this->shopInfoService  = $shopInfoServiceFactory->createService();
+	}
+	
+	
 	public function actionDefault()
 	{
-		return new HttpControllerResponse('Hello World!');
+		$shopInformation = $this->shopInfoService->getShopInformation();
+		return new HttpControllerResponse(serialize($shopInformation));
 	}
 }

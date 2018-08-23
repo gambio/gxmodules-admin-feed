@@ -70,12 +70,7 @@ class ShopInformationServiceTest extends TestCase
 	/**
 	 * @var \Gambio\AdminFeed\Services\ShopInformation\Repositories\ShopInformationRepository
 	 */
-	private $shopInformationRepository;
-	
-	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\Repositories\TokenRepository|\PHPUnit\Framework\MockObject\MockObject
-	 */
-	private $tokenRepository;
+	private $repository;
 	
 	/**
 	 * @var \Gambio\AdminFeed\Services\ShopInformation\ShopInformationService
@@ -85,69 +80,35 @@ class ShopInformationServiceTest extends TestCase
 	
 	public function setUp()
 	{
-		$this->shopInformationRepository = $this->createMock(ShopInformationRepository::class);
-		$this->tokenRepository           = $this->createMock(TokenRepository::class);
+		$this->repository = $this->createMock(ShopInformationRepository::class);
 		
 		$this->shopDetails = $this->createMock(ShopDetails::class);
-		$this->shopInformationRepository->method('getShopDetails')->willReturn($this->shopDetails);
+		$this->repository->method('getShopDetails')->willReturn($this->shopDetails);
 		
 		$this->serverDetails = $this->createMock(ServerDetails::class);
-		$this->shopInformationRepository->method('getServerDetails')->willReturn($this->serverDetails);
+		$this->repository->method('getServerDetails')->willReturn($this->serverDetails);
 		
 		$this->modulesDetails = $this->createMock(ModulesDetails::class);
-		$this->shopInformationRepository->method('getModulesDetails')->willReturn($this->modulesDetails);
+		$this->repository->method('getModulesDetails')->willReturn($this->modulesDetails);
 		
 		$this->templatesDetails = $this->createMock(TemplateDetails::class);
-		$this->shopInformationRepository->method('getTemplateDetails')->willReturn($this->templatesDetails);
+		$this->repository->method('getTemplateDetails')->willReturn($this->templatesDetails);
 		
 		$this->fileSystemDetails = $this->createMock(FileSystemDetails::class);
-		$this->shopInformationRepository->method('getFileSystemDetails')->willReturn($this->fileSystemDetails);
+		$this->repository->method('getFileSystemDetails')->willReturn($this->fileSystemDetails);
 		
 		$this->merchantDetails = $this->createMock(MerchantDetails::class);
-		$this->shopInformationRepository->method('getMerchantDetails')->willReturn($this->merchantDetails);
+		$this->repository->method('getMerchantDetails')->willReturn($this->merchantDetails);
 		
 		$this->updatesDetails = $this->createMock(UpdatesDetails::class);
-		$this->shopInformationRepository->method('getUpdatesDetails')->willReturn($this->updatesDetails);
+		$this->repository->method('getUpdatesDetails')->willReturn($this->updatesDetails);
 		
 		$this->shopInformation = ShopInformation::create($this->shopDetails, $this->serverDetails,
 		                                                 $this->modulesDetails, $this->templatesDetails,
 		                                                 $this->fileSystemDetails, $this->merchantDetails,
 		                                                 $this->updatesDetails);
 		
-		$this->service = new ShopInformationService($this->shopInformationRepository, $this->tokenRepository);
-	}
-	
-	
-	/**
-	 * @test
-	 */
-	public function shouldAlwaysReturnDifferentTokens()
-	{
-		$this->assertNotSame($this->service->createRequestToken(), $this->service->createRequestToken());
-	}
-	
-	
-	/**
-	 * @test
-	 */
-	public function shouldAddNewTokenByUsingRepository()
-	{
-		$this->tokenRepository->expects($this->once())->method('addToken');
-		
-		$this->service->createRequestToken();
-	}
-	
-	
-	/**
-	 * @test
-	 */
-	public function shouldVerifyGivenRequestTokenByUsingRepository()
-	{
-		$token = uniqid();
-		
-		$this->tokenRepository->expects($this->once())->method('verifyToken')->with($token);
-		
-		$this->service->verifyRequestToken($token);
+		$this->service = new ShopInformationService($this->repository);
 	}
 	
 	

@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   TokenWriterTest.inc.php 2018-08-01
+   RequestControlTest.inc.php 2018-08-01
    Gambio GmbH
    http://www.gambio.de
    Copyright (c) 2018 Gambio GmbH
@@ -10,21 +10,15 @@
 */
 
 use Gambio\AdminFeed\Adapters\GxAdapter;
-use Gambio\AdminFeed\Services\ShopInformation\Writer\TokenWriter;
-use Gambio\AdminFeed\Services\ShopInformation\Settings;
+use Gambio\AdminFeed\RequestControl;
 use Gambio\AdminFeed\Tests\GxMockInterfaces\DataCacheInterface;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Class TokenWriterTest
+ * Class RequestControlTest
  */
-class TokenWriterTest extends TestCase
+class RequestControlTest extends TestCase
 {
-	/**
-	 * @var int
-	 */
-	private $lowestPossibleTimestamp;
-	
 	/**
 	 * @var array
 	 */
@@ -36,20 +30,14 @@ class TokenWriterTest extends TestCase
 	private $dataCache;
 	
 	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\Settings|\PHPUnit\Framework\MockObject\MockObject
+	 * @var \Gambio\AdminFeed\RequestControl
 	 */
-	private $settings;
-	
-	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\Writer\TokenWriter
-	 */
-	private $writer;
+	private $requestControl;
 	
 	
 	public function setUp()
 	{
-		$this->lowestPossibleTimestamp = time();
-		$this->tokensData              = [
+		$this->tokensData = [
 			[
 				'timestamp' => time() - 60 * 10, # 10 minutes in the past
 				'token'     => uniqid(),
@@ -60,23 +48,27 @@ class TokenWriterTest extends TestCase
 			],
 		];
 		
-		$this->settings = $this->createMock(Settings::class);
-		$this->settings->method('getTokenDataCacheKey')->willReturn('admin-feed-shop-information-tokens');
-		$this->settings->method('getTokensLifespan')->willReturn(60 * 5);
-		
-		$this->writer = new TokenWriter($this->settings);
-		$this->writer->setGxAdapter($this->mockGxAdapter());
+		$this->requestControl = new RequestControl();
+		$this->requestControl->setGxAdapter($this->mockGxAdapter());
 	}
 	
 	
 	/**
 	 * @test
 	 */
-	public function shouldAddGivenTokenToTheDataCache()
+	public function shouldCreateDifferentRequestTokens()
 	{
-		$token = uniqid();
-		$lowestPossibleTimestamp = $this->lowestPossibleTimestamp;
-		$tokensDataCallback      = function ($tokensData) use ($token, $lowestPossibleTimestamp) {
+		$this->assertNotSame($this->requestControl->createRequestToken(), $this->requestControl->createRequestToken());
+	}
+	
+	
+	/**
+	 * @test
+	 */
+	public function shouldStoreCreatedTokenByUsingDataCache()
+	{
+		$lowestPossibleTimestamp = time();
+		$tokensDataCallback      = function ($tokensData) use ($lowestPossibleTimestamp) {
 			if(!is_array($tokensData) || count($tokensData) === 0)
 			{
 				return false;
@@ -86,7 +78,7 @@ class TokenWriterTest extends TestCase
 			{
 				if(!isset($tokenData['timestamp']) || !isset($tokenData['token'])
 				   || $tokenData['timestamp'] < $lowestPossibleTimestamp
-				   || $tokenData['token'] !== $token)
+				   || empty($tokenData['token']))
 				{
 					return false;
 				}
@@ -97,27 +89,44 @@ class TokenWriterTest extends TestCase
 		
 		$this->dataCache->expects($this->once())
 		                ->method('add_data')
-		                ->with($this->equalTo('admin-feed-shop-information-tokens'),
-		                       $this->callback($tokensDataCallback), $this->equalTo(true));
+		                ->with($this->equalTo('admin-feed-request-tokens'), $this->callback($tokensDataCallback),
+		                       $this->equalTo(true));
 		
-		$this->writer->addToken($token);
+		$this->requestControl->createRequestToken();
 	}
 	
 	
 	/**
 	 * @test
 	 */
-	public function shouldDeleteOldTokens()
+	public function shouldDeleteOldRequestTokensBeforeVerifyingAToken()
 	{
 		$newTokensData = $this->tokensData;
 		unset($newTokensData[0]);
 		
 		$this->dataCache->expects($this->once())
 		                ->method('set_data')
-		                ->with($this->equalTo('admin-feed-shop-information-tokens'), $this->identicalTo($newTokensData),
+		                ->with($this->equalTo('admin-feed-request-tokens'), $this->equalTo($newTokensData),
 		                       $this->equalTo(true));
 		
-		$this->writer->deleteOldTokens();
+		$this->requestControl->verifyRequestToken('');
+	}
+	
+	
+	/**
+	 * @test
+	 */
+	public function shouldDeleteOldRequestTokensBeforeCreatingAToken()
+	{
+		$newTokensData = $this->tokensData;
+		unset($newTokensData[0]);
+		
+		$this->dataCache->expects($this->once())
+		                ->method('set_data')
+		                ->with($this->equalTo('admin-feed-request-tokens'), $this->equalTo($newTokensData),
+		                       $this->equalTo(true));
+		
+		$this->requestControl->createRequestToken();
 	}
 	
 	
@@ -125,7 +134,7 @@ class TokenWriterTest extends TestCase
 	{
 		$this->dataCache = $this->createMock(DataCacheInterface::class);
 		$this->dataCache->method('get_data')
-		                ->with($this->equalTo('admin-feed-shop-information-tokens'), $this->equalTo(true))
+		                ->with($this->equalTo('admin-feed-request-tokens'), $this->equalTo(true))
 		                ->willReturn($this->tokensData);
 		
 		$gxAdapter = $this->createMock(GxAdapter::class);
