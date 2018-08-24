@@ -12,7 +12,10 @@
 use Gambio\AdminFeed\Adapters\GxAdapter;
 use Gambio\AdminFeed\RequestControl;
 use Gambio\AdminFeed\Tests\GxMockInterfaces\DataCacheInterface;
+use GuzzleHttp\Client;
+use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
+use Psr\Http\Message\StreamInterface;
 
 /**
  * Class RequestControlTest
@@ -48,7 +51,17 @@ class RequestControlTest extends TestCase
 			],
 		];
 		
-		$this->requestControl = new RequestControl();
+		$responseBody = $this->createMock(StreamInterface::class);
+		$responseBody->method('getContents')->willReturn('["123.456.78.90", "13.37.*"]');
+		
+		$response = $this->createMock(Response::class);
+		$response->method('getStatusCode')->willReturn(200);
+		$response->method('getBody')->willReturn($responseBody);
+		
+		$curl = $this->createMock(Client::class);
+		$curl->method('request')->willReturn($response);
+		
+		$this->requestControl = new RequestControl($curl);
 		$this->requestControl->setGxAdapter($this->mockGxAdapter());
 	}
 	
@@ -127,6 +140,33 @@ class RequestControlTest extends TestCase
 		                       $this->equalTo(true));
 		
 		$this->requestControl->createRequestToken();
+	}
+	
+	
+	/**
+	 * @test
+	 */
+	public function shouldSuccessfullyVerifyAValidRequestIpWithout()
+	{
+		$this->assertTrue($this->requestControl->verifyRequestIp('123.456.78.90'));
+	}
+	
+	
+	/**
+	 * @test
+	 */
+	public function shouldSuccessfullyVerifyAValidRequestIpWithWildcard()
+	{
+		$this->assertTrue($this->requestControl->verifyRequestIp('13.37.1.1'));
+	}
+	
+	
+	/**
+	 * @test
+	 */
+	public function shouldFailToVerifyAnInvalidRequestIp()
+	{
+		$this->assertFalse($this->requestControl->verifyRequestIp('99.99.99.99'));
 	}
 	
 	

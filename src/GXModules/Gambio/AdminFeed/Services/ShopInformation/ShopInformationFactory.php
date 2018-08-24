@@ -12,6 +12,7 @@
 namespace Gambio\AdminFeed\Services\ShopInformation;
 
 use Gambio\AdminFeed\Adapters\GxAdapterTrait;
+use Gambio\AdminFeed\CurlClient;
 use Gambio\AdminFeed\Services\ShopInformation\Mapper\FileSystemDetailsMapper;
 use Gambio\AdminFeed\Services\ShopInformation\Mapper\MerchantDetailsMapper;
 use Gambio\AdminFeed\Services\ShopInformation\Mapper\ModulesDetailsMapper;
@@ -47,7 +48,6 @@ use Gambio\AdminFeed\Services\ShopInformation\Serializer\ShopInformationSerializ
 use Gambio\AdminFeed\Services\ShopInformation\Serializer\TemplateDetailsSerializer;
 use Gambio\AdminFeed\Services\ShopInformation\Serializer\UpdateDetailsSerializer;
 use Gambio\AdminFeed\Services\ShopInformation\Serializer\UpdatesDetailsSerializer;
-use GuzzleHttp\Client;
 
 /**
  * Class ShopInformationFactory
@@ -189,7 +189,7 @@ class ShopInformationFactory
 		{
 			$this->db        = $this->gxAdapter()->getQueryBuilder();
 			$this->settings  = new Settings();
-			$this->hubClient = new HubClient($this->settings, $this->gxAdapter(), new Client());
+			$this->hubClient = new HubClient($this->settings, $this->gxAdapter(), new CurlClient());
 			
 			$this->service = new ShopInformationService($this->createShopInformationRepository());
 		}
@@ -198,6 +198,9 @@ class ShopInformationFactory
 	}
 	
 	
+	/**
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\Serializer\FileSystemDetailsSerializer
+	 */
 	public function createFileSystemDetailsSerializer()
 	{
 		if($this->fileSystemDetailsSerializer === null)
@@ -209,6 +212,9 @@ class ShopInformationFactory
 	}
 	
 	
+	/**
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\Serializer\MerchantAddressDetailsSerializer
+	 */
 	public function createMerchantAddressDetailsSerializer()
 	{
 		if($this->merchantAddressDetailsSerializer === null)
@@ -220,6 +226,9 @@ class ShopInformationFactory
 	}
 	
 	
+	/**
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\Serializer\MerchantDetailsSerializer
+	 */
 	public function createMerchantDetailsSerializer()
 	{
 		if($this->merchantDetailsSerializer === null)
@@ -231,6 +240,9 @@ class ShopInformationFactory
 	}
 	
 	
+	/**
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\Serializer\ModuleDetailsSerializer
+	 */
 	public function createModuleDetailsSerializer()
 	{
 		if($this->moduleDetailsSerializer === null)
@@ -242,6 +254,9 @@ class ShopInformationFactory
 	}
 	
 	
+	/**
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\Serializer\ModulesDetailsSerializer
+	 */
 	public function createModulesDetailsSerializer()
 	{
 		if($this->modulesDetailsSerializer === null)
@@ -253,6 +268,9 @@ class ShopInformationFactory
 	}
 	
 	
+	/**
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\Serializer\MysqlServerDetailsSerializer
+	 */
 	public function createMysqlServerDetailsSerializer()
 	{
 		if($this->mysqlServerDetailsSerializer === null)
@@ -264,6 +282,9 @@ class ShopInformationFactory
 	}
 	
 	
+	/**
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\Serializer\PhpServerDetailsSerializer
+	 */
 	public function createPhpServerDetailsSerializer()
 	{
 		if($this->phpServerDetailsSerializer === null)
@@ -275,6 +296,9 @@ class ShopInformationFactory
 	}
 	
 	
+	/**
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\Serializer\ServerDetailsSerializer
+	 */
 	public function createServerDetailsSerializer()
 	{
 		if($this->serverDetailsSerializer === null)
@@ -287,6 +311,9 @@ class ShopInformationFactory
 	}
 	
 	
+	/**
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\Serializer\ShopDetailsSerializer
+	 */
 	public function createShopDetailsSerializer()
 	{
 		if($this->shopDetailsSerializer === null)
@@ -298,6 +325,9 @@ class ShopInformationFactory
 	}
 	
 	
+	/**
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\Serializer\ShopInformationSerializer
+	 */
 	public function createShopInformationSerializer()
 	{
 		if($this->shopInformationSerializer === null)
@@ -315,6 +345,9 @@ class ShopInformationFactory
 	}
 	
 	
+	/**
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\Serializer\TemplateDetailsSerializer
+	 */
 	public function createTemplateDetailsSerializer()
 	{
 		if($this->templateDetailsSerializer === null)
@@ -326,6 +359,9 @@ class ShopInformationFactory
 	}
 	
 	
+	/**
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\Serializer\UpdateDetailsSerializer
+	 */
 	public function createUpdateDetailsSerializer()
 	{
 		if($this->updateDetailsSerializer === null)
@@ -337,6 +373,9 @@ class ShopInformationFactory
 	}
 	
 	
+	/**
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\Serializer\UpdatesDetailsSerializer
+	 */
 	public function createUpdatesDetailsSerializer()
 	{
 		if($this->updatesDetailsSerializer === null)

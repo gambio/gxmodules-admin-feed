@@ -12,7 +12,7 @@
 namespace Gambio\AdminFeed\Services\ShopInformation;
 
 use Gambio\AdminFeed\Adapters\GxAdapter;
-use GuzzleHttp\Client as CurlClient;
+use Gambio\AdminFeed\CurlClient;
 
 /**
  * Class HubClient
@@ -32,7 +32,7 @@ class HubClient
 	private $gxAdapter;
 	
 	/**
-	 * @var \GuzzleHttp\Client
+	 * @var \Gambio\AdminFeed\CurlClient
 	 */
 	private $curl;
 	
@@ -58,7 +58,7 @@ class HubClient
 	{
 		try
 		{
-			$hubClientKey  = $this->settings->getHubClientKey();
+			$hubClientKey = $this->settings->getHubClientKey();
 			if(empty($hubClientKey))
 			{
 				return [];
@@ -70,20 +70,17 @@ class HubClient
 				return [];
 			}
 			
-			$url      = $this->settings->getGambioHubConfigUrl() . '/clients/' . $hubClientKey . '/sessions/'
-			            . $hubSessionKey . '/payment_modules?language=en';
-			$options  = [
-				'timeout' => $this->settings->getGambioHubCurlTimeout()
-			];
-			$response = $this->curl->request('GET', $url, $options);
+			$url = $this->settings->getGambioHubConfigUrl() . '/clients/' . $hubClientKey . '/sessions/'
+			       . $hubSessionKey . '/payment_modules?language=en';
+			$this->curl->executeGet($url);
 			
-			if($response->getStatusCode() !== 200)
+			if($this->curl->getStatusCode() !== 200)
 			{
 				return [];
 			}
-			$modulesData = json_decode($response->getBody()->getContents(), true);
+			$modulesData = json_decode($this->curl->getContent(), true);
 		}
-		catch(\GuzzleHttp\Exception\GuzzleException $e)
+		catch(\Exception $e)
 		{
 			return [];
 		}

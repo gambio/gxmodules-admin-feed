@@ -37,6 +37,17 @@ class RequestControl
 	 */
 	private $tokenLifeSpan = 300; # 5 minutes
 	
+	/**
+	 * @var \Gambio\AdminFeed\CurlClient
+	 */
+	private $curl;
+	
+	
+	public function __construct(CurlClient $curl)
+	{
+		$this->curl = $curl;
+	}
+	
 	
 	/**
 	 * @return string
@@ -46,13 +57,22 @@ class RequestControl
 		$this->deleteOldRequestTokens();
 		
 		$token     = uniqid();
-		$dataCache = $this->gxAdapter()->getDataCache();
-		$dataCache->add_data($this->tokenDataCacheKey, [
+		$tokenData = [
 			[
 				'timestamp' => time(),
 				'token'     => $token,
 			]
-		], true);
+		];
+		
+		$dataCache = $this->gxAdapter()->getDataCache();
+		if($dataCache->key_exists($this->tokenDataCacheKey, true))
+		{
+			$dataCache->add_data($this->tokenDataCacheKey, $tokenData, true);
+		}
+		else
+		{
+			$dataCache->set_data($this->tokenDataCacheKey, $tokenData, true);
+		}
 		
 		return $token;
 	}
@@ -78,7 +98,39 @@ class RequestControl
 	 */
 	public function verifyRequestIp($ip)
 	{
-		return true;
+		try
+		{
+			$this->curl->executeGet($this->allowedIpsUrl);
+			
+			if($this->curl->getStatusCode() !== 200)
+			{
+				return false;
+			}
+			
+			$ipList = @json_decode($this->curl->getContent(), true);
+			if(is_array($ipList))
+			{
+				$valid = false;
+				foreach($ipList as $allowedIp)
+				{
+					if($allowedIp === '*' || $allowedIp === $ip
+					   || (strpos($allowedIp, '*') !== false
+					       && strpos($ip, substr($allowedIp, 0, strpos($allowedIp, '*'))) === 0))
+					{
+						$valid = true;
+						break;
+					}
+				}
+				
+				return $valid;
+			}
+			
+			return false;
+		}
+		catch(\Exception $e)
+		{
+			return false;
+		}
 	}
 	
 	
@@ -89,10 +141,14 @@ class RequestControl
 	{
 		$this->deleteOldRequestTokens();
 		
-		$token      = [];
-		$dataCache  = $this->gxAdapter()->getDataCache();
-		$tokensData = $dataCache->get_data($this->tokenDataCacheKey, true);
+		$dataCache = $this->gxAdapter()->getDataCache();
+		if(!$dataCache->key_exists($this->tokenDataCacheKey, true))
+		{
+			return [];
+		}
 		
+		$token      = [];
+		$tokensData = $dataCache->get_data($this->tokenDataCacheKey, true);
 		if(is_array($tokensData) && count($tokensData) > 0)
 		{
 			foreach($tokensData as $tokenData)
@@ -110,9 +166,13 @@ class RequestControl
 	 */
 	private function deleteOldRequestTokens()
 	{
-		$dataCache  = $this->gxAdapter()->getDataCache();
-		$tokensData = $dataCache->get_data($this->tokenDataCacheKey, true);
+		$dataCache = $this->gxAdapter()->getDataCache();
+		if(!$dataCache->key_exists($this->tokenDataCacheKey, true))
+		{
+			return;
+		}
 		
+		$tokensData = $dataCache->get_data($this->tokenDataCacheKey, true);
 		if(is_array($tokensData) && count($tokensData) > 0)
 		{
 			foreach($tokensData as $index => $tokenData)

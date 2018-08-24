@@ -12,8 +12,7 @@
 	"require": {
 		"phpunit/phpunit": "7.1",
 		"phpunit/dbunit": "^4.0@dev",
-		"gambio/codeigniter-db": "dev-master",
-		"guzzlehttp/guzzle": "^6.3@dev"
+		"gambio/codeigniter-db": "dev-master"
 	},
 	"autoload": {
 		"psr-4": {

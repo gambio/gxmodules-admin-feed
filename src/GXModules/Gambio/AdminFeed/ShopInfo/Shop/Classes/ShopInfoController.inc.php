@@ -28,7 +28,7 @@ class ShopInfoController extends HttpViewController
 	{
 		parent::__construct($httpContextReader, $httpResponseProcessor, $defaultContentView);
 		
-		$shopInfoServiceFactory = new ShopInformationServiceFactory();
+		$shopInfoServiceFactory = new ShopInformationFactory();
 		$this->shopInfoService  = $shopInfoServiceFactory->createService();
 	}
 	
