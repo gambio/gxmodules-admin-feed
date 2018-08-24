@@ -1,0 +1,61 @@
+<?php
+/* --------------------------------------------------------------
+   MysqlServerDetailsSerializer.php 2018-08-01
+   Gambio GmbH
+   http://www.gambio.de
+   Copyright (c) 2018 Gambio GmbH
+   Released under the GNU General Public License (Version 2)
+   [http://www.gnu.org/licenses/gpl-2.0.html]
+   --------------------------------------------------------------
+*/
+
+namespace Gambio\AdminFeed\Services\ShopInformation\Serializer;
+
+use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MysqlServerDetails;
+
+/**
+ * Class MysqlServerDetailsSerializer
+ *
+ * @package Gambio\AdminFeed\Services\ShopInformation\Serializer
+ */
+class MysqlServerDetailsSerializer
+{
+	/**
+	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MysqlServerDetails $mysqlServerDetails
+	 *
+	 * @return array
+	 */
+	public function serialize(MysqlServerDetails $mysqlServerDetails)
+	{
+		$json = [
+			'version'       => $mysqlServerDetails->version(),
+			'engines'       => $mysqlServerDetails->engines(),
+			'defaultEngine' => $mysqlServerDetails->defaultEngine(),
+		];
+		
+		return $json;
+	}
+	
+	
+	/**
+	 * @param string|array $json
+	 *
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MysqlServerDetails
+	 */
+	public function deserialize($json)
+	{
+		if(!is_array($json))
+		{
+			$json = json_decode($json, true);
+		}
+		
+		if(!isset($json['version'])
+		   || !isset($json['engines'])
+		   || !isset($json['defaultEngine']))
+		{
+			throw new \InvalidArgumentException('Given argument is invalid. Needed property is missing.');
+		}
+		
+		return MysqlServerDetails::create($json['version'], $json['engines'], $json['defaultEngine']);
+	}
+}

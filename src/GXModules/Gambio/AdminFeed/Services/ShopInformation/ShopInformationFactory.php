@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   ShopInformationServiceFactory.php 2018-08-10
+   ShopInformationFactory.php 2018-08-10
    Gambio GmbH
    http://www.gambio.de
    Copyright (c) 2018 Gambio GmbH
@@ -34,14 +34,27 @@ use Gambio\AdminFeed\Services\ShopInformation\Repositories\ShopDetailsRepository
 use Gambio\AdminFeed\Services\ShopInformation\Repositories\ShopInformationRepository;
 use Gambio\AdminFeed\Services\ShopInformation\Repositories\TemplateDetailsRepository;
 use Gambio\AdminFeed\Services\ShopInformation\Repositories\UpdatesDetailsRepository;
+use Gambio\AdminFeed\Services\ShopInformation\Serializer\FileSystemDetailsSerializer;
+use Gambio\AdminFeed\Services\ShopInformation\Serializer\MerchantAddressDetailsSerializer;
+use Gambio\AdminFeed\Services\ShopInformation\Serializer\MerchantDetailsSerializer;
+use Gambio\AdminFeed\Services\ShopInformation\Serializer\ModuleDetailsSerializer;
+use Gambio\AdminFeed\Services\ShopInformation\Serializer\ModulesDetailsSerializer;
+use Gambio\AdminFeed\Services\ShopInformation\Serializer\MysqlServerDetailsSerializer;
+use Gambio\AdminFeed\Services\ShopInformation\Serializer\PhpServerDetailsSerializer;
+use Gambio\AdminFeed\Services\ShopInformation\Serializer\ServerDetailsSerializer;
+use Gambio\AdminFeed\Services\ShopInformation\Serializer\ShopDetailsSerializer;
+use Gambio\AdminFeed\Services\ShopInformation\Serializer\ShopInformationSerializer;
+use Gambio\AdminFeed\Services\ShopInformation\Serializer\TemplateDetailsSerializer;
+use Gambio\AdminFeed\Services\ShopInformation\Serializer\UpdateDetailsSerializer;
+use Gambio\AdminFeed\Services\ShopInformation\Serializer\UpdatesDetailsSerializer;
 use GuzzleHttp\Client;
 
 /**
- * Class ShopInformationServiceFactory
+ * Class ShopInformationFactory
  *
  * @package Gambio\AdminFeed\Services\ShopInformation
  */
-class ShopInformationServiceFactory
+class ShopInformationFactory
 {
 	use GxAdapterTrait;
 	
@@ -101,6 +114,71 @@ class ShopInformationServiceFactory
 	 */
 	private $updatesDetailsRepository;
 	
+	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\Serializer\FileSystemDetailsSerializer
+	 */
+	private $fileSystemDetailsSerializer;
+	
+	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\Serializer\MerchantAddressDetailsSerializer
+	 */
+	private $merchantAddressDetailsSerializer;
+	
+	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\Serializer\MerchantDetailsSerializer
+	 */
+	private $merchantDetailsSerializer;
+	
+	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\Serializer\ModuleDetailsSerializer
+	 */
+	private $moduleDetailsSerializer;
+	
+	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\Serializer\ModulesDetailsSerializer
+	 */
+	private $modulesDetailsSerializer;
+	
+	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\Serializer\MysqlServerDetailsSerializer
+	 */
+	private $mysqlServerDetailsSerializer;
+	
+	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\Serializer\PhpServerDetailsSerializer
+	 */
+	private $phpServerDetailsSerializer;
+	
+	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\Serializer\ServerDetailsSerializer
+	 */
+	private $serverDetailsSerializer;
+	
+	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\Serializer\ShopDetailsSerializer
+	 */
+	private $shopDetailsSerializer;
+	
+	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\Serializer\ShopInformationSerializer
+	 */
+	private $shopInformationSerializer;
+	
+	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\Serializer\TemplateDetailsSerializer
+	 */
+	private $templateDetailsSerializer;
+	
+	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\Serializer\UpdateDetailsSerializer
+	 */
+	private $updateDetailsSerializer;
+	
+	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\Serializer\UpdatesDetailsSerializer
+	 */
+	private $updatesDetailsSerializer;
+	
 	
 	/**
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ShopInformationService
@@ -117,6 +195,156 @@ class ShopInformationServiceFactory
 		}
 		
 		return $this->service;
+	}
+	
+	
+	public function createFileSystemDetailsSerializer()
+	{
+		if($this->fileSystemDetailsSerializer === null)
+		{
+			$this->fileSystemDetailsSerializer = new FileSystemDetailsSerializer();
+		}
+		
+		return $this->fileSystemDetailsSerializer;
+	}
+	
+	
+	public function createMerchantAddressDetailsSerializer()
+	{
+		if($this->merchantAddressDetailsSerializer === null)
+		{
+			$this->merchantAddressDetailsSerializer = new MerchantAddressDetailsSerializer();
+		}
+		
+		return $this->merchantAddressDetailsSerializer;
+	}
+	
+	
+	public function createMerchantDetailsSerializer()
+	{
+		if($this->merchantDetailsSerializer === null)
+		{
+			$this->merchantDetailsSerializer = new MerchantDetailsSerializer($this->createMerchantAddressDetailsSerializer());
+		}
+		
+		return $this->merchantDetailsSerializer;
+	}
+	
+	
+	public function createModuleDetailsSerializer()
+	{
+		if($this->moduleDetailsSerializer === null)
+		{
+			$this->moduleDetailsSerializer = new ModuleDetailsSerializer();
+		}
+		
+		return $this->moduleDetailsSerializer;
+	}
+	
+	
+	public function createModulesDetailsSerializer()
+	{
+		if($this->modulesDetailsSerializer === null)
+		{
+			$this->modulesDetailsSerializer = new ModulesDetailsSerializer($this->createModuleDetailsSerializer());
+		}
+		
+		return $this->modulesDetailsSerializer;
+	}
+	
+	
+	public function createMysqlServerDetailsSerializer()
+	{
+		if($this->mysqlServerDetailsSerializer === null)
+		{
+			$this->mysqlServerDetailsSerializer = new MysqlServerDetailsSerializer();
+		}
+		
+		return $this->mysqlServerDetailsSerializer;
+	}
+	
+	
+	public function createPhpServerDetailsSerializer()
+	{
+		if($this->phpServerDetailsSerializer === null)
+		{
+			$this->phpServerDetailsSerializer = new PhpServerDetailsSerializer();
+		}
+		
+		return $this->phpServerDetailsSerializer;
+	}
+	
+	
+	public function createServerDetailsSerializer()
+	{
+		if($this->serverDetailsSerializer === null)
+		{
+			$this->serverDetailsSerializer = new ServerDetailsSerializer($this->createPhpServerDetailsSerializer(),
+			                                                             $this->createMysqlServerDetailsSerializer());
+		}
+		
+		return $this->serverDetailsSerializer;
+	}
+	
+	
+	public function createShopDetailsSerializer()
+	{
+		if($this->shopDetailsSerializer === null)
+		{
+			$this->shopDetailsSerializer = new ShopDetailsSerializer();
+		}
+		
+		return $this->shopDetailsSerializer;
+	}
+	
+	
+	public function createShopInformationSerializer()
+	{
+		if($this->shopInformationSerializer === null)
+		{
+			$this->shopInformationSerializer = new ShopInformationSerializer($this->createShopDetailsSerializer(),
+			                                                                 $this->createServerDetailsSerializer(),
+			                                                                 $this->createModulesDetailsSerializer(),
+			                                                                 $this->createTemplateDetailsSerializer(),
+			                                                                 $this->createFileSystemDetailsSerializer(),
+			                                                                 $this->createMerchantDetailsSerializer(),
+			                                                                 $this->createUpdatesDetailsSerializer());
+		}
+		
+		return $this->shopInformationSerializer;
+	}
+	
+	
+	public function createTemplateDetailsSerializer()
+	{
+		if($this->templateDetailsSerializer === null)
+		{
+			$this->templateDetailsSerializer = new TemplateDetailsSerializer();
+		}
+		
+		return $this->templateDetailsSerializer;
+	}
+	
+	
+	public function createUpdateDetailsSerializer()
+	{
+		if($this->updateDetailsSerializer === null)
+		{
+			$this->updateDetailsSerializer = new UpdateDetailsSerializer();
+		}
+		
+		return $this->updateDetailsSerializer;
+	}
+	
+	
+	public function createUpdatesDetailsSerializer()
+	{
+		if($this->updatesDetailsSerializer === null)
+		{
+			$this->updatesDetailsSerializer = new UpdatesDetailsSerializer($this->createUpdateDetailsSerializer());
+		}
+		
+		return $this->updatesDetailsSerializer;
 	}
 	
 	

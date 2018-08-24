@@ -21,6 +21,16 @@ class ShopDetails
 	/**
 	 * @var string
 	 */
+	private $name;
+	
+	/**
+	 * @var string
+	 */
+	private $owner;
+	
+	/**
+	 * @var string
+	 */
 	private $version;
 	
 	/**
@@ -47,16 +57,6 @@ class ShopDetails
 	 * @var array
 	 */
 	private $countries;
-	
-	/**
-	 * @var string
-	 */
-	private $name;
-	
-	/**
-	 * @var string
-	 */
-	private $owner;
 	
 	
 	/**

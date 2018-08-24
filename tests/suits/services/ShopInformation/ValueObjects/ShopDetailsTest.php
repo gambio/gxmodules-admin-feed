@@ -20,6 +20,16 @@ class ShopDetailsTest extends TestCase
 	/**
 	 * @var string
 	 */
+	private $name = 'Testshop';
+	
+	/**
+	 * @var string
+	 */
+	private $owner = 'Gambio GmbH';
+	
+	/**
+	 * @var string
+	 */
 	private $version = 'v1.0.1';
 	
 	/**
@@ -46,16 +56,6 @@ class ShopDetailsTest extends TestCase
 	 * @var array
 	 */
 	private $countries = ['de', 'at', 'ch'];
-	
-	/**
-	 * @var string
-	 */
-	private $name = 'Testshop';
-	
-	/**
-	 * @var string
-	 */
-	private $owner = 'Gambio GmbH';
 	
 	/**
 	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails

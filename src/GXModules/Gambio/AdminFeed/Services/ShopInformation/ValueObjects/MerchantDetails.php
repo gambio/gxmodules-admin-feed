@@ -133,7 +133,7 @@ class MerchantDetails
 	
 	
 	/**
-	 * @return string
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MerchantAddressDetails
 	 */
 	public function address()
 	{
