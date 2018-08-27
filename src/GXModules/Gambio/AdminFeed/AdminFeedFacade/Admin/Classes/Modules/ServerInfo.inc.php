@@ -9,6 +9,9 @@
    --------------------------------------------------------------
 */
 
+use Gambio\AdminFeed\CurlClient;
+use Gambio\AdminFeed\RequestControl;
+
 require_once(DIR_FS_CATALOG . 'gm/classes/JSON.php');
 
 /**
@@ -26,8 +29,12 @@ class ServerInfo
 	 */
 	public function send($serverInfo, $comment)
 	{
+		$requestControl = new RequestControl(new CurlClient());
+		$adminFeedToken = $requestControl->createRequestToken();
+		
 		$t_url       = AdminFeedLinks::SERVER_INFO_SEND_URL;
-		$t_post_data = 'server_info_array=' . urlencode($serverInfo) . '&comment=' . urlencode($comment);
+		$t_post_data = 'server_info_array=' . urlencode($serverInfo) . '&comment=' . urlencode($comment)
+		               . '&adminFeedToken=' . rawurlencode($adminFeedToken);
 		
 		$t_success = false;
 		

@@ -9,6 +9,9 @@
    --------------------------------------------------------------
 */
 
+use Gambio\AdminFeed\CurlClient;
+use Gambio\AdminFeed\RequestControl;
+
 /**
  * Class DynamicShopMessages
  */
@@ -114,6 +117,10 @@ class DynamicShopMessages
 			$params[] = 'shop_key=' . rawurlencode(GAMBIO_SHOP_KEY);
 			$params[] = 'language=' . rawurlencode($_SESSION['language_code']);
 		}
+		
+		$requestControl = new RequestControl(new CurlClient());
+		$adminFeedToken = $requestControl->createRequestToken();
+		$params[]       = 'adminFeedToken=' . rawurlencode($adminFeedToken);
 		
 		$url        = $this->endpointUrl . '?' . implode('&', $params);
 		$loadUrl    = MainFactory::create('LoadUrl');

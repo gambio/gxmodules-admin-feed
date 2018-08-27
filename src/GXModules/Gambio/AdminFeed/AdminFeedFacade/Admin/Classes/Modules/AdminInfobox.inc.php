@@ -9,6 +9,9 @@
    --------------------------------------------------------------
 */
 
+use Gambio\AdminFeed\CurlClient;
+use Gambio\AdminFeed\RequestControl;
+
 require_once(DIR_FS_CATALOG . 'gm/classes/JSON.php');
 
 /**
@@ -99,6 +102,10 @@ class AdminInfobox
 			$parameters[] = 'language=' . rawurlencode($_SESSION['language_code']);
 			$parameters[] = 'server_path=' . rawurlencode(rtrim(DIR_FS_CATALOG, '/'));
 		}
+		
+		$requestControl = new RequestControl(new CurlClient());
+		$adminFeedToken = $requestControl->createRequestToken();
+		$parameters[]   = 'adminFeedToken=' . rawurlencode($adminFeedToken);
 		
 		$this->parameters = $parameters;
 	}

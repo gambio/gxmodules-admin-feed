@@ -9,6 +9,9 @@
    --------------------------------------------------------------
 */
 
+use Gambio\AdminFeed\CurlClient;
+use Gambio\AdminFeed\RequestControl;
+
 /**
  * Class ExternalSnippets
  */
@@ -45,9 +48,13 @@ class AdminNews
 	{
 		$return = 'Timeout';
 		
+		$requestControl = new RequestControl(new CurlClient());
+		$adminFeedToken = $requestControl->createRequestToken();
+		
 		$coo_load_url = MainFactory::create_object('LoadUrl');
 		$t_result     = $coo_load_url->load_url($this->endpointUrl . '&get_news_for_version='
-		                                        . rawurlencode($this->shopVersion));
+		                                        . rawurlencode($this->shopVersion) . '&adminFeedToken='
+		                                        . rawurlencode($adminFeedToken));
 		
 		if($t_result)
 		{

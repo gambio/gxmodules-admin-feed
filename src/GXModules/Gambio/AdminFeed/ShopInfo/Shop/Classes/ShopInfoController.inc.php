@@ -9,17 +9,25 @@
    --------------------------------------------------------------
 */
 
-use Gambio\AdminFeed\Services\ShopInformation\ShopInformationServiceFactory;
+use Gambio\AdminFeed\CurlClient;
+use Gambio\AdminFeed\RequestControl;
+use Gambio\AdminFeed\Services\ShopInformation\Serializer\ShopInformationSerializer;
+use Gambio\AdminFeed\Services\ShopInformation\ShopInformationFactory;
 
 /**
  * Class ShopInfoController
  */
-class ShopInfoController extends HttpViewController
+final class ShopInfoController extends HttpViewController
 {
 	/**
 	 * @var \Gambio\AdminFeed\Services\ShopInformation\ShopInformationService
 	 */
-	protected $shopInfoService;
+	private $shopInfoService;
+	
+	/**
+	 * @var \Gambio\AdminFeed\RequestControl
+	 */
+	private $requestControl;
 	
 	
 	public function __construct(\HttpContextReaderInterface $httpContextReader,
@@ -30,12 +38,51 @@ class ShopInfoController extends HttpViewController
 		
 		$shopInfoServiceFactory = new ShopInformationFactory();
 		$this->shopInfoService  = $shopInfoServiceFactory->createService();
+		
+		$this->requestControl = new RequestControl(new CurlClient());
 	}
 	
 	
 	public function actionDefault()
 	{
-		$shopInformation = $this->shopInfoService->getShopInformation();
-		return new HttpControllerResponse(serialize($shopInformation));
+		if($this->_checkIp() && $this->_checkToken())
+		{
+			$shopInformation = $this->shopInfoService->getShopInformation();
+			$jsonOption      = $this->_getQueryParameter('pretty') !== null ? JSON_PRETTY_PRINT : 0;
+			$httpHeader      = ['Content-Type: text/json; charset=utf-8'];
+			
+			return new HttpControllerResponse(json_encode(ShopInformationSerializer::serialize($shopInformation),
+			                                              $jsonOption), $httpHeader);
+		}
+		
+		http_response_code(403);
+		
+		return new HttpControllerResponse('Invalid token or ip!', ['Content-Type: text/json; charset=utf-8']);
+	}
+	
+	
+	private function _checkIp()
+	{
+		$ip = isset($_SERVER['HTTP_X_FORWARDED_FOR']) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR'];
+		
+		if($this->requestControl->verifyRequestIp($ip))
+		{
+			return true;
+		}
+		
+		return false;
+	}
+	
+	
+	private function _checkToken()
+	{
+		$token = $this->_getQueryParameter('token');
+		
+		if($token !== null && $this->requestControl->verifyRequestToken($token))
+		{
+			return true;
+		}
+		
+		return false;
 	}
 }
