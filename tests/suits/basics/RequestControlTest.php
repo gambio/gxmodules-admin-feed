@@ -10,18 +10,21 @@
 */
 
 use Gambio\AdminFeed\Adapters\GxAdapter;
+use Gambio\AdminFeed\CurlClient;
 use Gambio\AdminFeed\RequestControl;
 use Gambio\AdminFeed\Tests\GxMockInterfaces\DataCacheInterface;
-use GuzzleHttp\Client;
-use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\StreamInterface;
 
 /**
  * Class RequestControlTest
  */
 class RequestControlTest extends TestCase
 {
+	/**
+	 * @var string
+	 */
+	private $dataCacheKey = 'admin-feed-request-tokens';
+	
 	/**
 	 * @var array
 	 */
@@ -51,15 +54,9 @@ class RequestControlTest extends TestCase
 			],
 		];
 		
-		$responseBody = $this->createMock(StreamInterface::class);
-		$responseBody->method('getContents')->willReturn('["123.456.78.90", "13.37.*"]');
-		
-		$response = $this->createMock(Response::class);
-		$response->method('getStatusCode')->willReturn(200);
-		$response->method('getBody')->willReturn($responseBody);
-		
-		$curl = $this->createMock(Client::class);
-		$curl->method('request')->willReturn($response);
+		$curl = $this->createMock(CurlClient::class);
+		$curl->method('getStatusCode')->willReturn(200);
+		$curl->method('getContent')->willReturn('["123.456.78.90", "13.37.*"]');
 		
 		$this->requestControl = new RequestControl($curl);
 		$this->requestControl->setGxAdapter($this->mockGxAdapter());
@@ -78,7 +75,7 @@ class RequestControlTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldStoreCreatedTokenByUsingDataCache()
+	public function shouldStoreCreatedTokenByUsingDataCacheIfDataCacheKeyAlreadyExists()
 	{
 		$lowestPossibleTimestamp = time();
 		$tokensDataCallback      = function ($tokensData) use ($lowestPossibleTimestamp) {
@@ -100,9 +97,45 @@ class RequestControlTest extends TestCase
 			return true;
 		};
 		
+		$this->dataCache->method('key_exists')->with($this->equalTo($this->dataCacheKey))->willReturn(true);
 		$this->dataCache->expects($this->once())
 		                ->method('add_data')
-		                ->with($this->equalTo('admin-feed-request-tokens'), $this->callback($tokensDataCallback),
+		                ->with($this->equalTo($this->dataCacheKey), $this->callback($tokensDataCallback),
+		                       $this->equalTo(true));
+		
+		$this->requestControl->createRequestToken();
+	}
+	
+	
+	/**
+	 * @test
+	 */
+	public function shouldStoreCreatedTokenByUsingDataCacheIfDataCacheKeyDoesNotAlreadyExist()
+	{
+		$lowestPossibleTimestamp = time();
+		$tokensDataCallback      = function ($tokensData) use ($lowestPossibleTimestamp) {
+			if(!is_array($tokensData) || count($tokensData) === 0)
+			{
+				return false;
+			}
+			
+			foreach($tokensData as $tokenData)
+			{
+				if(!isset($tokenData['timestamp']) || !isset($tokenData['token'])
+				   || $tokenData['timestamp'] < $lowestPossibleTimestamp
+				   || empty($tokenData['token']))
+				{
+					return false;
+				}
+			}
+			
+			return true;
+		};
+		
+		$this->dataCache->method('key_exists')->with($this->equalTo($this->dataCacheKey))->willReturn(false);
+		$this->dataCache->expects($this->once())
+		                ->method('set_data')
+		                ->with($this->equalTo($this->dataCacheKey), $this->callback($tokensDataCallback),
 		                       $this->equalTo(true));
 		
 		$this->requestControl->createRequestToken();
@@ -117,9 +150,10 @@ class RequestControlTest extends TestCase
 		$newTokensData = $this->tokensData;
 		unset($newTokensData[0]);
 		
+		$this->dataCache->method('key_exists')->with($this->equalTo($this->dataCacheKey))->willReturn(true);
 		$this->dataCache->expects($this->once())
 		                ->method('set_data')
-		                ->with($this->equalTo('admin-feed-request-tokens'), $this->equalTo($newTokensData),
+		                ->with($this->equalTo($this->dataCacheKey), $this->equalTo($newTokensData),
 		                       $this->equalTo(true));
 		
 		$this->requestControl->verifyRequestToken('');
@@ -134,9 +168,10 @@ class RequestControlTest extends TestCase
 		$newTokensData = $this->tokensData;
 		unset($newTokensData[0]);
 		
+		$this->dataCache->method('key_exists')->with($this->equalTo($this->dataCacheKey))->willReturn(true);
 		$this->dataCache->expects($this->once())
 		                ->method('set_data')
-		                ->with($this->equalTo('admin-feed-request-tokens'), $this->equalTo($newTokensData),
+		                ->with($this->equalTo($this->dataCacheKey), $this->equalTo($newTokensData),
 		                       $this->equalTo(true));
 		
 		$this->requestControl->createRequestToken();
@@ -174,7 +209,7 @@ class RequestControlTest extends TestCase
 	{
 		$this->dataCache = $this->createMock(DataCacheInterface::class);
 		$this->dataCache->method('get_data')
-		                ->with($this->equalTo('admin-feed-request-tokens'), $this->equalTo(true))
+		                ->with($this->equalTo($this->dataCacheKey), $this->equalTo(true))
 		                ->willReturn($this->tokensData);
 		
 		$gxAdapter = $this->createMock(GxAdapter::class);
