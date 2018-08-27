@@ -14,9 +14,9 @@ namespace Gambio\AdminFeed\Services\ShopInformation\Repositories;
 use Gambio\AdminFeed\Services\ShopInformation\Mapper\TemplateDetailsMapper;
 
 /**
- * Interface TemplateDetailsRepository
+ * Class TemplateDetailsRepository
  *
- * @package Gambio\AdminFeed\Services\ShopInformation\Repositories\Interfaces
+ * @package Gambio\AdminFeed\Services\ShopInformation\Repositories
  */
 class TemplateDetailsRepository
 {
@@ -38,6 +38,8 @@ class TemplateDetailsRepository
 	
 	
 	/**
+	 * Returns the template details.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\TemplateDetails
 	 */
 	public function getTemplateDetails()

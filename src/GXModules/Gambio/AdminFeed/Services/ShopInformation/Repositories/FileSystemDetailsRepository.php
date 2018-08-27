@@ -14,9 +14,9 @@ namespace Gambio\AdminFeed\Services\ShopInformation\Repositories;
 use Gambio\AdminFeed\Services\ShopInformation\Mapper\FileSystemDetailsMapper;
 
 /**
- * Interface FileSystemDetailsRepository
+ * Class FileSystemDetailsRepository
  *
- * @package Gambio\AdminFeed\Services\ShopInformation\Repositories\Interfaces
+ * @package Gambio\AdminFeed\Services\ShopInformation\Repositories
  */
 class FileSystemDetailsRepository
 {
@@ -38,6 +38,8 @@ class FileSystemDetailsRepository
 	
 	
 	/**
+	 * Returns the file system details.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\FileSystemDetails
 	 */
 	public function getFileSystemDetails()

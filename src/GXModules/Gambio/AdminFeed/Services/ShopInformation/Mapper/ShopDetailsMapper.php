@@ -39,6 +39,8 @@ class ShopDetailsMapper
 	
 	
 	/**
+	 * Returns the shop details.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails
 	 */
 	public function getShopDetails()

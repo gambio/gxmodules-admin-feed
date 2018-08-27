@@ -68,12 +68,12 @@ class MerchantDetailsMapperTest extends TestCase
 	/**
 	 * @var string
 	 */
-	private $telefon = '0421 - 22 34 678';
+	private $phone = '0421 - 22 34 678';
 	
 	/**
 	 * @var string
 	 */
-	private $telefax = '0421 - 123456789';
+	private $fax = '0421 - 123456789';
 	
 	/**
 	 * @var string
@@ -116,8 +116,8 @@ class MerchantDetailsMapperTest extends TestCase
 		$address = MerchantAddressDetails::create($this->street, $this->houseNumber, $this->postalCode, $this->city,
 		                                          $this->state, $this->country);
 		
-		return MerchantDetails::create($this->company, $this->firstname, $this->lastname, $address, $this->telefon,
-		                               $this->telefax, $this->email);
+		return MerchantDetails::create($this->company, $this->firstname, $this->lastname, $address, $this->phone,
+		                               $this->fax, $this->email);
 	}
 	
 	
@@ -133,8 +133,8 @@ class MerchantDetailsMapperTest extends TestCase
 		$reader->method('getCity')->willReturn($this->city);
 		$reader->method('getState')->willReturn($this->state);
 		$reader->method('getCountry')->willReturn($this->country);
-		$reader->method('getTelefon')->willReturn($this->telefon);
-		$reader->method('getTelefax')->willReturn($this->telefax);
+		$reader->method('getPhone')->willReturn($this->phone);
+		$reader->method('getFax')->willReturn($this->fax);
 		$reader->method('getEmail')->willReturn($this->email);
 		
 		return $reader;

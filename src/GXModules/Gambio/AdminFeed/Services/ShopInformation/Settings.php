@@ -19,6 +19,8 @@ namespace Gambio\AdminFeed\Services\ShopInformation;
 class Settings
 {
 	/**
+	 * Returns the file systems path to the base directory of the shop.
+	 *
 	 * @return string
 	 */
 	public function getBaseDirectory()
@@ -28,60 +30,8 @@ class Settings
 	
 	
 	/**
-	 * @return string
-	 */
-	public function getCurrentTemplate()
-	{
-		return defined('CURRENT_TEMPLATE') ? CURRENT_TEMPLATE : '';
-	}
-	
-	
-	/**
-	 * @return string
-	 */
-	public function getHttpServer()
-	{
-		return defined('HTTP_SERVER') ? HTTP_SERVER : '';
-	}
-	
-	
-	/**
-	 * @return string
-	 */
-	public function getShopDirectory()
-	{
-		return defined('DIR_WS_CATALOG') ? DIR_WS_CATALOG : '';
-	}
-	
-	
-	/**
-	 * @return string
-	 */
-	public function getShopUrl()
-	{
-		return $this->getHttpServer() . $this->getShopDirectory();
-	}
-	
-	
-	/**
-	 * @return string
-	 */
-	public function getShopKey()
-	{
-		return defined('GAMBIO_SHOP_KEY') ? GAMBIO_SHOP_KEY : '';
-	}
-	
-	
-	/**
-	 * @return string
-	 */
-	public function getDefaultLanguage()
-	{
-		return defined('DEFAULT_LANGUAGE') ? DEFAULT_LANGUAGE : 'en';
-	}
-	
-	
-	/**
+	 * Returns the name of the currently selected template.
+	 *
 	 * @return string
 	 */
 	public function getActiveTemplate()
@@ -91,6 +41,8 @@ class Settings
 	
 	
 	/**
+	 * Returns the version of the currently selected template.
+	 *
 	 * @return string
 	 */
 	public function getActiveTemplateVersion()
@@ -100,6 +52,63 @@ class Settings
 	
 	
 	/**
+	 * Returns the base URL of the shop, ending at the base web directory.
+	 *
+	 * @return string
+	 */
+	public function getHttpServer()
+	{
+		return defined('HTTP_SERVER') ? HTTP_SERVER : '';
+	}
+	
+	
+	/**
+	 * Returns the path of the shop, starting from the base web directory.
+	 *
+	 * @return string
+	 */
+	public function getShopDirectory()
+	{
+		return defined('DIR_WS_CATALOG') ? DIR_WS_CATALOG : '';
+	}
+	
+	
+	/**
+	 * Returns the complete URL of the shop.
+	 *
+	 * @return string
+	 */
+	public function getShopUrl()
+	{
+		return $this->getHttpServer() . $this->getShopDirectory();
+	}
+	
+	
+	/**
+	 * Returns the shop key of the shop.
+	 *
+	 * @return string
+	 */
+	public function getShopKey()
+	{
+		return defined('GAMBIO_SHOP_KEY') ? GAMBIO_SHOP_KEY : '';
+	}
+	
+	
+	/**
+	 * Returns the default language of the shop.
+	 *
+	 * @return string
+	 */
+	public function getDefaultLanguage()
+	{
+		return defined('DEFAULT_LANGUAGE') ? DEFAULT_LANGUAGE : 'en';
+	}
+	
+	
+	/**
+	 * Returns the timeout time for curl requests regarding the Gambio Hub.
+	 *
 	 * @return array|bool|null
 	 */
 	public function getGambioHubCurlTimeout()
@@ -109,6 +118,8 @@ class Settings
 	
 	
 	/**
+	 * Returns the URL for curl requests to the Gambio Hub.
+	 *
 	 * @return string
 	 */
 	public function getGambioHubUrl()
@@ -118,6 +129,8 @@ class Settings
 	
 	
 	/**
+	 * Returns the URL for curl requests to Gambio Hub Config.
+	 *
 	 * @return string
 	 */
 	public function getGambioHubConfigUrl()
@@ -127,6 +140,8 @@ class Settings
 	
 	
 	/**
+	 * Returns the hub client key of the shop.
+	 *
 	 * @return string
 	 */
 	public function getHubClientKey()

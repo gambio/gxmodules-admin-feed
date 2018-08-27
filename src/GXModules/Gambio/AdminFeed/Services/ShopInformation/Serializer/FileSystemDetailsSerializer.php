@@ -21,6 +21,8 @@ use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\FileSystemDetails;
 class FileSystemDetailsSerializer
 {
 	/**
+	 * Serializes a given FileSystemDetails instance.
+	 *
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\FileSystemDetails $fileSystemDetails
 	 *
 	 * @return array
@@ -41,6 +43,8 @@ class FileSystemDetailsSerializer
 	
 	
 	/**
+	 * Returns a new FileSystemDetails instance by using the data of a given array or json strings.
+	 *
 	 * @param string|array $json
 	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\FileSystemDetails

@@ -14,9 +14,9 @@ namespace Gambio\AdminFeed\Services\ShopInformation\Repositories;
 use Gambio\AdminFeed\Services\ShopInformation\Mapper\MerchantDetailsMapper;
 
 /**
- * Interface MerchantDetailsRepository
+ * Class MerchantDetailsRepository
  *
- * @package Gambio\AdminFeed\Services\ShopInformation\Repositories\Interfaces
+ * @package Gambio\AdminFeed\Services\ShopInformation\Repositories
  */
 class MerchantDetailsRepository
 {
@@ -38,6 +38,8 @@ class MerchantDetailsRepository
 	
 	
 	/**
+	 * Returns the merchant details.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MerchantDetails
 	 */
 	public function getMerchantDetails()

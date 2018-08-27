@@ -21,6 +21,8 @@ use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails;
 class ShopDetailsSerializer
 {
 	/**
+	 * Serializes a given ShopDetails instance.
+	 *
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails $shopDetails
 	 *
 	 * @return array
@@ -43,6 +45,8 @@ class ShopDetailsSerializer
 	
 	
 	/**
+	 * Returns a new ShopDetails instance by using the data of a given array or json strings.
+	 *
 	 * @param string|array $json
 	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails

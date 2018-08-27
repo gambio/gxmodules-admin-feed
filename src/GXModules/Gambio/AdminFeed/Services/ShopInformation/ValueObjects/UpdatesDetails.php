@@ -45,10 +45,12 @@ class UpdatesDetails
 	
 	
 	/**
+	 * Creates and returns a new UpdatesDetails instance.
+	 *
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\UpdateDetailsCollection $installed
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\UpdateDetailsCollection $downloaded
 	 *
-	 * @return self
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdatesDetails
 	 */
 	static function create(UpdateDetailsCollection $installed, UpdateDetailsCollection $downloaded)
 	{
@@ -57,6 +59,8 @@ class UpdatesDetails
 	
 	
 	/**
+	 * Returns a collection of installed updates.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\Collections\UpdateDetailsCollection
 	 */
 	public function installed()
@@ -66,6 +70,8 @@ class UpdatesDetails
 	
 	
 	/**
+	 * Returns a collection of updates, that had been downloaded with the AutoUpdater but not yet installed.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\Collections\UpdateDetailsCollection
 	 */
 	public function downloaded()

@@ -30,7 +30,7 @@ class UpdatesDetailsMapper
 	
 	
 	/**
-	 * UpdateDetailsMapper constructor.
+	 * UpdatesDetailsMapper constructor.
 	 *
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Reader\UpdatesDetailsReader $reader
 	 */
@@ -41,6 +41,8 @@ class UpdatesDetailsMapper
 	
 	
 	/**
+	 * Returns the updates details.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdatesDetails
 	 */
 	public function getUpdatesDetails()
@@ -61,7 +63,8 @@ class UpdatesDetailsMapper
 		$installedUpdates = [];
 		foreach($this->reader->getInstalledUpdatesData() as $updateData)
 		{
-			$installedUpdates[] = new UpdateDetails($updateData['name'], $updateData['version'], $updateData['installation_date']);
+			$installedUpdates[] = new UpdateDetails($updateData['name'], $updateData['version'],
+			                                        $updateData['installation_date']);
 		}
 		
 		return new UpdateDetailsCollection($installedUpdates);

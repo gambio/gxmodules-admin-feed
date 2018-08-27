@@ -35,9 +35,11 @@ class UpdateDetails
 	
 	
 	/**
-	 * @param string $name
-	 * @param string $version
-	 * @param string $installationDate
+	 * UpdateDetails constructor.
+	 *
+	 * @param $name
+	 * @param $version
+	 * @param $installationDate
 	 */
 	public function __construct($name, $version, $installationDate)
 	{
@@ -48,11 +50,13 @@ class UpdateDetails
 	
 	
 	/**
+	 * Creates and returns a new UpdateDetails instance.
+	 *
 	 * @param string $name
 	 * @param string $version
 	 * @param string $installationDate
 	 *
-	 * @return self
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdateDetails
 	 */
 	static function create($name, $version, $installationDate)
 	{
@@ -70,6 +74,8 @@ class UpdateDetails
 	
 	
 	/**
+	 * Returns the name of the update.
+	 *
 	 * @return string
 	 */
 	public function name()
@@ -79,6 +85,8 @@ class UpdateDetails
 	
 	
 	/**
+	 * Returns the version of the update.
+	 *
 	 * @return string
 	 */
 	public function version()
@@ -88,6 +96,8 @@ class UpdateDetails
 	
 	
 	/**
+	 * Returns the installation date of the update.
+	 *
 	 * @return string
 	 */
 	public function installationDate()

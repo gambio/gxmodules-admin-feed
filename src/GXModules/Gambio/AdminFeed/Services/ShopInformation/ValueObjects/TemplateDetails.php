@@ -35,9 +35,11 @@ class TemplateDetails
 	
 	
 	/**
+	 * TemplateDetails constructor.
+	 *
 	 * @param array  $available
 	 * @param string $selected
-	 * @param string $configuration
+	 * @param string $version
 	 */
 	public function __construct(array $available, $selected, $version)
 	{
@@ -48,11 +50,13 @@ class TemplateDetails
 	
 	
 	/**
+	 * Creates and returns a new TemplateDetails instance.
+	 *
 	 * @param array  $available
 	 * @param string $selected
 	 * @param string $version
 	 *
-	 * @return self
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\TemplateDetails
 	 */
 	static function create(array $available, $selected, $version)
 	{
@@ -61,6 +65,8 @@ class TemplateDetails
 	
 	
 	/**
+	 * Returns a list of available templates.
+	 *
 	 * @return array
 	 */
 	public function available()
@@ -70,6 +76,8 @@ class TemplateDetails
 	
 	
 	/**
+	 * Returns the name of the active template.
+	 *
 	 * @return string
 	 */
 	public function selected()
@@ -79,6 +87,8 @@ class TemplateDetails
 	
 	
 	/**
+	 * Returns the version of the active template.
+	 *
 	 * @return array
 	 */
 	public function version()

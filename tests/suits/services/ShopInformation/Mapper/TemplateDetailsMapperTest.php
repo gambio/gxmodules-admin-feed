@@ -83,8 +83,8 @@ class TemplateDetailsMapperTest extends TestCase
 	{
 		$reader = $this->createMock(TemplateDetailsReader::class);
 		$reader->method('getAvailableTemplates')->willReturn($this->available);
-		$reader->method('getSelectedTemplate')->willReturn($this->selected);
-		$reader->method('getSelectedTemplateVersion')->willReturn($this->version);
+		$reader->method('getActiveTemplate')->willReturn($this->selected);
+		$reader->method('getActiveTemplateVersion')->willReturn($this->version);
 		
 		return $reader;
 	}

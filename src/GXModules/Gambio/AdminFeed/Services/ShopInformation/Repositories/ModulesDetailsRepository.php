@@ -14,9 +14,9 @@ namespace Gambio\AdminFeed\Services\ShopInformation\Repositories;
 use Gambio\AdminFeed\Services\ShopInformation\Mapper\ModulesDetailsMapper;
 
 /**
- * Interface ModulesDetailsRepository
+ * Class ModulesDetailsRepository
  *
- * @package Gambio\AdminFeed\Services\ShopInformation\Repositories\Interfaces
+ * @package Gambio\AdminFeed\Services\ShopInformation\Repositories
  */
 class ModulesDetailsRepository
 {
@@ -38,6 +38,8 @@ class ModulesDetailsRepository
 	
 	
 	/**
+	 * Returns the modules details.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModulesDetails
 	 */
 	public function getModulesDetails()

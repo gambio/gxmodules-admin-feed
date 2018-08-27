@@ -92,6 +92,8 @@ class ShopInformation
 	
 	
 	/**
+	 * Creates and returns a new ShopInformation instance.
+	 *
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails       $shop
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ServerDetails     $server
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModulesDetails    $modules
@@ -100,7 +102,7 @@ class ShopInformation
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MerchantDetails   $merchant
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdatesDetails    $updates
 	 *
-	 * @return self
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\Entities\ShopInformation
 	 */
 	static function create(ShopDetails $shop,
 	                       ServerDetails $server,
@@ -115,6 +117,8 @@ class ShopInformation
 	
 	
 	/**
+	 * Returns the shop details.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails
 	 */
 	public function shop()
@@ -124,6 +128,8 @@ class ShopInformation
 	
 	
 	/**
+	 * Returns the server details.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ServerDetails
 	 */
 	public function server()
@@ -133,6 +139,8 @@ class ShopInformation
 	
 	
 	/**
+	 * Returns the modules details.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModulesDetails
 	 */
 	public function modules()
@@ -142,6 +150,8 @@ class ShopInformation
 	
 	
 	/**
+	 * Returns the template details.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\TemplateDetails
 	 */
 	public function templates()
@@ -151,6 +161,8 @@ class ShopInformation
 	
 	
 	/**
+	 * Returns the filesystem details.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\FileSystemDetails
 	 */
 	public function filesystem()
@@ -160,6 +172,8 @@ class ShopInformation
 	
 	
 	/**
+	 * Returns the merchant details.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MerchantDetails
 	 */
 	public function merchant()
@@ -169,6 +183,8 @@ class ShopInformation
 	
 	
 	/**
+	 * Returns the updates details.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdatesDetails
 	 */
 	public function updates()

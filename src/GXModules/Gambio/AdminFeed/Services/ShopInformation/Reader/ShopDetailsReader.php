@@ -46,6 +46,8 @@ class ShopDetailsReader
 	
 	
 	/**
+	 * Returns the shop version.
+	 *
 	 * @return string
 	 */
 	public function getVersion()
@@ -57,6 +59,8 @@ class ShopDetailsReader
 	
 	
 	/**
+	 * Returns the shop URL.
+	 *
 	 * @return string
 	 */
 	public function getUrl()
@@ -66,6 +70,8 @@ class ShopDetailsReader
 	
 	
 	/**
+	 * Returns the shop key.
+	 *
 	 * @return string
 	 */
 	public function getKey()
@@ -75,6 +81,8 @@ class ShopDetailsReader
 	
 	
 	/**
+	 * Returns a list of available languages in the shop.
+	 *
 	 * @return array
 	 */
 	public function getLanguages()
@@ -97,6 +105,8 @@ class ShopDetailsReader
 	
 	
 	/**
+	 * Returns the default language of the shop.
+	 *
 	 * @return string
 	 */
 	public function getDefaultLanguage()
@@ -106,6 +116,8 @@ class ShopDetailsReader
 	
 	
 	/**
+	 * Returns a list of available countries in the shop.
+	 *
 	 * @return array
 	 */
 	public function getCountries()
@@ -128,6 +140,8 @@ class ShopDetailsReader
 	
 	
 	/**
+	 * Returns the name of the shop.
+	 *
 	 * @return string
 	 */
 	public function getName()
@@ -143,6 +157,8 @@ class ShopDetailsReader
 	
 	
 	/**
+	 * Returns the owner of the shop.
+	 *
 	 * @return string
 	 */
 	public function getOwner()

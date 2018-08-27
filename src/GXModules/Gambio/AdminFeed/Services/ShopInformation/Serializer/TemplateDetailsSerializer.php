@@ -21,6 +21,8 @@ use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\TemplateDetails;
 class TemplateDetailsSerializer
 {
 	/**
+	 * Serializes a given TemplateDetails instance.
+	 *
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\TemplateDetails $templateDetails
 	 *
 	 * @return array
@@ -38,6 +40,8 @@ class TemplateDetailsSerializer
 	
 	
 	/**
+	 * Returns a new TemplateDetails instance by using the data of a given array or json strings.
+	 *
 	 * @param string|array $json
 	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\TemplateDetails

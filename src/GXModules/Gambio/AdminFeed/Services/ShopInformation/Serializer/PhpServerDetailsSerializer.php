@@ -21,6 +21,8 @@ use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\PhpServerDetails;
 class PhpServerDetailsSerializer
 {
 	/**
+	 * Serializes a given PhpServerDetails instance.
+	 *
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\PhpServerDetails $phpServerDetails
 	 *
 	 * @return array
@@ -38,6 +40,8 @@ class PhpServerDetailsSerializer
 	
 	
 	/**
+	 * Returns a new PhpServerDetails instance by using the data of a given array or json strings.
+	 *
 	 * @param string|array $json
 	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\PhpServerDetails

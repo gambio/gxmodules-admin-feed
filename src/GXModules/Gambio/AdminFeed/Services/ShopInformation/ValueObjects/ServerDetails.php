@@ -40,6 +40,8 @@ class ServerDetails
 	
 	
 	/**
+	 * ServerDetails constructor.
+	 *
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\PhpServerDetails   $php
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MysqlServerDetails $mysql
 	 * @param string                                                                     $webserver
@@ -55,12 +57,14 @@ class ServerDetails
 	
 	
 	/**
+	 * Creates and returns a new ServerDetails instance.
+	 *
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\PhpServerDetails   $php
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MysqlServerDetails $mysql
 	 * @param string                                                                     $webserver
 	 * @param string                                                                     $os
 	 *
-	 * @return self
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ServerDetails
 	 */
 	static function create(PhpServerDetails $php, MysqlServerDetails $mysql, $webserver, $os)
 	{
@@ -69,6 +73,8 @@ class ServerDetails
 	
 	
 	/**
+	 * Returns the php details.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\PhpServerDetails
 	 */
 	public function php()
@@ -78,6 +84,8 @@ class ServerDetails
 	
 	
 	/**
+	 * Returns the mysql details.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MysqlServerDetails
 	 */
 	public function mysql()
@@ -87,6 +95,8 @@ class ServerDetails
 	
 	
 	/**
+	 * Returns the software name that is used for the web server.
+	 *
 	 * @return string
 	 */
 	public function webserver()
@@ -96,6 +106,8 @@ class ServerDetails
 	
 	
 	/**
+	 * Returns the name of the operating system.
+	 *
 	 * @return string
 	 */
 	public function os()

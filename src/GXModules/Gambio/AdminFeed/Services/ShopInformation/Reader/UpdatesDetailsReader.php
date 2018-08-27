@@ -29,9 +29,9 @@ class UpdatesDetailsReader
 	
 	
 	/**
-	 * @param \CI_DB_query_builder $db
+	 * UpdatesDetailsReader constructor.
 	 *
-	 * @return self
+	 * @param \CI_DB_query_builder $db
 	 */
 	public function __construct(\CI_DB_query_builder $db)
 	{
@@ -40,6 +40,8 @@ class UpdatesDetailsReader
 	
 	
 	/**
+	 * Returns the installed updates data.
+	 *
 	 * @return array
 	 */
 	public function getInstalledUpdatesData()
@@ -55,6 +57,8 @@ class UpdatesDetailsReader
 	
 	
 	/**
+	 * Returns the downloaded updates data.
+	 *
 	 * @return array
 	 */
 	public function getDownloadedUpdatesData()

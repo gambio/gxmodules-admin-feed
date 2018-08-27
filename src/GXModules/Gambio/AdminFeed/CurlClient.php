@@ -29,6 +29,12 @@ class CurlClient
 	private $responseInformation;
 	
 	
+	/**
+	 * Executes a get request with curl.
+	 *
+	 * @param string $url
+	 * @param array  $options
+	 */
 	public function executeGet($url, $options = [])
 	{
 		$options = array_merge($options, [
@@ -45,7 +51,14 @@ class CurlClient
 	}
 	
 	
-	public function executePost($url, $data, $options = [])
+	/**
+	 * Executes a post request with curl.
+	 *
+	 * @param string $url
+	 * @param array  $data
+	 * @param array  $options
+	 */
+	public function executePost($url, $data = [], $options = [])
 	{
 		$options = array_merge($options, [
 			CURLOPT_URL            => $url,
@@ -63,6 +76,12 @@ class CurlClient
 	}
 	
 	
+	/**
+	 * Executes a head request with curl.
+	 *
+	 * @param string $url
+	 * @param array  $options
+	 */
 	public function executeHead($url, $options = [])
 	{
 		$options = array_merge($options, [
@@ -82,6 +101,8 @@ class CurlClient
 	
 	
 	/**
+	 * Returns the content of the curl response.
+	 *
 	 * @return string|null
 	 */
 	public function getContent()
@@ -96,6 +117,8 @@ class CurlClient
 	
 	
 	/**
+	 * Returns the status code of the curl response.
+	 *
 	 * @return int|null
 	 */
 	public function getStatusCode()
@@ -110,6 +133,8 @@ class CurlClient
 	
 	
 	/**
+	 * Returns the content type of the curl response.
+	 *
 	 * @return string|null
 	 */
 	public function getContentType()
@@ -124,9 +149,11 @@ class CurlClient
 	
 	
 	/**
-	 * @param null $key
+	 * Returns all or a specific information of the curl response.
 	 *
-	 * @return mixed
+	 * @param string|null $key
+	 *
+	 * @return array|mixed|null
 	 */
 	public function getInformation($key = null)
 	{

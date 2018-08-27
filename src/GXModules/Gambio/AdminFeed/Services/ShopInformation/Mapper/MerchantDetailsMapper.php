@@ -40,6 +40,8 @@ class MerchantDetailsMapper
 	
 	
 	/**
+	 * Returns the merchant details.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MerchantDetails
 	 */
 	public function getMerchantDetails()
@@ -48,8 +50,8 @@ class MerchantDetailsMapper
 		                                          $this->reader->getPostalCode(), $this->reader->getCity(),
 		                                          $this->reader->getState(), $this->reader->getCountry());
 		
-		return MerchantDetails::create($this->reader->getCompany(), $this->reader->getFirstname(),
-		                               $this->reader->getLastname(), $address, $this->reader->getTelefon(),
-		                               $this->reader->getTelefax(), $this->reader->getEmail());
+		return MerchantDetails::create($this->reader->getCompany(), $this->reader->getFirstName(),
+		                               $this->reader->getLastName(), $address, $this->reader->getPhone(),
+		                               $this->reader->getFax(), $this->reader->getEmail());
 	}
 }

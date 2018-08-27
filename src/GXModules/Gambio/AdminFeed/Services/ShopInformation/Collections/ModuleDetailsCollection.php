@@ -41,9 +41,11 @@ class ModuleDetailsCollection implements \IteratorAggregate, \Countable
 	
 	
 	/**
+	 * Creates and returns a new ModuledetailsCollection instance.
+	 *
 	 * @param array $items
 	 *
-	 * @return self
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection
 	 */
 	static function create(array $items = [])
 	{
@@ -52,6 +54,8 @@ class ModuleDetailsCollection implements \IteratorAggregate, \Countable
 	
 	
 	/**
+	 * Returns a list of all contained collection items.
+	 *
 	 * @return array
 	 */
 	public function items()
@@ -61,6 +65,8 @@ class ModuleDetailsCollection implements \IteratorAggregate, \Countable
 	
 	
 	/**
+	 * Returns iterator for this collection.
+	 *
 	 * @return \ArrayIterator|\Traversable
 	 */
 	public function getIterator()
@@ -70,6 +76,8 @@ class ModuleDetailsCollection implements \IteratorAggregate, \Countable
 	
 	
 	/**
+	 * Returns the number of contained items.
+	 *
 	 * @return int
 	 */
 	public function count()
@@ -79,6 +87,8 @@ class ModuleDetailsCollection implements \IteratorAggregate, \Countable
 	
 	
 	/**
+	 * Adds an item to this collection.
+	 *
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModuleDetails $item
 	 */
 	public function add(ModuleDetails $item)

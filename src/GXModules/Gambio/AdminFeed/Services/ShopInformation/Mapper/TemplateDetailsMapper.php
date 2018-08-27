@@ -39,11 +39,13 @@ class TemplateDetailsMapper
 	
 	
 	/**
+	 * Returns the template details.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\TemplateDetails
 	 */
 	public function getTemplateDetails()
 	{
-		return new TemplateDetails($this->reader->getAvailableTemplates(), $this->reader->getSelectedTemplate(),
-		                           $this->reader->getSelectedTemplateVersion());
+		return new TemplateDetails($this->reader->getAvailableTemplates(), $this->reader->getActiveTemplate(),
+		                           $this->reader->getActiveTemplateVersion());
 	}
 }

@@ -58,7 +58,7 @@ class MerchantReaderTest extends DbTestCase
 	public function shouldReturnExpectedFirstnameData()
 	{
 		$expectedData = 'John';
-		$actualData   = $this->reader->getFirstname();
+		$actualData   = $this->reader->getFirstName();
 		
 		$this->assertSame($expectedData, $actualData);
 	}
@@ -70,7 +70,7 @@ class MerchantReaderTest extends DbTestCase
 	public function shouldReturnExpectedLastnameData()
 	{
 		$expectedData = 'Doe';
-		$actualData   = $this->reader->getLastname();
+		$actualData   = $this->reader->getLastName();
 		
 		$this->assertSame($expectedData, $actualData);
 	}
@@ -174,7 +174,7 @@ class MerchantReaderTest extends DbTestCase
 	public function shouldReturnExpectedTelefonData()
 	{
 		$expectedData = '0421 - 22 34 678';
-		$actualData   = $this->reader->getTelefon();
+		$actualData   = $this->reader->getPhone();
 		
 		$this->assertSame($expectedData, $actualData);
 	}
@@ -186,7 +186,7 @@ class MerchantReaderTest extends DbTestCase
 	public function shouldReturnExpectedTelefaxData()
 	{
 		$expectedData = '0421 - 123456789';
-		$actualData   = $this->reader->getTelefax();
+		$actualData   = $this->reader->getFax();
 		
 		$this->assertSame($expectedData, $actualData);
 	}

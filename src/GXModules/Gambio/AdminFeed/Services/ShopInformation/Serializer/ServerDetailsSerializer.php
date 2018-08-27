@@ -46,6 +46,8 @@ class ServerDetailsSerializer
 	
 	
 	/**
+	 * Serializes a given ServerDetails instance.
+	 *
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ServerDetails $serverDetails
 	 *
 	 * @return array
@@ -64,6 +66,8 @@ class ServerDetailsSerializer
 	
 	
 	/**
+	 * Returns a new ServerDetails instance by using the data of a given array or json strings.
+	 *
 	 * @param string|array $json
 	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ServerDetails

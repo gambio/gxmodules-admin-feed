@@ -46,7 +46,7 @@ class FileSystemDetailsReader
 		                        $this->searchForUsermods($this->settings->getBaseDirectory() . 'admin/javascript/'),
 		                        $this->searchForUsermods($this->settings->getBaseDirectory() . 'gm/javascript/'),
 		                        $this->searchForUsermods($this->settings->getBaseDirectory() . 'templates/'
-		                                                 . $this->settings->getCurrentTemplate() . '/'),
+		                                                 . $this->settings->getActiveTemplate() . '/'),
 		                        $this->searchForUsermods($this->settings->getBaseDirectory()
 		                                                 . 'templates/MobileCandy/'));
 		

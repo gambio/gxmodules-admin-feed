@@ -35,6 +35,8 @@ class PhpServerDetails
 	
 	
 	/**
+	 * PhpServerDetails constructor.
+	 *
 	 * @param string $version
 	 * @param array  $extensions
 	 * @param array  $configuration
@@ -50,11 +52,13 @@ class PhpServerDetails
 	
 	
 	/**
+	 * Creates and returns a new PhpServerDetails instance.
+	 *
 	 * @param string $version
 	 * @param array  $extensions
 	 * @param array  $configuration
 	 *
-	 * @return self
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\PhpServerDetails
 	 */
 	static function create($version,
 	                       array $extensions,
@@ -65,6 +69,8 @@ class PhpServerDetails
 	
 	
 	/**
+	 * Returns the used php version.
+	 *
 	 * @return string
 	 */
 	public function version()
@@ -74,6 +80,8 @@ class PhpServerDetails
 	
 	
 	/**
+	 * Returns a list of available php extensions.
+	 *
 	 * @return array
 	 */
 	public function extensions()
@@ -83,6 +91,8 @@ class PhpServerDetails
 	
 	
 	/**
+	 * Returns a list of the used php configuration.
+	 *
 	 * @return array
 	 */
 	public function configuration()

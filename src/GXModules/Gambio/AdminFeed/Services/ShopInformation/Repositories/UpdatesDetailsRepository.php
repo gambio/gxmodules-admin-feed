@@ -14,9 +14,9 @@ namespace Gambio\AdminFeed\Services\ShopInformation\Repositories;
 use Gambio\AdminFeed\Services\ShopInformation\Mapper\UpdatesDetailsMapper;
 
 /**
- * Interface UpdatesDetailsRepository
+ * Class UpdatesDetailsRepository
  *
- * @package Gambio\AdminFeed\Services\ShopInformation\Repositories\Interfaces
+ * @package Gambio\AdminFeed\Services\ShopInformation\Repositories
  */
 class UpdatesDetailsRepository
 {
@@ -38,6 +38,8 @@ class UpdatesDetailsRepository
 	
 	
 	/**
+	 * Returns the updates details.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdatesDetails
 	 */
 	public function getUpdatesDetails()

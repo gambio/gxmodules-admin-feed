@@ -27,7 +27,7 @@ class UpdateDetailsCollection implements \IteratorAggregate, \Countable
 	
 	
 	/**
-	 * ModuleDetailsCollection constructor.
+	 * UpdateDetailsCollection constructor.
 	 *
 	 * @param array $items
 	 */
@@ -41,9 +41,11 @@ class UpdateDetailsCollection implements \IteratorAggregate, \Countable
 	
 	
 	/**
+	 * Creates and returns a new UpdateDetailsCollection instance.
+	 *
 	 * @param array $items
 	 *
-	 * @return self
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\Collections\UpdateDetailsCollection
 	 */
 	static function create(array $items = [])
 	{
@@ -52,6 +54,8 @@ class UpdateDetailsCollection implements \IteratorAggregate, \Countable
 	
 	
 	/**
+	 * Returns a list of all contained collection items.
+	 *
 	 * @return array
 	 */
 	public function items()
@@ -61,6 +65,8 @@ class UpdateDetailsCollection implements \IteratorAggregate, \Countable
 	
 	
 	/**
+	 * Returns iterator for this collection.
+	 *
 	 * @return \ArrayIterator|\Traversable
 	 */
 	public function getIterator()
@@ -70,6 +76,8 @@ class UpdateDetailsCollection implements \IteratorAggregate, \Countable
 	
 	
 	/**
+	 * Returns the number of contained items.
+	 *
 	 * @return int
 	 */
 	public function count()
@@ -79,6 +87,8 @@ class UpdateDetailsCollection implements \IteratorAggregate, \Countable
 	
 	
 	/**
+	 * Adds an item to this collection.
+	 *
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdateDetails $item
 	 */
 	public function add(UpdateDetails $item)

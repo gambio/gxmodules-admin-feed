@@ -33,7 +33,7 @@ class FileSystemDetailsReaderTest extends TestCase
 	{
 		$this->settings = $this->createMock(Settings::class);
 		$this->settings->method('getBaseDirectory')->willReturn(__DIR__ . '/fixtures/file_system_details/shop_files/');
-		$this->settings->method('getCurrentTemplate')->willReturn('Honeygrid');
+		$this->settings->method('getActiveTemplate')->willReturn('Honeygrid');
 		
 		$this->reader = new FileSystemDetailsReader($this->settings);
 	}

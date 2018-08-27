@@ -41,6 +41,8 @@ class ModulesDetailsMapper
 	
 	
 	/**
+	 * returns the modules details.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModulesDetails
 	 */
 	public function getModulesDetails()
@@ -56,6 +58,11 @@ class ModulesDetailsMapper
 	}
 	
 	
+	/**
+	 * @param array $modulesData
+	 *
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection
+	 */
 	private function createCollection($modulesData)
 	{
 		$collection = new ModuleDetailsCollection();

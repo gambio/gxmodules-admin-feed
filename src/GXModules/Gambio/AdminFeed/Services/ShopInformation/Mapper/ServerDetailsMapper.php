@@ -41,6 +41,8 @@ class ServerDetailsMapper
 	
 	
 	/**
+	 * Returns the server details.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ServerDetails
 	 */
 	public function getServerDetails()

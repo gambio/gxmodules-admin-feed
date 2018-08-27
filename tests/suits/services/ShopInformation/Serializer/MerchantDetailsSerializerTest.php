@@ -39,24 +39,24 @@ class MerchantDetailsSerializerTest extends TestCase
 	public function setUp()
 	{
 		$company   = 'Gambio GmbH';
-		$firstname = 'John';
-		$lastname  = 'Doe';
+		$firstName = 'John';
+		$lastName  = 'Doe';
 		$address   = $this->createMock(MerchantAddressDetails::class);
-		$telefon   = '0421 - 22 34 678';
-		$telefax   = '0421 - 123456798';
+		$phone     = '0421 - 22 34 678';
+		$fax       = '0421 - 123456798';
 		$email     = 'admin@shop.de';
 		
 		$this->data = [
 			'company'   => $company,
-			'firstname' => $firstname,
-			'lastname'  => $lastname,
+			'firstName' => $firstName,
+			'lastName'  => $lastName,
 			'address'   => [],
-			'telefon'   => $telefon,
-			'telefax'   => $telefax,
+			'phone'     => $phone,
+			'fax'       => $fax,
 			'email'     => $email,
 		];
 		
-		$this->object = MerchantDetails::create($company, $firstname, $lastname, $address, $telefon, $telefax, $email);
+		$this->object = MerchantDetails::create($company, $firstName, $lastName, $address, $phone, $fax, $email);
 		
 		$merchantAddressDetailsSerializer = $this->createMock(MerchantAddressDetailsSerializer::class);
 		$merchantAddressDetailsSerializer->method('serialize')->willReturn([]);

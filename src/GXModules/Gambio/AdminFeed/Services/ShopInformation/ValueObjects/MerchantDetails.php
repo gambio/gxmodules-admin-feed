@@ -26,12 +26,12 @@ class MerchantDetails
 	/**
 	 * @var string
 	 */
-	private $firstname;
+	private $firstName;
 	
 	/**
 	 * @var string
 	 */
-	private $lastname;
+	private $lastName;
 	
 	/**
 	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MerchantAddressDetails
@@ -41,12 +41,12 @@ class MerchantDetails
 	/**
 	 * @var string
 	 */
-	private $telefon;
+	private $phone;
 	
 	/**
 	 * @var string
 	 */
-	private $telefax;
+	private $fax;
 	
 	/**
 	 * @var string
@@ -58,54 +58,58 @@ class MerchantDetails
 	 * MerchantDetails constructor.
 	 *
 	 * @param string                                                                         $company
-	 * @param string                                                                         $firstname
-	 * @param string                                                                         $lastname
+	 * @param string                                                                         $firstName
+	 * @param string                                                                         $lastName
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MerchantAddressDetails $address
-	 * @param string                                                                         $telefon
-	 * @param string                                                                         $telefax
+	 * @param string                                                                         $phone
+	 * @param string                                                                         $fax
 	 * @param string                                                                         $email
 	 */
 	public function __construct($company,
-	                            $firstname,
-	                            $lastname,
+	                            $firstName,
+	                            $lastName,
 	                            MerchantAddressDetails $address,
-	                            $telefon,
-	                            $telefax,
+	                            $phone,
+	                            $fax,
 	                            $email)
 	{
 		$this->company   = $company;
-		$this->firstname = $firstname;
-		$this->lastname  = $lastname;
+		$this->firstName = $firstName;
+		$this->lastName  = $lastName;
 		$this->address   = $address;
-		$this->telefon   = $telefon;
-		$this->telefax   = $telefax;
+		$this->phone     = $phone;
+		$this->fax       = $fax;
 		$this->email     = $email;
 	}
 	
 	
 	/**
+	 * Creates and returns a new MerchantDetails instance.
+	 *
 	 * @param string                                                                         $company
-	 * @param string                                                                         $firstname
-	 * @param string                                                                         $lastname
+	 * @param string                                                                         $firstName
+	 * @param string                                                                         $lastName
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MerchantAddressDetails $address
-	 * @param string                                                                         $telefon
-	 * @param string                                                                         $telefax
+	 * @param string                                                                         $phone
+	 * @param string                                                                         $fax
 	 * @param string                                                                         $email
 	 *
-	 * @return self
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MerchantDetails
 	 */
-	static function create($company, $firstname, $lastname, MerchantAddressDetails $address, $telefon, $telefax, $email)
+	static function create($company, $firstName, $lastName, MerchantAddressDetails $address, $phone, $fax, $email)
 	{
 		if(empty($email))
 		{
 			throw new \InvalidArgumentException('Email can not be empty.');
 		}
 		
-		return new self($company, $firstname, $lastname, $address, $telefon, $telefax, $email);
+		return new self($company, $firstName, $lastName, $address, $phone, $fax, $email);
 	}
 	
 	
 	/**
+	 * Returns the name of the merchants company.
+	 *
 	 * @return string
 	 */
 	public function company()
@@ -115,24 +119,30 @@ class MerchantDetails
 	
 	
 	/**
+	 * Returns the first name of the merchant.
+	 *
 	 * @return string
 	 */
-	public function firstname()
+	public function firstName()
 	{
-		return $this->firstname;
+		return $this->firstName;
 	}
 	
 	
 	/**
+	 * Returns the last name of the merchant.
+	 *
 	 * @return string
 	 */
-	public function lastname()
+	public function lastName()
 	{
-		return $this->lastname;
+		return $this->lastName;
 	}
 	
 	
 	/**
+	 * Returns the address details of the merchant.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MerchantAddressDetails
 	 */
 	public function address()
@@ -142,24 +152,30 @@ class MerchantDetails
 	
 	
 	/**
+	 * Returns the phone number of the merchant.
+	 *
 	 * @return string
 	 */
-	public function telefon()
+	public function phone()
 	{
-		return $this->telefon;
+		return $this->phone;
 	}
 	
 	
 	/**
+	 * Returns the fax number of the merchant.
+	 *
 	 * @return string
 	 */
-	public function telefax()
+	public function fax()
 	{
-		return $this->telefax;
+		return $this->fax;
 	}
 	
 	
 	/**
+	 * Returns the email address of the merchant.
+	 *
 	 * @return string
 	 */
 	public function email()

@@ -21,6 +21,8 @@ use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MerchantAddressDetail
 class MerchantAddressDetailsSerializer
 {
 	/**
+	 * Serializes a given MerchantAddressDetails instance.
+	 *
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MerchantAddressDetails $merchantAddressDetails
 	 *
 	 * @return array
@@ -41,6 +43,8 @@ class MerchantAddressDetailsSerializer
 	
 	
 	/**
+	 * Returns a new MerchantAddressDetails instance by using the data of a given array or json strings.
+	 *
 	 * @param string|array $json
 	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MerchantAddressDetails

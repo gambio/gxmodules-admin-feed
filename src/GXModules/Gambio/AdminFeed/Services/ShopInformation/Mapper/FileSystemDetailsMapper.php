@@ -39,6 +39,8 @@ class FileSystemDetailsMapper
 	
 	
 	/**
+	 * Returns the file system details.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\FileSystemDetails
 	 */
 	public function getFileSystemDetails()

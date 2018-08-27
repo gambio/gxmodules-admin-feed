@@ -86,6 +86,8 @@ class ShopInformationRepository
 	
 	
 	/**
+	 * Returns the shop information.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\Entities\ShopInformation
 	 */
 	public function getShopInformation()
@@ -97,6 +99,8 @@ class ShopInformationRepository
 	
 	
 	/**
+	 * Returns the shop details.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails
 	 */
 	public function getShopDetails()
@@ -106,6 +110,8 @@ class ShopInformationRepository
 	
 	
 	/**
+	 * Returns the server details.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ServerDetails
 	 */
 	public function getServerDetails()
@@ -115,6 +121,8 @@ class ShopInformationRepository
 	
 	
 	/**
+	 * Returns the modules details.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModulesDetails
 	 */
 	public function getModulesDetails()
@@ -124,6 +132,8 @@ class ShopInformationRepository
 	
 	
 	/**
+	 * Returns templates details.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\TemplateDetails
 	 */
 	public function getTemplateDetails()
@@ -133,6 +143,8 @@ class ShopInformationRepository
 	
 	
 	/**
+	 * Returns the file system details.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\FileSystemDetails
 	 */
 	public function getFileSystemDetails()
@@ -142,6 +154,8 @@ class ShopInformationRepository
 	
 	
 	/**
+	 * Returns the merchant details.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MerchantDetails
 	 */
 	public function getMerchantDetails()
@@ -151,6 +165,8 @@ class ShopInformationRepository
 	
 	
 	/**
+	 * Returns the updates details.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdatesDetails
 	 */
 	public function getUpdatesDetails()

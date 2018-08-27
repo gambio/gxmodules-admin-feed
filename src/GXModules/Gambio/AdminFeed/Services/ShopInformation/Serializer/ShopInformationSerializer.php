@@ -88,6 +88,8 @@ class ShopInformationSerializer
 	
 	
 	/**
+	 * Serializes a given ShopInformation instance.
+	 *
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Entities\ShopInformation $shopInformation
 	 *
 	 * @return array
@@ -109,6 +111,8 @@ class ShopInformationSerializer
 	
 	
 	/**
+	 * Returns a new ShopInformation instance by using the data of a given array or json strings.
+	 *
 	 * @param string|array $json
 	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\Entities\ShopInformation

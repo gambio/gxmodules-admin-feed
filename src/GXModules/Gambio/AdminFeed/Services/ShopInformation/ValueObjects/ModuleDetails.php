@@ -35,6 +35,8 @@ class ModuleDetails
 	
 	
 	/**
+	 * ModuleDetails constructor.
+	 *
 	 * @param string    $name
 	 * @param bool      $installed
 	 * @param bool|null $enabled
@@ -48,11 +50,13 @@ class ModuleDetails
 	
 	
 	/**
+	 * Creates and returns a new ModuleDetails instance.
+	 *
 	 * @param string    $name
 	 * @param bool      $installed
 	 * @param bool|null $enabled
 	 *
-	 * @return self
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModuleDetails
 	 */
 	static function create($name, $installed, $enabled)
 	{
@@ -66,6 +70,8 @@ class ModuleDetails
 	
 	
 	/**
+	 * Returns the name of the module.
+	 *
 	 * @return string
 	 */
 	public function name()
@@ -75,7 +81,9 @@ class ModuleDetails
 	
 	
 	/**
-	 * @return bool
+	 * Returns the installed status of the module.
+	 *
+	 * @return bool Returns true, if the module is installed, otherwise false will be returned.
 	 */
 	public function installed()
 	{
@@ -84,7 +92,10 @@ class ModuleDetails
 	
 	
 	/**
-	 * @return bool|null
+	 * Returns the enabled status of the mdoule.
+	 *
+	 * @return bool|null Null will be returned if its a module center module. For all other modules true will be
+	 *                   returned, if the module is enabled and false will be returned, if the module is not enabled.
 	 */
 	public function enabled()
 	{

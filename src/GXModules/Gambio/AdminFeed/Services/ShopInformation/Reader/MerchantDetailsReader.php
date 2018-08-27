@@ -29,9 +29,9 @@ class MerchantDetailsReader
 	
 	
 	/**
-	 * @param \CI_DB_query_builder $db
+	 * MerchantDetailsReader constructor.
 	 *
-	 * @return self
+	 * @param \CI_DB_query_builder $db
 	 */
 	public function __construct(\CI_DB_query_builder $db)
 	{
@@ -40,6 +40,8 @@ class MerchantDetailsReader
 	
 	
 	/**
+	 * Returns the company of the merchant.
+	 *
 	 * @return string
 	 */
 	public function getCompany()
@@ -55,9 +57,11 @@ class MerchantDetailsReader
 	
 	
 	/**
+	 * Returns the first name of the merchant.
+	 *
 	 * @return string
 	 */
-	public function getFirstname()
+	public function getFirstName()
 	{
 		$configuration = $this->db->select('configuration_value')
 		                          ->from('configuration')
@@ -70,9 +74,10 @@ class MerchantDetailsReader
 	
 	
 	/**
+	 * Returns the last name of the merchant.
 	 * @return string
 	 */
-	public function getLastname()
+	public function getLastName()
 	{
 		$configuration = $this->db->select('configuration_value')
 		                          ->from('configuration')
@@ -85,6 +90,8 @@ class MerchantDetailsReader
 	
 	
 	/**
+	 * Returns the street of the merchants address.
+	 *
 	 * @return string
 	 */
 	public function getStreet()
@@ -100,6 +107,8 @@ class MerchantDetailsReader
 	
 	
 	/**
+	 * Returns the house number of the merchants address.
+	 *
 	 * @return string
 	 */
 	public function getHouseNumber()
@@ -115,6 +124,8 @@ class MerchantDetailsReader
 	
 	
 	/**
+	 * returns the postal code of the merchants address.
+	 *
 	 * @return string
 	 */
 	public function getPostalCode()
@@ -130,6 +141,8 @@ class MerchantDetailsReader
 	
 	
 	/**
+	 * Returns the city of the merchants address.
+	 *
 	 * @return string
 	 */
 	public function getCity()
@@ -145,6 +158,8 @@ class MerchantDetailsReader
 	
 	
 	/**
+	 * Returns the state of the merchants address.
+	 *
 	 * @return string
 	 */
 	public function getState()
@@ -171,6 +186,8 @@ class MerchantDetailsReader
 	
 	
 	/**
+	 * Returns the country of the merchants address.
+	 *
 	 * @return string
 	 */
 	public function getCountry()
@@ -209,9 +226,11 @@ class MerchantDetailsReader
 	
 	
 	/**
+	 * Returns the phone number of the merchant.
+	 *
 	 * @return string
 	 */
-	public function getTelefon()
+	public function getPhone()
 	{
 		$configuration = $this->db->select('configuration_value')
 		                          ->from('configuration')
@@ -224,9 +243,11 @@ class MerchantDetailsReader
 	
 	
 	/**
+	 * Returns the fax number of the merchant.
+	 *
 	 * @return string
 	 */
-	public function getTelefax()
+	public function getFax()
 	{
 		$configuration = $this->db->select('configuration_value')
 		                          ->from('configuration')
@@ -239,6 +260,8 @@ class MerchantDetailsReader
 	
 	
 	/**
+	 * Returns the email address of the merchant.
+	 *
 	 * @return string
 	 */
 	public function getEmail()

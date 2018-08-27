@@ -43,6 +43,11 @@ class RequestControl
 	private $curl;
 	
 	
+	/**
+	 * RequestControl constructor.
+	 *
+	 * @param \Gambio\AdminFeed\CurlClient $curl
+	 */
 	public function __construct(CurlClient $curl)
 	{
 		$this->curl = $curl;
@@ -50,6 +55,8 @@ class RequestControl
 	
 	
 	/**
+	 * Creates a new request token and returns it.
+	 *
 	 * @return string
 	 */
 	public function createRequestToken()
@@ -79,9 +86,11 @@ class RequestControl
 	
 	
 	/**
+	 * Checks a given token and tries to verify it.
+	 *
 	 * @param string $token
 	 *
-	 * @return bool
+	 * @return bool Returns true, if the given token is valid, otherwise false will be returned.
 	 */
 	public function verifyRequestToken($token)
 	{
@@ -92,9 +101,11 @@ class RequestControl
 	
 	
 	/**
+	 * Checks a given ip and tries to verify it.
+	 *
 	 * @param string $ip
 	 *
-	 * @return bool
+	 * @return bool Returns true, if the given ip is valid, otherwise false will be returned.
 	 */
 	public function verifyRequestIp($ip)
 	{
@@ -135,6 +146,8 @@ class RequestControl
 	
 	
 	/**
+	 * Returns all active and existing request tokens.
+	 *
 	 * @return array
 	 */
 	private function getRequestTokens()
@@ -162,6 +175,8 @@ class RequestControl
 	
 	
 	/**
+	 * Deletes old request tokens.
+	 *
 	 * @return void
 	 */
 	private function deleteOldRequestTokens()

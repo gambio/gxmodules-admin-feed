@@ -60,6 +60,8 @@ class ShopDetails
 	
 	
 	/**
+	 * ShopDetails constructor.
+	 *
 	 * @param string $name
 	 * @param string $owner
 	 * @param string $version
@@ -90,6 +92,8 @@ class ShopDetails
 	
 	
 	/**
+	 * Creates and returns a new ShopDetails instance.
+	 *
 	 * @param string $name
 	 * @param string $owner
 	 * @param string $version
@@ -99,7 +103,7 @@ class ShopDetails
 	 * @param string $defaultLanguage
 	 * @param array  $countries
 	 *
-	 * @return self
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails
 	 */
 	static function create($name,
 	                       $owner,
@@ -128,6 +132,8 @@ class ShopDetails
 	
 	
 	/**
+	 * Returns the name of the shop.
+	 *
 	 * @return string
 	 */
 	public function name()
@@ -137,6 +143,8 @@ class ShopDetails
 	
 	
 	/**
+	 * Returns the owner of the shop.
+	 *
 	 * @return string
 	 */
 	public function owner()
@@ -146,6 +154,8 @@ class ShopDetails
 	
 	
 	/**
+	 * Returns the version of the shop.
+	 *
 	 * @return string
 	 */
 	public function version()
@@ -155,6 +165,8 @@ class ShopDetails
 	
 	
 	/**
+	 * Returns the url of the shop.
+	 *
 	 * @return string
 	 */
 	public function url()
@@ -164,6 +176,8 @@ class ShopDetails
 	
 	
 	/**
+	 * Returns the shop key of the shop.
+	 *
 	 * @return string
 	 */
 	public function key()
@@ -173,6 +187,8 @@ class ShopDetails
 	
 	
 	/**
+	 * Returns a list of all available languages of the shop.
+	 *
 	 * @return array
 	 */
 	public function languages()
@@ -182,6 +198,8 @@ class ShopDetails
 	
 	
 	/**
+	 * Returns the default language of the shop.
+	 *
 	 * @return string
 	 */
 	public function defaultLanguage()
@@ -191,6 +209,8 @@ class ShopDetails
 	
 	
 	/**
+	 * Returns a list of all available countries of the shop.
+	 *
 	 * @return array
 	 */
 	public function countries()

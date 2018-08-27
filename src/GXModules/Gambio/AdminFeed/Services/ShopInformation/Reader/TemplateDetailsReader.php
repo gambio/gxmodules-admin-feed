@@ -30,9 +30,9 @@ class TemplateDetailsReader
 	
 	
 	/**
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Settings $settings
+	 * TemplateDetailsReader constructor.
 	 *
-	 * @return self
+	 * @param \Gambio\AdminFeed\Services\ShopInformation\Settings $settings
 	 */
 	public function __construct(Settings $settings)
 	{
@@ -41,6 +41,8 @@ class TemplateDetailsReader
 	
 	
 	/**
+	 * Returns a list of available templates.
+	 *
 	 * @return array
 	 */
 	public function getAvailableTemplates()
@@ -55,18 +57,22 @@ class TemplateDetailsReader
 	
 	
 	/**
+	 * Returns the name of the active template.
+	 *
 	 * @return string
 	 */
-	public function getSelectedTemplate()
+	public function getActiveTemplate()
 	{
 		return $this->settings->getActiveTemplate();
 	}
 	
 	
 	/**
+	 * Returns the version of the active template.
+	 *
 	 * @return string
 	 */
-	public function getSelectedTemplateVersion()
+	public function getActiveTemplateVersion()
 	{
 		return $this->settings->getActiveTemplateVersion();
 	}

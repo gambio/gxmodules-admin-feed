@@ -75,8 +75,8 @@ class MerchantDetailsTest extends TestCase
 	{
 		$this->expectException(\InvalidArgumentException::class);
 		
-		MerchantDetails::create($this->company, $this->firstname, $this->lastname,
-		                        $this->address, $this->telefon, $this->telefax, '');
+		MerchantDetails::create($this->company, $this->firstname, $this->lastname, $this->address, $this->telefon,
+		                        $this->telefax, '');
 	}
 	
 	
@@ -94,7 +94,7 @@ class MerchantDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenFirstname()
 	{
-		$this->assertSame($this->merchantDetails->firstname(), $this->firstname);
+		$this->assertSame($this->merchantDetails->firstName(), $this->firstname);
 	}
 	
 	
@@ -103,7 +103,7 @@ class MerchantDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenLastname()
 	{
-		$this->assertSame($this->merchantDetails->lastname(), $this->lastname);
+		$this->assertSame($this->merchantDetails->lastName(), $this->lastname);
 	}
 	
 	
@@ -121,7 +121,7 @@ class MerchantDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenTelefon()
 	{
-		$this->assertSame($this->merchantDetails->telefon(), $this->telefon);
+		$this->assertSame($this->merchantDetails->phone(), $this->telefon);
 	}
 	
 	
@@ -130,7 +130,7 @@ class MerchantDetailsTest extends TestCase
 	 */
 	public function shouldReturnGivenTelefax()
 	{
-		$this->assertSame($this->merchantDetails->telefax(), $this->telefax);
+		$this->assertSame($this->merchantDetails->fax(), $this->telefax);
 	}
 	
 	

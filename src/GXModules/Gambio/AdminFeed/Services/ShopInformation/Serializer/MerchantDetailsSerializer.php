@@ -38,6 +38,8 @@ class MerchantDetailsSerializer
 	
 	
 	/**
+	 * Serializes a given MerchantDetails instance.
+	 *
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MerchantDetails $fileSystemDetails
 	 *
 	 * @return array
@@ -46,11 +48,11 @@ class MerchantDetailsSerializer
 	{
 		$json = [
 			'company'   => $fileSystemDetails->company(),
-			'firstname' => $fileSystemDetails->firstname(),
-			'lastname'  => $fileSystemDetails->lastname(),
+			'firstName' => $fileSystemDetails->firstName(),
+			'lastName'  => $fileSystemDetails->lastName(),
 			'address'   => $this->merchantAddressDetailsSerializer->serialize($fileSystemDetails->address()),
-			'telefon'   => $fileSystemDetails->telefon(),
-			'telefax'   => $fileSystemDetails->telefax(),
+			'phone'     => $fileSystemDetails->phone(),
+			'fax'       => $fileSystemDetails->fax(),
 			'email'     => $fileSystemDetails->email(),
 		];
 		
@@ -59,6 +61,8 @@ class MerchantDetailsSerializer
 	
 	
 	/**
+	 * Returns a new MerchantDetails instance by using the data of a given array or json strings.
+	 *
 	 * @param string|array $json
 	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MerchantDetails
@@ -71,11 +75,11 @@ class MerchantDetailsSerializer
 		}
 		
 		if(!isset($json['company'])
-		   || !isset($json['firstname'])
-		   || !isset($json['lastname'])
+		   || !isset($json['firstName'])
+		   || !isset($json['lastName'])
 		   || !isset($json['address'])
-		   || !isset($json['telefon'])
-		   || !isset($json['telefax'])
+		   || !isset($json['phone'])
+		   || !isset($json['fax'])
 		   || !isset($json['email']))
 		{
 			throw new \InvalidArgumentException('Given argument is invalid. Needed property is missing.');
@@ -83,7 +87,7 @@ class MerchantDetailsSerializer
 		
 		$address = $this->merchantAddressDetailsSerializer->deserialize($json['address']);
 		
-		return MerchantDetails::create($json['company'], $json['firstname'], $json['lastname'], $address,
-		                               $json['telefon'], $json['telefax'], $json['email']);
+		return MerchantDetails::create($json['company'], $json['firstName'], $json['lastName'], $address,
+		                               $json['phone'], $json['fax'], $json['email']);
 	}
 }

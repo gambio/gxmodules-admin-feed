@@ -181,6 +181,8 @@ class ShopInformationFactory
 	
 	
 	/**
+	 * Returns an instance of the shop information service.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ShopInformationService
 	 */
 	public function createService()
@@ -199,6 +201,8 @@ class ShopInformationFactory
 	
 	
 	/**
+	 * Returns an instance of the file system details serializer.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\Serializer\FileSystemDetailsSerializer
 	 */
 	public function createFileSystemDetailsSerializer()
@@ -213,6 +217,8 @@ class ShopInformationFactory
 	
 	
 	/**
+	 * Returns an instance of the merchant address details serializer.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\Serializer\MerchantAddressDetailsSerializer
 	 */
 	public function createMerchantAddressDetailsSerializer()
@@ -227,6 +233,8 @@ class ShopInformationFactory
 	
 	
 	/**
+	 * Returns an instance of the merchant details serializer.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\Serializer\MerchantDetailsSerializer
 	 */
 	public function createMerchantDetailsSerializer()
@@ -241,6 +249,8 @@ class ShopInformationFactory
 	
 	
 	/**
+	 * Returns an instance of the module details serializer.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\Serializer\ModuleDetailsSerializer
 	 */
 	public function createModuleDetailsSerializer()
@@ -255,6 +265,8 @@ class ShopInformationFactory
 	
 	
 	/**
+	 * Returns an instance of the modules details serializer.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\Serializer\ModulesDetailsSerializer
 	 */
 	public function createModulesDetailsSerializer()
@@ -269,6 +281,8 @@ class ShopInformationFactory
 	
 	
 	/**
+	 * Returns an instance of the mysql server details serializer.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\Serializer\MysqlServerDetailsSerializer
 	 */
 	public function createMysqlServerDetailsSerializer()
@@ -283,6 +297,8 @@ class ShopInformationFactory
 	
 	
 	/**
+	 * Returns an instance of the php server details serializer.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\Serializer\PhpServerDetailsSerializer
 	 */
 	public function createPhpServerDetailsSerializer()
@@ -297,6 +313,8 @@ class ShopInformationFactory
 	
 	
 	/**
+	 * Returns an instance of the server details serializer.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\Serializer\ServerDetailsSerializer
 	 */
 	public function createServerDetailsSerializer()
@@ -312,6 +330,8 @@ class ShopInformationFactory
 	
 	
 	/**
+	 * Returns an instance of the shop details serializer.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\Serializer\ShopDetailsSerializer
 	 */
 	public function createShopDetailsSerializer()
@@ -326,6 +346,8 @@ class ShopInformationFactory
 	
 	
 	/**
+	 * Returns an instance of the shop information serializer.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\Serializer\ShopInformationSerializer
 	 */
 	public function createShopInformationSerializer()
@@ -346,6 +368,8 @@ class ShopInformationFactory
 	
 	
 	/**
+	 * Returns an instance of the template details serializer.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\Serializer\TemplateDetailsSerializer
 	 */
 	public function createTemplateDetailsSerializer()
@@ -360,6 +384,8 @@ class ShopInformationFactory
 	
 	
 	/**
+	 * Returns an instance of the update details serializer.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\Serializer\UpdateDetailsSerializer
 	 */
 	public function createUpdateDetailsSerializer()
@@ -374,6 +400,8 @@ class ShopInformationFactory
 	
 	
 	/**
+	 * Returns an instance of the updates details serializer.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\Serializer\UpdatesDetailsSerializer
 	 */
 	public function createUpdatesDetailsSerializer()

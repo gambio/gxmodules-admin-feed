@@ -56,6 +56,8 @@ class ModulesDetailsReader
 	
 	
 	/**
+	 * Returns the hub modules data.
+	 *
 	 * @return array
 	 */
 	public function getHubModulesData()
@@ -81,6 +83,8 @@ class ModulesDetailsReader
 	
 	
 	/**
+	 * Returns the payment modules data.
+	 *
 	 * @return array
 	 */
 	public function getPaymentModulesData()
@@ -104,6 +108,8 @@ class ModulesDetailsReader
 	
 	
 	/**
+	 * Returns the shipping modules data.
+	 *
 	 * @return array
 	 */
 	public function getShippingModulesData()
@@ -127,6 +133,8 @@ class ModulesDetailsReader
 	
 	
 	/**
+	 * Returns the order total modules data.
+	 *
 	 * @return array
 	 */
 	public function getOrderTotalModulesData()
@@ -151,6 +159,8 @@ class ModulesDetailsReader
 	
 	
 	/**
+	 * Returns the module center modules data.
+	 *
 	 * @return array
 	 */
 	public function getModuleCenterModulesData()
@@ -175,7 +185,7 @@ class ModulesDetailsReader
 	 * @param string $module
 	 * @param string $type
 	 *
-	 * @return bool?
+	 * @return bool|null
 	 */
 	private function getModuleStatus($module, $type)
 	{

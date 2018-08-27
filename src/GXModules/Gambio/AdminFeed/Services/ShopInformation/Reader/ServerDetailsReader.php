@@ -36,6 +36,8 @@ class ServerDetailsReader
 	
 	
 	/**
+	 * Returns the php version.
+	 *
 	 * @return string
 	 */
 	public function getPhpVersion()
@@ -45,6 +47,8 @@ class ServerDetailsReader
 	
 	
 	/**
+	 * Returns a list of available php extensions.
+	 *
 	 * @return array
 	 */
 	public function getPhpExtensions()
@@ -54,6 +58,8 @@ class ServerDetailsReader
 	
 	
 	/**
+	 * Returns a list of the used php configuration.
+	 *
 	 * @return array
 	 */
 	public function getPhpConfiguration()
@@ -63,6 +69,8 @@ class ServerDetailsReader
 	
 	
 	/**
+	 * Returns the mysql version.
+	 *
 	 * @return string
 	 */
 	public function getMysqlVersion()
@@ -72,6 +80,8 @@ class ServerDetailsReader
 	
 	
 	/**
+	 * Returns a list of available mysql engines.
+	 *
 	 * @return array
 	 */
 	public function getMysqlEngines()
@@ -89,6 +99,8 @@ class ServerDetailsReader
 	
 	
 	/**
+	 * Returns the default engine of mysql.
+	 *
 	 * @return string
 	 */
 	public function getMysqlDefaultEngine()
@@ -110,6 +122,8 @@ class ServerDetailsReader
 	
 	
 	/**
+	 * Returns the software name that is used for the web server.
+	 *
 	 * @return string
 	 */
 	public function getWebserver()
@@ -119,6 +133,8 @@ class ServerDetailsReader
 	
 	
 	/**
+	 * Returns the name of the operating system.
+	 *
 	 * @return string
 	 */
 	public function getOperatingSystem()

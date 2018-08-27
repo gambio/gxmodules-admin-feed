@@ -35,6 +35,8 @@ class MysqlServerDetails
 	
 	
 	/**
+	 * MysqlServerDetails constructor.
+	 *
 	 * @param string $version
 	 * @param array  $engines
 	 * @param string $defaultEngine
@@ -48,11 +50,13 @@ class MysqlServerDetails
 	
 	
 	/**
+	 * Creates and returns a new MysqlServerDetails instance.
+	 *
 	 * @param string $version
 	 * @param array  $engines
 	 * @param string $defaultEngine
 	 *
-	 * @return self
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MysqlServerDetails
 	 */
 	static function create($version, array $engines, $defaultEngine)
 	{
@@ -61,6 +65,8 @@ class MysqlServerDetails
 	
 	
 	/**
+	 * Returns the mysql version.
+	 *
 	 * @return string
 	 */
 	public function version()
@@ -70,6 +76,8 @@ class MysqlServerDetails
 	
 	
 	/**
+	 * Returns the available mysql engines.
+	 *
 	 * @return array
 	 */
 	public function engines()
@@ -79,6 +87,8 @@ class MysqlServerDetails
 	
 	
 	/**
+	 * Returns the default engine that is used by mysql.
+	 *
 	 * @return string
 	 */
 	public function defaultEngine()

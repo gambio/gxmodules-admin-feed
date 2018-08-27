@@ -58,7 +58,7 @@ class TemplateDetailsReaderTest extends TestCase
 	public function shouldReturnExpectedSelectedTemplateData()
 	{
 		$expectedData = 'Honeygrid';
-		$actualData   = $this->reader->getSelectedTemplate();
+		$actualData   = $this->reader->getActiveTemplate();
 		
 		$this->assertSame($expectedData, $actualData);
 	}
@@ -70,7 +70,7 @@ class TemplateDetailsReaderTest extends TestCase
 	public function shouldReturnExpectedVersionData()
 	{
 		$expectedData = '3.0';
-		$actualData   = $this->reader->getSelectedTemplateVersion();
+		$actualData   = $this->reader->getActiveTemplateVersion();
 		
 		$this->assertSame($expectedData, $actualData);
 	}

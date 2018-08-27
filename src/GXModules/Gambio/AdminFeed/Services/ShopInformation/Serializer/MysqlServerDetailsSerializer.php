@@ -21,6 +21,8 @@ use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MysqlServerDetails;
 class MysqlServerDetailsSerializer
 {
 	/**
+	 * Serializes a given MysqlServerDetails instance.
+	 *
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MysqlServerDetails $mysqlServerDetails
 	 *
 	 * @return array
@@ -38,6 +40,8 @@ class MysqlServerDetailsSerializer
 	
 	
 	/**
+	 * Returns a new MysqlServerDetails instance by using the data of a given array or json strings.
+	 *
 	 * @param string|array $json
 	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MysqlServerDetails

@@ -39,6 +39,8 @@ class UpdatesDetailsSerializer
 	
 	
 	/**
+	 * Serializes a given UpdatesDetails instance.
+	 *
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdatesDetails $updatesDetails
 	 *
 	 * @return array
@@ -67,6 +69,8 @@ class UpdatesDetailsSerializer
 	
 	
 	/**
+	 * Returns a new UpdatesDetails instance by using the data of a given array or json strings.
+	 *
 	 * @param string|array $json
 	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdatesDetails

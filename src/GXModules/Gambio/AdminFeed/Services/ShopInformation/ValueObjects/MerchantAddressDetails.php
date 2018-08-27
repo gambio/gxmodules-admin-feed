@@ -12,7 +12,7 @@
 namespace Gambio\AdminFeed\Services\ShopInformation\ValueObjects;
 
 /**
- * Class MerchantAdressDetails
+ * Class MerchantAddressDetails
  *
  * @package Gambio\AdminFeed\Services\ShopInformation\ValueObjects
  */
@@ -71,6 +71,8 @@ class MerchantAddressDetails
 	
 	
 	/**
+	 * Creates and returns a new MerchantAddressDetails instance.
+	 *
 	 * @param string $street
 	 * @param string $houseNumber
 	 * @param string $postalCode
@@ -78,7 +80,7 @@ class MerchantAddressDetails
 	 * @param string $state
 	 * @param string $country
 	 *
-	 * @return self
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MerchantAddressDetails
 	 */
 	static function create($street, $houseNumber, $postalCode, $city, $state, $country)
 	{
@@ -96,6 +98,8 @@ class MerchantAddressDetails
 	
 	
 	/**
+	 * Returns the street of the merchants address.
+	 *
 	 * @return string
 	 */
 	public function street()
@@ -105,6 +109,8 @@ class MerchantAddressDetails
 	
 	
 	/**
+	 * Returns the house number of the merchants address.
+	 *
 	 * @return string
 	 */
 	public function houseNumber()
@@ -114,6 +120,8 @@ class MerchantAddressDetails
 	
 	
 	/**
+	 * Returns the postal code of the merchants address.
+	 *
 	 * @return string
 	 */
 	public function postalCode()
@@ -123,6 +131,8 @@ class MerchantAddressDetails
 	
 	
 	/**
+	 * Returns the city of the merchants address.
+	 *
 	 * @return string
 	 */
 	public function city()
@@ -132,6 +142,8 @@ class MerchantAddressDetails
 	
 	
 	/**
+	 * Returns the state of the merchants address.
+	 *
 	 * @return string
 	 */
 	public function state()
@@ -141,6 +153,8 @@ class MerchantAddressDetails
 	
 	
 	/**
+	 * Returns the country of the merchants address.
+	 *
 	 * @return string
 	 */
 	public function country()

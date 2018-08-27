@@ -50,12 +50,14 @@ class FileSystemDetails
 	
 	
 	/**
-	 * @param array $usermods
-	 * @param array $gxModules
-	 * @param array $dangerousTools
-	 * @param array $receiptFiles
-	 * @param bool  $globalUsermodDirectoryExists
-	 * @param bool  $upmDirectoryExists
+	 * FileSystemDetails constructor.
+	 *
+	 * @param array  $usermods
+	 * @param array  $gxModules
+	 * @param array  $dangerousTools
+	 * @param array  $receiptFiles
+	 * @param string $globalUsermodDirectoryExists
+	 * @param string $upmDirectoryExists
 	 */
 	public function __construct(array $usermods,
 	                            array $gxModules,
@@ -74,14 +76,16 @@ class FileSystemDetails
 	
 	
 	/**
-	 * @param array $usermods
-	 * @param array $gxModules
-	 * @param array $dangerousTools
-	 * @param array $receiptFiles
-	 * @param bool  $globalUsermodDirectoryExists
-	 * @param bool  $upmDirectoryExists
+	 * Creates and returns a new FileSystemDetails instance.
 	 *
-	 * @return self
+	 * @param array  $usermods
+	 * @param array  $gxModules
+	 * @param array  $dangerousTools
+	 * @param array  $receiptFiles
+	 * @param string $globalUsermodDirectoryExists
+	 * @param string $upmDirectoryExists
+	 *
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\FileSystemDetails
 	 */
 	static function create(array $usermods,
 	                       array $gxModules,
@@ -96,6 +100,8 @@ class FileSystemDetails
 	
 	
 	/**
+	 * Returns a list of user mods in the file system.
+	 *
 	 * @return array
 	 */
 	public function usermods()
@@ -105,6 +111,8 @@ class FileSystemDetails
 	
 	
 	/**
+	 * Returns a list of GXModules directories in the file system.
+	 *
 	 * @return array
 	 */
 	public function gxModules()
@@ -114,6 +122,8 @@ class FileSystemDetails
 	
 	
 	/**
+	 * Returns a list of dangerous tools in the file system.
+	 *
 	 * @return array
 	 */
 	public function dangerousTools()
@@ -123,6 +133,8 @@ class FileSystemDetails
 	
 	
 	/**
+	 * Returns a list of receipt files in the file system.
+	 *
 	 * @return array
 	 */
 	public function receiptFiles()
@@ -132,7 +144,9 @@ class FileSystemDetails
 	
 	
 	/**
-	 * @return bool
+	 * Returns the global user mod directory status.
+	 *
+	 * @return bool Returns true, if the global user mod directory exists, otherwise false will be returned.
 	 */
 	public function globalUsermodDirectoryExists()
 	{
@@ -141,7 +155,9 @@ class FileSystemDetails
 	
 	
 	/**
-	 * @return bool
+	 * Returns the upm directory status.
+	 *
+	 * @return bool Returns true, of the upm directory exists, otherwise false will be returned.
 	 */
 	public function upmDirectoryExists()
 	{

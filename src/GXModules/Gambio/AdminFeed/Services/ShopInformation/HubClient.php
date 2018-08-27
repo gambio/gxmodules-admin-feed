@@ -42,6 +42,7 @@ class HubClient
 	 *
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Settings $settings
 	 * @param \Gambio\AdminFeed\Adapters\GxAdapter                $gxAdapter
+	 * @param \Gambio\AdminFeed\CurlClient                        $curl
 	 */
 	public function __construct(Settings $settings, GxAdapter $gxAdapter, CurlClient $curl)
 	{
@@ -52,6 +53,8 @@ class HubClient
 	
 	
 	/**
+	 * Returns the hub modules data.
+	 *
 	 * @return array
 	 */
 	public function getHubModulesData()

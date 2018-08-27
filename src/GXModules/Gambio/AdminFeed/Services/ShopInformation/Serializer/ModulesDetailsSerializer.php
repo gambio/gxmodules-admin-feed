@@ -39,6 +39,8 @@ class ModulesDetailsSerializer
 	
 	
 	/**
+	 * Serializes a given ModulesDetails instance.
+	 *
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModulesDetails $modulesDetails
 	 *
 	 * @return array
@@ -88,6 +90,8 @@ class ModulesDetailsSerializer
 	
 	
 	/**
+	 * Returns a new ModulesDetails instance by using the data of a given array or json strings.
+	 *
 	 * @param string|array $json
 	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModulesDetails

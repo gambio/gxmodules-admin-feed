@@ -47,6 +47,8 @@ class ModulesDetails
 	
 	
 	/**
+	 * ModulesDetails constructor.
+	 *
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $hub
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $payment
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $shipping
@@ -68,13 +70,15 @@ class ModulesDetails
 	
 	
 	/**
+	 * Creates and returns a new ModulesDetails instance.
+	 *
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $hub
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $payment
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $shipping
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $orderTotal
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $moduleCenter
 	 *
-	 * @return self
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModulesDetails
 	 */
 	static function create(ModuleDetailsCollection $hub,
 	                       ModuleDetailsCollection $payment,
@@ -87,6 +91,8 @@ class ModulesDetails
 	
 	
 	/**
+	 * Returns the hub modules.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection
 	 */
 	public function hub()
@@ -96,6 +102,8 @@ class ModulesDetails
 	
 	
 	/**
+	 * Returns the payment modules.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection
 	 */
 	public function payment()
@@ -105,6 +113,8 @@ class ModulesDetails
 	
 	
 	/**
+	 * Returns the shipping modules.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection
 	 */
 	public function shipping()
@@ -114,6 +124,8 @@ class ModulesDetails
 	
 	
 	/**
+	 * Returns the order total modules.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection
 	 */
 	public function orderTotal()
@@ -123,6 +135,8 @@ class ModulesDetails
 	
 	
 	/**
+	 * Returns the module center modules.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection
 	 */
 	public function moduleCenter()

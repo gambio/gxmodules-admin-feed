@@ -14,9 +14,9 @@ namespace Gambio\AdminFeed\Services\ShopInformation\Repositories;
 use Gambio\AdminFeed\Services\ShopInformation\Mapper\ServerDetailsMapper;
 
 /**
- * Interface ServerDetailsRepository
+ * Class ServerDetailsRepository
  *
- * @package Gambio\AdminFeed\Services\ShopInformation\Repositories\Interfaces
+ * @package Gambio\AdminFeed\Services\ShopInformation\Repositories
  */
 class ServerDetailsRepository
 {
@@ -38,6 +38,8 @@ class ServerDetailsRepository
 	
 	
 	/**
+	 * Returns the server details.
+	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ServerDetails
 	 */
 	public function getServerDetails()
