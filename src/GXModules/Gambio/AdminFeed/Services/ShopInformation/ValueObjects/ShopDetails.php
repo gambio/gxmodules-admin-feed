@@ -120,11 +120,11 @@ class ShopDetails
 		}
 		elseif(empty($url))
 		{
-			throw new \InvalidArgumentException('Url can not be empty.');
+			throw new \InvalidArgumentException('URL can not be empty.');
 		}
 		elseif(substr($url, 0, 7) !== 'http://' && substr($url, 0, 8) !== 'https://')
 		{
-			throw new \InvalidArgumentException('Url is invalid.');
+			throw new \InvalidArgumentException('URL is invalid.');
 		}
 		
 		return new self($name, $owner, $version, $url, $key, $languages, $defaultLanguage, $countries);
@@ -165,7 +165,7 @@ class ShopDetails
 	
 	
 	/**
-	 * Returns the url of the shop.
+	 * Returns the URL of the shop.
 	 *
 	 * @return string
 	 */

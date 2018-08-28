@@ -45,23 +45,29 @@ final class ShopInfoController extends HttpViewController
 	
 	public function actionDefault()
 	{
-		if($this->_checkIp() && $this->_checkToken())
+		if($this->_verifyIp() === false)
 		{
-			$shopInformation = $this->shopInfoService->getShopInformation();
-			$jsonOption      = $this->_getQueryParameter('pretty') !== null ? JSON_PRETTY_PRINT : 0;
-			$httpHeader      = ['Content-Type: text/json; charset=utf-8'];
+			http_response_code(403);
 			
-			return new HttpControllerResponse(json_encode(ShopInformationSerializer::serialize($shopInformation),
-			                                              $jsonOption), $httpHeader);
+			return new HttpControllerResponse('Invalid ip!', ['Content-Type: text/json; charset=utf-8']);
+		}
+		elseif($this->_verifyToken() === false)
+		{
+			http_response_code(403);
+			
+			return new HttpControllerResponse('Invalid token!', ['Content-Type: text/json; charset=utf-8']);
 		}
 		
-		http_response_code(403);
+		$shopInformation = $this->shopInfoService->getShopInformation();
+		$jsonOption      = $this->_getQueryParameter('pretty') !== null ? JSON_PRETTY_PRINT : 0;
+		$httpHeader      = ['Content-Type: text/json; charset=utf-8'];
 		
-		return new HttpControllerResponse('Invalid token or ip!', ['Content-Type: text/json; charset=utf-8']);
+		return new HttpControllerResponse(json_encode(ShopInformationSerializer::serialize($shopInformation),
+		                                              $jsonOption), $httpHeader);
 	}
 	
 	
-	private function _checkIp()
+	private function _verifyIp()
 	{
 		$ip = isset($_SERVER['HTTP_X_FORWARDED_FOR']) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR'];
 		
@@ -74,7 +80,7 @@ final class ShopInfoController extends HttpViewController
 	}
 	
 	
-	private function _checkToken()
+	private function _verifyToken()
 	{
 		$token = $this->_getQueryParameter('token');
 		
