@@ -52,11 +52,6 @@ class ShopInformation
 	private $filesystem;
 	
 	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MerchantDetails
-	 */
-	private $merchant;
-	
-	/**
 	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdatesDetails
 	 */
 	private $updates;
@@ -78,7 +73,6 @@ class ShopInformation
 	                            ModulesDetails $modules,
 	                            TemplateDetails $templates,
 	                            FileSystemDetails $filesystem,
-	                            MerchantDetails $merchant,
 	                            UpdatesDetails $updates)
 	{
 		$this->shop       = $shop;
@@ -86,7 +80,6 @@ class ShopInformation
 		$this->modules    = $modules;
 		$this->templates  = $templates;
 		$this->filesystem = $filesystem;
-		$this->merchant   = $merchant;
 		$this->updates    = $updates;
 	}
 	
@@ -99,7 +92,6 @@ class ShopInformation
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModulesDetails    $modules
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\TemplateDetails   $templates
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\FileSystemDetails $filesystem
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MerchantDetails   $merchant
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdatesDetails    $updates
 	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\Entities\ShopInformation
@@ -109,10 +101,9 @@ class ShopInformation
 	                       ModulesDetails $modules,
 	                       TemplateDetails $templates,
 	                       FileSystemDetails $filesystem,
-	                       MerchantDetails $merchant,
 	                       UpdatesDetails $updates)
 	{
-		return new self($shop, $server, $modules, $templates, $filesystem, $merchant, $updates);
+		return new self($shop, $server, $modules, $templates, $filesystem, $updates);
 	}
 	
 	
@@ -168,17 +159,6 @@ class ShopInformation
 	public function filesystem()
 	{
 		return $this->filesystem;
-	}
-	
-	
-	/**
-	 * Returns the merchant details.
-	 *
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MerchantDetails
-	 */
-	public function merchant()
-	{
-		return $this->merchant;
 	}
 	
 	

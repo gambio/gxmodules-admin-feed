@@ -58,11 +58,6 @@ class ShopInformationServiceTest extends TestCase
 	private $fileSystemDetails;
 	
 	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MerchantDetails
-	 */
-	private $merchantDetails;
-	
-	/**
 	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdatesDetails
 	 */
 	private $updatesDetails;
@@ -97,16 +92,12 @@ class ShopInformationServiceTest extends TestCase
 		$this->fileSystemDetails = $this->createMock(FileSystemDetails::class);
 		$this->repository->method('getFileSystemDetails')->willReturn($this->fileSystemDetails);
 		
-		$this->merchantDetails = $this->createMock(MerchantDetails::class);
-		$this->repository->method('getMerchantDetails')->willReturn($this->merchantDetails);
-		
 		$this->updatesDetails = $this->createMock(UpdatesDetails::class);
 		$this->repository->method('getUpdatesDetails')->willReturn($this->updatesDetails);
 		
 		$this->shopInformation = ShopInformation::create($this->shopDetails, $this->serverDetails,
 		                                                 $this->modulesDetails, $this->templatesDetails,
-		                                                 $this->fileSystemDetails, $this->merchantDetails,
-		                                                 $this->updatesDetails);
+		                                                 $this->fileSystemDetails, 		                                                 $this->updatesDetails);
 		
 		$this->service = new ShopInformationService($this->repository);
 	}
@@ -179,18 +170,6 @@ class ShopInformationServiceTest extends TestCase
 	{
 		$expectedDetails = $this->fileSystemDetails;
 		$actualDetails   = $this->service->getFileSystemDetails();
-		
-		$this->assertEquals($expectedDetails, $actualDetails);
-	}
-	
-	
-	/**
-	 * @test
-	 */
-	public function shouldReturnExpectedMerchantDetails()
-	{
-		$expectedDetails = $this->merchantDetails;
-		$actualDetails   = $this->service->getMerchantDetails();
 		
 		$this->assertEquals($expectedDetails, $actualDetails);
 	}

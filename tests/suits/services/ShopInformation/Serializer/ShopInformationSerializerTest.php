@@ -55,7 +55,6 @@ class ShopInformationSerializerTest extends TestCase
 		$modulesDetails    = $this->createMock(ModulesDetails::class);
 		$templatesDetails  = $this->createMock(TemplateDetails::class);
 		$fileSystemDetails = $this->createMock(FileSystemDetails::class);
-		$merchantDetails   = $this->createMock(MerchantDetails::class);
 		$updatesDetails    = $this->createMock(UpdatesDetails::class);
 		
 		$this->data = [
@@ -64,12 +63,11 @@ class ShopInformationSerializerTest extends TestCase
 			'modules'    => [],
 			'templates'  => [],
 			'filesystem' => [],
-			'merchant'   => [],
 			'updates'    => [],
 		];
 		
 		$this->object = ShopInformation::create($shopDetails, $serverDetails, $modulesDetails, $templatesDetails,
-		                                        $fileSystemDetails, $merchantDetails, $updatesDetails);
+		                                        $fileSystemDetails, $updatesDetails);
 		
 		$shopDetailsSerializer = $this->createMock(ShopDetailsSerializer::class);
 		$shopDetailsSerializer->method('serialize')->willReturn([]);
@@ -91,18 +89,13 @@ class ShopInformationSerializerTest extends TestCase
 		$fileSystemDetailsSerializer->method('serialize')->willReturn([]);
 		$fileSystemDetailsSerializer->method('deserialize')->willReturn($fileSystemDetails);
 		
-		$merchantDetailsSerializer = $this->createMock(MerchantDetailsSerializer::class);
-		$merchantDetailsSerializer->method('serialize')->willReturn([]);
-		$merchantDetailsSerializer->method('deserialize')->willReturn($merchantDetails);
-		
 		$updatesDetailsSerializer = $this->createMock(UpdatesDetailsSerializer::class);
 		$updatesDetailsSerializer->method('serialize')->willReturn([]);
 		$updatesDetailsSerializer->method('deserialize')->willReturn($updatesDetails);
 		
 		$this->serializer = new ShopInformationSerializer($shopDetailsSerializer, $serverDetailsSerializer,
 		                                                  $modulesDetailsSerializer, $templateDetailsSerializer,
-		                                                  $fileSystemDetailsSerializer, $merchantDetailsSerializer,
-		                                                  $updatesDetailsSerializer);
+		                                                  $fileSystemDetailsSerializer, $updatesDetailsSerializer);
 	}
 	
 	

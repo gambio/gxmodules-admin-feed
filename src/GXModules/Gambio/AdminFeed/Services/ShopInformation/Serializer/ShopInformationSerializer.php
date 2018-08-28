@@ -64,7 +64,6 @@ class ShopInformationSerializer
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Serializer\ModulesDetailsSerializer    $modulesDetailsSerializer
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Serializer\TemplateDetailsSerializer   $templateDetailsSerializer
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Serializer\FileSystemDetailsSerializer $fileSystemDetailsSerializer
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Serializer\MerchantDetailsSerializer   $merchantDetailsSerializer
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Serializer\UpdatesDetailsSerializer    $updatesDetailsSerializer
 	 */
 	public function __construct(ShopDetailsSerializer $shopDetailsSerializer,
@@ -72,7 +71,6 @@ class ShopInformationSerializer
 	                            ModulesDetailsSerializer $modulesDetailsSerializer,
 	                            TemplateDetailsSerializer $templateDetailsSerializer,
 	                            FileSystemDetailsSerializer $fileSystemDetailsSerializer,
-	                            MerchantDetailsSerializer $merchantDetailsSerializer,
 	                            UpdatesDetailsSerializer $updatesDetailsSerializer
 	
 	)
@@ -82,7 +80,6 @@ class ShopInformationSerializer
 		$this->modulesDetailsSerializer    = $modulesDetailsSerializer;
 		$this->templateDetailsSerializer   = $templateDetailsSerializer;
 		$this->fileSystemDetailsSerializer = $fileSystemDetailsSerializer;
-		$this->merchantDetailsSerializer   = $merchantDetailsSerializer;
 		$this->updatesDetailsSerializer    = $updatesDetailsSerializer;
 	}
 	
@@ -102,7 +99,6 @@ class ShopInformationSerializer
 			'modules'    => $this->modulesDetailsSerializer->serialize($shopInformation->modules()),
 			'templates'  => $this->templateDetailsSerializer->serialize($shopInformation->templates()),
 			'filesystem' => $this->fileSystemDetailsSerializer->serialize($shopInformation->filesystem()),
-			'merchant'   => $this->merchantDetailsSerializer->serialize($shopInformation->merchant()),
 			'updates'    => $this->updatesDetailsSerializer->serialize($shopInformation->updates()),
 		];
 		
@@ -129,7 +125,6 @@ class ShopInformationSerializer
 		   || !isset($json['modules'])
 		   || !isset($json['templates'])
 		   || !isset($json['filesystem'])
-		   || !isset($json['merchant'])
 		   || !isset($json['updates']))
 		{
 			throw new \InvalidArgumentException('Given argument is invalid. Needed property is missing.');
@@ -140,9 +135,8 @@ class ShopInformationSerializer
 		$modules    = $this->modulesDetailsSerializer->deserialize($json['modules']);
 		$templates  = $this->templateDetailsSerializer->deserialize($json['templates']);
 		$filesystem = $this->fileSystemDetailsSerializer->deserialize($json['filesystem']);
-		$merchant   = $this->merchantDetailsSerializer->deserialize($json['merchant']);
 		$updates    = $this->updatesDetailsSerializer->deserialize($json['updates']);
 		
-		return ShopInformation::create($shop, $server, $modules, $templates, $filesystem, $merchant, $updates);
+		return ShopInformation::create($shop, $server, $modules, $templates, $filesystem, $updates);
 	}
 }

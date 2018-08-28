@@ -47,7 +47,7 @@ class ShopInformationService
 	{
 		return ShopInformation::create($this->getShopDetails(), $this->getServerDetails(), $this->getModulesDetails(),
 		                               $this->getTemplateDetails(), $this->getFileSystemDetails(),
-		                               $this->getMerchantDetails(), $this->getUpdatesDetails());
+		                               $this->getUpdatesDetails());
 	}
 	
 	

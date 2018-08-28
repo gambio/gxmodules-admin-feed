@@ -359,7 +359,6 @@ class ShopInformationFactory
 			                                                                 $this->createModulesDetailsSerializer(),
 			                                                                 $this->createTemplateDetailsSerializer(),
 			                                                                 $this->createFileSystemDetailsSerializer(),
-			                                                                 $this->createMerchantDetailsSerializer(),
 			                                                                 $this->createUpdatesDetailsSerializer());
 		}
 		
@@ -427,7 +426,6 @@ class ShopInformationFactory
 			                                                                 $this->createModulesDetailsRepository(),
 			                                                                 $this->createTemplateDetailsRepository(),
 			                                                                 $this->createFileSystemDetailsRepository(),
-			                                                                 $this->createMerchantDetailsRepository(),
 			                                                                 $this->createUpdatesDetailsRepository());
 		}
 		

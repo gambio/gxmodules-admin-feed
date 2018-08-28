@@ -136,23 +136,17 @@ class ShopInformationRepositoryTest extends TestCase
 		$this->fileSystemRepository = $this->createMock(FileSystemDetailsRepository::class);
 		$this->fileSystemRepository->method('getFileSystemDetails')->willReturn($this->fileSystemDetails);
 		
-		$this->merchantDetails    = $this->createMock(MerchantDetails::class);
-		$this->merchantRepository = $this->createMock(MerchantDetailsRepository::class);
-		$this->merchantRepository->method('getMerchantDetails')->willReturn($this->merchantDetails);
-		
 		$this->updatesDetails    = $this->createMock(UpdatesDetails::class);
 		$this->updatesRepository = $this->createMock(UpdatesDetailsRepository::class);
 		$this->updatesRepository->method('getUpdatesDetails')->willReturn($this->updatesDetails);
 		
 		$this->shopInformation           = ShopInformation::create($this->shopDetails, $this->serverDetails,
 		                                                           $this->modulesDetails, $this->templatesDetails,
-		                                                           $this->fileSystemDetails, $this->merchantDetails,
-		                                                           $this->updatesDetails);
+		                                                           $this->fileSystemDetails, $this->updatesDetails);
 		$this->shopInformationRepository = new ShopInformationRepository($this->shopRepository, $this->serverRepository,
 		                                                                 $this->modulesRepository,
 		                                                                 $this->templatesRepository,
 		                                                                 $this->fileSystemRepository,
-		                                                                 $this->merchantRepository,
 		                                                                 $this->updatesRepository);
 	}
 	
@@ -224,18 +218,6 @@ class ShopInformationRepositoryTest extends TestCase
 	{
 		$expectedDetails = $this->fileSystemDetails;
 		$actualDetails   = $this->shopInformationRepository->getFileSystemDetails();
-		
-		$this->assertEquals($expectedDetails, $actualDetails);
-	}
-	
-	
-	/**
-	 * @test
-	 */
-	public function shouldReturnExpectedMerchantDetails()
-	{
-		$expectedDetails = $this->merchantDetails;
-		$actualDetails   = $this->shopInformationRepository->getMerchantDetails();
 		
 		$this->assertEquals($expectedDetails, $actualDetails);
 	}

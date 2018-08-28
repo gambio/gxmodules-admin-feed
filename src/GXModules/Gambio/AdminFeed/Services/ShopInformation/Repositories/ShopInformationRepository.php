@@ -46,11 +46,6 @@ class ShopInformationRepository
 	private $fileSystemDetailsRepository;
 	
 	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\Repositories\MerchantDetailsRepository
-	 */
-	private $merchantDetailsRepository;
-	
-	/**
 	 * @var \Gambio\AdminFeed\Services\ShopInformation\Repositories\UpdatesDetailsRepository
 	 */
 	private $updatesDetailsRepository;
@@ -72,7 +67,6 @@ class ShopInformationRepository
 	                            ModulesDetailsRepository $modulesDetailsRepository,
 	                            TemplateDetailsRepository $templateDetailsRepository,
 	                            FileSystemDetailsRepository $fileSystemDetailsRepository,
-	                            MerchantDetailsRepository $merchantDetailsRepository,
 	                            UpdatesDetailsRepository $updatesDetailsRepository)
 	{
 		$this->shopDetailsRepository       = $shopDetailsRepository;
@@ -80,7 +74,6 @@ class ShopInformationRepository
 		$this->modulesDetailsRepository    = $modulesDetailsRepository;
 		$this->templateDetailsRepository   = $templateDetailsRepository;
 		$this->fileSystemDetailsRepository = $fileSystemDetailsRepository;
-		$this->merchantDetailsRepository   = $merchantDetailsRepository;
 		$this->updatesDetailsRepository    = $updatesDetailsRepository;
 	}
 	
@@ -94,7 +87,7 @@ class ShopInformationRepository
 	{
 		return ShopInformation::create($this->getShopDetails(), $this->getServerDetails(), $this->getModulesDetails(),
 		                               $this->getTemplateDetails(), $this->getFileSystemDetails(),
-		                               $this->getMerchantDetails(), $this->getUpdatesDetails());
+		                               $this->getUpdatesDetails());
 	}
 	
 	
@@ -150,17 +143,6 @@ class ShopInformationRepository
 	public function getFileSystemDetails()
 	{
 		return $this->fileSystemDetailsRepository->getFileSystemDetails();
-	}
-	
-	
-	/**
-	 * Returns the merchant details.
-	 *
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MerchantDetails
-	 */
-	public function getMerchantDetails()
-	{
-		return $this->merchantDetailsRepository->getMerchantDetails();
 	}
 	
 	
