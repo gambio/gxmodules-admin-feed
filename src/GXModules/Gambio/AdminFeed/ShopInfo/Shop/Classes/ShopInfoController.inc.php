@@ -25,6 +25,11 @@ final class ShopInfoController extends HttpViewController
 	private $shopInfoService;
 	
 	/**
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\Serializer\ShopInformationSerializer
+	 */
+	private $shopInformationSerializer;
+	
+	/**
 	 * @var \Gambio\AdminFeed\RequestControl
 	 */
 	private $requestControl;
@@ -36,8 +41,9 @@ final class ShopInfoController extends HttpViewController
 	{
 		parent::__construct($httpContextReader, $httpResponseProcessor, $defaultContentView);
 		
-		$shopInfoServiceFactory = new ShopInformationFactory();
-		$this->shopInfoService  = $shopInfoServiceFactory->createService();
+		$shopInfoServiceFactory          = new ShopInformationFactory();
+		$this->shopInfoService           = $shopInfoServiceFactory->createService();
+		$this->shopInformationSerializer = $shopInfoServiceFactory->createShopInformationSerializer();
 		
 		$this->requestControl = new RequestControl(new CurlClient());
 	}
@@ -61,9 +67,9 @@ final class ShopInfoController extends HttpViewController
 		$shopInformation = $this->shopInfoService->getShopInformation();
 		$jsonOption      = $this->_getQueryParameter('pretty') !== null ? JSON_PRETTY_PRINT : 0;
 		$httpHeader      = ['Content-Type: text/json; charset=utf-8'];
+		$response        = json_encode($this->shopInformationSerializer->serialize($shopInformation), $jsonOption);
 		
-		return new HttpControllerResponse(json_encode(ShopInformationSerializer::serialize($shopInformation),
-		                                              $jsonOption), $httpHeader);
+		return new HttpControllerResponse($response, $httpHeader);
 	}
 	
 	
