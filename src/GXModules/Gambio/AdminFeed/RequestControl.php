@@ -25,7 +25,7 @@ class RequestControl
 	/**
 	 * @var string
 	 */
-	private $allowedIpsUrl = 'https://admin-feed.gambio-server.net/allowedIps.json';
+	private $allowedIpsUrl = 'https://core-api.gambiohub.com/trust/allowed_admin_feed_ips.json';
 	
 	/**
 	 * @var string
