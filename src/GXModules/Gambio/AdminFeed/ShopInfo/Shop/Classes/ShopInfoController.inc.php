@@ -55,13 +55,13 @@ final class ShopInfoController extends HttpViewController
 		{
 			http_response_code(403);
 			
-			return new HttpControllerResponse('Invalid ip!', ['Content-Type: text/json; charset=utf-8']);
+			return new HttpControllerResponse('Invalid ip!');
 		}
 		elseif($this->_verifyToken() === false)
 		{
 			http_response_code(403);
 			
-			return new HttpControllerResponse('Invalid token!', ['Content-Type: text/json; charset=utf-8']);
+			return new HttpControllerResponse('Invalid token!');
 		}
 		
 		$shopInformation = $this->shopInfoService->getShopInformation();
