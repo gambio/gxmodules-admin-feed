@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   DynamicShopMessages.inc.php 2018-07-26
+   DynamicShopMessages.inc.php 2018-08-28
    Gambio GmbH
    http://www.gambio.de
    Copyright (c) 2018 Gambio GmbH
