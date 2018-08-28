@@ -29,8 +29,12 @@ class ServerInfo
 	 */
 	public function send($serverInfo, $comment)
 	{
-		$requestControl = new RequestControl(new CurlClient());
-		$adminFeedToken = $requestControl->createRequestToken();
+		$adminFeedToken = '';
+		if(gm_get_conf('ADMIN_FEED_ACCEPTED_SHOP_INFORMATION_DATA_PROCESSING') === 'true')
+		{
+			$requestControl = new RequestControl(new CurlClient());
+			$adminFeedToken = $requestControl->createRequestToken();
+		}
 		
 		$t_url       = AdminFeedLinks::SERVER_INFO_SEND_URL;
 		$t_post_data = 'server_info_array=' . urlencode($serverInfo) . '&comment=' . urlencode($comment)

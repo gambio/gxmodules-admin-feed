@@ -103,9 +103,12 @@ class AdminInfobox
 			$parameters[] = 'server_path=' . rawurlencode(rtrim(DIR_FS_CATALOG, '/'));
 		}
 		
-		$requestControl = new RequestControl(new CurlClient());
-		$adminFeedToken = $requestControl->createRequestToken();
-		$parameters[]   = 'adminFeedToken=' . rawurlencode($adminFeedToken);
+		if(gm_get_conf('ADMIN_FEED_ACCEPTED_SHOP_INFORMATION_DATA_PROCESSING') === 'true')
+		{
+			$requestControl = new RequestControl(new CurlClient());
+			$adminFeedToken = $requestControl->createRequestToken();
+			$parameters[]   = 'adminFeedToken=' . rawurlencode($adminFeedToken);
+		}
 		
 		$this->parameters = $parameters;
 	}

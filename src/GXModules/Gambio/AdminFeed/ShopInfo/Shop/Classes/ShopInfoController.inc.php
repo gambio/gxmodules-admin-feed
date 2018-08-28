@@ -51,7 +51,13 @@ final class ShopInfoController extends HttpViewController
 	
 	public function actionDefault()
 	{
-		if($this->_verifyIp() === false)
+		if(gm_get_conf('ADMIN_FEED_ACCEPTED_SHOP_INFORMATION_DATA_PROCESSING') !== 'true')
+		{
+			http_response_code(403);
+			
+			return new HttpControllerResponse('Admin did not accepted the data processing of shop information!');
+		}
+		elseif($this->_verifyIp() === false)
 		{
 			http_response_code(403);
 			

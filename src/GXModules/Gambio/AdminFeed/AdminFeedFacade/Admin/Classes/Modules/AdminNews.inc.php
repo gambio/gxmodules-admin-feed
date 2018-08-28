@@ -48,8 +48,12 @@ class AdminNews
 	{
 		$return = 'Timeout';
 		
-		$requestControl = new RequestControl(new CurlClient());
-		$adminFeedToken = $requestControl->createRequestToken();
+		$adminFeedToken = '';
+		if(gm_get_conf('ADMIN_FEED_ACCEPTED_SHOP_INFORMATION_DATA_PROCESSING') === 'true')
+		{
+			$requestControl = new RequestControl(new CurlClient());
+			$adminFeedToken = $requestControl->createRequestToken();
+		}
 		
 		$coo_load_url = MainFactory::create_object('LoadUrl');
 		$t_result     = $coo_load_url->load_url($this->endpointUrl . '&get_news_for_version='

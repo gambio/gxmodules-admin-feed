@@ -118,9 +118,12 @@ class DynamicShopMessages
 			$params[] = 'language=' . rawurlencode($_SESSION['language_code']);
 		}
 		
-		$requestControl = new RequestControl(new CurlClient());
-		$adminFeedToken = $requestControl->createRequestToken();
-		$params[]       = 'adminFeedToken=' . rawurlencode($adminFeedToken);
+		if(gm_get_conf('ADMIN_FEED_ACCEPTED_SHOP_INFORMATION_DATA_PROCESSING') === 'true')
+		{
+			$requestControl = new RequestControl(new CurlClient());
+			$adminFeedToken = $requestControl->createRequestToken();
+			$params[]       = 'adminFeedToken=' . rawurlencode($adminFeedToken);
+		}
 		
 		$url        = $this->endpointUrl . '?' . implode('&', $params);
 		$loadUrl    = MainFactory::create('LoadUrl');
