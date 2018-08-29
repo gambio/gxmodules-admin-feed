@@ -79,6 +79,11 @@ class UpdatesDetailsMapper
 		$downloadedUpdates = [];
 		foreach($this->reader->getDownloadedUpdatesData() as $updateData)
 		{
+			if(!isset($updateData['name']) || !isset($updateData['version']) || !isset($updateData['date']))
+			{
+				continue;
+			}
+			
 			$downloadedUpdates[] = new UpdateDetails($updateData['name'], $updateData['version'], $updateData['date']);
 		}
 		
