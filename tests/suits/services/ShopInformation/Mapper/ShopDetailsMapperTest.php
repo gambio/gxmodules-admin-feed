@@ -54,16 +54,6 @@ class ShopDetailsMapperTest extends TestCase
 	 */
 	private $countries = ['DE', 'AT', 'CH'];
 	
-	/**
-	 * @var string
-	 */
-	private $name = 'Testshop';
-	
-	/**
-	 * @var string
-	 */
-	private $owner = 'Gambio GmbH';
-	
 	
 	/**
 	 * @var \Gambio\AdminFeed\Services\ShopInformation\Reader\ShopDetailsReader
@@ -97,8 +87,8 @@ class ShopDetailsMapperTest extends TestCase
 	
 	private function expectedShopDetails()
 	{
-		return new ShopDetails($this->name, $this->owner, $this->version, $this->url, $this->key, $this->languages,
-		                       $this->defaultLanguage, $this->countries);
+		return new ShopDetails($this->version, $this->url, $this->key, $this->languages, $this->defaultLanguage,
+		                       $this->countries);
 	}
 	
 	
@@ -111,8 +101,6 @@ class ShopDetailsMapperTest extends TestCase
 		$reader->method('getLanguages')->willReturn($this->languages);
 		$reader->method('getDefaultLanguage')->willReturn($this->defaultLanguage);
 		$reader->method('getCountries')->willReturn($this->countries);
-		$reader->method('getName')->willReturn($this->name);
-		$reader->method('getOwner')->willReturn($this->owner);
 		
 		return $reader;
 	}

@@ -45,8 +45,8 @@ class ShopDetailsMapper
 	 */
 	public function getShopDetails()
 	{
-		return new ShopDetails($this->reader->getName(), $this->reader->getOwner(), $this->reader->getVersion(),
-		                       $this->reader->getUrl(), $this->reader->getKey(), $this->reader->getLanguages(),
+		return new ShopDetails($this->reader->getVersion(), $this->reader->getUrl(),
+		                       $this->reader->getKey(), $this->reader->getLanguages(),
 		                       $this->reader->getDefaultLanguage(), $this->reader->getCountries());
 	}
 }

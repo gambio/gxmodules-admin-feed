@@ -30,8 +30,6 @@ class ShopDetailsSerializer
 	public function serialize(ShopDetails $shopDetails)
 	{
 		$json = [
-			'name'            => $shopDetails->name(),
-			'owner'           => $shopDetails->owner(),
 			'version'         => $shopDetails->version(),
 			'url'             => $shopDetails->url(),
 			'key'             => $shopDetails->key(),
@@ -58,9 +56,7 @@ class ShopDetailsSerializer
 			$json = json_decode($json, true);
 		}
 		
-		if(!isset($json['name'])
-		   || !isset($json['owner'])
-		   || !isset($json['version'])
+		if(!isset($json['version'])
 		   || !isset($json['url'])
 		   || !isset($json['key'])
 		   || !isset($json['languages'])
@@ -70,7 +66,7 @@ class ShopDetailsSerializer
 			throw new \InvalidArgumentException('Given argument is invalid. Needed property is missing.');
 		}
 		
-		return ShopDetails::create($json['name'], $json['owner'], $json['version'], $json['url'], $json['key'],
-		                           $json['languages'], $json['defaultLanguage'], $json['countries']);
+		return ShopDetails::create($json['version'], $json['url'], $json['key'], $json['languages'],
+		                           $json['defaultLanguage'], $json['countries']);
 	}
 }

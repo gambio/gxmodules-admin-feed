@@ -137,38 +137,4 @@ class ShopDetailsReader
 		
 		return $return;
 	}
-	
-	
-	/**
-	 * Returns the name of the shop.
-	 *
-	 * @return string
-	 */
-	public function getName()
-	{
-		$configuration = $this->db->select('configuration_value')
-		                          ->from('configuration')
-		                          ->where('configuration_key', 'STORE_NAME')
-		                          ->get()
-		                          ->row_array();
-		
-		return isset($configuration['configuration_value']) ? $configuration['configuration_value'] : '';
-	}
-	
-	
-	/**
-	 * Returns the owner of the shop.
-	 *
-	 * @return string
-	 */
-	public function getOwner()
-	{
-		$configuration = $this->db->select('configuration_value')
-		                          ->from('configuration')
-		                          ->where('configuration_key', 'STORE_OWNER')
-		                          ->get()
-		                          ->row_array();
-		
-		return isset($configuration['configuration_value']) ? $configuration['configuration_value'] : '';
-	}
 }

@@ -48,30 +48,6 @@ return [
 			'is_state_mandatory'   => '0',
 		],
 	],
-	'configuration' => [
-		[
-			'configuration_id'       => '1',
-			'configuration_key'      => 'STORE_NAME',
-			'configuration_value'    => 'Mein Test-Shop',
-			'configuration_group_id' => '1',
-			'sort_order'             => '1',
-			'last_modified'          => '2018-07-19 09:42:14',
-			'date_added'             => '2018-07-19 09:41:40',
-			'use_function'           => '',
-			'set_function'           => '',
-		],
-		[
-			'configuration_id'       => '2',
-			'configuration_key'      => 'STORE_OWNER',
-			'configuration_value'    => 'Testshop GmbH',
-			'configuration_group_id' => '1',
-			'sort_order'             => '1',
-			'last_modified'          => '2018-07-19 09:42:14',
-			'date_added'             => '2018-07-19 09:41:40',
-			'use_function'           => '',
-			'set_function'           => '',
-		],
-	],
 	'languages'     => [
 		[
 			'languages_id'     => '1',

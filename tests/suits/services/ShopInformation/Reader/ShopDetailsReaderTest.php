@@ -124,30 +124,6 @@ class ShopDetailsReaderTest extends DbTestCase
 	}
 	
 	
-	/**
-	 * @test
-	 */
-	public function shouldReturnExpectedNameData()
-	{
-		$expectedData = 'Mein Test-Shop';
-		$actualData   = $this->reader->getName();
-		
-		$this->assertSame($expectedData, $actualData);
-	}
-	
-	
-	/**
-	 * @test
-	 */
-	public function shouldReturnExpectedOwnerData()
-	{
-		$expectedData = 'Testshop GmbH';
-		$actualData   = $this->reader->getOwner();
-		
-		$this->assertSame($expectedData, $actualData);
-	}
-	
-	
 	protected function getDataSet()
 	{
 		return $this->createArrayDataSet(include __DIR__ . '/fixtures/shop_details/initial_dataset.php');
@@ -156,7 +132,7 @@ class ShopDetailsReaderTest extends DbTestCase
 	
 	public static function setUpBeforeClass()
 	{
-		static::exportDatabase(__DIR__ . '/backup.sql', ['countries', 'configuration', 'languages']);
+		static::exportDatabase(__DIR__ . '/backup.sql', ['countries', 'languages']);
 	}
 	
 	

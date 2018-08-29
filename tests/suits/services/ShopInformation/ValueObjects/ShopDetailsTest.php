@@ -20,16 +20,6 @@ class ShopDetailsTest extends TestCase
 	/**
 	 * @var string
 	 */
-	private $name = 'Testshop';
-	
-	/**
-	 * @var string
-	 */
-	private $owner = 'Gambio GmbH';
-	
-	/**
-	 * @var string
-	 */
 	private $version = 'v1.0.1';
 	
 	/**
@@ -65,8 +55,8 @@ class ShopDetailsTest extends TestCase
 	
 	public function setUp()
 	{
-		$this->shopDetails = ShopDetails::create($this->name, $this->owner, $this->version, $this->url, $this->key,
-		                                         $this->languages, $this->defaultLanguage, $this->countries);
+		$this->shopDetails = ShopDetails::create($this->version, $this->url, $this->key, $this->languages,
+		                                         $this->defaultLanguage, $this->countries);
 	}
 	
 	
@@ -77,8 +67,7 @@ class ShopDetailsTest extends TestCase
 	{
 		$this->expectException(\InvalidArgumentException::class);
 		
-		ShopDetails::create($this->name, $this->owner, '', $this->url, $this->key, $this->languages,
-		                    $this->defaultLanguage, $this->countries);
+		ShopDetails::create('', $this->url, $this->key, $this->languages, $this->defaultLanguage, $this->countries);
 	}
 	
 	
@@ -89,8 +78,7 @@ class ShopDetailsTest extends TestCase
 	{
 		$this->expectException(\InvalidArgumentException::class);
 		
-		ShopDetails::create($this->name, $this->owner, $this->version, '', $this->key, $this->languages,
-		                    $this->defaultLanguage, $this->countries);
+		ShopDetails::create($this->version, '', $this->key, $this->languages, $this->defaultLanguage, $this->countries);
 	}
 	
 	
@@ -101,26 +89,8 @@ class ShopDetailsTest extends TestCase
 	{
 		$this->expectException(\InvalidArgumentException::class);
 		
-		ShopDetails::create($this->name, $this->owner, $this->version, 'invalid-url', $this->key, $this->languages,
-		                    $this->defaultLanguage, $this->countries);
-	}
-	
-	
-	/**
-	 * @test
-	 */
-	public function shouldReturnGivenName()
-	{
-		$this->assertSame($this->shopDetails->name(), $this->name);
-	}
-	
-	
-	/**
-	 * @test
-	 */
-	public function shouldReturnGivenOwner()
-	{
-		$this->assertSame($this->shopDetails->owner(), $this->owner);
+		ShopDetails::create($this->version, 'invalid-url', $this->key, $this->languages, $this->defaultLanguage,
+		                    $this->countries);
 	}
 	
 	

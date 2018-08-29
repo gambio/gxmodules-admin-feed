@@ -42,12 +42,8 @@ class ShopDetailsSerializerTest extends TestCase
 		$languages       = ['de', 'en'];
 		$defaultLanguage = 'de';
 		$countries       = ['de', 'at', 'ch'];
-		$name            = 'Testshop';
-		$owner           = 'Gambio GmbH';
 		
 		$this->data = [
-			'name'            => $name,
-			'owner'           => $owner,
 			'version'         => $version,
 			'url'             => $url,
 			'key'             => $key,
@@ -56,8 +52,7 @@ class ShopDetailsSerializerTest extends TestCase
 			'countries'       => $countries,
 		];
 		
-		$this->object = ShopDetails::create($name, $owner, $version, $url, $key, $languages, $defaultLanguage,
-		                                    $countries);
+		$this->object = ShopDetails::create($version, $url, $key, $languages, $defaultLanguage, $countries);
 		
 		$this->serializer = new ShopDetailsSerializer();
 	}

@@ -21,16 +21,6 @@ class ShopDetails
 	/**
 	 * @var string
 	 */
-	private $name;
-	
-	/**
-	 * @var string
-	 */
-	private $owner;
-	
-	/**
-	 * @var string
-	 */
 	private $version;
 	
 	/**
@@ -62,8 +52,6 @@ class ShopDetails
 	/**
 	 * ShopDetails constructor.
 	 *
-	 * @param string $name
-	 * @param string $owner
 	 * @param string $version
 	 * @param string $url
 	 * @param string $key
@@ -71,17 +59,13 @@ class ShopDetails
 	 * @param string $defaultLanguage
 	 * @param array  $countries
 	 */
-	public function __construct($name,
-	                            $owner,
-	                            $version,
+	public function __construct($version,
 	                            $url,
 	                            $key,
 	                            array $languages,
 	                            $defaultLanguage,
 	                            array $countries)
 	{
-		$this->name            = $name;
-		$this->owner           = $owner;
 		$this->version         = $version;
 		$this->url             = $url;
 		$this->key             = $key;
@@ -94,8 +78,6 @@ class ShopDetails
 	/**
 	 * Creates and returns a new ShopDetails instance.
 	 *
-	 * @param string $name
-	 * @param string $owner
 	 * @param string $version
 	 * @param string $url
 	 * @param string $key
@@ -105,9 +87,7 @@ class ShopDetails
 	 *
 	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails
 	 */
-	static function create($name,
-	                       $owner,
-	                       $version,
+	static function create($version,
 	                       $url,
 	                       $key,
 	                       array $languages,
@@ -127,29 +107,7 @@ class ShopDetails
 			throw new \InvalidArgumentException('URL is invalid.');
 		}
 		
-		return new self($name, $owner, $version, $url, $key, $languages, $defaultLanguage, $countries);
-	}
-	
-	
-	/**
-	 * Returns the name of the shop.
-	 *
-	 * @return string
-	 */
-	public function name()
-	{
-		return $this->name;
-	}
-	
-	
-	/**
-	 * Returns the owner of the shop.
-	 *
-	 * @return string
-	 */
-	public function owner()
-	{
-		return $this->owner;
+		return new self($version, $url, $key, $languages, $defaultLanguage, $countries);
 	}
 	
 	
