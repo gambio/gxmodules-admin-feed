@@ -37,11 +37,11 @@ class CurlClient
 	 */
 	public function executeGet($url, $options = [])
 	{
-		$options = array_merge($options, [
-			CURLOPT_URL            => $url,
-			CURLOPT_CONNECTTIMEOUT => isset($options[CURLOPT_CONNECTTIMEOUT]) ? $options[CURLOPT_CONNECTTIMEOUT] : 10,
-			CURLOPT_RETURNTRANSFER => isset($options[CURLOPT_RETURNTRANSFER]) ? $options[CURLOPT_RETURNTRANSFER] : true,
-		]);
+		$options = $options + [
+				CURLOPT_URL            => $url,
+				CURLOPT_CONNECTTIMEOUT => isset($options[CURLOPT_CONNECTTIMEOUT]) ? $options[CURLOPT_CONNECTTIMEOUT] : 10,
+				CURLOPT_RETURNTRANSFER => isset($options[CURLOPT_RETURNTRANSFER]) ? $options[CURLOPT_RETURNTRANSFER] : true,
+			];
 		
 		$curlHandle = curl_init();
 		curl_setopt_array($curlHandle, $options);
@@ -60,13 +60,13 @@ class CurlClient
 	 */
 	public function executePost($url, $data = [], $options = [])
 	{
-		$options = array_merge($options, [
-			CURLOPT_URL            => $url,
-			CURLOPT_POST           => true,
-			CURLOPT_POSTFIELDS     => $data,
-			CURLOPT_CONNECTTIMEOUT => isset($options[CURLOPT_CONNECTTIMEOUT]) ? $options[CURLOPT_CONNECTTIMEOUT] : 10,
-			CURLOPT_RETURNTRANSFER => isset($options[CURLOPT_RETURNTRANSFER]) ? $options[CURLOPT_RETURNTRANSFER] : true,
-		]);
+		$options = $options + [
+				CURLOPT_URL            => $url,
+				CURLOPT_POST           => true,
+				CURLOPT_POSTFIELDS     => $data,
+				CURLOPT_CONNECTTIMEOUT => isset($options[CURLOPT_CONNECTTIMEOUT]) ? $options[CURLOPT_CONNECTTIMEOUT] : 10,
+				CURLOPT_RETURNTRANSFER => isset($options[CURLOPT_RETURNTRANSFER]) ? $options[CURLOPT_RETURNTRANSFER] : true,
+			];
 		
 		$curlHandle = curl_init();
 		curl_setopt_array($curlHandle, $options);
@@ -84,12 +84,12 @@ class CurlClient
 	 */
 	public function executeHead($url, $options = [])
 	{
-		$options = array_merge($options, [
-			CURLOPT_URL            => $url,
-			CURLOPT_NOBODY         => true,
-			CURLOPT_CONNECTTIMEOUT => isset($options[CURLOPT_CONNECTTIMEOUT]) ? $options[CURLOPT_CONNECTTIMEOUT] : 10,
-			CURLOPT_RETURNTRANSFER => isset($options[CURLOPT_RETURNTRANSFER]) ? $options[CURLOPT_RETURNTRANSFER] : true,
-		]);
+		$options = $options + [
+				CURLOPT_URL            => $url,
+				CURLOPT_NOBODY         => true,
+				CURLOPT_CONNECTTIMEOUT => isset($options[CURLOPT_CONNECTTIMEOUT]) ? $options[CURLOPT_CONNECTTIMEOUT] : 10,
+				CURLOPT_RETURNTRANSFER => isset($options[CURLOPT_RETURNTRANSFER]) ? $options[CURLOPT_RETURNTRANSFER] : true,
+			];
 		
 		$curlHandle = curl_init();
 		curl_setopt_array($curlHandle, $options);
