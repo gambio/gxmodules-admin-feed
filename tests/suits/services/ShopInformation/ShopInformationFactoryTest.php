@@ -74,25 +74,6 @@ class ShopInformationServiceFactoryTest extends DbTestCase
 	/**
 	 * @test
 	 */
-	public function shouldCreateMerchantAddressDetailsSerializer()
-	{
-		$this->assertInstanceOf(MerchantAddressDetailsSerializer::class,
-		                        $this->factory->createMerchantAddressDetailsSerializer());
-	}
-	
-	
-	/**
-	 * @test
-	 */
-	public function shouldCreateMerchantDetailsSerializer()
-	{
-		$this->assertInstanceOf(MerchantDetailsSerializer::class, $this->factory->createMerchantDetailsSerializer());
-	}
-	
-	
-	/**
-	 * @test
-	 */
 	public function shouldCreateModuleDetailsSerializer()
 	{
 		$this->assertInstanceOf(ModuleDetailsSerializer::class, $this->factory->createModuleDetailsSerializer());
