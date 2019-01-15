@@ -108,6 +108,11 @@ class AdminInfobox
 			$requestControl = new RequestControl(new CurlClient());
 			$adminFeedToken = $requestControl->createRequestToken();
 			$parameters[]   = 'adminFeedToken=' . rawurlencode($adminFeedToken);
+			
+			if(!$this->hasShopKey)
+			{
+				$parameters[] = 'shop_url=' . rawurlencode(HTTP_SERVER . DIR_WS_CATALOG);
+			}
 		}
 		
 		$this->parameters = $parameters;

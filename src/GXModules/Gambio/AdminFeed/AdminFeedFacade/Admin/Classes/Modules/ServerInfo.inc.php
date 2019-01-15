@@ -38,7 +38,8 @@ class ServerInfo
 		
 		$t_url       = AdminFeedLinks::SERVER_INFO_SEND_URL;
 		$t_post_data = 'server_info_array=' . urlencode($serverInfo) . '&comment=' . urlencode($comment)
-		               . '&adminFeedToken=' . rawurlencode($adminFeedToken);
+		               . '&adminFeedToken=' . rawurlencode($adminFeedToken) . '&shop_url=' . rawurlencode(HTTP_SERVER
+		                                                                                                  . DIR_WS_CATALOG);
 		
 		$t_success = false;
 		

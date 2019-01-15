@@ -123,6 +123,11 @@ class DynamicShopMessages
 			$requestControl = new RequestControl(new CurlClient());
 			$adminFeedToken = $requestControl->createRequestToken();
 			$params[]       = 'adminFeedToken=' . rawurlencode($adminFeedToken);
+			
+			if(gm_get_conf('SHOP_KEY_VALID') !== '1')
+			{
+				$params[] = 'shop_url=' . rawurlencode(HTTP_SERVER . DIR_WS_CATALOG);
+			}
 		}
 		
 		$url        = $this->endpointUrl . '?' . implode('&', $params);

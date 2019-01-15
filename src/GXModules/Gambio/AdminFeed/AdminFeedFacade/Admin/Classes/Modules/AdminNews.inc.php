@@ -58,7 +58,8 @@ class AdminNews
 		$coo_load_url = MainFactory::create_object('LoadUrl');
 		$t_result     = $coo_load_url->load_url($this->endpointUrl . '&get_news_for_version='
 		                                        . rawurlencode($this->shopVersion) . '&adminFeedToken='
-		                                        . rawurlencode($adminFeedToken));
+		                                        . rawurlencode($adminFeedToken) . '&shop_url='
+		                                        . rawurlencode(HTTP_SERVER . DIR_WS_CATALOG));
 		
 		if($t_result)
 		{
