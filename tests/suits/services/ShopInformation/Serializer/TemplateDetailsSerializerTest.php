@@ -1,9 +1,9 @@
 <?php
 /* --------------------------------------------------------------
-   TemplateDetailsSerializerTest.inc.php 2018-08-01
+   TemplateDetailsSerializerTest.inc.php 2019-01-15
    Gambio GmbH
    http://www.gambio.de
-   Copyright (c) 2018 Gambio GmbH
+   Copyright (c) 2019 Gambio GmbH
    Released under the GNU General Public License (Version 2)
    [http://www.gnu.org/licenses/gpl-2.0.html]
    --------------------------------------------------------------
@@ -36,8 +36,8 @@ class TemplateDetailsSerializerTest extends TestCase
 	
 	public function setUp()
 	{
-		$available = ['HoneyGrid', 'EyeCandy'];
-		$selected  = 'HoneyGrid';
+		$available = ['templates/HoneyGrid', 'templates/EyeCandy'];
+		$selected  = 'templates/HoneyGrid';
 		$version   = '3';
 		
 		$this->data = [

@@ -1,9 +1,9 @@
 <?php
 /* --------------------------------------------------------------
-   Settings.php 2018-08-10
+   Settings.php 2019-01-15
    Gambio GmbH
    http://www.gambio.de
-   Copyright (c) 2018 Gambio GmbH
+   Copyright (c) 2019 Gambio GmbH
    Released under the GNU General Public License (Version 2)
    [http://www.gnu.org/licenses/gpl-2.0.html]
    --------------------------------------------------------------
@@ -26,6 +26,18 @@ class Settings
 	public function getBaseDirectory()
 	{
 		return defined('DIR_FS_CATALOG') ? DIR_FS_CATALOG : '';
+	}
+	
+	
+	/**
+	 * Returns the status of theme support for this shop.
+	 *
+	 * @return bool
+	 */
+	public function areThemesAvailable()
+	{
+		return defined('CURRENT_THEME') ? (!empty(CURRENT_THEME)
+		                                   && is_dir(DIR_FS_CATALOG . 'themes/' . CURRENT_THEME)) : false;
 	}
 	
 	

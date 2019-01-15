@@ -1,9 +1,9 @@
 <?php
 /* --------------------------------------------------------------
-   TemplateDetailsReader.php 2018-08-01
+   TemplateDetailsReader.php 2019-01-15
    Gambio GmbH
    http://www.gambio.de
-   Copyright (c) 2018 Gambio GmbH
+   Copyright (c) 2019 Gambio GmbH
    Released under the GNU General Public License (Version 2)
    [http://www.gnu.org/licenses/gpl-2.0.html]
    --------------------------------------------------------------
@@ -49,10 +49,15 @@ class TemplateDetailsReader
 	{
 		$templates = (array)glob($this->settings->getBaseDirectory() . 'templates/*', GLOB_ONLYDIR);
 		$templates = array_map(function ($template) {
-			return basename($template);
+			return 'templates/' . basename($template);
 		}, $templates);
 		
-		return $templates;
+		$themes = (array)glob($this->settings->getBaseDirectory() . 'themes/*', GLOB_ONLYDIR);
+		$themes = array_map(function ($theme) {
+			return 'themes/' . basename($theme);
+		}, $themes);
+		
+		return array_merge($templates, $themes);
 	}
 	
 	
@@ -63,7 +68,17 @@ class TemplateDetailsReader
 	 */
 	public function getActiveTemplate()
 	{
-		return $this->settings->getActiveTemplate();
+		$activeTemplate = 'templates/' . $this->settings->getActiveTemplate();
+		
+		if($this->settings->areThemesAvailable())
+		{
+			/* @var \ThemeControl $themeControl */
+			$themeControl = $this->gxAdapter()->getThemeControl();
+			$activeTemplate = $themeControl->isThemeSystemActive() ? 'themes/' : 'templates/';
+			$activeTemplate .= $themeControl->getCurrentTheme();
+		}
+		
+		return $activeTemplate;
 	}
 	
 	
@@ -74,6 +89,15 @@ class TemplateDetailsReader
 	 */
 	public function getActiveTemplateVersion()
 	{
-		return $this->settings->getActiveTemplateVersion();
+		$activeTemplateVersion = $this->settings->getActiveTemplateVersion();
+		
+		if($this->settings->areThemesAvailable())
+		{
+			/* @var \ThemeControl $themeControl */
+			$themeControl = $this->gxAdapter()->getThemeControl();
+			$activeTemplateVersion = $themeControl->getThemeVersion();
+		}
+		
+		return $activeTemplateVersion;
 	}
 }

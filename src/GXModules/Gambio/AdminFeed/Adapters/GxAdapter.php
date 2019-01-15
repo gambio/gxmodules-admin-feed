@@ -1,9 +1,9 @@
 <?php
 /* --------------------------------------------------------------
-   GxAdapter.php 2018-08-02
+   GxAdapter.php 2019-01-15
    Gambio GmbH
    http://www.gambio.de
-   Copyright (c) 2018 Gambio GmbH
+   Copyright (c) 2019 Gambio GmbH
    Released under the GNU General Public License (Version 2)
    [http://www.gnu.org/licenses/gpl-2.0.html]
    --------------------------------------------------------------
@@ -62,7 +62,16 @@ class GxAdapter
 	 */
 	public function getQueryBuilder()
 	{
-		return $db = \StaticGXCoreLoader::getDatabaseQueryBuilder();
+		return \StaticGXCoreLoader::getDatabaseQueryBuilder();
+	}
+	
+	
+	/**
+	 * @return \ThemeControl
+	 */
+	public function getThemeControl()
+	{
+		return \StaticGXCoreLoader::getThemeControl();
 	}
 	
 	
