@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   TemplateDetailsSerializerTest.inc.php 2019-01-15
+   ThemeDetailsSerializerTest.inc.php 2019-01-15
    Gambio GmbH
    http://www.gambio.de
    Copyright (c) 2019 Gambio GmbH
@@ -9,14 +9,14 @@
    --------------------------------------------------------------
 */
 
-use Gambio\AdminFeed\Services\ShopInformation\Serializer\TemplateDetailsSerializer;
-use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\TemplateDetails;
+use Gambio\AdminFeed\Services\ShopInformation\Serializer\ThemeDetailsSerializer;
+use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ThemeDetails;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Class TemplateDetailsSerializerTest
+ * Class ThemeDetailsSerializerTest
  */
-class TemplateDetailsSerializerTest extends TestCase
+class ThemeDetailsSerializerTest extends TestCase
 {
 	/**
 	 * @var array
@@ -24,12 +24,12 @@ class TemplateDetailsSerializerTest extends TestCase
 	private $data;
 	
 	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\TemplateDetails
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ThemeDetails
 	 */
 	private $object;
 	
 	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\Serializer\TemplateDetailsSerializer
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\Serializer\ThemeDetailsSerializer
 	 */
 	private $serializer;
 	
@@ -46,9 +46,9 @@ class TemplateDetailsSerializerTest extends TestCase
 			'version'   => $version,
 		];
 		
-		$this->object = TemplateDetails::create($available, $selected, $version);
+		$this->object = ThemeDetails::create($available, $selected, $version);
 		
-		$this->serializer = new TemplateDetailsSerializer();
+		$this->serializer = new ThemeDetailsSerializer();
 	}
 	
 	

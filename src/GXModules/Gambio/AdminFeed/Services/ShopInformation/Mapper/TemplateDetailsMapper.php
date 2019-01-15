@@ -1,9 +1,9 @@
 <?php
 /* --------------------------------------------------------------
-   TemplateDetailsMapper.php 2018-08-01
+   TemplateDetailsMapper.php 2019-01-15
    Gambio GmbH
    http://www.gambio.de
-   Copyright (c) 2018 Gambio GmbH
+   Copyright (c) 2019 Gambio GmbH
    Released under the GNU General Public License (Version 2)
    [http://www.gnu.org/licenses/gpl-2.0.html]
    --------------------------------------------------------------
@@ -12,7 +12,7 @@
 namespace Gambio\AdminFeed\Services\ShopInformation\Mapper;
 
 use Gambio\AdminFeed\Services\ShopInformation\Reader\TemplateDetailsReader;
-use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\TemplateDetails;
+use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ThemeDetails;
 
 /**
  * Class TemplateDetailsMapper
@@ -41,11 +41,11 @@ class TemplateDetailsMapper
 	/**
 	 * Returns the template details.
 	 *
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\TemplateDetails
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ThemeDetails
 	 */
 	public function getTemplateDetails()
 	{
-		return new TemplateDetails($this->reader->getAvailableTemplates(), $this->reader->getActiveTemplate(),
-		                           $this->reader->getActiveTemplateVersion());
+		return new ThemeDetails($this->reader->getAvailableTemplates(), $this->reader->getActiveTemplate(),
+		                        $this->reader->getActiveTemplateVersion());
 	}
 }

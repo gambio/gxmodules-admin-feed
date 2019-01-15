@@ -1,46 +1,46 @@
 <?php
 /* --------------------------------------------------------------
-   TemplateDetailsTest.inc.php 2018-08-01
+   ThemeDetailsTest.inc.php 2019-01-15
    Gambio GmbH
    http://www.gambio.de
-   Copyright (c) 2018 Gambio GmbH
+   Copyright (c) 2019 Gambio GmbH
    Released under the GNU General Public License (Version 2)
    [http://www.gnu.org/licenses/gpl-2.0.html]
    --------------------------------------------------------------
 */
 
-use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\TemplateDetails;
+use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ThemeDetails;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Class TemplateDetailsTest
+ * Class ThemeDetailsTest
  */
-class TemplateDetailsTest extends TestCase
+class ThemeDetailsTest extends TestCase
 {
 	/**
 	 * @var array
 	 */
-	private $available = ['HoneyGrid', 'EyeCandy'];
+	private $available = ['templates/HoneyGrid', 'templates/EyeCandy'];
 	
 	/**
 	 * @var string
 	 */
-	private $selected = 'HoneyGrid';
+	private $selected = 'templates/HoneyGrid';
 	
 	/**
 	 * @var string
 	 */
-	private $version = '3';
+	private $version = '3.0';
 	
 	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\TemplateDetails
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ThemeDetails
 	 */
 	private $templateDetails;
 	
 	
 	public function setUp()
 	{
-		$this->templateDetails = TemplateDetails::create($this->available, $this->selected, $this->version);
+		$this->templateDetails = ThemeDetails::create($this->available, $this->selected, $this->version);
 	}
 	
 	

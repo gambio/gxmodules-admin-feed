@@ -1,9 +1,9 @@
 <?php
 /* --------------------------------------------------------------
-   ShopInformationSerializerTest.inc.php 2018-08-01
+   ShopInformationSerializerTest.inc.php 2019-01-15
    Gambio GmbH
    http://www.gambio.de
-   Copyright (c) 2018 Gambio GmbH
+   Copyright (c) 2019 Gambio GmbH
    Released under the GNU General Public License (Version 2)
    [http://www.gnu.org/licenses/gpl-2.0.html]
    --------------------------------------------------------------
@@ -16,14 +16,14 @@ use Gambio\AdminFeed\Services\ShopInformation\Serializer\ModulesDetailsSerialize
 use Gambio\AdminFeed\Services\ShopInformation\Serializer\ServerDetailsSerializer;
 use Gambio\AdminFeed\Services\ShopInformation\Serializer\ShopDetailsSerializer;
 use Gambio\AdminFeed\Services\ShopInformation\Serializer\ShopInformationSerializer;
-use Gambio\AdminFeed\Services\ShopInformation\Serializer\TemplateDetailsSerializer;
+use Gambio\AdminFeed\Services\ShopInformation\Serializer\ThemeDetailsSerializer;
 use Gambio\AdminFeed\Services\ShopInformation\Serializer\UpdatesDetailsSerializer;
 use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\FileSystemDetails;
 use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MerchantDetails;
 use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModulesDetails;
 use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ServerDetails;
 use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails;
-use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\TemplateDetails;
+use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ThemeDetails;
 use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdatesDetails;
 use PHPUnit\Framework\TestCase;
 
@@ -53,7 +53,7 @@ class ShopInformationSerializerTest extends TestCase
 		$shopDetails       = $this->createMock(ShopDetails::class);
 		$serverDetails     = $this->createMock(ServerDetails::class);
 		$modulesDetails    = $this->createMock(ModulesDetails::class);
-		$templatesDetails  = $this->createMock(TemplateDetails::class);
+		$themeDetails  = $this->createMock(ThemeDetails::class);
 		$fileSystemDetails = $this->createMock(FileSystemDetails::class);
 		$updatesDetails    = $this->createMock(UpdatesDetails::class);
 		
@@ -61,12 +61,12 @@ class ShopInformationSerializerTest extends TestCase
 			'shop'       => [],
 			'server'     => [],
 			'modules'    => [],
-			'templates'  => [],
+			'themes'  => [],
 			'filesystem' => [],
 			'updates'    => [],
 		];
 		
-		$this->object = ShopInformation::create($shopDetails, $serverDetails, $modulesDetails, $templatesDetails,
+		$this->object = ShopInformation::create($shopDetails, $serverDetails, $modulesDetails, $themeDetails,
 		                                        $fileSystemDetails, $updatesDetails);
 		
 		$shopDetailsSerializer = $this->createMock(ShopDetailsSerializer::class);
@@ -81,9 +81,9 @@ class ShopInformationSerializerTest extends TestCase
 		$modulesDetailsSerializer->method('serialize')->willReturn([]);
 		$modulesDetailsSerializer->method('deserialize')->willReturn($modulesDetails);
 		
-		$templateDetailsSerializer = $this->createMock(TemplateDetailsSerializer::class);
-		$templateDetailsSerializer->method('serialize')->willReturn([]);
-		$templateDetailsSerializer->method('deserialize')->willReturn($templatesDetails);
+		$themeDetailsSerializer = $this->createMock(ThemeDetailsSerializer::class);
+		$themeDetailsSerializer->method('serialize')->willReturn([]);
+		$themeDetailsSerializer->method('deserialize')->willReturn($themeDetails);
 		
 		$fileSystemDetailsSerializer = $this->createMock(FileSystemDetailsSerializer::class);
 		$fileSystemDetailsSerializer->method('serialize')->willReturn([]);
@@ -94,7 +94,7 @@ class ShopInformationSerializerTest extends TestCase
 		$updatesDetailsSerializer->method('deserialize')->willReturn($updatesDetails);
 		
 		$this->serializer = new ShopInformationSerializer($shopDetailsSerializer, $serverDetailsSerializer,
-		                                                  $modulesDetailsSerializer, $templateDetailsSerializer,
+		                                                  $modulesDetailsSerializer, $themeDetailsSerializer,
 		                                                  $fileSystemDetailsSerializer, $updatesDetailsSerializer);
 	}
 	

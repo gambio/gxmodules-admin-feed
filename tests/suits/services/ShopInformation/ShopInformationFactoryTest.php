@@ -1,9 +1,9 @@
 <?php
 /* --------------------------------------------------------------
-   ShopInformationServiceFactoryTest.inc.php 2018-08-01
+   ShopInformationServiceFactoryTest.inc.php 2019-01-15
    Gambio GmbH
    http://www.gambio.de
-   Copyright (c) 2018 Gambio GmbH
+   Copyright (c) 2019 Gambio GmbH
    Released under the GNU General Public License (Version 2)
    [http://www.gnu.org/licenses/gpl-2.0.html]
    --------------------------------------------------------------
@@ -20,7 +20,7 @@ use Gambio\AdminFeed\Services\ShopInformation\Serializer\PhpServerDetailsSeriali
 use Gambio\AdminFeed\Services\ShopInformation\Serializer\ServerDetailsSerializer;
 use Gambio\AdminFeed\Services\ShopInformation\Serializer\ShopDetailsSerializer;
 use Gambio\AdminFeed\Services\ShopInformation\Serializer\ShopInformationSerializer;
-use Gambio\AdminFeed\Services\ShopInformation\Serializer\TemplateDetailsSerializer;
+use Gambio\AdminFeed\Services\ShopInformation\Serializer\ThemeDetailsSerializer;
 use Gambio\AdminFeed\Services\ShopInformation\Serializer\UpdateDetailsSerializer;
 use Gambio\AdminFeed\Services\ShopInformation\Serializer\UpdatesDetailsSerializer;
 use Gambio\AdminFeed\Services\ShopInformation\ShopInformationFactory;
@@ -159,7 +159,7 @@ class ShopInformationServiceFactoryTest extends DbTestCase
 	 */
 	public function shouldCreateTemplateDetailsSerializer()
 	{
-		$this->assertInstanceOf(TemplateDetailsSerializer::class, $this->factory->createTemplateDetailsSerializer());
+		$this->assertInstanceOf(ThemeDetailsSerializer::class, $this->factory->createTemplateDetailsSerializer());
 	}
 	
 	

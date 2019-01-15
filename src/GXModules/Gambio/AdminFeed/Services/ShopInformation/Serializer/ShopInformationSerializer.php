@@ -1,9 +1,9 @@
 <?php
 /* --------------------------------------------------------------
-   ShopInformationSerializer.php 2018-08-10
+   ShopInformationSerializer.php 2019-01-15
    Gambio GmbH
    http://www.gambio.de
-   Copyright (c) 2018 Gambio GmbH
+   Copyright (c) 2019 Gambio GmbH
    Released under the GNU General Public License (Version 2)
    [http://www.gnu.org/licenses/gpl-2.0.html]
    --------------------------------------------------------------
@@ -36,19 +36,14 @@ class ShopInformationSerializer
 	private $modulesDetailsSerializer;
 	
 	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\Serializer\TemplateDetailsSerializer
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\Serializer\ThemeDetailsSerializer
 	 */
-	private $templateDetailsSerializer;
+	private $themeDetailsSerializer;
 	
 	/**
 	 * @var \Gambio\AdminFeed\Services\ShopInformation\Serializer\FileSystemDetailsSerializer
 	 */
 	private $fileSystemDetailsSerializer;
-	
-	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\Serializer\MerchantDetailsSerializer
-	 */
-	private $merchantDetailsSerializer;
 	
 	/**
 	 * @var \Gambio\AdminFeed\Services\ShopInformation\Serializer\UpdatesDetailsSerializer
@@ -62,14 +57,14 @@ class ShopInformationSerializer
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Serializer\ShopDetailsSerializer       $shopDetailsSerializer
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Serializer\ServerDetailsSerializer     $serverDetailsSerializer
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Serializer\ModulesDetailsSerializer    $modulesDetailsSerializer
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Serializer\TemplateDetailsSerializer   $templateDetailsSerializer
+	 * @param \Gambio\AdminFeed\Services\ShopInformation\Serializer\ThemeDetailsSerializer      $themeDetailsSerializer
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Serializer\FileSystemDetailsSerializer $fileSystemDetailsSerializer
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Serializer\UpdatesDetailsSerializer    $updatesDetailsSerializer
 	 */
 	public function __construct(ShopDetailsSerializer $shopDetailsSerializer,
 	                            ServerDetailsSerializer $serverDetailsSerializer,
 	                            ModulesDetailsSerializer $modulesDetailsSerializer,
-	                            TemplateDetailsSerializer $templateDetailsSerializer,
+	                            ThemeDetailsSerializer $themeDetailsSerializer,
 	                            FileSystemDetailsSerializer $fileSystemDetailsSerializer,
 	                            UpdatesDetailsSerializer $updatesDetailsSerializer
 	
@@ -78,7 +73,7 @@ class ShopInformationSerializer
 		$this->shopDetailsSerializer       = $shopDetailsSerializer;
 		$this->serverDetailsSerializer     = $serverDetailsSerializer;
 		$this->modulesDetailsSerializer    = $modulesDetailsSerializer;
-		$this->templateDetailsSerializer   = $templateDetailsSerializer;
+		$this->themeDetailsSerializer      = $themeDetailsSerializer;
 		$this->fileSystemDetailsSerializer = $fileSystemDetailsSerializer;
 		$this->updatesDetailsSerializer    = $updatesDetailsSerializer;
 	}
@@ -97,7 +92,7 @@ class ShopInformationSerializer
 			'shop'       => $this->shopDetailsSerializer->serialize($shopInformation->shop()),
 			'server'     => $this->serverDetailsSerializer->serialize($shopInformation->server()),
 			'modules'    => $this->modulesDetailsSerializer->serialize($shopInformation->modules()),
-			'templates'  => $this->templateDetailsSerializer->serialize($shopInformation->templates()),
+			'themes'     => $this->themeDetailsSerializer->serialize($shopInformation->themes()),
 			'filesystem' => $this->fileSystemDetailsSerializer->serialize($shopInformation->filesystem()),
 			'updates'    => $this->updatesDetailsSerializer->serialize($shopInformation->updates()),
 		];
@@ -123,7 +118,7 @@ class ShopInformationSerializer
 		if(!isset($json['shop'])
 		   || !isset($json['server'])
 		   || !isset($json['modules'])
-		   || !isset($json['templates'])
+		   || !isset($json['themes'])
 		   || !isset($json['filesystem'])
 		   || !isset($json['updates']))
 		{
@@ -133,10 +128,10 @@ class ShopInformationSerializer
 		$shop       = $this->shopDetailsSerializer->deserialize($json['shop']);
 		$server     = $this->serverDetailsSerializer->deserialize($json['server']);
 		$modules    = $this->modulesDetailsSerializer->deserialize($json['modules']);
-		$templates  = $this->templateDetailsSerializer->deserialize($json['templates']);
+		$themes     = $this->themeDetailsSerializer->deserialize($json['themes']);
 		$filesystem = $this->fileSystemDetailsSerializer->deserialize($json['filesystem']);
 		$updates    = $this->updatesDetailsSerializer->deserialize($json['updates']);
 		
-		return ShopInformation::create($shop, $server, $modules, $templates, $filesystem, $updates);
+		return ShopInformation::create($shop, $server, $modules, $themes, $filesystem, $updates);
 	}
 }

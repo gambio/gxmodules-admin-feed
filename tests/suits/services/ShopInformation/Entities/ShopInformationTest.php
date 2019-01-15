@@ -1,9 +1,9 @@
 <?php
 /* --------------------------------------------------------------
-   ShopInformationTest.inc.php 2018-08-01
+   ShopInformationTest.inc.php 2019-01-15
    Gambio GmbH
    http://www.gambio.de
-   Copyright (c) 2018 Gambio GmbH
+   Copyright (c) 2019 Gambio GmbH
    Released under the GNU General Public License (Version 2)
    [http://www.gnu.org/licenses/gpl-2.0.html]
    --------------------------------------------------------------
@@ -15,7 +15,7 @@ use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MerchantDetails;
 use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModulesDetails;
 use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ServerDetails;
 use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails;
-use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\TemplateDetails;
+use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ThemeDetails;
 use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdatesDetails;
 use PHPUnit\Framework\TestCase;
 
@@ -40,9 +40,9 @@ class ShopInformationTest extends TestCase
 	private $modulesDetails;
 	
 	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\TemplateDetails
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ThemeDetails
 	 */
-	private $templatesDetails;
+	private $themeDetails;
 	
 	/**
 	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\FileSystemDetails
@@ -66,12 +66,12 @@ class ShopInformationTest extends TestCase
 		$this->shopDetails       = $this->createMock(ShopDetails::class);
 		$this->serverDetails     = $this->createMock(ServerDetails::class);
 		$this->modulesDetails    = $this->createMock(ModulesDetails::class);
-		$this->templatesDetails  = $this->createMock(TemplateDetails::class);
+		$this->themeDetails      = $this->createMock(ThemeDetails::class);
 		$this->fileSystemDetails = $this->createMock(FileSystemDetails::class);
 		$this->updatesDetails    = $this->createMock(UpdatesDetails::class);
 		
 		$this->shopInformation = ShopInformation::create($this->shopDetails, $this->serverDetails,
-		                                                 $this->modulesDetails, $this->templatesDetails,
+		                                                 $this->modulesDetails, $this->themeDetails,
 		                                                 $this->fileSystemDetails, $this->updatesDetails);
 	}
 	
@@ -117,8 +117,8 @@ class ShopInformationTest extends TestCase
 	 */
 	public function shouldReturnExpectedTemplateDetails()
 	{
-		$expectedDetails = $this->templatesDetails;
-		$actualDetails   = $this->shopInformation->templates();
+		$expectedDetails = $this->themeDetails;
+		$actualDetails   = $this->shopInformation->themes();
 		
 		$this->assertEquals($expectedDetails, $actualDetails);
 	}

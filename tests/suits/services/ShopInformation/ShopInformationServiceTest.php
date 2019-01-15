@@ -1,9 +1,9 @@
 <?php
 /* --------------------------------------------------------------
-   ShopInformationServiceTest.inc.php 2018-08-01
+   ShopInformationServiceTest.inc.php 2019-01-15
    Gambio GmbH
    http://www.gambio.de
-   Copyright (c) 2018 Gambio GmbH
+   Copyright (c) 2019 Gambio GmbH
    Released under the GNU General Public License (Version 2)
    [http://www.gnu.org/licenses/gpl-2.0.html]
    --------------------------------------------------------------
@@ -18,7 +18,7 @@ use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MerchantDetails;
 use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModulesDetails;
 use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ServerDetails;
 use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails;
-use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\TemplateDetails;
+use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ThemeDetails;
 use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdatesDetails;
 use PHPUnit\Framework\TestCase;
 
@@ -48,7 +48,7 @@ class ShopInformationServiceTest extends TestCase
 	private $modulesDetails;
 	
 	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\TemplateDetails
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ThemeDetails
 	 */
 	private $templatesDetails;
 	
@@ -86,7 +86,7 @@ class ShopInformationServiceTest extends TestCase
 		$this->modulesDetails = $this->createMock(ModulesDetails::class);
 		$this->repository->method('getModulesDetails')->willReturn($this->modulesDetails);
 		
-		$this->templatesDetails = $this->createMock(TemplateDetails::class);
+		$this->templatesDetails = $this->createMock(ThemeDetails::class);
 		$this->repository->method('getTemplateDetails')->willReturn($this->templatesDetails);
 		
 		$this->fileSystemDetails = $this->createMock(FileSystemDetails::class);

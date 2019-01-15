@@ -1,9 +1,9 @@
 <?php
 /* --------------------------------------------------------------
-   TemplateDetailsMapperTest.inc.php 2018-08-01
+   TemplateDetailsMapperTest.inc.php 2019-01-15
    Gambio GmbH
    http://www.gambio.de
-   Copyright (c) 2018 Gambio GmbH
+   Copyright (c) 2019 Gambio GmbH
    Released under the GNU General Public License (Version 2)
    [http://www.gnu.org/licenses/gpl-2.0.html]
    --------------------------------------------------------------
@@ -19,7 +19,7 @@ use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MysqlServerDetails;
 use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\PhpServerDetails;
 use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ServerDetails;
 use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails;
-use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\TemplateDetails;
+use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ThemeDetails;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -75,7 +75,7 @@ class TemplateDetailsMapperTest extends TestCase
 	
 	private function expectedTemplateDetails()
 	{
-		return new TemplateDetails($this->available, $this->selected, $this->version);
+		return new ThemeDetails($this->available, $this->selected, $this->version);
 	}
 	
 	

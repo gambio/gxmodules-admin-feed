@@ -1,9 +1,9 @@
 <?php
 /* --------------------------------------------------------------
-   TemplateDetails.php 2018-08-01
+   ThemeDetails.php 2019-01-15
    Gambio GmbH
    http://www.gambio.de
-   Copyright (c) 2018 Gambio GmbH
+   Copyright (c) 2019 Gambio GmbH
    Released under the GNU General Public License (Version 2)
    [http://www.gnu.org/licenses/gpl-2.0.html]
    --------------------------------------------------------------
@@ -12,11 +12,11 @@
 namespace Gambio\AdminFeed\Services\ShopInformation\ValueObjects;
 
 /**
- * Class TemplateDetails
+ * Class ThemeDetails
  *
  * @package Gambio\AdminFeed\Services\ShopInformation\ValueObjects
  */
-class TemplateDetails
+class ThemeDetails
 {
 	/**
 	 * @var array
@@ -50,13 +50,13 @@ class TemplateDetails
 	
 	
 	/**
-	 * Creates and returns a new TemplateDetails instance.
+	 * Creates and returns a new ThemeDetails instance.
 	 *
 	 * @param array  $available
 	 * @param string $selected
 	 * @param string $version
 	 *
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\TemplateDetails
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ThemeDetails
 	 */
 	static function create(array $available, $selected, $version)
 	{
@@ -65,7 +65,7 @@ class TemplateDetails
 	
 	
 	/**
-	 * Returns a list of available templates.
+	 * Returns a list of available themes and templates.
 	 *
 	 * @return array
 	 */
@@ -76,7 +76,7 @@ class TemplateDetails
 	
 	
 	/**
-	 * Returns the name of the active template.
+	 * Returns the name of the active theme or template.
 	 *
 	 * @return string
 	 */
@@ -87,9 +87,9 @@ class TemplateDetails
 	
 	
 	/**
-	 * Returns the version of the active template.
+	 * Returns the version of the active theme or template.
 	 *
-	 * @return array
+	 * @return string
 	 */
 	public function version()
 	{

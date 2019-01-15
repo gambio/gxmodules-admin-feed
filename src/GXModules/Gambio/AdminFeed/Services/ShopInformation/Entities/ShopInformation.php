@@ -1,9 +1,9 @@
 <?php
 /* --------------------------------------------------------------
-   ShopInformation.php 2018-08-01
+   ShopInformation.php 2019-01-15
    Gambio GmbH
    http://www.gambio.de
-   Copyright (c) 2018 Gambio GmbH
+   Copyright (c) 2019 Gambio GmbH
    Released under the GNU General Public License (Version 2)
    [http://www.gnu.org/licenses/gpl-2.0.html]
    --------------------------------------------------------------
@@ -15,7 +15,7 @@ use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\FileSystemDetails;
 use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModulesDetails;
 use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ServerDetails;
 use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails;
-use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\TemplateDetails;
+use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ThemeDetails;
 use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MerchantDetails;
 use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdatesDetails;
 
@@ -42,9 +42,9 @@ class ShopInformation
 	private $modules;
 	
 	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\TemplateDetails
+	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ThemeDetails
 	 */
-	private $templates;
+	private $themes;
 	
 	/**
 	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\FileSystemDetails
@@ -63,22 +63,21 @@ class ShopInformation
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails       $shop
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ServerDetails     $server
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModulesDetails    $modules
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\TemplateDetails   $templates
+	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ThemeDetails      $themes
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\FileSystemDetails $filesystem
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MerchantDetails   $merchant
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdatesDetails    $updates
 	 */
 	public function __construct(ShopDetails $shop,
 	                            ServerDetails $server,
 	                            ModulesDetails $modules,
-	                            TemplateDetails $templates,
+	                            ThemeDetails $themes,
 	                            FileSystemDetails $filesystem,
 	                            UpdatesDetails $updates)
 	{
 		$this->shop       = $shop;
 		$this->server     = $server;
 		$this->modules    = $modules;
-		$this->templates  = $templates;
+		$this->themes     = $themes;
 		$this->filesystem = $filesystem;
 		$this->updates    = $updates;
 	}
@@ -90,7 +89,7 @@ class ShopInformation
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails       $shop
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ServerDetails     $server
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModulesDetails    $modules
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\TemplateDetails   $templates
+	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ThemeDetails      $themes
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\FileSystemDetails $filesystem
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdatesDetails    $updates
 	 *
@@ -99,11 +98,11 @@ class ShopInformation
 	static function create(ShopDetails $shop,
 	                       ServerDetails $server,
 	                       ModulesDetails $modules,
-	                       TemplateDetails $templates,
+	                       ThemeDetails $themes,
 	                       FileSystemDetails $filesystem,
 	                       UpdatesDetails $updates)
 	{
-		return new self($shop, $server, $modules, $templates, $filesystem, $updates);
+		return new self($shop, $server, $modules, $themes, $filesystem, $updates);
 	}
 	
 	
@@ -141,13 +140,13 @@ class ShopInformation
 	
 	
 	/**
-	 * Returns the template details.
+	 * Returns the theme details.
 	 *
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\TemplateDetails
+	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ThemeDetails
 	 */
-	public function templates()
+	public function themes()
 	{
-		return $this->templates;
+		return $this->themes;
 	}
 	
 	
