@@ -53,9 +53,9 @@ class ModuleDetailsSerializer
 			$json = json_decode($json, true);
 		}
 		
-		if(!isset($json['name'])
-		   || !isset($json['installed'])
-		   || !isset($json['enabled']))
+		if(!array_key_exists('name', $json)
+		   || !array_key_exists('installed', $json)
+		   || !array_key_exists('enabled', $json))
 		{
 			throw new \InvalidArgumentException('Given argument is invalid. Needed property is missing.');
 		}
