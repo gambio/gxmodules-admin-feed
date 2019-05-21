@@ -103,13 +103,19 @@ class ModulesDetailsSerializer
 			$json = json_decode($json, true);
 		}
 		
-		if(!isset($json['hub'])
-		   || !isset($json['payment'])
-		   || !isset($json['shipping'])
-		   || !isset($json['orderTotal'])
-		   || !isset($json['moduleCenter']))
+		$neededProperties = [
+			'hub',
+			'payment',
+			'shipping',
+			'orderTotal',
+			'moduleCenter',
+		];
+		foreach($neededProperties as $property)
 		{
-			throw new \InvalidArgumentException('Given argument is invalid. Needed property is missing.');
+			if(!array_key_exists($property, $json))
+			{
+				throw new \InvalidArgumentException('Property "'.$property.'" is missing.');
+			}
 		}
 		
 		$hubModules = [];

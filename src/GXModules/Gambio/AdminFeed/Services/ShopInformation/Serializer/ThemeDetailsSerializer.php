@@ -53,11 +53,17 @@ class ThemeDetailsSerializer
 			$json = json_decode($json, true);
 		}
 		
-		if(!isset($json['available'])
-		   || !isset($json['selected'])
-		   || !isset($json['version']))
+		$neededProperties = [
+			'available',
+			'selected',
+			'version',
+		];
+		foreach($neededProperties as $property)
 		{
-			throw new \InvalidArgumentException('Given argument is invalid. Needed property is missing.');
+			if(!array_key_exists($property, $json))
+			{
+				throw new \InvalidArgumentException('Property "'.$property.'" is missing.');
+			}
 		}
 		
 		return ThemeDetails::create($json['available'], $json['selected'], $json['version']);

@@ -79,12 +79,18 @@ class ServerDetailsSerializer
 			$json = json_decode($json, true);
 		}
 		
-		if(!isset($json['php'])
-		   || !isset($json['mysql'])
-		   || !isset($json['webserver'])
-		   || !isset($json['os']))
+		$neededProperties = [
+			'php',
+			'mysql',
+			'webserver',
+			'os',
+		];
+		foreach($neededProperties as $property)
 		{
-			throw new \InvalidArgumentException('Given argument is invalid. Needed property is missing.');
+			if(!array_key_exists($property, $json))
+			{
+				throw new \InvalidArgumentException('Property "'.$property.'" is missing.');
+			}
 		}
 		
 		$php   = $this->phpServerDetailsSerializer->deserialize($json['php']);

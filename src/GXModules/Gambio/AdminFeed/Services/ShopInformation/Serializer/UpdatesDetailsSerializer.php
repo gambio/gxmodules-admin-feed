@@ -82,10 +82,16 @@ class UpdatesDetailsSerializer
 			$json = json_decode($json, true);
 		}
 		
-		if(!isset($json['installed'])
-		   || !isset($json['downloaded']))
+		$neededProperties = [
+			'installed',
+			'downloaded',
+		];
+		foreach($neededProperties as $property)
 		{
-			throw new \InvalidArgumentException('Given argument is invalid. Needed property is missing.');
+			if(!array_key_exists($property, $json))
+			{
+				throw new \InvalidArgumentException('Property "'.$property.'" is missing.');
+			}
 		}
 		
 		$installedUpdates = [];

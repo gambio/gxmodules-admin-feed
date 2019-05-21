@@ -115,14 +115,20 @@ class ShopInformationSerializer
 			$json = json_decode($json, true);
 		}
 		
-		if(!isset($json['shop'])
-		   || !isset($json['server'])
-		   || !isset($json['modules'])
-		   || !isset($json['themes'])
-		   || !isset($json['filesystem'])
-		   || !isset($json['updates']))
+		$neededProperties = [
+			'shop',
+			'server',
+			'modules',
+			'themes',
+			'filesystem',
+			'updates',
+		];
+		foreach($neededProperties as $property)
 		{
-			throw new \InvalidArgumentException('Given argument is invalid. Needed property is missing.');
+			if(!array_key_exists($property, $json))
+			{
+				throw new \InvalidArgumentException('Property "'.$property.'" is missing.');
+			}
 		}
 		
 		$shop       = $this->shopDetailsSerializer->deserialize($json['shop']);

@@ -56,14 +56,20 @@ class FileSystemDetailsSerializer
 			$json = json_decode($json, true);
 		}
 		
-		if(!isset($json['usermods'])
-		   || !isset($json['gxModules'])
-		   || !isset($json['dangerousTools'])
-		   || !isset($json['receiptFiles'])
-		   || !isset($json['globalUsermodDirectoryExists'])
-		   || !isset($json['upmDirectoryExists']))
+		$neededProperties = [
+			'usermods',
+			'gxModules',
+			'dangerousTools',
+			'receiptFiles',
+			'globalUsermodDirectoryExists',
+			'upmDirectoryExists',
+		];
+		foreach($neededProperties as $property)
 		{
-			throw new \InvalidArgumentException('Given argument is invalid. Needed property is missing.');
+			if(!array_key_exists($property, $json))
+			{
+				throw new \InvalidArgumentException('Property "'.$property.'" is missing.');
+			}
 		}
 		
 		return FileSystemDetails::create($json['usermods'], $json['gxModules'], $json['dangerousTools'],

@@ -56,14 +56,20 @@ class ShopDetailsSerializer
 			$json = json_decode($json, true);
 		}
 		
-		if(!isset($json['version'])
-		   || !isset($json['url'])
-		   || !isset($json['key'])
-		   || !isset($json['languages'])
-		   || !isset($json['defaultLanguage'])
-		   || !isset($json['countries']))
+		$neededProperties = [
+			'version',
+			'url',
+			'key',
+			'languages',
+			'defaultLanguage',
+			'countries',
+		];
+		foreach($neededProperties as $property)
 		{
-			throw new \InvalidArgumentException('Given argument is invalid. Needed property is missing.');
+			if(!array_key_exists($property, $json))
+			{
+				throw new \InvalidArgumentException('Property "'.$property.'" is missing.');
+			}
 		}
 		
 		return ShopDetails::create($json['version'], $json['url'], $json['key'], $json['languages'],

@@ -53,11 +53,17 @@ class UpdateDetailsSerializer
 			$json = json_decode($json, true);
 		}
 		
-		if(!isset($json['name'])
-		   || !isset($json['version'])
-		   || !isset($json['installationDate']))
+		$neededProperties = [
+			'name',
+			'version',
+			'installationDate',
+		];
+		foreach($neededProperties as $property)
 		{
-			throw new \InvalidArgumentException('Given argument is invalid. Needed property is missing.');
+			if(!array_key_exists($property, $json))
+			{
+				throw new \InvalidArgumentException('Property "'.$property.'" is missing.');
+			}
 		}
 		
 		return UpdateDetails::create($json['name'], $json['version'], $json['installationDate']);

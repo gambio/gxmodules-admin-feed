@@ -53,11 +53,17 @@ class ModuleDetailsSerializer
 			$json = json_decode($json, true);
 		}
 		
-		if(!array_key_exists('name', $json)
-		   || !array_key_exists('installed', $json)
-		   || !array_key_exists('enabled', $json))
+		$neededProperties = [
+			'name',
+			'installed',
+			'enabled',
+		];
+		foreach($neededProperties as $property)
 		{
-			throw new \InvalidArgumentException('Given argument is invalid. Needed property is missing.');
+			if(!array_key_exists($property, $json))
+			{
+				throw new \InvalidArgumentException('Property "'.$property.'" is missing.');
+			}
 		}
 		
 		return ModuleDetails::create($json['name'], $json['installed'], $json['enabled']);

@@ -53,11 +53,17 @@ class MysqlServerDetailsSerializer
 			$json = json_decode($json, true);
 		}
 		
-		if(!isset($json['version'])
-		   || !isset($json['engines'])
-		   || !isset($json['defaultEngine']))
+		$neededProperties = [
+			'version',
+			'engines',
+			'defaultEngine',
+		];
+		foreach($neededProperties as $property)
 		{
-			throw new \InvalidArgumentException('Given argument is invalid. Needed property is missing.');
+			if(!array_key_exists($property, $json))
+			{
+				throw new \InvalidArgumentException('Property "'.$property.'" is missing.');
+			}
 		}
 		
 		return MysqlServerDetails::create($json['version'], $json['engines'], $json['defaultEngine']);
