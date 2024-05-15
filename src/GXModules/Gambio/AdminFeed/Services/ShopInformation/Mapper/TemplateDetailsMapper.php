@@ -21,24 +21,25 @@ use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ThemeDetails;
  */
 class TemplateDetailsMapper
 {
-	/**
-	 * TemplateDetailsMapper constructor.
-	 *
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Reader\TemplateDetailsReader $reader
-	 */
-	public function __construct(private readonly TemplateDetailsReader $reader)
- {
- }
-	
-	
-	/**
-	 * Returns the template details.
-	 *
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ThemeDetails
-	 */
-	public function getTemplateDetails()
-	{
-		return new ThemeDetails($this->reader->getAvailableTemplates(), $this->reader->getActiveTemplate(),
-		                        $this->reader->getActiveTemplateVersion());
-	}
+    /**
+     * TemplateDetailsMapper constructor.
+     *
+     * @param TemplateDetailsReader $reader
+     */
+    public function __construct(private readonly TemplateDetailsReader $reader)
+    {
+    }
+    
+    
+    /**
+     * Returns the template details.
+     *
+     * @return ThemeDetails
+     */
+    public function getTemplateDetails()
+    {
+        return new ThemeDetails($this->reader->getAvailableTemplates(),
+                                $this->reader->getActiveTemplate(),
+                                $this->reader->getActiveTemplateVersion());
+    }
 }

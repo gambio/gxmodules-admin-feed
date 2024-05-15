@@ -11,6 +11,8 @@
 
 namespace Gambio\AdminFeed\Services\ShopInformation\ValueObjects;
 
+use InvalidArgumentException;
+
 /**
  * Class ModuleDetails
  *
@@ -18,68 +20,67 @@ namespace Gambio\AdminFeed\Services\ShopInformation\ValueObjects;
  */
 class ModuleDetails
 {
-	/**
-	 * ModuleDetails constructor.
-	 *
-	 * @param string    $name
-	 * @param bool      $installed
-	 * @param bool|null $enabled
-	 */
-	public function __construct(private $name, private $installed, private $enabled)
- {
- }
-	
-	
-	/**
-	 * Creates and returns a new ModuleDetails instance.
-	 *
-	 * @param string    $name
-	 * @param bool      $installed
-	 * @param bool|null $enabled
-	 *
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModuleDetails
-	 */
-	static function create($name, $installed, $enabled)
-	{
-		if(empty($name))
-		{
-			throw new \InvalidArgumentException('Name can not be empty.');
-		}
-		
-		return new self($name, $installed, $enabled);
-	}
-	
-	
-	/**
-	 * Returns the name of the module.
-	 *
-	 * @return string
-	 */
-	public function name()
-	{
-		return $this->name;
-	}
-	
-	
-	/**
-	 * Returns the installed status of the module.
-	 *
-	 * @return bool Returns true, if the module is installed, otherwise false will be returned.
-	 */
-	public function installed()
-	{
-		return $this->installed;
-	}
-	
-	
-	/**
-	 * Returns the enabled status of the mdoule.
-	 *
-	 * @return bool|null Null will be returned if its a module center module. For all other modules true will be
-	 *                   returned, if the module is enabled and false will be returned, if the module is not enabled.
-	 */
-	public function enabled()
-	{
-		return $this->enabled;
-	}
+    /**
+     * ModuleDetails constructor.
+     *
+     * @param string    $name
+     * @param bool      $installed
+     * @param bool|null $enabled
+     */
+    public function __construct(private $name, private $installed, private $enabled)
+    {
+    }
+    
+    
+    /**
+     * Creates and returns a new ModuleDetails instance.
+     *
+     * @param string    $name
+     * @param bool      $installed
+     * @param bool|null $enabled
+     *
+     * @return ModuleDetails
+     */
+    static function create($name, $installed, $enabled)
+    {
+        if (empty($name)) {
+            throw new InvalidArgumentException('Name can not be empty.');
+        }
+        
+        return new self($name, $installed, $enabled);
+    }
+    
+    
+    /**
+     * Returns the name of the module.
+     *
+     * @return string
+     */
+    public function name()
+    {
+        return $this->name;
+    }
+    
+    
+    /**
+     * Returns the installed status of the module.
+     *
+     * @return bool Returns true, if the module is installed, otherwise false will be returned.
+     */
+    public function installed()
+    {
+        return $this->installed;
+    }
+    
+    
+    /**
+     * Returns the enabled status of the mdoule.
+     *
+     * @return bool|null Null will be returned if its a module center module. For all other modules true will be
+     *                   returned, if the module is enabled and false will be returned, if the module is not enabled.
+     */
+    public function enabled()
+    {
+        return $this->enabled;
+    }
 }

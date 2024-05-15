@@ -16,7 +16,6 @@ use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModulesDetails;
 use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ServerDetails;
 use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails;
 use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ThemeDetails;
-use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MerchantDetails;
 use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdatesDetails;
 
 /**
@@ -26,148 +25,121 @@ use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdatesDetails;
  */
 class ShopInformation
 {
-	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails
-	 */
-	private $shop;
-	
-	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ServerDetails
-	 */
-	private $server;
-	
-	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModulesDetails
-	 */
-	private $modules;
-	
-	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ThemeDetails
-	 */
-	private $themes;
-	
-	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\FileSystemDetails
-	 */
-	private $filesystem;
-	
-	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdatesDetails
-	 */
-	private $updates;
-	
-	
-	/**
-	 * ShopInformation constructor.
-	 *
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails       $shop
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ServerDetails     $server
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModulesDetails    $modules
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ThemeDetails      $themes
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\FileSystemDetails $filesystem
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdatesDetails    $updates
-	 */
-	public function __construct(ShopDetails $shop,
-	                            ServerDetails $server,
-	                            ModulesDetails $modules,
-	                            ThemeDetails $themes,
-	                            FileSystemDetails $filesystem,
-	                            UpdatesDetails $updates)
-	{
-		$this->shop       = $shop;
-		$this->server     = $server;
-		$this->modules    = $modules;
-		$this->themes     = $themes;
-		$this->filesystem = $filesystem;
-		$this->updates    = $updates;
-	}
-	
-	
-	/**
-	 * Creates and returns a new ShopInformation instance.
-	 *
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails       $shop
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ServerDetails     $server
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModulesDetails    $modules
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ThemeDetails      $themes
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\FileSystemDetails $filesystem
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdatesDetails    $updates
-	 *
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\Entities\ShopInformation
-	 */
-	static function create(ShopDetails $shop,
-	                       ServerDetails $server,
-	                       ModulesDetails $modules,
-	                       ThemeDetails $themes,
-	                       FileSystemDetails $filesystem,
-	                       UpdatesDetails $updates)
-	{
-		return new self($shop, $server, $modules, $themes, $filesystem, $updates);
-	}
-	
-	
-	/**
-	 * Returns the shop details.
-	 *
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails
-	 */
-	public function shop()
-	{
-		return $this->shop;
-	}
-	
-	
-	/**
-	 * Returns the server details.
-	 *
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ServerDetails
-	 */
-	public function server()
-	{
-		return $this->server;
-	}
-	
-	
-	/**
-	 * Returns the modules details.
-	 *
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModulesDetails
-	 */
-	public function modules()
-	{
-		return $this->modules;
-	}
-	
-	
-	/**
-	 * Returns the theme details.
-	 *
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ThemeDetails
-	 */
-	public function themes()
-	{
-		return $this->themes;
-	}
-	
-	
-	/**
-	 * Returns the filesystem details.
-	 *
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\FileSystemDetails
-	 */
-	public function filesystem()
-	{
-		return $this->filesystem;
-	}
-	
-	
-	/**
-	 * Returns the updates details.
-	 *
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdatesDetails
-	 */
-	public function updates()
-	{
-		return $this->updates;
-	}
+    /**
+     * ShopInformation constructor.
+     *
+     * @param ShopDetails       $shop
+     * @param ServerDetails     $server
+     * @param ModulesDetails    $modules
+     * @param ThemeDetails      $themes
+     * @param FileSystemDetails $filesystem
+     * @param UpdatesDetails    $updates
+     * @param int               $version
+     */
+    public function __construct(private readonly ShopDetails $shop, private readonly ServerDetails $server, private readonly ModulesDetails $modules, private readonly ThemeDetails $themes, private readonly FileSystemDetails $filesystem, private readonly UpdatesDetails $updates, private $version = 1)
+    {
+    }
+    
+    
+    /**
+     * Creates and returns a new ShopInformation instance.
+     *
+     * @param ShopDetails       $shop
+     * @param ServerDetails     $server
+     * @param ModulesDetails    $modules
+     * @param ThemeDetails      $themes
+     * @param FileSystemDetails $filesystem
+     * @param UpdatesDetails    $updates
+     * @param int               $version
+     *
+     * @return ShopInformation
+     */
+    static function create(
+        ShopDetails $shop,
+        ServerDetails $server,
+        ModulesDetails $modules,
+        ThemeDetails $themes,
+        FileSystemDetails $filesystem,
+        UpdatesDetails $updates,
+        $version = 1
+    ) {
+        return new self($shop, $server, $modules, $themes, $filesystem, $updates, $version);
+    }
+    
+    
+    /**
+     * Returns the shop details.
+     *
+     * @return ShopDetails
+     */
+    public function shop()
+    {
+        return $this->shop;
+    }
+    
+    
+    /**
+     * Returns the server details.
+     *
+     * @return ServerDetails
+     */
+    public function server()
+    {
+        return $this->server;
+    }
+    
+    
+    /**
+     * Returns the modules details.
+     *
+     * @return ModulesDetails
+     */
+    public function modules()
+    {
+        return $this->modules;
+    }
+    
+    
+    /**
+     * Returns the theme details.
+     *
+     * @return ThemeDetails
+     */
+    public function themes()
+    {
+        return $this->themes;
+    }
+    
+    
+    /**
+     * Returns the filesystem details.
+     *
+     * @return FileSystemDetails
+     */
+    public function filesystem()
+    {
+        return $this->filesystem;
+    }
+    
+    
+    /**
+     * Returns the updates details.
+     *
+     * @return UpdatesDetails
+     */
+    public function updates()
+    {
+        return $this->updates;
+    }
+    
+    
+    /**
+     * Returns the version of these server information object.
+     *
+     * @return int
+     */
+    public function version()
+    {
+        return $this->version;
+    }
 }

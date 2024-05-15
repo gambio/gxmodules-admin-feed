@@ -12,6 +12,7 @@
 namespace Gambio\AdminFeed\Services\ShopInformation\Repositories;
 
 use Gambio\AdminFeed\Services\ShopInformation\Mapper\TemplateDetailsMapper;
+use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ThemeDetails;
 
 /**
  * Class TemplateDetailsRepository
@@ -20,23 +21,23 @@ use Gambio\AdminFeed\Services\ShopInformation\Mapper\TemplateDetailsMapper;
  */
 class TemplateDetailsRepository
 {
-	/**
-	 * TemplateDetailsRepository constructor.
-	 *
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Mapper\TemplateDetailsMapper $mapper
-	 */
-	public function __construct(private readonly TemplateDetailsMapper $mapper)
- {
- }
-	
-	
-	/**
-	 * Returns the template details.
-	 *
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ThemeDetails
-	 */
-	public function getTemplateDetails()
-	{
-		return $this->mapper->getTemplateDetails();
-	}
+    /**
+     * TemplateDetailsRepository constructor.
+     *
+     * @param TemplateDetailsMapper $mapper
+     */
+    public function __construct(private readonly TemplateDetailsMapper $mapper)
+    {
+    }
+    
+    
+    /**
+     * Returns the template details.
+     *
+     * @return ThemeDetails
+     */
+    public function getTemplateDetails()
+    {
+        return $this->mapper->getTemplateDetails();
+    }
 }

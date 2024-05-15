@@ -16,36 +16,36 @@
  */
 class AdminFeedLinks
 {
-	/**
-	 * @const string ADMIN_NEWS_URL URL for the admin news
-	 */
-	public const ADMIN_NEWS_URL = 'https://news.gambio-support.de/news.php?category=gx3';
-	
-	/**
-	 * @const string SERVER_INFO_SEND_URL URL to send the server info to
-	 */
-	public const SERVER_INFO_SEND_URL = 'https://www.gambio-support.de/misc/serverinfo/';
-	
-	/**
-	 * @const string DYNAMIC_SHOP_MESSAGES_URL URL to fetch dynamic shop messages
-	 */
-	public const DYNAMIC_SHOP_MESSAGES_URL = 'https://www.gambio-support.de/updateinfo/';
-	
-	/**
-	 * @const string SHOP_MESSAGES URL to fetch shop messages
-	 */
-	public const SHOP_MESSAGES = 'https://www.gambio-support.de/version_news';
-	
-	/**
-	 * @const string AUTO_UPDATER_URL URL to fetch auto updater updates
-	 */
-	public const AUTO_UPDATER_URL = 'https://updates.gambio-support.de/v2/check.php';
-	
-	
-	public static function asArray()
-	{
-		$selfReflection = new ReflectionClass(self::class);
-		
-		return $selfReflection->getConstants();
-	}
+    /**
+     * @const string ADMIN_NEWS_URL URL for the admin news
+     */
+    public const ADMIN_NEWS_URL = 'https://news.gambio-support.de/news.php?category=gx4';
+    
+    /**
+     * @const string SERVER_INFO_SEND_URL URL to send the server info to
+     */
+    public const SERVER_INFO_SEND_URL = 'https://www.gambio-support.de/misc/serverinfo/';
+    
+    /**
+     * @const string DYNAMIC_SHOP_MESSAGES_URL URL to fetch dynamic shop messages
+     */
+    public const DYNAMIC_SHOP_MESSAGES_URL = 'https://www.gambio-support.de/updateinfo/';
+    
+    /**
+     * @const string SHOP_MESSAGES URL to fetch shop messages
+     */
+    public const SHOP_MESSAGES = 'https://www.gambio-support.de/version_news';
+    
+    /**
+     * @const string AUTO_UPDATER_URL URL to fetch auto updater updates
+     */
+    public const AUTO_UPDATER_URL = 'https://updates.gambio-support.de/v2/check.php';
+    
+    
+    public static function asArray()
+    {
+        $selfReflection = new ReflectionClass(self::class);
+        
+        return $selfReflection->getConstants();
+    }
 }

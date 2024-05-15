@@ -12,6 +12,7 @@
 namespace Gambio\AdminFeed\Services\ShopInformation\Serializer;
 
 use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ServerDetails;
+use InvalidArgumentException;
 
 /**
  * Class ServerDetailsSerializer
@@ -20,68 +21,60 @@ use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ServerDetails;
  */
 class ServerDetailsSerializer
 {
-	/**
-	 * ServerDetailsSerializer constructor.
-	 *
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Serializer\PhpServerDetailsSerializer   $phpServerDetailsSerializer
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Serializer\MysqlServerDetailsSerializer $mysqlServerDetailsSerializer
-	 */
-	public function __construct(private readonly PhpServerDetailsSerializer $phpServerDetailsSerializer, private readonly MysqlServerDetailsSerializer $mysqlServerDetailsSerializer)
- {
- }
-	
-	
-	/**
-	 * Serializes a given ServerDetails instance.
-	 *
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ServerDetails $serverDetails
-	 *
-	 * @return array
-	 */
-	public function serialize(ServerDetails $serverDetails)
-	{
-		$json = [
-			'php'       => $this->phpServerDetailsSerializer->serialize($serverDetails->php()),
-			'mysql'     => $this->mysqlServerDetailsSerializer->serialize($serverDetails->mysql()),
-			'webserver' => $serverDetails->webserver(),
-			'os'        => $serverDetails->os(),
-		];
-		
-		return $json;
-	}
-	
-	
-	/**
-	 * Returns a new ServerDetails instance by using the data of a given array or json strings.
-	 *
-	 * @param string|array $json
-	 *
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ServerDetails
-	 */
-	public function deserialize($json)
-	{
-		if(!is_array($json))
-		{
-			$json = json_decode($json, true);
-		}
-		
-		$neededProperties = [
-			'php',
-			'mysql',
-			'webserver',
-			'os',
-		];
-		foreach($neededProperties as $property)
-		{
-			if(!array_key_exists($property, $json))
-			{
-				throw new \InvalidArgumentException('Property "'.$property.'" is missing.');
-			}
-		}
-		
-		$php   = $this->phpServerDetailsSerializer->deserialize($json['php']);
-		$mysql = $this->mysqlServerDetailsSerializer->deserialize($json['mysql']);
-		
-		return ServerDetails::create($php, $mysql, $json['webserver'], $json['os']);
-	}
+    /**
+     * ServerDetailsSerializer constructor.
+     *
+     * @param PhpServerDetailsSerializer   $phpServerDetailsSerializer
+     * @param MysqlServerDetailsSerializer $mysqlServerDetailsSerializer
+     */
+    public function __construct(private readonly PhpServerDetailsSerializer $phpServerDetailsSerializer, private readonly MysqlServerDetailsSerializer $mysqlServerDetailsSerializer)
+    {
+    }
+    
+    
+    /**
+     * Serializes a given ServerDetails instance.
+     *
+     * @param ServerDetails $serverDetails
+     *
+     * @return array
+     */
+    public function serialize(ServerDetails $serverDetails)
+    {
+        $json = [
+            'php'       => $this->phpServerDetailsSerializer->serialize($serverDetails->php()),
+            'mysql'     => $this->mysqlServerDetailsSerializer->serialize($serverDetails->mysql()),
+            'webserver' => $serverDetails->webserver(),
+            'os'        => $serverDetails->os(),
+        ];
+        
+        return $json;
+    }
+    
+    
+    /**
+     * Returns a new ServerDetails instance by using the data of a given array or json strings.
+     *
+     * @param string|array $json
+     *
+     * @return ServerDetails
+     */
+    public function deserialize($json)
+    {
+        if (!is_array($json)) {
+            $json = json_decode($json, true);
+        }
+        
+        if (!isset($json['php'])
+            || !isset($json['mysql'])
+            || !isset($json['webserver'])
+            || !isset($json['os'])) {
+            throw new InvalidArgumentException('Given argument is invalid. Needed property is missing.');
+        }
+        
+        $php   = $this->phpServerDetailsSerializer->deserialize($json['php']);
+        $mysql = $this->mysqlServerDetailsSerializer->deserialize($json['mysql']);
+        
+        return ServerDetails::create($php, $mysql, $json['webserver'], $json['os']);
+    }
 }

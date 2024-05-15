@@ -18,28 +18,27 @@ namespace Gambio\AdminFeed\Adapters;
  */
 trait GxAdapterTrait
 {
-	private $gxAdapter;
-	
-	
-	/**
-	 * @param \Gambio\AdminFeed\Adapters\GxAdapter $adapter
-	 */
-	public function setGxAdapter(GxAdapter $adapter): void
-	{
-		$this->gxAdapter = $adapter;
-	}
-	
-	
-	/**
-	 * @return \Gambio\AdminFeed\Adapters\GxAdapter
-	 */
-	private function gxAdapter()
-	{
-		if($this->gxAdapter === null)
-		{
-			$this->gxAdapter = new GxAdapter();
-		}
-		
-		return $this->gxAdapter;
-	}
+    private $gxAdapter;
+    
+    
+    /**
+     * @param GxAdapter $adapter
+     */
+    public function setGxAdapter(GxAdapter $adapter): void
+    {
+        $this->gxAdapter = $adapter;
+    }
+    
+    
+    /**
+     * @return GxAdapter
+     */
+    private function gxAdapter()
+    {
+        if ($this->gxAdapter === null) {
+            $this->gxAdapter = new GxAdapter();
+        }
+        
+        return $this->gxAdapter;
+    }
 }

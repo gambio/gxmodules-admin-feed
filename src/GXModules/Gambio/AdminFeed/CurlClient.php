@@ -18,139 +18,136 @@ namespace Gambio\AdminFeed;
  */
 class CurlClient
 {
-	/**
-	 * @var string
-	 */
-	private $responseContent;
-	
-	/**
-	 * @var array
-	 */
-	private $responseInformation;
-	
-	
-	/**
-	 * Executes a get request with curl.
-	 *
-	 * @param string $url
-	 * @param array  $options
-	 */
-	public function executeGet($url, $options = []): void
-	{
-		$options = $options + [
-				CURLOPT_URL            => $url,
-				CURLOPT_CONNECTTIMEOUT => $options[CURLOPT_CONNECTTIMEOUT] ?? 10,
-				CURLOPT_RETURNTRANSFER => $options[CURLOPT_RETURNTRANSFER] ?? true,
-			];
-		
-		$curlHandle = curl_init();
-		curl_setopt_array($curlHandle, $options);
-		$this->responseContent     = curl_exec($curlHandle);
-		$this->responseInformation = curl_getinfo($curlHandle);
-		curl_close($curlHandle);
-	}
-	
-	
-	/**
-	 * Executes a post request with curl.
-	 *
-	 * @param string $url
-	 * @param array  $data
-	 * @param array  $options
-	 */
-	public function executePost($url, $data = [], $options = []): void
-	{
-		$options = $options + [
-				CURLOPT_URL            => $url,
-				CURLOPT_POST           => true,
-				CURLOPT_POSTFIELDS     => $data,
-				CURLOPT_CONNECTTIMEOUT => $options[CURLOPT_CONNECTTIMEOUT] ?? 10,
-				CURLOPT_RETURNTRANSFER => $options[CURLOPT_RETURNTRANSFER] ?? true,
-			];
-		
-		$curlHandle = curl_init();
-		curl_setopt_array($curlHandle, $options);
-		$this->responseContent     = curl_exec($curlHandle);
-		$this->responseInformation = curl_getinfo($curlHandle);
-		curl_close($curlHandle);
-	}
-	
-	
-	/**
-	 * Executes a head request with curl.
-	 *
-	 * @param string $url
-	 * @param array  $options
-	 */
-	public function executeHead($url, $options = []): void
-	{
-		$options = $options + [
-				CURLOPT_URL            => $url,
-				CURLOPT_NOBODY         => true,
-				CURLOPT_CONNECTTIMEOUT => $options[CURLOPT_CONNECTTIMEOUT] ?? 10,
-				CURLOPT_RETURNTRANSFER => $options[CURLOPT_RETURNTRANSFER] ?? true,
-			];
-		
-		$curlHandle = curl_init();
-		curl_setopt_array($curlHandle, $options);
-		curl_exec($curlHandle);
-		$this->responseContent     = null;
-		$this->responseInformation = curl_getinfo($curlHandle);
-		curl_close($curlHandle);
-	}
-	
-	
-	/**
-	 * Returns the content of the curl response.
-	 *
-	 * @return string|null
-	 */
-	public function getContent()
-	{
-		return $this->responseContent ?? null;
-	}
-	
-	
-	/**
-	 * Returns the status code of the curl response.
-	 *
-	 * @return int|null
-	 */
-	public function getStatusCode()
-	{
-		return $this->responseInformation['http_code'] ?? null;
-	}
-	
-	
-	/**
-	 * Returns the content type of the curl response.
-	 *
-	 * @return string|null
-	 */
-	public function getContentType()
-	{
-		return $this->responseInformation['content_type'] ?? null;
-	}
-	
-	
-	/**
-	 * Returns all or a specific information of the curl response.
-	 *
-	 * @param string|null $key
-	 *
-	 * @return array|mixed|null
-	 */
-	public function getInformation($key = null)
-	{
-		if($key === null && isset($this->responseInformation))
-		{
-			return $this->responseInformation;
-		}
-		elseif($key !== null && isset($this->responseInformation[$key]))
-		{
-			return $this->responseInformation[$key];
-		}
-		
-		return null;
-	}
+    /**
+     * @var string
+     */
+    private $responseContent;
+    
+    /**
+     * @var array
+     */
+    private $responseInformation;
+    
+    
+    /**
+     * Executes a get request with curl.
+     *
+     * @param string $url
+     * @param array  $options
+     */
+    public function executeGet($url, $options = []): void
+    {
+        $options = $options + [
+                CURLOPT_URL            => $url,
+                CURLOPT_CONNECTTIMEOUT => $options[CURLOPT_CONNECTTIMEOUT] ?? 10,
+                CURLOPT_RETURNTRANSFER => $options[CURLOPT_RETURNTRANSFER] ?? true,
+            ];
+        
+        $curlHandle = curl_init();
+        curl_setopt_array($curlHandle, $options);
+        $this->responseContent     = curl_exec($curlHandle);
+        $this->responseInformation = curl_getinfo($curlHandle);
+        curl_close($curlHandle);
+    }
+    
+    
+    /**
+     * Executes a post request with curl.
+     *
+     * @param string $url
+     * @param array  $data
+     * @param array  $options
+     */
+    public function executePost($url, $data = [], $options = []): void
+    {
+        $options = $options + [
+                CURLOPT_URL            => $url,
+                CURLOPT_POST           => true,
+                CURLOPT_POSTFIELDS     => $data,
+                CURLOPT_CONNECTTIMEOUT => $options[CURLOPT_CONNECTTIMEOUT] ?? 10,
+                CURLOPT_RETURNTRANSFER => $options[CURLOPT_RETURNTRANSFER] ?? true,
+            ];
+        
+        $curlHandle = curl_init();
+        curl_setopt_array($curlHandle, $options);
+        $this->responseContent     = curl_exec($curlHandle);
+        $this->responseInformation = curl_getinfo($curlHandle);
+        curl_close($curlHandle);
+    }
+    
+    
+    /**
+     * Executes a head request with curl.
+     *
+     * @param string $url
+     * @param array  $options
+     */
+    public function executeHead($url, $options = []): void
+    {
+        $options = $options + [
+                CURLOPT_URL            => $url,
+                CURLOPT_NOBODY         => true,
+                CURLOPT_CONNECTTIMEOUT => $options[CURLOPT_CONNECTTIMEOUT] ?? 10,
+                CURLOPT_RETURNTRANSFER => $options[CURLOPT_RETURNTRANSFER] ?? true,
+            ];
+        
+        $curlHandle = curl_init();
+        curl_setopt_array($curlHandle, $options);
+        curl_exec($curlHandle);
+        $this->responseContent     = null;
+        $this->responseInformation = curl_getinfo($curlHandle);
+        curl_close($curlHandle);
+    }
+    
+    
+    /**
+     * Returns the content of the curl response.
+     *
+     * @return string|null
+     */
+    public function getContent()
+    {
+        return $this->responseContent ?? null;
+    }
+    
+    
+    /**
+     * Returns the status code of the curl response.
+     *
+     * @return int|null
+     */
+    public function getStatusCode()
+    {
+        return $this->responseInformation['http_code'] ?? null;
+    }
+    
+    
+    /**
+     * Returns the content type of the curl response.
+     *
+     * @return string|null
+     */
+    public function getContentType()
+    {
+        return $this->responseInformation['content_type'] ?? null;
+    }
+    
+    
+    /**
+     * Returns all or a specific information of the curl response.
+     *
+     * @param string|null $key
+     *
+     * @return array|mixed|null
+     */
+    public function getInformation($key = null)
+    {
+        if ($key === null && isset($this->responseInformation)) {
+            return $this->responseInformation;
+        } elseif ($key !== null && isset($this->responseInformation[$key])) {
+            return $this->responseInformation[$key];
+        }
+        
+        return null;
+    }
 }

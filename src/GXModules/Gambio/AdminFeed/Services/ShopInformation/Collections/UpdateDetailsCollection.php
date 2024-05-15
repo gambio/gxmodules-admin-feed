@@ -1,9 +1,9 @@
 <?php
 /* --------------------------------------------------------------
-   UpdateDetailsCollection.php 2018-08-01
+   UpdateDetailsCollection.php 2022-08-05
    Gambio GmbH
    http://www.gambio.de
-   Copyright (c) 2018 Gambio GmbH
+   Copyright (c) 2022 Gambio GmbH
    Released under the GNU General Public License (Version 2)
    [http://www.gnu.org/licenses/gpl-2.0.html]
    --------------------------------------------------------------
@@ -11,21 +11,25 @@
 
 namespace Gambio\AdminFeed\Services\ShopInformation\Collections;
 
+use ArrayIterator;
+use Countable;
 use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdateDetails;
+use IteratorAggregate;
+use Traversable;
 
 /**
  * Class UpdateDetailsCollection
  *
  * @package Gambio\AdminFeed\Services\ShopInformation\Collections
  */
-class UpdateDetailsCollection implements \IteratorAggregate, \Countable
+class UpdateDetailsCollection implements IteratorAggregate, Countable
 {
     /**
      * @var array
      */
     private $items = [];
-
-
+    
+    
     /**
      * UpdateDetailsCollection constructor.
      *
@@ -37,29 +41,21 @@ class UpdateDetailsCollection implements \IteratorAggregate, \Countable
             $this->add($item);
         }
     }
-
-    /**
-     * Adds an item to this collection.
-     *
-     * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdateDetails $item
-     */
-    public function add(UpdateDetails $item): void
-    {
-        $this->items[] = $item;
-    }
-
+    
+    
     /**
      * Creates and returns a new UpdateDetailsCollection instance.
      *
      * @param array $items
      *
-     * @return \Gambio\AdminFeed\Services\ShopInformation\Collections\UpdateDetailsCollection
+     * @return UpdateDetailsCollection
      */
     static function create(array $items = [])
     {
         return new self($items);
     }
-
+    
+    
     /**
      * Returns a list of all contained collection items.
      *
@@ -69,26 +65,39 @@ class UpdateDetailsCollection implements \IteratorAggregate, \Countable
     {
         return $this->items;
     }
-
+    
+    
     /**
      * Returns iterator for this collection.
      *
-     * @return \Traversable
+     * @return ArrayIterator|Traversable
      */
     #[\Override]
     public function getIterator(): \Traversable
     {
-        return new \ArrayIterator($this->items);
+        return new ArrayIterator($this->items);
     }
-
+    
+    
     /**
      * Returns the number of contained items.
      *
      * @return int
      */
     #[\Override]
-    public function count()
+    public function count(): int
     {
         return count($this->items);
+    }
+    
+    
+    /**
+     * Adds an item to this collection.
+     *
+     * @param UpdateDetails $item
+     */
+    public function add(UpdateDetails $item): void
+    {
+        $this->items[] = $item;
     }
 }

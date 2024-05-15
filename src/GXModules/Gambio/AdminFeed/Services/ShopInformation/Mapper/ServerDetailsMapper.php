@@ -23,30 +23,32 @@ use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ServerDetails;
  */
 class ServerDetailsMapper
 {
-	/**
-	 * ServerDetailsMapper constructor.
-	 *
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Reader\ServerDetailsReader $reader
-	 */
-	public function __construct(private readonly ServerDetailsReader $reader)
- {
- }
-	
-	
-	/**
-	 * Returns the server details.
-	 *
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ServerDetails
-	 */
-	public function getServerDetails()
-	{
-		$phpDetails   = new PhpServerDetails($this->reader->getPhpVersion(), $this->reader->getPhpExtensions(),
-		                                     $this->reader->getPhpConfiguration());
-		$mysqlDetails = new MysqlServerDetails($this->reader->getMysqlVersion(), $this->reader->getMysqlEngines(),
-		                                       $this->reader->getMysqlDefaultEngine());
-		$webserver    = $this->reader->getWebserver();
-		$os           = $this->reader->getOperatingSystem();
-		
-		return new ServerDetails($phpDetails, $mysqlDetails, $webserver, $os);
-	}
+    /**
+     * ServerDetailsMapper constructor.
+     *
+     * @param ServerDetailsReader $reader
+     */
+    public function __construct(private readonly ServerDetailsReader $reader)
+    {
+    }
+    
+    
+    /**
+     * Returns the server details.
+     *
+     * @return ServerDetails
+     */
+    public function getServerDetails()
+    {
+        $phpDetails   = new PhpServerDetails($this->reader->getPhpVersion(),
+                                             $this->reader->getPhpExtensions(),
+                                             $this->reader->getPhpConfiguration());
+        $mysqlDetails = new MysqlServerDetails($this->reader->getMysqlVersion(),
+                                               $this->reader->getMysqlEngines(),
+                                               $this->reader->getMysqlDefaultEngine());
+        $webserver    = $this->reader->getWebserver();
+        $os           = $this->reader->getOperatingSystem();
+        
+        return new ServerDetails($phpDetails, $mysqlDetails, $webserver, $os);
+    }
 }

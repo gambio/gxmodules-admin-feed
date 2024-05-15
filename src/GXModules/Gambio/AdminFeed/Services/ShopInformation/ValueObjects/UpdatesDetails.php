@@ -20,49 +20,49 @@ use Gambio\AdminFeed\Services\ShopInformation\Collections\UpdateDetailsCollectio
  */
 class UpdatesDetails
 {
-	/**
-	 * UpdatesDetails constructor.
-	 *
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\UpdateDetailsCollection $installed
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\UpdateDetailsCollection $downloaded
-	 */
-	public function __construct(private readonly UpdateDetailsCollection $installed, private readonly UpdateDetailsCollection $downloaded)
- {
- }
-	
-	
-	/**
-	 * Creates and returns a new UpdatesDetails instance.
-	 *
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\UpdateDetailsCollection $installed
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\UpdateDetailsCollection $downloaded
-	 *
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdatesDetails
-	 */
-	static function create(UpdateDetailsCollection $installed, UpdateDetailsCollection $downloaded)
-	{
-		return new self($installed, $downloaded);
-	}
-	
-	
-	/**
-	 * Returns a collection of installed updates.
-	 *
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\Collections\UpdateDetailsCollection
-	 */
-	public function installed()
-	{
-		return $this->installed;
-	}
-	
-	
-	/**
-	 * Returns a collection of updates, that had been downloaded with the AutoUpdater but not yet installed.
-	 *
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\Collections\UpdateDetailsCollection
-	 */
-	public function downloaded()
-	{
-		return $this->downloaded;
-	}
+    /**
+     * UpdatesDetails constructor.
+     *
+     * @param UpdateDetailsCollection $installed
+     * @param UpdateDetailsCollection $downloaded
+     */
+    public function __construct(private readonly UpdateDetailsCollection $installed, private readonly UpdateDetailsCollection $downloaded)
+    {
+    }
+    
+    
+    /**
+     * Creates and returns a new UpdatesDetails instance.
+     *
+     * @param UpdateDetailsCollection $installed
+     * @param UpdateDetailsCollection $downloaded
+     *
+     * @return UpdatesDetails
+     */
+    static function create(UpdateDetailsCollection $installed, UpdateDetailsCollection $downloaded)
+    {
+        return new self($installed, $downloaded);
+    }
+    
+    
+    /**
+     * Returns a collection of installed updates.
+     *
+     * @return UpdateDetailsCollection
+     */
+    public function installed()
+    {
+        return $this->installed;
+    }
+    
+    
+    /**
+     * Returns a collection of updates, that had been downloaded with the AutoUpdater but not yet installed.
+     *
+     * @return UpdateDetailsCollection
+     */
+    public function downloaded()
+    {
+        return $this->downloaded;
+    }
 }

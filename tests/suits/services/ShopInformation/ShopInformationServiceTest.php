@@ -73,7 +73,8 @@ class ShopInformationServiceTest extends TestCase
 	private $service;
 	
 	
-	public function setUp()
+	#[\Override]
+ public function setUp()
 	{
 		$this->repository = $this->createMock(ShopInformationRepository::class);
 		
@@ -106,7 +107,7 @@ class ShopInformationServiceTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedShopInformation()
+	public function shouldReturnExpectedShopInformation(): void
 	{
 		$expectedDetails = $this->shopInformation;
 		$actualDetails   = $this->service->getShopInformation();
@@ -118,7 +119,7 @@ class ShopInformationServiceTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedShopDetails()
+	public function shouldReturnExpectedShopDetails(): void
 	{
 		$expectedDetails = $this->shopDetails;
 		$actualDetails   = $this->service->getShopDetails();
@@ -130,7 +131,7 @@ class ShopInformationServiceTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedServerDetails()
+	public function shouldReturnExpectedServerDetails(): void
 	{
 		$expectedDetails = $this->serverDetails;
 		$actualDetails   = $this->service->getServerDetails();
@@ -142,7 +143,7 @@ class ShopInformationServiceTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedModulesDetails()
+	public function shouldReturnExpectedModulesDetails(): void
 	{
 		$expectedDetails = $this->modulesDetails;
 		$actualDetails   = $this->service->getModulesDetails();
@@ -154,7 +155,7 @@ class ShopInformationServiceTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedTemplateDetails()
+	public function shouldReturnExpectedTemplateDetails(): void
 	{
 		$expectedDetails = $this->templatesDetails;
 		$actualDetails   = $this->service->getTemplateDetails();
@@ -166,7 +167,7 @@ class ShopInformationServiceTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedFileSystemDetails()
+	public function shouldReturnExpectedFileSystemDetails(): void
 	{
 		$expectedDetails = $this->fileSystemDetails;
 		$actualDetails   = $this->service->getFileSystemDetails();
@@ -178,7 +179,7 @@ class ShopInformationServiceTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedUpdatesDetails()
+	public function shouldReturnExpectedUpdatesDetails(): void
 	{
 		$expectedDetails = $this->updatesDetails;
 		$actualDetails   = $this->service->getUpdatesDetails();

@@ -11,6 +11,7 @@
 
 namespace Gambio\AdminFeed\Services\ShopInformation\Reader;
 
+use CI_DB_query_builder;
 use Gambio\AdminFeed\Adapters\GxAdapterTrait;
 
 /**
@@ -20,57 +21,56 @@ use Gambio\AdminFeed\Adapters\GxAdapterTrait;
  */
 class UpdatesDetailsReader
 {
-	use GxAdapterTrait;
-	
-	/**
-	 * @var \CI_DB_query_builder
-	 */
-	private $db;
-	
-	
-	/**
-	 * UpdatesDetailsReader constructor.
-	 *
-	 * @param \CI_DB_query_builder $db
-	 */
-	public function __construct(\CI_DB_query_builder $db)
-	{
-		$this->db = $db;
-	}
-	
-	
-	/**
-	 * Returns the installed updates data.
-	 *
-	 * @return array
-	 */
-	public function getInstalledUpdatesData()
-	{
-		$updates = $this->db->select('*')
-		                    ->from('version_history')
-		                    ->order_by('history_id', 'DESC')
-		                    ->get()
-		                    ->result_array();
-		
-		return $updates;
-	}
-	
-	
-	/**
-	 * Returns the downloaded updates data.
-	 *
-	 * @return array
-	 */
-	public function getDownloadedUpdatesData()
-	{
-		$gxAdapter = $this->gxAdapter();
-		$dataCache = $gxAdapter->getDataCache();
-		
-		if($dataCache->key_exists('auto-updater', true))
-		{
-			return $dataCache->get_data('auto-updater', true);
-		}
-		
-		return [];
-	}
+    use GxAdapterTrait;
+    
+    /**
+     * @var CI_DB_query_builder
+     */
+    private $db;
+    
+    
+    /**
+     * UpdatesDetailsReader constructor.
+     *
+     * @param CI_DB_query_builder $db
+     */
+    public function __construct(CI_DB_query_builder $db)
+    {
+        $this->db = $db;
+    }
+    
+    
+    /**
+     * Returns the installed updates data.
+     *
+     * @return array
+     */
+    public function getInstalledUpdatesData()
+    {
+        $updates = $this->db->select('*')
+            ->from('version_history')
+            ->order_by('history_id', 'DESC')
+            ->get()
+            ->result_array();
+        
+        return $updates;
+    }
+    
+    
+    /**
+     * Returns the downloaded updates data.
+     *
+     * @return array
+     */
+    public function getDownloadedUpdatesData()
+    {
+        $gxAdapter = $this->gxAdapter();
+        $dataCache = $gxAdapter->getDataCache();
+        
+        if ($dataCache->key_exists('auto-updater', true)) {
+            return $dataCache->get_data('auto-updater', true);
+        }
+        
+        return [];
+    }
 }

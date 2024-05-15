@@ -12,6 +12,7 @@
 namespace Gambio\AdminFeed\Services\ShopInformation\Repositories;
 
 use Gambio\AdminFeed\Services\ShopInformation\Mapper\FileSystemDetailsMapper;
+use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\FileSystemDetails;
 
 /**
  * Class FileSystemDetailsRepository
@@ -20,23 +21,23 @@ use Gambio\AdminFeed\Services\ShopInformation\Mapper\FileSystemDetailsMapper;
  */
 class FileSystemDetailsRepository
 {
-	/**
-	 * FileSystemDetailsRepository constructor.
-	 *
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Mapper\FileSystemDetailsMapper $mapper
-	 */
-	public function __construct(private readonly FileSystemDetailsMapper $mapper)
- {
- }
-	
-	
-	/**
-	 * Returns the file system details.
-	 *
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\FileSystemDetails
-	 */
-	public function getFileSystemDetails()
-	{
-		return $this->mapper->getFileSystemDetails();
-	}
+    /**
+     * FileSystemDetailsRepository constructor.
+     *
+     * @param FileSystemDetailsMapper $mapper
+     */
+    public function __construct(private readonly FileSystemDetailsMapper $mapper)
+    {
+    }
+    
+    
+    /**
+     * Returns the file system details.
+     *
+     * @return FileSystemDetails
+     */
+    public function getFileSystemDetails()
+    {
+        return $this->mapper->getFileSystemDetails();
+    }
 }

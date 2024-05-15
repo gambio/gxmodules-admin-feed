@@ -23,47 +23,49 @@ use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModulesDetails;
  */
 class ModulesDetailsMapper
 {
-	/**
-	 * ModulesDetailsMapper constructor.
-	 *
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Reader\ModulesDetailsReader $reader
-	 */
-	public function __construct(private readonly ModulesDetailsReader $reader)
- {
- }
-	
-	
-	/**
-	 * returns the modules details.
-	 *
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModulesDetails
-	 */
-	public function getModulesDetails()
-	{
-		$hubModules          = $this->createCollection($this->reader->getHubModulesData());
-		$paymentModules      = $this->createCollection($this->reader->getPaymentModulesData());
-		$shippingModules     = $this->createCollection($this->reader->getShippingModulesData());
-		$orderTotalModules   = $this->createCollection($this->reader->getOrderTotalModulesData());
-		$moduleCenterModules = $this->createCollection($this->reader->getModuleCenterModulesData());
-		
-		return new ModulesDetails($hubModules, $paymentModules, $shippingModules, $orderTotalModules,
-		                          $moduleCenterModules);
-	}
-	
-	
-	/**
-	 * @param array $modulesData
-	 *
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection
-	 */
-	private function createCollection($modulesData)
-	{
-		$collection = new ModuleDetailsCollection();
-		foreach($modulesData as $moduleName => $moduleData)
-		{
-			$collection->add(new ModuleDetails($moduleName, $moduleData['installed'], $moduleData['enabled']));
-		}
-		
-		return $collection;
-	}
+    /**
+     * ModulesDetailsMapper constructor.
+     *
+     * @param ModulesDetailsReader $reader
+     */
+    public function __construct(private readonly ModulesDetailsReader $reader)
+    {
+    }
+    
+    
+    /**
+     * returns the modules details.
+     *
+     * @return ModulesDetails
+     */
+    public function getModulesDetails()
+    {
+        $hubModules          = $this->createCollection($this->reader->getHubModulesData());
+        $paymentModules      = $this->createCollection($this->reader->getPaymentModulesData());
+        $shippingModules     = $this->createCollection($this->reader->getShippingModulesData());
+        $orderTotalModules   = $this->createCollection($this->reader->getOrderTotalModulesData());
+        $moduleCenterModules = $this->createCollection($this->reader->getModuleCenterModulesData());
+        
+        return new ModulesDetails($hubModules,
+                                  $paymentModules,
+                                  $shippingModules,
+                                  $orderTotalModules,
+                                  $moduleCenterModules);
+    }
+    
+    
+    /**
+     * @param array $modulesData
+     *
+     * @return ModuleDetailsCollection
+     */
+    private function createCollection($modulesData)
+    {
+        $collection = new ModuleDetailsCollection();
+        foreach ($modulesData as $moduleName => $moduleData) {
+            $collection->add(new ModuleDetails($moduleName, $moduleData['installed'], $moduleData['enabled']));
+        }
+        
+        return $collection;
+    }
 }

@@ -21,26 +21,28 @@ use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\FileSystemDetails;
  */
 class FileSystemDetailsMapper
 {
-	/**
-	 * FileSystemDetailsMapper constructor.
-	 *
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Reader\FileSystemDetailsReader $reader
-	 */
-	public function __construct(private readonly FileSystemDetailsReader $reader)
- {
- }
-	
-	
-	/**
-	 * Returns the file system details.
-	 *
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\FileSystemDetails
-	 */
-	public function getFileSystemDetails()
-	{
-		return FileSystemDetails::create($this->reader->getUserMods(), $this->reader->getGxModules(),
-		                                 $this->reader->getDangerousTools(), $this->reader->getReceiptFiles(),
-		                                 $this->reader->doesGlobalUsermodDirectoryExist(),
-		                                 $this->reader->doesUpmDirectoryExist());
-	}
+    /**
+     * FileSystemDetailsMapper constructor.
+     *
+     * @param FileSystemDetailsReader $reader
+     */
+    public function __construct(private readonly FileSystemDetailsReader $reader)
+    {
+    }
+    
+    
+    /**
+     * Returns the file system details.
+     *
+     * @return FileSystemDetails
+     */
+    public function getFileSystemDetails()
+    {
+        return FileSystemDetails::create($this->reader->getUserMods(),
+                                         $this->reader->getGxModules(),
+                                         $this->reader->getDangerousTools(),
+                                         $this->reader->getReceiptFiles(),
+                                         $this->reader->doesGlobalUsermodDirectoryExist(),
+                                         $this->reader->doesUpmDirectoryExist());
+    }
 }

@@ -12,6 +12,7 @@
 namespace Gambio\AdminFeed\Services\ShopInformation\Serializer;
 
 use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdateDetails;
+use InvalidArgumentException;
 
 /**
  * Class UpdateDetailsSerializer
@@ -20,52 +21,44 @@ use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdateDetails;
  */
 class UpdateDetailsSerializer
 {
-	/**
-	 * Serializes a given UpdateDetails instance.
-	 *
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdateDetails $updateDetails
-	 *
-	 * @return array
-	 */
-	public function serialize(UpdateDetails $updateDetails)
-	{
-		$json = [
-			'name'             => $updateDetails->name(),
-			'version'          => $updateDetails->version(),
-			'installationDate' => $updateDetails->installationDate(),
-		];
-		
-		return $json;
-	}
-	
-	
-	/**
-	 * Returns a new UpdateDetails instance by using the data of a given array or json strings.
-	 *
-	 * @param string|array $json
-	 *
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdateDetails
-	 */
-	public function deserialize($json)
-	{
-		if(!is_array($json))
-		{
-			$json = json_decode($json, true);
-		}
-		
-		$neededProperties = [
-			'name',
-			'version',
-			'installationDate',
-		];
-		foreach($neededProperties as $property)
-		{
-			if(!array_key_exists($property, $json))
-			{
-				throw new \InvalidArgumentException('Property "'.$property.'" is missing.');
-			}
-		}
-		
-		return UpdateDetails::create($json['name'], $json['version'], $json['installationDate']);
-	}
+    /**
+     * Serializes a given UpdateDetails instance.
+     *
+     * @param UpdateDetails $updateDetails
+     *
+     * @return array
+     */
+    public function serialize(UpdateDetails $updateDetails)
+    {
+        $json = [
+            'name'             => $updateDetails->name(),
+            'version'          => $updateDetails->version(),
+            'installationDate' => $updateDetails->installationDate(),
+        ];
+        
+        return $json;
+    }
+    
+    
+    /**
+     * Returns a new UpdateDetails instance by using the data of a given array or json strings.
+     *
+     * @param string|array $json
+     *
+     * @return UpdateDetails
+     */
+    public function deserialize($json)
+    {
+        if (!is_array($json)) {
+            $json = json_decode($json, true);
+        }
+        
+        if (!isset($json['name'])
+            || !isset($json['version'])
+            || !isset($json['installationDate'])) {
+            throw new InvalidArgumentException('Given argument is invalid. Needed property is missing.');
+        }
+        
+        return UpdateDetails::create($json['name'], $json['version'], $json['installationDate']);
+    }
 }

@@ -12,6 +12,7 @@
 namespace Gambio\AdminFeed\Services\ShopInformation\Serializer;
 
 use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MysqlServerDetails;
+use InvalidArgumentException;
 
 /**
  * Class MysqlServerDetailsSerializer
@@ -20,52 +21,44 @@ use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MysqlServerDetails;
  */
 class MysqlServerDetailsSerializer
 {
-	/**
-	 * Serializes a given MysqlServerDetails instance.
-	 *
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MysqlServerDetails $mysqlServerDetails
-	 *
-	 * @return array
-	 */
-	public function serialize(MysqlServerDetails $mysqlServerDetails)
-	{
-		$json = [
-			'version'       => $mysqlServerDetails->version(),
-			'engines'       => $mysqlServerDetails->engines(),
-			'defaultEngine' => $mysqlServerDetails->defaultEngine(),
-		];
-		
-		return $json;
-	}
-	
-	
-	/**
-	 * Returns a new MysqlServerDetails instance by using the data of a given array or json strings.
-	 *
-	 * @param string|array $json
-	 *
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MysqlServerDetails
-	 */
-	public function deserialize($json)
-	{
-		if(!is_array($json))
-		{
-			$json = json_decode($json, true);
-		}
-		
-		$neededProperties = [
-			'version',
-			'engines',
-			'defaultEngine',
-		];
-		foreach($neededProperties as $property)
-		{
-			if(!array_key_exists($property, $json))
-			{
-				throw new \InvalidArgumentException('Property "'.$property.'" is missing.');
-			}
-		}
-		
-		return MysqlServerDetails::create($json['version'], $json['engines'], $json['defaultEngine']);
-	}
+    /**
+     * Serializes a given MysqlServerDetails instance.
+     *
+     * @param MysqlServerDetails $mysqlServerDetails
+     *
+     * @return array
+     */
+    public function serialize(MysqlServerDetails $mysqlServerDetails)
+    {
+        $json = [
+            'version'       => $mysqlServerDetails->version(),
+            'engines'       => $mysqlServerDetails->engines(),
+            'defaultEngine' => $mysqlServerDetails->defaultEngine(),
+        ];
+        
+        return $json;
+    }
+    
+    
+    /**
+     * Returns a new MysqlServerDetails instance by using the data of a given array or json strings.
+     *
+     * @param string|array $json
+     *
+     * @return MysqlServerDetails
+     */
+    public function deserialize($json)
+    {
+        if (!is_array($json)) {
+            $json = json_decode($json, true);
+        }
+        
+        if (!isset($json['version'])
+            || !isset($json['engines'])
+            || !isset($json['defaultEngine'])) {
+            throw new InvalidArgumentException('Given argument is invalid. Needed property is missing.');
+        }
+        
+        return MysqlServerDetails::create($json['version'], $json['engines'], $json['defaultEngine']);
+    }
 }

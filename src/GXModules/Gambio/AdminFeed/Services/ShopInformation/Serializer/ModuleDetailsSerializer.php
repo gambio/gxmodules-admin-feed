@@ -12,6 +12,7 @@
 namespace Gambio\AdminFeed\Services\ShopInformation\Serializer;
 
 use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModuleDetails;
+use InvalidArgumentException;
 
 /**
  * Class ModuleDetailsSerializer
@@ -20,52 +21,44 @@ use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModuleDetails;
  */
 class ModuleDetailsSerializer
 {
-	/**
-	 * Serializes a given ModuleDetails instance.
-	 *
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModuleDetails $moduleDetails
-	 *
-	 * @return array
-	 */
-	public function serialize(ModuleDetails $moduleDetails)
-	{
-		$json = [
-			'name'      => $moduleDetails->name(),
-			'installed' => $moduleDetails->installed(),
-			'enabled'   => $moduleDetails->enabled(),
-		];
-		
-		return $json;
-	}
-	
-	
-	/**
-	 * Returns a new ModuleDetails instance by using the data of a given array or json strings.
-	 *
-	 * @param string|array $json
-	 *
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModuleDetails
-	 */
-	public function deserialize($json)
-	{
-		if(!is_array($json))
-		{
-			$json = json_decode($json, true);
-		}
-		
-		$neededProperties = [
-			'name',
-			'installed',
-			'enabled',
-		];
-		foreach($neededProperties as $property)
-		{
-			if(!array_key_exists($property, $json))
-			{
-				throw new \InvalidArgumentException('Property "'.$property.'" is missing.');
-			}
-		}
-		
-		return ModuleDetails::create($json['name'], $json['installed'], $json['enabled']);
-	}
+    /**
+     * Serializes a given ModuleDetails instance.
+     *
+     * @param ModuleDetails $moduleDetails
+     *
+     * @return array
+     */
+    public function serialize(ModuleDetails $moduleDetails)
+    {
+        $json = [
+            'name'      => $moduleDetails->name(),
+            'installed' => $moduleDetails->installed(),
+            'enabled'   => $moduleDetails->enabled(),
+        ];
+        
+        return $json;
+    }
+    
+    
+    /**
+     * Returns a new ModuleDetails instance by using the data of a given array or json strings.
+     *
+     * @param string|array $json
+     *
+     * @return ModuleDetails
+     */
+    public function deserialize($json)
+    {
+        if (!is_array($json)) {
+            $json = json_decode($json, true);
+        }
+        
+        if (!isset($json['name'])
+            || !isset($json['installed'])
+            || !isset($json['enabled'])) {
+            throw new InvalidArgumentException('Given argument is invalid. Needed property is missing.');
+        }
+        
+        return ModuleDetails::create($json['name'], $json['installed'], $json['enabled']);
+    }
 }

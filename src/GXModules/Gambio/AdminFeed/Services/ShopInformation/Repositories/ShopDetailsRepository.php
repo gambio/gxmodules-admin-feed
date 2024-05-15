@@ -12,6 +12,7 @@
 namespace Gambio\AdminFeed\Services\ShopInformation\Repositories;
 
 use Gambio\AdminFeed\Services\ShopInformation\Mapper\ShopDetailsMapper;
+use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails;
 
 /**
  * Class ShopDetailsRepository
@@ -20,23 +21,23 @@ use Gambio\AdminFeed\Services\ShopInformation\Mapper\ShopDetailsMapper;
  */
 class ShopDetailsRepository
 {
-	/**
-	 * ShopDetailsRepository constructor.
-	 *
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Mapper\ShopDetailsMapper $mapper
-	 */
-	public function __construct(private readonly ShopDetailsMapper $mapper)
- {
- }
-	
-	
-	/**
-	 * Returns the shop details.
-	 *
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails
-	 */
-	public function getShopDetails()
-	{
-		return $this->mapper->getShopDetails();
-	}
+    /**
+     * ShopDetailsRepository constructor.
+     *
+     * @param ShopDetailsMapper $mapper
+     */
+    public function __construct(private readonly ShopDetailsMapper $mapper)
+    {
+    }
+    
+    
+    /**
+     * Returns the shop details.
+     *
+     * @return ShopDetails
+     */
+    public function getShopDetails()
+    {
+        return $this->mapper->getShopDetails();
+    }
 }

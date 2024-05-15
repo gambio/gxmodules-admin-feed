@@ -12,6 +12,7 @@
 namespace Gambio\AdminFeed\Services\ShopInformation\Repositories;
 
 use Gambio\AdminFeed\Services\ShopInformation\Mapper\ServerDetailsMapper;
+use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ServerDetails;
 
 /**
  * Class ServerDetailsRepository
@@ -20,23 +21,23 @@ use Gambio\AdminFeed\Services\ShopInformation\Mapper\ServerDetailsMapper;
  */
 class ServerDetailsRepository
 {
-	/**
-	 * ServerDetailsRepository constructor.
-	 *
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Mapper\ServerDetailsMapper $mapper
-	 */
-	public function __construct(private readonly ServerDetailsMapper $mapper)
- {
- }
-	
-	
-	/**
-	 * Returns the server details.
-	 *
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ServerDetails
-	 */
-	public function getServerDetails()
-	{
-		return $this->mapper->getServerDetails();
-	}
+    /**
+     * ServerDetailsRepository constructor.
+     *
+     * @param ServerDetailsMapper $mapper
+     */
+    public function __construct(private readonly ServerDetailsMapper $mapper)
+    {
+    }
+    
+    
+    /**
+     * Returns the server details.
+     *
+     * @return ServerDetails
+     */
+    public function getServerDetails()
+    {
+        return $this->mapper->getServerDetails();
+    }
 }

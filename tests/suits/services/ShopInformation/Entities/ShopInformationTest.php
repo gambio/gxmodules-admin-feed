@@ -61,7 +61,8 @@ class ShopInformationTest extends TestCase
 	private $shopInformation;
 	
 	
-	public function setUp()
+	#[\Override]
+ public function setUp()
 	{
 		$this->shopDetails       = $this->createMock(ShopDetails::class);
 		$this->serverDetails     = $this->createMock(ServerDetails::class);
@@ -79,7 +80,7 @@ class ShopInformationTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedShopDetails()
+	public function shouldReturnExpectedShopDetails(): void
 	{
 		$expectedDetails = $this->shopDetails;
 		$actualDetails   = $this->shopInformation->shop();
@@ -91,7 +92,7 @@ class ShopInformationTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedServerDetails()
+	public function shouldReturnExpectedServerDetails(): void
 	{
 		$expectedDetails = $this->serverDetails;
 		$actualDetails   = $this->shopInformation->server();
@@ -103,7 +104,7 @@ class ShopInformationTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedModulesDetails()
+	public function shouldReturnExpectedModulesDetails(): void
 	{
 		$expectedDetails = $this->modulesDetails;
 		$actualDetails   = $this->shopInformation->modules();
@@ -115,7 +116,7 @@ class ShopInformationTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedTemplateDetails()
+	public function shouldReturnExpectedTemplateDetails(): void
 	{
 		$expectedDetails = $this->themeDetails;
 		$actualDetails   = $this->shopInformation->themes();
@@ -127,7 +128,7 @@ class ShopInformationTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedFileSystemDetails()
+	public function shouldReturnExpectedFileSystemDetails(): void
 	{
 		$expectedDetails = $this->fileSystemDetails;
 		$actualDetails   = $this->shopInformation->filesystem();
@@ -139,7 +140,7 @@ class ShopInformationTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedUpdatesDetails()
+	public function shouldReturnExpectedUpdatesDetails(): void
 	{
 		$expectedDetails = $this->updatesDetails;
 		$actualDetails   = $this->shopInformation->updates();

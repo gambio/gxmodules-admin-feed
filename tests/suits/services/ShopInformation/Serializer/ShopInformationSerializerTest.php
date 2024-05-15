@@ -48,7 +48,8 @@ class ShopInformationSerializerTest extends TestCase
 	private $serializer;
 	
 	
-	public function setUp()
+	#[\Override]
+ public function setUp()
 	{
 		$shopDetails       = $this->createMock(ShopDetails::class);
 		$serverDetails     = $this->createMock(ServerDetails::class);
@@ -102,7 +103,7 @@ class ShopInformationSerializerTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldSerializeCorrectly()
+	public function shouldSerializeCorrectly(): void
 	{
 		$actual   = $this->serializer->serialize($this->object);
 		$expected = $this->data;
@@ -114,7 +115,7 @@ class ShopInformationSerializerTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldDeserializeCorrectly()
+	public function shouldDeserializeCorrectly(): void
 	{
 		$actual   = $this->serializer->deserialize($this->data);
 		$expected = $this->object;

@@ -12,6 +12,7 @@
 namespace Gambio\AdminFeed\Services\ShopInformation\Serializer;
 
 use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\PhpServerDetails;
+use InvalidArgumentException;
 
 /**
  * Class PhpServerDetailsSerializer
@@ -20,52 +21,44 @@ use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\PhpServerDetails;
  */
 class PhpServerDetailsSerializer
 {
-	/**
-	 * Serializes a given PhpServerDetails instance.
-	 *
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\PhpServerDetails $phpServerDetails
-	 *
-	 * @return array
-	 */
-	public function serialize(PhpServerDetails $phpServerDetails)
-	{
-		$json = [
-			'version'       => $phpServerDetails->version(),
-			'extensions'    => $phpServerDetails->extensions(),
-			'configuration' => $phpServerDetails->configuration(),
-		];
-		
-		return $json;
-	}
-	
-	
-	/**
-	 * Returns a new PhpServerDetails instance by using the data of a given array or json strings.
-	 *
-	 * @param string|array $json
-	 *
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\PhpServerDetails
-	 */
-	public function deserialize($json)
-	{
-		if(!is_array($json))
-		{
-			$json = json_decode($json, true);
-		}
-		
-		$neededProperties = [
-			'version',
-			'extensions',
-			'configuration',
-		];
-		foreach($neededProperties as $property)
-		{
-			if(!array_key_exists($property, $json))
-			{
-				throw new \InvalidArgumentException('Property "'.$property.'" is missing.');
-			}
-		}
-		
-		return PhpServerDetails::create($json['version'], $json['extensions'], $json['configuration']);
-	}
+    /**
+     * Serializes a given PhpServerDetails instance.
+     *
+     * @param PhpServerDetails $phpServerDetails
+     *
+     * @return array
+     */
+    public function serialize(PhpServerDetails $phpServerDetails)
+    {
+        $json = [
+            'version'       => $phpServerDetails->version(),
+            'extensions'    => $phpServerDetails->extensions(),
+            'configuration' => $phpServerDetails->configuration(),
+        ];
+        
+        return $json;
+    }
+    
+    
+    /**
+     * Returns a new PhpServerDetails instance by using the data of a given array or json strings.
+     *
+     * @param string|array $json
+     *
+     * @return PhpServerDetails
+     */
+    public function deserialize($json)
+    {
+        if (!is_array($json)) {
+            $json = json_decode($json, true);
+        }
+        
+        if (!isset($json['version'])
+            || !isset($json['extensions'])
+            || !isset($json['configuration'])) {
+            throw new InvalidArgumentException('Given argument is invalid. Needed property is missing.');
+        }
+        
+        return PhpServerDetails::create($json['version'], $json['extensions'], $json['configuration']);
+    }
 }

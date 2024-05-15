@@ -12,6 +12,7 @@
 namespace Gambio\AdminFeed\Services\ShopInformation\Serializer;
 
 use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails;
+use InvalidArgumentException;
 
 /**
  * Class ShopDetailsSerializer
@@ -20,59 +21,55 @@ use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails;
  */
 class ShopDetailsSerializer
 {
-	/**
-	 * Serializes a given ShopDetails instance.
-	 *
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails $shopDetails
-	 *
-	 * @return array
-	 */
-	public function serialize(ShopDetails $shopDetails)
-	{
-		$json = [
-			'version'         => $shopDetails->version(),
-			'url'             => $shopDetails->url(),
-			'key'             => $shopDetails->key(),
-			'languages'       => $shopDetails->languages(),
-			'defaultLanguage' => $shopDetails->defaultLanguage(),
-			'countries'       => $shopDetails->countries(),
-		];
-		
-		return $json;
-	}
-	
-	
-	/**
-	 * Returns a new ShopDetails instance by using the data of a given array or json strings.
-	 *
-	 * @param string|array $json
-	 *
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails
-	 */
-	public function deserialize($json)
-	{
-		if(!is_array($json))
-		{
-			$json = json_decode($json, true);
-		}
-		
-		$neededProperties = [
-			'version',
-			'url',
-			'key',
-			'languages',
-			'defaultLanguage',
-			'countries',
-		];
-		foreach($neededProperties as $property)
-		{
-			if(!array_key_exists($property, $json))
-			{
-				throw new \InvalidArgumentException('Property "'.$property.'" is missing.');
-			}
-		}
-		
-		return ShopDetails::create($json['version'], $json['url'], $json['key'], $json['languages'],
-		                           $json['defaultLanguage'], $json['countries']);
-	}
+    /**
+     * Serializes a given ShopDetails instance.
+     *
+     * @param ShopDetails $shopDetails
+     *
+     * @return array
+     */
+    public function serialize(ShopDetails $shopDetails)
+    {
+        $json = [
+            'version'         => $shopDetails->version(),
+            'url'             => $shopDetails->url(),
+            'key'             => $shopDetails->key(),
+            'languages'       => $shopDetails->languages(),
+            'defaultLanguage' => $shopDetails->defaultLanguage(),
+            'countries'       => $shopDetails->countries(),
+        ];
+        
+        return $json;
+    }
+    
+    
+    /**
+     * Returns a new ShopDetails instance by using the data of a given array or json strings.
+     *
+     * @param string|array $json
+     *
+     * @return ShopDetails
+     */
+    public function deserialize($json)
+    {
+        if (!is_array($json)) {
+            $json = json_decode($json, true);
+        }
+        
+        if (!isset($json['version'])
+            || !isset($json['url'])
+            || !isset($json['key'])
+            || !isset($json['languages'])
+            || !isset($json['defaultLanguage'])
+            || !isset($json['countries'])) {
+            throw new InvalidArgumentException('Given argument is invalid. Needed property is missing.');
+        }
+        
+        return ShopDetails::create($json['version'],
+                                   $json['url'],
+                                   $json['key'],
+                                   $json['languages'],
+                                   $json['defaultLanguage'],
+                                   $json['countries']);
+    }
 }

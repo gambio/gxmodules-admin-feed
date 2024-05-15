@@ -21,25 +21,28 @@ use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails;
  */
 class ShopDetailsMapper
 {
-	/**
-	 * ShopDetailsMapper constructor.
-	 *
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Reader\ShopDetailsReader $reader
-	 */
-	public function __construct(private readonly ShopDetailsReader $reader)
- {
- }
-	
-	
-	/**
-	 * Returns the shop details.
-	 *
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails
-	 */
-	public function getShopDetails()
-	{
-		return new ShopDetails($this->reader->getVersion(), $this->reader->getUrl(),
-		                       $this->reader->getKey(), $this->reader->getLanguages(),
-		                       $this->reader->getDefaultLanguage(), $this->reader->getCountries());
-	}
+    /**
+     * ShopDetailsMapper constructor.
+     *
+     * @param ShopDetailsReader $reader
+     */
+    public function __construct(private readonly ShopDetailsReader $reader)
+    {
+    }
+    
+    
+    /**
+     * Returns the shop details.
+     *
+     * @return ShopDetails
+     */
+    public function getShopDetails()
+    {
+        return new ShopDetails($this->reader->getVersion(),
+                               $this->reader->getUrl(),
+                               $this->reader->getKey(),
+                               $this->reader->getLanguages(),
+                               $this->reader->getDefaultLanguage(),
+                               $this->reader->getCountries());
+    }
 }

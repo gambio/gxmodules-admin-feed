@@ -23,63 +23,61 @@ use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdatesDetails;
  */
 class UpdatesDetailsMapper
 {
-	/**
-	 * UpdatesDetailsMapper constructor.
-	 *
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Reader\UpdatesDetailsReader $reader
-	 */
-	public function __construct(private readonly UpdatesDetailsReader $reader)
- {
- }
-	
-	
-	/**
-	 * Returns the updates details.
-	 *
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdatesDetails
-	 */
-	public function getUpdatesDetails()
-	{
-		$installedUpdates = $this->collectInstalledUpdates();
-		
-		$downloadedUpdates = $this->collectDownloadedUpdates();
-		
-		return new UpdatesDetails($installedUpdates, $downloadedUpdates);
-	}
-	
-	
-	/**
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\Collections\UpdateDetailsCollection
-	 */
-	private function collectInstalledUpdates()
-	{
-		$installedUpdates = [];
-		foreach($this->reader->getInstalledUpdatesData() as $updateData)
-		{
-			$installedUpdates[] = new UpdateDetails($updateData['name'], $updateData['version'],
-			                                        $updateData['installation_date']);
-		}
-		
-		return new UpdateDetailsCollection($installedUpdates);
-	}
-	
-	
-	/**
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\Collections\UpdateDetailsCollection
-	 */
-	private function collectDownloadedUpdates()
-	{
-		$downloadedUpdates = [];
-		foreach($this->reader->getDownloadedUpdatesData() as $updateData)
-		{
-			if(!isset($updateData['name']) || !isset($updateData['version']) || !isset($updateData['date']))
-			{
-				continue;
-			}
-			
-			$downloadedUpdates[] = new UpdateDetails($updateData['name'], $updateData['version'], $updateData['date']);
-		}
-		
-		return new UpdateDetailsCollection($downloadedUpdates);
-	}
+    /**
+     * UpdatesDetailsMapper constructor.
+     *
+     * @param UpdatesDetailsReader $reader
+     */
+    public function __construct(private readonly UpdatesDetailsReader $reader)
+    {
+    }
+    
+    
+    /**
+     * Returns the updates details.
+     *
+     * @return UpdatesDetails
+     */
+    public function getUpdatesDetails()
+    {
+        $installedUpdates = $this->collectInstalledUpdates();
+        
+        $downloadedUpdates = $this->collectDownloadedUpdates();
+        
+        return new UpdatesDetails($installedUpdates, $downloadedUpdates);
+    }
+    
+    
+    /**
+     * @return UpdateDetailsCollection
+     */
+    private function collectInstalledUpdates()
+    {
+        $installedUpdates = [];
+        foreach ($this->reader->getInstalledUpdatesData() as $updateData) {
+            $installedUpdates[] = new UpdateDetails($updateData['name'],
+                                                    $updateData['version'],
+                                                    $updateData['installation_date']);
+        }
+        
+        return new UpdateDetailsCollection($installedUpdates);
+    }
+    
+    
+    /**
+     * @return UpdateDetailsCollection
+     */
+    private function collectDownloadedUpdates()
+    {
+        $downloadedUpdates = [];
+        foreach ($this->reader->getDownloadedUpdatesData() as $updateData) {
+            if (!isset($updateData['name']) || !isset($updateData['version']) || !isset($updateData['date'])) {
+                continue;
+            }
+            
+            $downloadedUpdates[] = new UpdateDetails($updateData['name'], $updateData['version'], $updateData['date']);
+        }
+        
+        return new UpdateDetailsCollection($downloadedUpdates);
+    }
 }

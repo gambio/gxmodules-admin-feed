@@ -20,92 +20,93 @@ use Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollectio
  */
 class ModulesDetails
 {
-	/**
-	 * ModulesDetails constructor.
-	 *
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $hub
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $payment
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $shipping
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $orderTotal
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $moduleCenter
-	 */
-	public function __construct(private readonly ModuleDetailsCollection $hub, private readonly ModuleDetailsCollection $payment, private readonly ModuleDetailsCollection $shipping, private readonly ModuleDetailsCollection $orderTotal, private readonly ModuleDetailsCollection $moduleCenter)
- {
- }
-	
-	
-	/**
-	 * Creates and returns a new ModulesDetails instance.
-	 *
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $hub
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $payment
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $shipping
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $orderTotal
-	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $moduleCenter
-	 *
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModulesDetails
-	 */
-	static function create(ModuleDetailsCollection $hub,
-	                       ModuleDetailsCollection $payment,
-	                       ModuleDetailsCollection $shipping,
-	                       ModuleDetailsCollection $orderTotal,
-	                       ModuleDetailsCollection $moduleCenter)
-	{
-		return new self($hub, $payment, $shipping, $orderTotal, $moduleCenter);
-	}
-	
-	
-	/**
-	 * Returns the hub modules.
-	 *
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection
-	 */
-	public function hub()
-	{
-		return $this->hub;
-	}
-	
-	
-	/**
-	 * Returns the payment modules.
-	 *
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection
-	 */
-	public function payment()
-	{
-		return $this->payment;
-	}
-	
-	
-	/**
-	 * Returns the shipping modules.
-	 *
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection
-	 */
-	public function shipping()
-	{
-		return $this->shipping;
-	}
-	
-	
-	/**
-	 * Returns the order total modules.
-	 *
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection
-	 */
-	public function orderTotal()
-	{
-		return $this->orderTotal;
-	}
-	
-	
-	/**
-	 * Returns the module center modules.
-	 *
-	 * @return \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection
-	 */
-	public function moduleCenter()
-	{
-		return $this->moduleCenter;
-	}
+    /**
+     * ModulesDetails constructor.
+     *
+     * @param ModuleDetailsCollection $hub
+     * @param ModuleDetailsCollection $payment
+     * @param ModuleDetailsCollection $shipping
+     * @param ModuleDetailsCollection $orderTotal
+     * @param ModuleDetailsCollection $moduleCenter
+     */
+    public function __construct(private readonly ModuleDetailsCollection $hub, private readonly ModuleDetailsCollection $payment, private readonly ModuleDetailsCollection $shipping, private readonly ModuleDetailsCollection $orderTotal, private readonly ModuleDetailsCollection $moduleCenter)
+    {
+    }
+    
+    
+    /**
+     * Creates and returns a new ModulesDetails instance.
+     *
+     * @param ModuleDetailsCollection $hub
+     * @param ModuleDetailsCollection $payment
+     * @param ModuleDetailsCollection $shipping
+     * @param ModuleDetailsCollection $orderTotal
+     * @param ModuleDetailsCollection $moduleCenter
+     *
+     * @return ModulesDetails
+     */
+    static function create(
+        ModuleDetailsCollection $hub,
+        ModuleDetailsCollection $payment,
+        ModuleDetailsCollection $shipping,
+        ModuleDetailsCollection $orderTotal,
+        ModuleDetailsCollection $moduleCenter
+    ) {
+        return new self($hub, $payment, $shipping, $orderTotal, $moduleCenter);
+    }
+    
+    
+    /**
+     * Returns the hub modules.
+     *
+     * @return ModuleDetailsCollection
+     */
+    public function hub()
+    {
+        return $this->hub;
+    }
+    
+    
+    /**
+     * Returns the payment modules.
+     *
+     * @return ModuleDetailsCollection
+     */
+    public function payment()
+    {
+        return $this->payment;
+    }
+    
+    
+    /**
+     * Returns the shipping modules.
+     *
+     * @return ModuleDetailsCollection
+     */
+    public function shipping()
+    {
+        return $this->shipping;
+    }
+    
+    
+    /**
+     * Returns the order total modules.
+     *
+     * @return ModuleDetailsCollection
+     */
+    public function orderTotal()
+    {
+        return $this->orderTotal;
+    }
+    
+    
+    /**
+     * Returns the module center modules.
+     *
+     * @return ModuleDetailsCollection
+     */
+    public function moduleCenter()
+    {
+        return $this->moduleCenter;
+    }
 }
