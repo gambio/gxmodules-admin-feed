@@ -35,7 +35,8 @@ class FileSystemDetailsSerializerTest extends TestCase
 	private $serializer;
 	
 	
-	public function setUp()
+	#[\Override]
+ public function setUp()
 	{
 		$usermods                     = [];
 		$gxModules                    = ['Gambio/AdminFeed', 'Gambio/Hub'];
@@ -63,7 +64,7 @@ class FileSystemDetailsSerializerTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldSerializeCorrectly()
+	public function shouldSerializeCorrectly(): void
 	{
 		$actual   = $this->serializer->serialize($this->object);
 		$expected = $this->data;
@@ -75,7 +76,7 @@ class FileSystemDetailsSerializerTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldDeserializeCorrectly()
+	public function shouldDeserializeCorrectly(): void
 	{
 		$actual   = $this->serializer->deserialize($this->data);
 		$expected = $this->object;

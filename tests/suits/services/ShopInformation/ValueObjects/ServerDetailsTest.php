@@ -46,7 +46,8 @@ class ServerDetailsTest extends TestCase
 	private $serverDetails;
 	
 	
-	public function setUp()
+	#[\Override]
+ public function setUp()
 	{
 		$this->php   = $this->createMock(PhpServerDetails::class);
 		$this->mysql = $this->createMock(MysqlServerDetails::class);
@@ -58,7 +59,7 @@ class ServerDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnGivenPhpServerDetails()
+	public function shouldReturnGivenPhpServerDetails(): void
 	{
 		$this->assertSame($this->serverDetails->php(), $this->php);
 	}
@@ -67,7 +68,7 @@ class ServerDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnGivenMysqlServerDetails()
+	public function shouldReturnGivenMysqlServerDetails(): void
 	{
 		$this->assertSame($this->serverDetails->mysql(), $this->mysql);
 	}
@@ -76,7 +77,7 @@ class ServerDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnGivenWebserver()
+	public function shouldReturnGivenWebserver(): void
 	{
 		$this->assertSame($this->serverDetails->webserver(), $this->webserver);
 	}
@@ -85,7 +86,7 @@ class ServerDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnGivenOperatingSystem()
+	public function shouldReturnGivenOperatingSystem(): void
 	{
 		$this->assertSame($this->serverDetails->os(), $this->os);
 	}

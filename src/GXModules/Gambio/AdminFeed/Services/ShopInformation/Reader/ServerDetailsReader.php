@@ -128,7 +128,7 @@ class ServerDetailsReader
 	 */
 	public function getWebserver()
 	{
-		return isset($_SERVER['SERVER_SOFTWARE']) ? $_SERVER['SERVER_SOFTWARE'] : '';
+		return $_SERVER['SERVER_SOFTWARE'] ?? '';
 	}
 	
 	

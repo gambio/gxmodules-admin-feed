@@ -135,7 +135,7 @@ abstract class DbTestCase extends TestCase
 	 * @throws \Exception If there is an error or a warning during the export operation.
 	 * @throws \InvalidArgumentException If $filename argument is not a string.
 	 */
-	final public static function exportDatabase($filename, array $tables = array())
+	final public static function exportDatabase($filename, array $tables = []): void
 	{
 		if(!is_string($filename) || empty($filename))
 		{
@@ -148,17 +148,11 @@ abstract class DbTestCase extends TestCase
 		// Save the exported tables array for further reference in the child classes.
 		self::$exportedTables = $tables;
 		
-		set_error_handler(array(
-			                  __CLASS__,
-			                  'restoreDatabaseOnError'
-		                  ));
+		set_error_handler([self::class, 'restoreDatabaseOnError']);
 		
 		$dbUtility = self::getCiDbUtility();
 		
-		$preferences = array(
-			'tables' => $tables,
-			'format' => 'txt'
-		);
+		$preferences = ['tables' => $tables, 'format' => 'txt'];
 		
 		file_put_contents($filename, $dbUtility->backup($preferences));
 	}
@@ -184,7 +178,7 @@ abstract class DbTestCase extends TestCase
 	 * @throws \UnexpectedValueException If there is an error or a warning during the import operation.
 	 * @throws \InvalidArgumentException If the dump file could not be found.
 	 */
-	final public static function importDatabase($filename, $deleteSqlFile = false)
+	final public static function importDatabase($filename, $deleteSqlFile = false): void
 	{
 		if(!is_string($filename) || empty($filename) || !file_exists($filename))
 		{
@@ -229,7 +223,7 @@ abstract class DbTestCase extends TestCase
 	 * @throws \InvalidArgumentException From "invalidArgumentTypeError" method.
 	 * @throws \UnexpectedValueException From "importDatabase" method.
 	 */
-	final public static function restoreDatabaseOnError($number, $message, $file, $line)
+	final public static function restoreDatabaseOnError($number, $message, $file, $line): void
 	{
 		if(is_string(self::$restoreSqlFile) && !empty(self::$restoreSqlFile) && file_exists(self::$restoreSqlFile))
 		{

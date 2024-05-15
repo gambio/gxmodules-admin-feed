@@ -111,7 +111,8 @@ class ModulesDetailsMapperTest extends TestCase
 	private $mapper;
 	
 	
-	public function setUp()
+	#[\Override]
+ public function setUp()
 	{
 		$this->reader = $this->mockReader();
 		
@@ -122,7 +123,7 @@ class ModulesDetailsMapperTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedMerchantDetailsDetails()
+	public function shouldReturnExpectedMerchantDetailsDetails(): void
 	{
 		$expectedDetails = $this->expectedModulesDetails();
 		

@@ -23,21 +23,15 @@ class TemplateDetailsReader
 {
 	use GxAdapterTrait;
 	
-	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\Settings
-	 */
-	private $settings;
-	
 	
 	/**
 	 * TemplateDetailsReader constructor.
 	 *
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Settings $settings
 	 */
-	public function __construct(Settings $settings)
-	{
-		$this->settings = $settings;
-	}
+	public function __construct(private Settings $settings)
+ {
+ }
 	
 	
 	/**

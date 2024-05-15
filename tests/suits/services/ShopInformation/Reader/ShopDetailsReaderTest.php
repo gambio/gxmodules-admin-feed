@@ -35,7 +35,8 @@ class ShopDetailsReaderTest extends DbTestCase
 	private $reader;
 	
 	
-	public function setUp(): void
+	#[\Override]
+ public function setUp(): void
 	{
 		parent::setUp();
 		
@@ -55,7 +56,7 @@ class ShopDetailsReaderTest extends DbTestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedVersionData()
+	public function shouldReturnExpectedVersionData(): void
 	{
 		$expectedData = '3.10.0.0';
 		$actualData   = $this->reader->getVersion();
@@ -67,7 +68,7 @@ class ShopDetailsReaderTest extends DbTestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedUrlData()
+	public function shouldReturnExpectedUrlData(): void
 	{
 		$expectedData = 'https://example.org/shop/';
 		$actualData   = $this->reader->getUrl();
@@ -79,7 +80,7 @@ class ShopDetailsReaderTest extends DbTestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedKeyData()
+	public function shouldReturnExpectedKeyData(): void
 	{
 		$expectedData = '1234-5678-9012-3456-7890';
 		$actualData   = $this->reader->getKey();
@@ -91,7 +92,7 @@ class ShopDetailsReaderTest extends DbTestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedLanguagesData()
+	public function shouldReturnExpectedLanguagesData(): void
 	{
 		$expectedData = ['de', 'en'];
 		$actualData   = $this->reader->getLanguages();
@@ -103,7 +104,7 @@ class ShopDetailsReaderTest extends DbTestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedDefaultLanguageData()
+	public function shouldReturnExpectedDefaultLanguageData(): void
 	{
 		$expectedData = 'de';
 		$actualData   = $this->reader->getDefaultLanguage();
@@ -115,7 +116,7 @@ class ShopDetailsReaderTest extends DbTestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedCountriesData()
+	public function shouldReturnExpectedCountriesData(): void
 	{
 		$expectedData = ['AT', 'CH', 'DE'];
 		$actualData   = $this->reader->getCountries();
@@ -130,13 +131,15 @@ class ShopDetailsReaderTest extends DbTestCase
 	}
 	
 	
-	public static function setUpBeforeClass()
+	#[\Override]
+ public static function setUpBeforeClass()
 	{
 		static::exportDatabase(__DIR__ . '/backup.sql', ['countries', 'languages']);
 	}
 	
 	
-	public static function tearDownAfterClass()
+	#[\Override]
+ public static function tearDownAfterClass()
 	{
 		self::importDatabase(__DIR__ . '/backup.sql', true);
 	}

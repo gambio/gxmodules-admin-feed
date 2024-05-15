@@ -39,7 +39,8 @@ class MysqlServerDetailsTest extends TestCase
 	private $mysqlServerDetails;
 	
 	
-	public function setUp()
+	#[\Override]
+ public function setUp()
 	{
 		$this->mysqlServerDetails = MysqlServerDetails::create($this->version, $this->engines, $this->defaultEngine);
 	}
@@ -48,7 +49,7 @@ class MysqlServerDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnGivenVersion()
+	public function shouldReturnGivenVersion(): void
 	{
 		$this->assertSame($this->mysqlServerDetails->version(), $this->version);
 	}
@@ -57,7 +58,7 @@ class MysqlServerDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnGivenEngines()
+	public function shouldReturnGivenEngines(): void
 	{
 		$this->assertSame($this->mysqlServerDetails->engines(), $this->engines);
 	}
@@ -66,7 +67,7 @@ class MysqlServerDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnGivenDefaultEngine()
+	public function shouldReturnGivenDefaultEngine(): void
 	{
 		$this->assertSame($this->mysqlServerDetails->defaultEngine(), $this->defaultEngine);
 	}

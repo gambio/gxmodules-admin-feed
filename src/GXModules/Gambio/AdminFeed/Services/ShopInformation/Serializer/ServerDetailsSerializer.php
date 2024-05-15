@@ -21,28 +21,14 @@ use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ServerDetails;
 class ServerDetailsSerializer
 {
 	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\Serializer\PhpServerDetailsSerializer
-	 */
-	private $phpServerDetailsSerializer;
-	
-	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\Serializer\MysqlServerDetailsSerializer
-	 */
-	private $mysqlServerDetailsSerializer;
-	
-	
-	/**
 	 * ServerDetailsSerializer constructor.
 	 *
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Serializer\PhpServerDetailsSerializer   $phpServerDetailsSerializer
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Serializer\MysqlServerDetailsSerializer $mysqlServerDetailsSerializer
 	 */
-	public function __construct(PhpServerDetailsSerializer $phpServerDetailsSerializer,
-	                            MysqlServerDetailsSerializer $mysqlServerDetailsSerializer)
-	{
-		$this->phpServerDetailsSerializer   = $phpServerDetailsSerializer;
-		$this->mysqlServerDetailsSerializer = $mysqlServerDetailsSerializer;
-	}
+	public function __construct(private readonly PhpServerDetailsSerializer $phpServerDetailsSerializer, private readonly MysqlServerDetailsSerializer $mysqlServerDetailsSerializer)
+ {
+ }
 	
 	
 	/**

@@ -43,7 +43,8 @@ class ShopInformationServiceFactoryTest extends DbTestCase
 	private $factory;
 	
 	
-	public function setUp(): void
+	#[\Override]
+ public function setUp(): void
 	{
 		$this->db = static::getCiDbQueryBuilder();
 		
@@ -55,7 +56,7 @@ class ShopInformationServiceFactoryTest extends DbTestCase
 	/**
 	 * @test
 	 */
-	public function shouldCreateAShopInformationService()
+	public function shouldCreateAShopInformationService(): void
 	{
 		$this->assertInstanceOf(ShopInformationService::class, $this->factory->createService());
 	}
@@ -64,7 +65,7 @@ class ShopInformationServiceFactoryTest extends DbTestCase
 	/**
 	 * @test
 	 */
-	public function shouldCreateFileSystemDetailsSerializer()
+	public function shouldCreateFileSystemDetailsSerializer(): void
 	{
 		$this->assertInstanceOf(FileSystemDetailsSerializer::class,
 		                        $this->factory->createFileSystemDetailsSerializer());
@@ -74,7 +75,7 @@ class ShopInformationServiceFactoryTest extends DbTestCase
 	/**
 	 * @test
 	 */
-	public function shouldCreateModuleDetailsSerializer()
+	public function shouldCreateModuleDetailsSerializer(): void
 	{
 		$this->assertInstanceOf(ModuleDetailsSerializer::class, $this->factory->createModuleDetailsSerializer());
 	}
@@ -83,7 +84,7 @@ class ShopInformationServiceFactoryTest extends DbTestCase
 	/**
 	 * @test
 	 */
-	public function shouldCreateModulesDetailsSerializer()
+	public function shouldCreateModulesDetailsSerializer(): void
 	{
 		$this->assertInstanceOf(ModulesDetailsSerializer::class, $this->factory->createModulesDetailsSerializer());
 	}
@@ -92,7 +93,7 @@ class ShopInformationServiceFactoryTest extends DbTestCase
 	/**
 	 * @test
 	 */
-	public function shouldCreateMysqlServerDetailsSerializer()
+	public function shouldCreateMysqlServerDetailsSerializer(): void
 	{
 		$this->assertInstanceOf(MysqlServerDetailsSerializer::class,
 		                        $this->factory->createMysqlServerDetailsSerializer());
@@ -102,7 +103,7 @@ class ShopInformationServiceFactoryTest extends DbTestCase
 	/**
 	 * @test
 	 */
-	public function shouldCreatePhpServerDetailsSerializer()
+	public function shouldCreatePhpServerDetailsSerializer(): void
 	{
 		$this->assertInstanceOf(PhpServerDetailsSerializer::class, $this->factory->createPhpServerDetailsSerializer());
 	}
@@ -111,7 +112,7 @@ class ShopInformationServiceFactoryTest extends DbTestCase
 	/**
 	 * @test
 	 */
-	public function shouldCreateServerDetailsSerializer()
+	public function shouldCreateServerDetailsSerializer(): void
 	{
 		$this->assertInstanceOf(ServerDetailsSerializer::class, $this->factory->createServerDetailsSerializer());
 	}
@@ -120,7 +121,7 @@ class ShopInformationServiceFactoryTest extends DbTestCase
 	/**
 	 * @test
 	 */
-	public function shouldCreateShopDetailsSerializer()
+	public function shouldCreateShopDetailsSerializer(): void
 	{
 		$this->assertInstanceOf(ShopDetailsSerializer::class, $this->factory->createShopDetailsSerializer());
 	}
@@ -129,7 +130,7 @@ class ShopInformationServiceFactoryTest extends DbTestCase
 	/**
 	 * @test
 	 */
-	public function shouldCreateShopInformationSerializer()
+	public function shouldCreateShopInformationSerializer(): void
 	{
 		$this->assertInstanceOf(ShopInformationSerializer::class, $this->factory->createShopInformationSerializer());
 	}
@@ -138,7 +139,7 @@ class ShopInformationServiceFactoryTest extends DbTestCase
 	/**
 	 * @test
 	 */
-	public function shouldCreateTemplateDetailsSerializer()
+	public function shouldCreateTemplateDetailsSerializer(): void
 	{
 		$this->assertInstanceOf(ThemeDetailsSerializer::class, $this->factory->createTemplateDetailsSerializer());
 	}
@@ -147,7 +148,7 @@ class ShopInformationServiceFactoryTest extends DbTestCase
 	/**
 	 * @test
 	 */
-	public function shouldCreateUpdateDetailsSerializer()
+	public function shouldCreateUpdateDetailsSerializer(): void
 	{
 		$this->assertInstanceOf(UpdateDetailsSerializer::class, $this->factory->createUpdateDetailsSerializer());
 	}
@@ -156,7 +157,7 @@ class ShopInformationServiceFactoryTest extends DbTestCase
 	/**
 	 * @test
 	 */
-	public function shouldCreateUpdatesDetailsSerializer()
+	public function shouldCreateUpdatesDetailsSerializer(): void
 	{
 		$this->assertInstanceOf(UpdatesDetailsSerializer::class, $this->factory->createUpdatesDetailsSerializer());
 	}
@@ -177,13 +178,15 @@ class ShopInformationServiceFactoryTest extends DbTestCase
 	}
 	
 	
-	public static function setUpBeforeClass()
+	#[\Override]
+ public static function setUpBeforeClass()
 	{
 		static::exportDatabase(__DIR__ . '/backup.sql', ['configuration']);
 	}
 	
 	
-	public static function tearDownAfterClass()
+	#[\Override]
+ public static function tearDownAfterClass()
 	{
 		self::importDatabase(__DIR__ . '/backup.sql', true);
 	}

@@ -38,7 +38,8 @@ class ThemeDetailsTest extends TestCase
 	private $templateDetails;
 	
 	
-	public function setUp()
+	#[\Override]
+ public function setUp()
 	{
 		$this->templateDetails = ThemeDetails::create($this->available, $this->selected, $this->version);
 	}
@@ -47,7 +48,7 @@ class ThemeDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnGivenAvailableTemplates()
+	public function shouldReturnGivenAvailableTemplates(): void
 	{
 		$this->assertSame($this->templateDetails->available(), $this->available);
 	}
@@ -56,7 +57,7 @@ class ThemeDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnGivenSelectedTemplate()
+	public function shouldReturnGivenSelectedTemplate(): void
 	{
 		$this->assertSame($this->templateDetails->selected(), $this->selected);
 	}
@@ -65,7 +66,7 @@ class ThemeDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnGivenTemplateVersion()
+	public function shouldReturnGivenTemplateVersion(): void
 	{
 		$this->assertSame($this->templateDetails->version(), $this->version);
 	}

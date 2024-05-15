@@ -21,32 +21,6 @@ use Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollectio
 class ModulesDetails
 {
 	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection
-	 */
-	private $payment;
-	
-	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection
-	 */
-	private $shipping;
-	
-	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection
-	 */
-	private $orderTotal;
-	
-	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection
-	 */
-	private $hub;
-	
-	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection
-	 */
-	private $moduleCenter;
-	
-	
-	/**
 	 * ModulesDetails constructor.
 	 *
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $hub
@@ -55,18 +29,9 @@ class ModulesDetails
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $orderTotal
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\ModuleDetailsCollection $moduleCenter
 	 */
-	public function __construct(ModuleDetailsCollection $hub,
-	                            ModuleDetailsCollection $payment,
-	                            ModuleDetailsCollection $shipping,
-	                            ModuleDetailsCollection $orderTotal,
-	                            ModuleDetailsCollection $moduleCenter)
-	{
-		$this->hub          = $hub;
-		$this->payment      = $payment;
-		$this->shipping     = $shipping;
-		$this->orderTotal   = $orderTotal;
-		$this->moduleCenter = $moduleCenter;
-	}
+	public function __construct(private readonly ModuleDetailsCollection $hub, private readonly ModuleDetailsCollection $payment, private readonly ModuleDetailsCollection $shipping, private readonly ModuleDetailsCollection $orderTotal, private readonly ModuleDetailsCollection $moduleCenter)
+ {
+ }
 	
 	
 	/**

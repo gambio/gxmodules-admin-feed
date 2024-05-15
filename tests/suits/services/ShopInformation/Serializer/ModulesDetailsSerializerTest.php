@@ -36,7 +36,8 @@ class ModulesDetailsSerializerTest extends TestCase
 	private $serializer;
 	
 	
-	public function setUp()
+	#[\Override]
+ public function setUp()
 	{
 		$modulesCollection = ModuleDetailsCollection::create();
 		
@@ -62,7 +63,7 @@ class ModulesDetailsSerializerTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldSerializeCorrectly()
+	public function shouldSerializeCorrectly(): void
 	{
 		$actual   = $this->serializer->serialize($this->object);
 		$expected = $this->data;
@@ -74,7 +75,7 @@ class ModulesDetailsSerializerTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldDeserializeCorrectly()
+	public function shouldDeserializeCorrectly(): void
 	{
 		$actual   = $this->serializer->deserialize($this->data);
 		$expected = $this->object;

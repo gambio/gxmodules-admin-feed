@@ -40,7 +40,7 @@ class AdminInfobox
 	 */
 	public function __construct()
 	{
-		$this->hasShopKey = defined('GAMBIO_SHOP_KEY') && trim(GAMBIO_SHOP_KEY) !== '';
+		$this->hasShopKey = defined('GAMBIO_SHOP_KEY') && trim((string) GAMBIO_SHOP_KEY) !== '';
 		
 		$this->_setUrl();
 		$this->_setParameters();
@@ -59,7 +59,7 @@ class AdminInfobox
 		
 		$url = $this->url . '?' . implode('&', $this->parameters);
 		
-		$serverResponse   = $loadUrl->load_url($url, array('Accept: application/json'), '', false, false);
+		$serverResponse   = $loadUrl->load_url($url, ['Accept: application/json'], '', false, false);
 		$c_serverResponse = (string)$serverResponse;
 		
 		$json          = new Services_JSON(SERVICES_JSON_LOOSE_TYPE);
@@ -93,13 +93,13 @@ class AdminInfobox
 		include(DIR_FS_CATALOG . 'release_info.php');
 		
 		$parameters   = [];
-		$parameters[] = 'shop_version=' . rawurlencode($gx_version);
+		$parameters[] = 'shop_version=' . rawurlencode((string) $gx_version);
 		
 		if($this->hasShopKey)
 		{
 			$parameters[] = 'shop_url=' . rawurlencode(HTTP_SERVER . DIR_WS_CATALOG);
 			$parameters[] = 'shop_key=' . rawurlencode(GAMBIO_SHOP_KEY);
-			$parameters[] = 'language=' . rawurlencode($_SESSION['language_code']);
+			$parameters[] = 'language=' . rawurlencode((string) $_SESSION['language_code']);
 			$parameters[] = 'server_path=' . rawurlencode(rtrim(DIR_FS_CATALOG, '/'));
 		}
 		

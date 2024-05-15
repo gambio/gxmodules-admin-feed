@@ -31,7 +31,8 @@ class TemplateDetailsReaderTest extends TestCase
 	private $reader;
 	
 	
-	public function setUp()
+	#[\Override]
+ public function setUp()
 	{
 		$this->settings = $this->createMock(Settings::class);
 		$this->settings->method('getBaseDirectory')->willReturn(__DIR__ . '/fixtures/template_details/shop_files/');
@@ -45,7 +46,7 @@ class TemplateDetailsReaderTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedAvailableTemplatesData()
+	public function shouldReturnExpectedAvailableTemplatesData(): void
 	{
 		$expectedData = [
 			'templates/EyeCandy',
@@ -64,7 +65,7 @@ class TemplateDetailsReaderTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedSelectedTemplateDataIfThemesAreAvailable()
+	public function shouldReturnExpectedSelectedTemplateDataIfThemesAreAvailable(): void
 	{
 		$this->settings->method('areThemesAvailable')->willReturn(true);
 		$this->reader->setGxAdapter($this->mockGxAdapter());
@@ -79,7 +80,7 @@ class TemplateDetailsReaderTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedSelectedTemplateDataIfThemesAreNotAvailable()
+	public function shouldReturnExpectedSelectedTemplateDataIfThemesAreNotAvailable(): void
 	{
 		$this->settings->method('areThemesAvailable')->willReturn(false);
 		
@@ -93,7 +94,7 @@ class TemplateDetailsReaderTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedVersionDataIfThemesAreAvailable()
+	public function shouldReturnExpectedVersionDataIfThemesAreAvailable(): void
 	{
 		$this->settings->method('areThemesAvailable')->willReturn(true);
 		$this->reader->setGxAdapter($this->mockGxAdapter());
@@ -108,7 +109,7 @@ class TemplateDetailsReaderTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedVersionDataIfThemesAreNotAvailable()
+	public function shouldReturnExpectedVersionDataIfThemesAreNotAvailable(): void
 	{
 		$this->settings->method('areThemesAvailable')->willReturn(false);
 		

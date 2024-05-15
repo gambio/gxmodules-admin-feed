@@ -24,20 +24,13 @@ use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdatesDetails;
 class UpdatesDetailsMapper
 {
 	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\Reader\UpdatesDetailsReader
-	 */
-	private $reader;
-	
-	
-	/**
 	 * UpdatesDetailsMapper constructor.
 	 *
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Reader\UpdatesDetailsReader $reader
 	 */
-	public function __construct(UpdatesDetailsReader $reader)
-	{
-		$this->reader = $reader;
-	}
+	public function __construct(private readonly UpdatesDetailsReader $reader)
+ {
+ }
 	
 	
 	/**

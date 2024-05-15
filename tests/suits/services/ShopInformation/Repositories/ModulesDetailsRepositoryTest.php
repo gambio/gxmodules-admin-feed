@@ -35,7 +35,8 @@ class ModulesDetailsRepositoryTest extends TestCase
 	private $repository;
 	
 	
-	public function setUp()
+	#[\Override]
+ public function setUp()
 	{
 		$this->details = $this->createMock(ModulesDetails::class);
 		
@@ -49,7 +50,7 @@ class ModulesDetailsRepositoryTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedModulesDetails()
+	public function shouldReturnExpectedModulesDetails(): void
 	{
 		$expectedDetails = $this->details;
 		$actualDetails   = $this->repository->getModulesDetails();

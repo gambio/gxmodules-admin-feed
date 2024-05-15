@@ -35,7 +35,8 @@ class TemplateDetailsRepositoryTest extends TestCase
 	private $repository;
 	
 	
-	public function setUp()
+	#[\Override]
+ public function setUp()
 	{
 		$this->details = $this->createMock(ThemeDetails::class);
 		
@@ -49,7 +50,7 @@ class TemplateDetailsRepositoryTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedTemplateDetails()
+	public function shouldReturnExpectedTemplateDetails(): void
 	{
 		$expectedDetails = $this->details;
 		$actualDetails   = $this->repository->getTemplateDetails();

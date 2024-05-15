@@ -35,7 +35,8 @@ class ShopDetailsRepositoryTest extends TestCase
 	private $repository;
 	
 	
-	public function setUp()
+	#[\Override]
+ public function setUp()
 	{
 		$this->details = $this->createMock(ShopDetails::class);
 		
@@ -49,7 +50,7 @@ class ShopDetailsRepositoryTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedShopDetails()
+	public function shouldReturnExpectedShopDetails(): void
 	{
 		$expectedDetails = $this->details;
 		$actualDetails   = $this->repository->getShopDetails();

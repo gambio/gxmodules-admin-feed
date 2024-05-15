@@ -73,7 +73,8 @@ class ServerDetailsMapperTest extends TestCase
 	private $mapper;
 	
 	
-	public function setUp()
+	#[\Override]
+ public function setUp()
 	{
 		$this->reader = $this->mockReader();
 		
@@ -84,7 +85,7 @@ class ServerDetailsMapperTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedMerchantDetailsDetails()
+	public function shouldReturnExpectedMerchantDetailsDetails(): void
 	{
 		$expectedDetails = $this->expectedServerDetails();
 		

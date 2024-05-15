@@ -19,34 +19,18 @@ namespace Gambio\AdminFeed\Services\ShopInformation\ValueObjects;
 class UpdateDetails
 {
 	/**
-	 * @var string
-	 */
-	private $name;
-	
-	/**
-	 * @var string
-	 */
-	private $version;
-	
-	/**
-	 * @var string
-	 */
-	private $installationDate;
-	
-	
-	/**
-	 * UpdateDetails constructor.
-	 *
-	 * @param $name
-	 * @param $version
-	 * @param $installationDate
-	 */
-	public function __construct($name, $version, $installationDate)
-	{
-		$this->name             = $name;
-		$this->version          = $version;
-		$this->installationDate = $installationDate;
-	}
+  * UpdateDetails constructor.
+  *
+  * @param $name
+  * @param $version
+  * @param $installationDate
+  * @param string $name
+  * @param string $version
+  * @param string $installationDate
+  */
+ public function __construct(private $name, private $version, private $installationDate)
+ {
+ }
 	
 	
 	/**

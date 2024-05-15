@@ -114,7 +114,8 @@ class ShopInformationRepositoryTest extends TestCase
 	private $updatesRepository;
 	
 	
-	public function setUp()
+	#[\Override]
+ public function setUp()
 	{
 		$this->shopDetails    = $this->createMock(ShopDetails::class);
 		$this->shopRepository = $this->createMock(ShopDetailsRepository::class);
@@ -154,7 +155,7 @@ class ShopInformationRepositoryTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedShopInformation()
+	public function shouldReturnExpectedShopInformation(): void
 	{
 		$expectedDetails = $this->shopInformation;
 		$actualDetails   = $this->shopInformationRepository->getShopInformation();
@@ -166,7 +167,7 @@ class ShopInformationRepositoryTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedShopDetails()
+	public function shouldReturnExpectedShopDetails(): void
 	{
 		$expectedDetails = $this->shopDetails;
 		$actualDetails   = $this->shopInformationRepository->getShopDetails();
@@ -178,7 +179,7 @@ class ShopInformationRepositoryTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedServerDetails()
+	public function shouldReturnExpectedServerDetails(): void
 	{
 		$expectedDetails = $this->serverDetails;
 		$actualDetails   = $this->shopInformationRepository->getServerDetails();
@@ -190,7 +191,7 @@ class ShopInformationRepositoryTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedModulesDetails()
+	public function shouldReturnExpectedModulesDetails(): void
 	{
 		$expectedDetails = $this->modulesDetails;
 		$actualDetails   = $this->shopInformationRepository->getModulesDetails();
@@ -202,7 +203,7 @@ class ShopInformationRepositoryTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedTemplateDetails()
+	public function shouldReturnExpectedTemplateDetails(): void
 	{
 		$expectedDetails = $this->templatesDetails;
 		$actualDetails   = $this->shopInformationRepository->getTemplateDetails();
@@ -214,7 +215,7 @@ class ShopInformationRepositoryTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedFileSystemDetails()
+	public function shouldReturnExpectedFileSystemDetails(): void
 	{
 		$expectedDetails = $this->fileSystemDetails;
 		$actualDetails   = $this->shopInformationRepository->getFileSystemDetails();
@@ -226,7 +227,7 @@ class ShopInformationRepositoryTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedUpdatesDetails()
+	public function shouldReturnExpectedUpdatesDetails(): void
 	{
 		$expectedDetails = $this->updatesDetails;
 		$actualDetails   = $this->shopInformationRepository->getUpdatesDetails();

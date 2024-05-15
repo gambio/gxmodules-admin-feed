@@ -22,20 +22,13 @@ use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\UpdatesDetails;
 class UpdatesDetailsSerializer
 {
 	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\Serializer\UpdateDetailsSerializer
-	 */
-	private $updateDetailsSerializer;
-	
-	
-	/**
 	 * UpdatesDetailsSerializer constructor.
 	 *
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Serializer\UpdateDetailsSerializer $updateDetailsSerializer
 	 */
-	public function __construct(UpdateDetailsSerializer $updateDetailsSerializer)
-	{
-		$this->updateDetailsSerializer = $updateDetailsSerializer;
-	}
+	public function __construct(private readonly UpdateDetailsSerializer $updateDetailsSerializer)
+ {
+ }
 	
 	
 	/**

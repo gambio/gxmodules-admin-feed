@@ -34,7 +34,8 @@ class ShopDetailsSerializerTest extends TestCase
 	private $serializer;
 	
 	
-	public function setUp()
+	#[\Override]
+ public function setUp()
 	{
 		$version         = 'v1.0.1';
 		$url             = 'https://www.example.org';
@@ -61,7 +62,7 @@ class ShopDetailsSerializerTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldSerializeCorrectly()
+	public function shouldSerializeCorrectly(): void
 	{
 		$actual   = $this->serializer->serialize($this->object);
 		$expected = $this->data;
@@ -73,7 +74,7 @@ class ShopDetailsSerializerTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldDeserializeCorrectly()
+	public function shouldDeserializeCorrectly(): void
 	{
 		$actual   = $this->serializer->deserialize($this->data);
 		$expected = $this->object;

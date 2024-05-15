@@ -19,27 +19,6 @@ namespace Gambio\AdminFeed\Services\ShopInformation\ValueObjects;
 class ServerDetails
 {
 	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\PhpServerDetails
-	 */
-	private $php;
-	
-	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\MysqlServerDetails
-	 */
-	private $mysql;
-	
-	/**
-	 * @var string
-	 */
-	private $webserver;
-	
-	/**
-	 * @var string
-	 */
-	private $os;
-	
-	
-	/**
 	 * ServerDetails constructor.
 	 *
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\ValueObjects\PhpServerDetails   $php
@@ -47,13 +26,9 @@ class ServerDetails
 	 * @param string                                                                     $webserver
 	 * @param string                                                                     $os
 	 */
-	public function __construct(PhpServerDetails $php, MysqlServerDetails $mysql, $webserver, $os)
-	{
-		$this->php       = $php;
-		$this->mysql     = $mysql;
-		$this->webserver = $webserver;
-		$this->os        = $os;
-	}
+	public function __construct(private readonly PhpServerDetails $php, private readonly MysqlServerDetails $mysql, private $webserver, private $os)
+ {
+ }
 	
 	
 	/**

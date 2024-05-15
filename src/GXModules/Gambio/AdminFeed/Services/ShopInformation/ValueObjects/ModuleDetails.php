@@ -19,34 +19,15 @@ namespace Gambio\AdminFeed\Services\ShopInformation\ValueObjects;
 class ModuleDetails
 {
 	/**
-	 * @var string
-	 */
-	private $name;
-	
-	/**
-	 * @var bool
-	 */
-	private $installed;
-	
-	/**
-	 * @var bool|null
-	 */
-	private $enabled;
-	
-	
-	/**
 	 * ModuleDetails constructor.
 	 *
 	 * @param string    $name
 	 * @param bool      $installed
 	 * @param bool|null $enabled
 	 */
-	public function __construct($name, $installed, $enabled)
-	{
-		$this->name      = $name;
-		$this->installed = $installed;
-		$this->enabled   = $enabled;
-	}
+	public function __construct(private $name, private $installed, private $enabled)
+ {
+ }
 	
 	
 	/**

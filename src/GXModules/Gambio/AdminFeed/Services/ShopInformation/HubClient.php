@@ -22,34 +22,15 @@ use Gambio\AdminFeed\CurlClient;
 class HubClient
 {
 	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\Settings
-	 */
-	private $settings;
-	
-	/**
-	 * @var \Gambio\AdminFeed\Adapters\GxAdapter
-	 */
-	private $gxAdapter;
-	
-	/**
-	 * @var \Gambio\AdminFeed\CurlClient
-	 */
-	private $curl;
-	
-	
-	/**
 	 * HubClient constructor.
 	 *
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Settings $settings
 	 * @param \Gambio\AdminFeed\Adapters\GxAdapter                $gxAdapter
 	 * @param \Gambio\AdminFeed\CurlClient                        $curl
 	 */
-	public function __construct(Settings $settings, GxAdapter $gxAdapter, CurlClient $curl)
-	{
-		$this->settings  = $settings;
-		$this->gxAdapter = $gxAdapter;
-		$this->curl      = $curl;
-	}
+	public function __construct(private readonly Settings $settings, private readonly GxAdapter $gxAdapter, private readonly CurlClient $curl)
+ {
+ }
 	
 	
 	/**
@@ -81,9 +62,9 @@ class HubClient
 			{
 				return [];
 			}
-			$modulesData = json_decode($this->curl->getContent(), true);
+			$modulesData = json_decode((string) $this->curl->getContent(), true);
 		}
-		catch(\Exception $e)
+		catch(\Exception)
 		{
 			return [];
 		}
@@ -119,11 +100,7 @@ class HubClient
 			return $hubSessionsApiClient->startSession($authHash, $this->settings->getHttpServer()
 			                                                      . $this->settings->getShopDirectory(), $languageCode);
 		}
-		catch(\UnexpectedValueException $e)
-		{
-			\AuthHashCreator::invalidate($authHash);
-		}
-		catch(\HubPublic\Exceptions\CurlRequestException $e)
+		catch(\UnexpectedValueException|\HubPublic\Exceptions\CurlRequestException)
 		{
 			\AuthHashCreator::invalidate($authHash);
 		}

@@ -69,10 +69,7 @@ class DynamicShopMessages
 		
 		if($response === null)
 		{
-			$response = array(
-				'SOURCES'  => array(),
-				'MESSAGES' => array()
-			); // We must not pass a null value to the JsonHttpControllerResponse object.
+			$response = ['SOURCES'  => [], 'MESSAGES' => []]; // We must not pass a null value to the JsonHttpControllerResponse object.
 		}
 		
 		return MainFactory::create('JsonHttpControllerResponse', $response);
@@ -108,14 +105,14 @@ class DynamicShopMessages
 		
 		// Create data source URL.
 		$params   = [];
-		$params[] = 'shop_version=' . rawurlencode($gx_version);
+		$params[] = 'shop_version=' . rawurlencode((string) $gx_version);
 		$params[] = 'news_type=DOM';
 		
 		if(gm_get_conf('SHOP_KEY_VALID') === '1')
 		{
 			$params[] = 'shop_url=' . rawurlencode(HTTP_SERVER . DIR_WS_CATALOG);
 			$params[] = 'shop_key=' . rawurlencode(GAMBIO_SHOP_KEY);
-			$params[] = 'language=' . rawurlencode($_SESSION['language_code']);
+			$params[] = 'language=' . rawurlencode((string) $_SESSION['language_code']);
 		}
 		
 		if(gm_get_conf('ADMIN_FEED_ACCEPTED_SHOP_INFORMATION_DATA_PROCESSING') === 'true')
@@ -132,7 +129,7 @@ class DynamicShopMessages
 		
 		$url        = $this->endpointUrl . '?' . implode('&', $params);
 		$loadUrl    = MainFactory::create('LoadUrl');
-		$jsonString = $loadUrl->load_url($url, array('Accept: application/json'), '', false, false);
+		$jsonString = $loadUrl->load_url($url, ['Accept: application/json'], '', false, false);
 		
 		$cacheData = [
 			'timestamp' => time(),

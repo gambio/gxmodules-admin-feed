@@ -35,7 +35,8 @@ class UpdateDetailsCollectionTest extends TestCase
 	private $collection;
 	
 	
-	public function setUp()
+	#[\Override]
+ public function setUp()
 	{
 		$this->item  = $this->createMock(UpdateDetails::class);
 		$this->items = [$this->item];
@@ -47,7 +48,7 @@ class UpdateDetailsCollectionTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnAllCollectedItems()
+	public function shouldReturnAllCollectedItems(): void
 	{
 		$this->assertEquals($this->collection->items(), $this->items);
 	}
@@ -56,7 +57,7 @@ class UpdateDetailsCollectionTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnTheNumberOfCollectedItems()
+	public function shouldReturnTheNumberOfCollectedItems(): void
 	{
 		$this->assertCount(count($this->items), $this->collection);
 	}
@@ -65,7 +66,7 @@ class UpdateDetailsCollectionTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldBeAnIterator()
+	public function shouldBeAnIterator(): void
 	{
 		foreach($this->collection as $item)
 		{

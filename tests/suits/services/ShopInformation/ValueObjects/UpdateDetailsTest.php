@@ -39,7 +39,8 @@ class UpdateDetailsTest extends TestCase
 	private $updateDetails;
 	
 	
-	public function setUp()
+	#[\Override]
+ public function setUp()
 	{
 		$this->updateDetails = UpdateDetails::create($this->name, $this->version, $this->installationDate);
 	}
@@ -48,7 +49,7 @@ class UpdateDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldThrowInvalidArgumentExceptionIfGivenNameIsEmpty()
+	public function shouldThrowInvalidArgumentExceptionIfGivenNameIsEmpty(): void
 	{
 		$this->expectException(\InvalidArgumentException::class);
 		
@@ -59,7 +60,7 @@ class UpdateDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldThrowInvalidArgumentExceptionIfGivenVersionIsEmpty()
+	public function shouldThrowInvalidArgumentExceptionIfGivenVersionIsEmpty(): void
 	{
 		$this->expectException(\InvalidArgumentException::class);
 		
@@ -70,7 +71,7 @@ class UpdateDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnGivenName()
+	public function shouldReturnGivenName(): void
 	{
 		$this->assertSame($this->updateDetails->name(), $this->name);
 	}
@@ -79,7 +80,7 @@ class UpdateDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnGivenVersion()
+	public function shouldReturnGivenVersion(): void
 	{
 		$this->assertSame($this->updateDetails->version(), $this->version);
 	}
@@ -88,7 +89,7 @@ class UpdateDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnGivenInstallationDate()
+	public function shouldReturnGivenInstallationDate(): void
 	{
 		$this->assertSame($this->updateDetails->installationDate(), $this->installationDate);
 	}

@@ -21,12 +21,6 @@ use Gambio\AdminFeed\Services\ShopInformation\Settings;
 class ShopDetailsReader
 {
 	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\Settings
-	 */
-	private $settings;
-	
-	
-	/**
 	 * @var \CI_DB_query_builder
 	 */
 	private $db;
@@ -38,9 +32,8 @@ class ShopDetailsReader
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Settings $settings
 	 * @param \CI_DB_query_builder                                $db
 	 */
-	public function __construct(Settings $settings, \CI_DB_query_builder $db)
+	public function __construct(private readonly Settings $settings, \CI_DB_query_builder $db)
 	{
-		$this->settings = $settings;
 		$this->db       = $db;
 	}
 	
@@ -54,7 +47,7 @@ class ShopDetailsReader
 	{
 		include $this->settings->getBaseDirectory() . 'release_info.php';
 		
-		return isset($gx_version) ? $gx_version : '';
+		return $gx_version ?? '';
 	}
 	
 	

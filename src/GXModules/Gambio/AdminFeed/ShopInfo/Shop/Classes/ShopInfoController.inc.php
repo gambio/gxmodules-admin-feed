@@ -81,7 +81,7 @@ final class ShopInfoController extends HttpViewController
 	
 	private function _verifyIp()
 	{
-		$ip = isset($_SERVER['HTTP_X_FORWARDED_FOR']) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR'];
+		$ip = $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR'];
 		
 		if($this->requestControl->verifyRequestIp($ip))
 		{

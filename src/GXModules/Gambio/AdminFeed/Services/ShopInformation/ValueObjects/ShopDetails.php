@@ -19,37 +19,6 @@ namespace Gambio\AdminFeed\Services\ShopInformation\ValueObjects;
 class ShopDetails
 {
 	/**
-	 * @var string
-	 */
-	private $version;
-	
-	/**
-	 * @var string
-	 */
-	private $url;
-	
-	/**
-	 * @var string
-	 */
-	private $key;
-	
-	/**
-	 * @var array
-	 */
-	private $languages;
-	
-	/**
-	 * @var string
-	 */
-	private $defaultLanguage = '';
-	
-	/**
-	 * @var array
-	 */
-	private $countries;
-	
-	
-	/**
 	 * ShopDetails constructor.
 	 *
 	 * @param string $version
@@ -59,20 +28,9 @@ class ShopDetails
 	 * @param string $defaultLanguage
 	 * @param array  $countries
 	 */
-	public function __construct($version,
-	                            $url,
-	                            $key,
-	                            array $languages,
-	                            $defaultLanguage,
-	                            array $countries)
-	{
-		$this->version         = $version;
-		$this->url             = $url;
-		$this->key             = $key;
-		$this->languages       = $languages;
-		$this->defaultLanguage = $defaultLanguage;
-		$this->countries       = $countries;
-	}
+	public function __construct(private $version, private $url, private $key, private readonly array $languages, private $defaultLanguage, private readonly array $countries)
+ {
+ }
 	
 	
 	/**
@@ -102,7 +60,7 @@ class ShopDetails
 		{
 			throw new \InvalidArgumentException('URL can not be empty.');
 		}
-		elseif(substr($url, 0, 7) !== 'http://' && substr($url, 0, 8) !== 'https://')
+		elseif(!str_starts_with($url, 'http://') && !str_starts_with($url, 'https://'))
 		{
 			throw new \InvalidArgumentException('URL is invalid.');
 		}

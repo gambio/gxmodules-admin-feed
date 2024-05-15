@@ -36,7 +36,8 @@ class UpdatesDetailsSerializerTest extends TestCase
 	private $serializer;
 	
 	
-	public function setUp()
+	#[\Override]
+ public function setUp()
 	{
 		$updateCollection = UpdateDetailsCollection::create();
 		
@@ -58,7 +59,7 @@ class UpdatesDetailsSerializerTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldSerializeCorrectly()
+	public function shouldSerializeCorrectly(): void
 	{
 		$expected = $this->data;
 		$actual   = $this->serializer->serialize($this->object);
@@ -70,7 +71,7 @@ class UpdatesDetailsSerializerTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldDeserializeCorrectly()
+	public function shouldDeserializeCorrectly(): void
 	{
 		$expected = $this->object;
 		$actual   = $this->serializer->deserialize($this->data);

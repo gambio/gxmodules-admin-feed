@@ -30,7 +30,8 @@ class UpdateDetailsSerializerTest extends TestCase
 	private $object;
 	
 	
-	public function setUp()
+	#[\Override]
+ public function setUp()
 	{
 		$usermods                     = [];
 		$gxModules                    = ['Gambio/AdminFeed', 'Gambio/Hub'];
@@ -56,9 +57,9 @@ class UpdateDetailsSerializerTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldSerializeCorrectly()
+	public function shouldSerializeCorrectly(): void
 	{
-		$expected = FileSystemDetailsSerializer::serialize($this->object);
+		$expected = (new FileSystemDetailsSerializer())->serialize($this->object);
 		$actual   = $this->data;
 		
 		$this->assertSame($expected, $actual);
@@ -68,9 +69,9 @@ class UpdateDetailsSerializerTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldDeserializeCorrectly()
+	public function shouldDeserializeCorrectly(): void
 	{
-		$expected = FileSystemDetailsSerializer::deserialize($this->data);
+		$expected = (new FileSystemDetailsSerializer())->deserialize($this->data);
 		$actual   = $this->object;
 		
 		$this->assertEquals($expected, $actual);

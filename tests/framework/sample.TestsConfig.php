@@ -25,18 +25,18 @@ class TestsConfig
 	// GENERAL INFORMATION
 	// ------------------------------------------------------------------------
 	
-	const SHOP_URL       = ''; // Shop base URL *** without the trailing slash ***.
-	const ADMIN_USER     = '';
-	const ADMIN_PASSWORD = '';
+	public const SHOP_URL       = ''; // Shop base URL *** without the trailing slash ***.
+	public const ADMIN_USER     = '';
+	public const ADMIN_PASSWORD = '';
 	
-	const HUB_CLIENT_KEY = '';
+	public const HUB_CLIENT_KEY = '';
 	
 	// ------------------------------------------------------------------------
 	// DATABASE CREDENTIALS
 	// ------------------------------------------------------------------------
 	
-	const DB_HOST     = '';
-	const DB_USER     = '';
-	const DB_PASSWORD = '';
-	const DB_NAME     = '';
+	public const DB_HOST     = '';
+	public const DB_USER     = '';
+	public const DB_PASSWORD = '';
+	public const DB_NAME     = '';
 }

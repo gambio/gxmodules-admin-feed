@@ -21,20 +21,13 @@ use Gambio\AdminFeed\Services\ShopInformation\Mapper\FileSystemDetailsMapper;
 class FileSystemDetailsRepository
 {
 	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\Mapper\FileSystemDetailsMapper
-	 */
-	private $mapper;
-	
-	
-	/**
 	 * FileSystemDetailsRepository constructor.
 	 *
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Mapper\FileSystemDetailsMapper $mapper
 	 */
-	public function __construct(FileSystemDetailsMapper $mapper)
-	{
-		$this->mapper = $mapper;
-	}
+	public function __construct(private readonly FileSystemDetailsMapper $mapper)
+ {
+ }
 	
 	
 	/**

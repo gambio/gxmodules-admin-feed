@@ -19,36 +19,15 @@ namespace Gambio\AdminFeed\Services\ShopInformation\ValueObjects;
 class PhpServerDetails
 {
 	/**
-	 * @var string
-	 */
-	private $version;
-	
-	/**
-	 * @var array
-	 */
-	private $extensions;
-	
-	/**
-	 * @var array
-	 */
-	private $configuration;
-	
-	
-	/**
 	 * PhpServerDetails constructor.
 	 *
 	 * @param string $version
 	 * @param array  $extensions
 	 * @param array  $configuration
 	 */
-	public function __construct($version,
-	                            array $extensions,
-	                            array $configuration)
-	{
-		$this->version       = $version;
-		$this->extensions    = $extensions;
-		$this->configuration = $configuration;
-	}
+	public function __construct(private $version, private readonly array $extensions, private readonly array $configuration)
+ {
+ }
 	
 	
 	/**

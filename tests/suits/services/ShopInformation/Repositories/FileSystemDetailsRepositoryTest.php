@@ -35,7 +35,8 @@ class FileSystemDetailsRepositoryTest extends TestCase
 	private $repository;
 	
 	
-	public function setUp()
+	#[\Override]
+ public function setUp()
 	{
 		$this->details = $this->createMock(FileSystemDetails::class);
 		
@@ -49,7 +50,7 @@ class FileSystemDetailsRepositoryTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedFileSystemDetails()
+	public function shouldReturnExpectedFileSystemDetails(): void
 	{
 		$expectedDetails = $this->details;
 		$actualDetails   = $this->repository->getFileSystemDetails();

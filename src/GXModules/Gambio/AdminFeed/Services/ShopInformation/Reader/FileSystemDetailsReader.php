@@ -21,20 +21,13 @@ use Gambio\AdminFeed\Services\ShopInformation\Settings;
 class FileSystemDetailsReader
 {
 	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\Settings
-	 */
-	private $settings;
-	
-	
-	/**
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Settings $settings
 	 *
 	 * @return self
 	 */
-	public function __construct(Settings $settings)
-	{
-		$this->settings = $settings;
-	}
+	public function __construct(private readonly Settings $settings)
+ {
+ }
 	
 	
 	/**
@@ -50,9 +43,7 @@ class FileSystemDetailsReader
 		                        $this->searchForUsermods($this->settings->getBaseDirectory()
 		                                                 . 'templates/MobileCandy/'));
 		
-		$usermods = array_map(function ($usermod) {
-			return substr($usermod, strlen($this->settings->getBaseDirectory()));
-		}, $usermods);
+		$usermods = array_map(fn($usermod) => substr((string) $usermod, strlen($this->settings->getBaseDirectory())), $usermods);
 		
 		return $usermods;
 	}
@@ -97,15 +88,13 @@ class FileSystemDetailsReader
 			'__*'
 		];
 		
-		$dangerousTools = array();
+		$dangerousTools = [];
 		foreach($dangerousToolsPattern as $pattern)
 		{
 			$dangerousTools = array_merge((array)glob($this->settings->getBaseDirectory() . $pattern), $dangerousTools);
 		}
 		
-		$dangerousTools = array_map(function ($dangerousTool) {
-			return substr($dangerousTool, strlen($this->settings->getBaseDirectory()));
-		}, $dangerousTools);
+		$dangerousTools = array_map(fn($dangerousTool) => substr((string) $dangerousTool, strlen($this->settings->getBaseDirectory())), $dangerousTools);
 		
 		return $dangerousTools;
 	}
@@ -126,9 +115,7 @@ class FileSystemDetailsReader
 	public function getReceiptFiles()
 	{
 		$receiptFiles = (array)glob($this->settings->getBaseDirectory() . 'version_info/*.php');
-		$receiptFiles = array_map(function ($receiptFile) {
-			return basename($receiptFile);
-		}, $receiptFiles);
+		$receiptFiles = array_map(fn($receiptFile) => basename((string) $receiptFile), $receiptFiles);
 		
 		return $receiptFiles;
 	}

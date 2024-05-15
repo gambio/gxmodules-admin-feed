@@ -53,7 +53,8 @@ class FileSystemDetailsTest extends TestCase
 	private $fileSystemDetails;
 	
 	
-	public function setUp()
+	#[\Override]
+ public function setUp()
 	{
 		$this->fileSystemDetails = FileSystemDetails::create($this->usermods, $this->gxModules, $this->dangerousTools,
 		                                                     $this->receiptFiles, $this->globalUsermodDirectoryExists,
@@ -64,7 +65,7 @@ class FileSystemDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnGivenUsermods()
+	public function shouldReturnGivenUsermods(): void
 	{
 		$this->assertSame($this->fileSystemDetails->usermods(), $this->usermods);
 	}
@@ -73,7 +74,7 @@ class FileSystemDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnGivenGxModules()
+	public function shouldReturnGivenGxModules(): void
 	{
 		$this->assertSame($this->fileSystemDetails->gxModules(), $this->gxModules);
 	}
@@ -82,7 +83,7 @@ class FileSystemDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnGivenDangerousTools()
+	public function shouldReturnGivenDangerousTools(): void
 	{
 		$this->assertSame($this->fileSystemDetails->dangerousTools(), $this->dangerousTools);
 	}
@@ -91,7 +92,7 @@ class FileSystemDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnGivenGlobalUsermodDirectoryExistsFlag()
+	public function shouldReturnGivenGlobalUsermodDirectoryExistsFlag(): void
 	{
 		$this->assertSame($this->fileSystemDetails->globalUsermodDirectoryExists(),
 		                  $this->globalUsermodDirectoryExists);
@@ -101,7 +102,7 @@ class FileSystemDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnGivenUpmDirectoryExistsFlag()
+	public function shouldReturnGivenUpmDirectoryExistsFlag(): void
 	{
 		$this->assertSame($this->fileSystemDetails->upmDirectoryExists(), $this->upmDirectoryExists);
 	}

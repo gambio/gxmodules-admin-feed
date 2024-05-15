@@ -19,34 +19,15 @@ namespace Gambio\AdminFeed\Services\ShopInformation\ValueObjects;
 class MysqlServerDetails
 {
 	/**
-	 * @var string
-	 */
-	private $version;
-	
-	/**
-	 * @var array
-	 */
-	private $engines;
-	
-	/**
-	 * @var string
-	 */
-	private $defaultEngine;
-	
-	
-	/**
 	 * MysqlServerDetails constructor.
 	 *
 	 * @param string $version
 	 * @param array  $engines
 	 * @param string $defaultEngine
 	 */
-	public function __construct($version, array $engines, $defaultEngine)
-	{
-		$this->version       = $version;
-		$this->engines       = $engines;
-		$this->defaultEngine = $defaultEngine;
-	}
+	public function __construct(private $version, private readonly array $engines, private $defaultEngine)
+ {
+ }
 	
 	
 	/**

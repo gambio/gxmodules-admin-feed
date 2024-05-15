@@ -25,18 +25,18 @@ class TestsConfig
 	// GENERAL INFORMATION
 	// ------------------------------------------------------------------------
 	
-	const SHOP_URL       = 'http://192.168.100.133/Shops/GX-Feature'; // Shop base URL *** without the trailing slash ***.
-	const ADMIN_USER     = 'admin@shop.de';
-	const ADMIN_PASSWORD = '12345';
+	public const SHOP_URL       = 'http://192.168.100.133/Shops/GX-Feature'; // Shop base URL *** without the trailing slash ***.
+	public const ADMIN_USER     = 'admin@shop.de';
+	public const ADMIN_PASSWORD = '12345';
 	
-	const HUB_CLIENT_KEY = '';
+	public const HUB_CLIENT_KEY = '';
 	
 	// ------------------------------------------------------------------------
 	// DATABASE CREDENTIALS
 	// ------------------------------------------------------------------------
 	
-	const DB_HOST     = 'localhost';
-	const DB_USER     = 'developer';
-	const DB_PASSWORD = 'snoopy';
-	const DB_NAME     = 'Admin-Feed';
+	public const DB_HOST     = 'localhost';
+	public const DB_USER     = 'developer';
+	public const DB_PASSWORD = 'snoopy';
+	public const DB_NAME     = 'Admin-Feed';
 }

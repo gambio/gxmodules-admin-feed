@@ -29,7 +29,8 @@ class FileSystemDetailsReaderTest extends TestCase
 	private $reader;
 	
 	
-	public function setUp()
+	#[\Override]
+ public function setUp()
 	{
 		$this->settings = $this->createMock(Settings::class);
 		$this->settings->method('getBaseDirectory')->willReturn(__DIR__ . '/fixtures/file_system_details/shop_files/');
@@ -42,7 +43,7 @@ class FileSystemDetailsReaderTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnTheExpectedUserModsData()
+	public function shouldReturnTheExpectedUserModsData(): void
 	{
 		$expectedData = [
 			'admin/html/content/dashboard-USERMOD.html',
@@ -58,7 +59,7 @@ class FileSystemDetailsReaderTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnTheExpectedGxModulesData()
+	public function shouldReturnTheExpectedGxModulesData(): void
 	{
 		$expectedData = [
 			'Ampify/Ampify',
@@ -78,7 +79,7 @@ class FileSystemDetailsReaderTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnTheExpectedDangerousToolsData()
+	public function shouldReturnTheExpectedDangerousToolsData(): void
 	{
 		$expectedData = ['__hackers.php', 'adminer.php',];
 		$actualData   = $this->reader->getDangerousTools();
@@ -90,7 +91,7 @@ class FileSystemDetailsReaderTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnTheExpectedGlobalUsermodDirectoryFlag()
+	public function shouldReturnTheExpectedGlobalUsermodDirectoryFlag(): void
 	{
 		$expectedData = true;
 		$actualData   = $this->reader->doesGlobalUsermodDirectoryExist();
@@ -102,7 +103,7 @@ class FileSystemDetailsReaderTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnTheExpectedReceiptFilesData()
+	public function shouldReturnTheExpectedReceiptFilesData(): void
 	{
 		$expectedData = [
 			'3_10_0_1.php',
@@ -121,7 +122,7 @@ class FileSystemDetailsReaderTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnTheExpectedUpmDirectoryFlag()
+	public function shouldReturnTheExpectedUpmDirectoryFlag(): void
 	{
 		$expectedData = true;
 		$actualData   = $this->reader->doesUpmDirectoryExist();

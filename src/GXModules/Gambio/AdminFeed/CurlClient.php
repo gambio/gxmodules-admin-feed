@@ -35,12 +35,12 @@ class CurlClient
 	 * @param string $url
 	 * @param array  $options
 	 */
-	public function executeGet($url, $options = [])
+	public function executeGet($url, $options = []): void
 	{
 		$options = $options + [
 				CURLOPT_URL            => $url,
-				CURLOPT_CONNECTTIMEOUT => isset($options[CURLOPT_CONNECTTIMEOUT]) ? $options[CURLOPT_CONNECTTIMEOUT] : 10,
-				CURLOPT_RETURNTRANSFER => isset($options[CURLOPT_RETURNTRANSFER]) ? $options[CURLOPT_RETURNTRANSFER] : true,
+				CURLOPT_CONNECTTIMEOUT => $options[CURLOPT_CONNECTTIMEOUT] ?? 10,
+				CURLOPT_RETURNTRANSFER => $options[CURLOPT_RETURNTRANSFER] ?? true,
 			];
 		
 		$curlHandle = curl_init();
@@ -58,14 +58,14 @@ class CurlClient
 	 * @param array  $data
 	 * @param array  $options
 	 */
-	public function executePost($url, $data = [], $options = [])
+	public function executePost($url, $data = [], $options = []): void
 	{
 		$options = $options + [
 				CURLOPT_URL            => $url,
 				CURLOPT_POST           => true,
 				CURLOPT_POSTFIELDS     => $data,
-				CURLOPT_CONNECTTIMEOUT => isset($options[CURLOPT_CONNECTTIMEOUT]) ? $options[CURLOPT_CONNECTTIMEOUT] : 10,
-				CURLOPT_RETURNTRANSFER => isset($options[CURLOPT_RETURNTRANSFER]) ? $options[CURLOPT_RETURNTRANSFER] : true,
+				CURLOPT_CONNECTTIMEOUT => $options[CURLOPT_CONNECTTIMEOUT] ?? 10,
+				CURLOPT_RETURNTRANSFER => $options[CURLOPT_RETURNTRANSFER] ?? true,
 			];
 		
 		$curlHandle = curl_init();
@@ -82,13 +82,13 @@ class CurlClient
 	 * @param string $url
 	 * @param array  $options
 	 */
-	public function executeHead($url, $options = [])
+	public function executeHead($url, $options = []): void
 	{
 		$options = $options + [
 				CURLOPT_URL            => $url,
 				CURLOPT_NOBODY         => true,
-				CURLOPT_CONNECTTIMEOUT => isset($options[CURLOPT_CONNECTTIMEOUT]) ? $options[CURLOPT_CONNECTTIMEOUT] : 10,
-				CURLOPT_RETURNTRANSFER => isset($options[CURLOPT_RETURNTRANSFER]) ? $options[CURLOPT_RETURNTRANSFER] : true,
+				CURLOPT_CONNECTTIMEOUT => $options[CURLOPT_CONNECTTIMEOUT] ?? 10,
+				CURLOPT_RETURNTRANSFER => $options[CURLOPT_RETURNTRANSFER] ?? true,
 			];
 		
 		$curlHandle = curl_init();
@@ -107,12 +107,7 @@ class CurlClient
 	 */
 	public function getContent()
 	{
-		if(isset($this->responseContent))
-		{
-			return $this->responseContent;
-		}
-		
-		return null;
+		return $this->responseContent ?? null;
 	}
 	
 	
@@ -123,12 +118,7 @@ class CurlClient
 	 */
 	public function getStatusCode()
 	{
-		if(isset($this->responseInformation['http_code']))
-		{
-			return $this->responseInformation['http_code'];
-		}
-		
-		return null;
+		return $this->responseInformation['http_code'] ?? null;
 	}
 	
 	
@@ -139,12 +129,7 @@ class CurlClient
 	 */
 	public function getContentType()
 	{
-		if(isset($this->responseInformation['content_type']))
-		{
-			return $this->responseInformation['content_type'];
-		}
-		
-		return null;
+		return $this->responseInformation['content_type'] ?? null;
 	}
 	
 	

@@ -41,7 +41,8 @@ class RequestControlTest extends TestCase
 	private $requestControl;
 	
 	
-	public function setUp()
+	#[\Override]
+ public function setUp()
 	{
 		$this->tokensData = [
 			[
@@ -66,7 +67,7 @@ class RequestControlTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldCreateDifferentRequestTokens()
+	public function shouldCreateDifferentRequestTokens(): void
 	{
 		$this->assertNotSame($this->requestControl->createRequestToken(), $this->requestControl->createRequestToken());
 	}
@@ -75,7 +76,7 @@ class RequestControlTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldStoreCreatedTokenByUsingDataCacheIfDataCacheKeyAlreadyExists()
+	public function shouldStoreCreatedTokenByUsingDataCacheIfDataCacheKeyAlreadyExists(): void
 	{
 		$lowestPossibleTimestamp = time();
 		$tokensDataCallback      = function ($tokensData) use ($lowestPossibleTimestamp) {
@@ -110,7 +111,7 @@ class RequestControlTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldStoreCreatedTokenByUsingDataCacheIfDataCacheKeyDoesNotAlreadyExist()
+	public function shouldStoreCreatedTokenByUsingDataCacheIfDataCacheKeyDoesNotAlreadyExist(): void
 	{
 		$lowestPossibleTimestamp = time();
 		$tokensDataCallback      = function ($tokensData) use ($lowestPossibleTimestamp) {
@@ -145,7 +146,7 @@ class RequestControlTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldDeleteOldRequestTokensBeforeVerifyingAToken()
+	public function shouldDeleteOldRequestTokensBeforeVerifyingAToken(): void
 	{
 		$newTokensData = $this->tokensData;
 		unset($newTokensData[0]);
@@ -163,7 +164,7 @@ class RequestControlTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldDeleteOldRequestTokensBeforeCreatingAToken()
+	public function shouldDeleteOldRequestTokensBeforeCreatingAToken(): void
 	{
 		$newTokensData = $this->tokensData;
 		unset($newTokensData[0]);
@@ -181,7 +182,7 @@ class RequestControlTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldSuccessfullyVerifyAValidRequestIpWithout()
+	public function shouldSuccessfullyVerifyAValidRequestIpWithout(): void
 	{
 		$this->assertTrue($this->requestControl->verifyRequestIp('123.456.78.90'));
 	}
@@ -190,7 +191,7 @@ class RequestControlTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldSuccessfullyVerifyAValidRequestIpWithWildcard()
+	public function shouldSuccessfullyVerifyAValidRequestIpWithWildcard(): void
 	{
 		$this->assertTrue($this->requestControl->verifyRequestIp('13.37.1.1'));
 	}
@@ -199,7 +200,7 @@ class RequestControlTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldFailToVerifyAnInvalidRequestIp()
+	public function shouldFailToVerifyAnInvalidRequestIp(): void
 	{
 		$this->assertFalse($this->requestControl->verifyRequestIp('99.99.99.99'));
 	}

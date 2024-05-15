@@ -38,7 +38,8 @@ class ModuleDetailsTest extends TestCase
 	private $moduleDetails;
 	
 	
-	public function setUp()
+	#[\Override]
+ public function setUp()
 	{
 		$this->moduleDetails = ModuleDetails::create($this->name, $this->installed, $this->enabled);
 	}
@@ -47,7 +48,7 @@ class ModuleDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldThrowInvalidArgumentExceptionIfGivenNameIsEmpty()
+	public function shouldThrowInvalidArgumentExceptionIfGivenNameIsEmpty(): void
 	{
 		$this->expectException(\InvalidArgumentException::class);
 		
@@ -58,7 +59,7 @@ class ModuleDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnGivenName()
+	public function shouldReturnGivenName(): void
 	{
 		$this->assertSame($this->moduleDetails->name(), $this->name);
 	}
@@ -67,7 +68,7 @@ class ModuleDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnGivenInstalledFlag()
+	public function shouldReturnGivenInstalledFlag(): void
 	{
 		$this->assertSame($this->moduleDetails->installed(), $this->installed);
 	}
@@ -76,7 +77,7 @@ class ModuleDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnGivenEnabledFlag()
+	public function shouldReturnGivenEnabledFlag(): void
 	{
 		$this->assertSame($this->moduleDetails->enabled(), $this->enabled);
 	}

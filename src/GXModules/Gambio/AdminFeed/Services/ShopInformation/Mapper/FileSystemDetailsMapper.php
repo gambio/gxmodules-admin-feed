@@ -22,20 +22,13 @@ use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\FileSystemDetails;
 class FileSystemDetailsMapper
 {
 	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\Reader\FileSystemDetailsReader
-	 */
-	private $reader;
-	
-	
-	/**
 	 * FileSystemDetailsMapper constructor.
 	 *
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Reader\FileSystemDetailsReader $reader
 	 */
-	public function __construct(FileSystemDetailsReader $reader)
-	{
-		$this->reader = $reader;
-	}
+	public function __construct(private readonly FileSystemDetailsReader $reader)
+ {
+ }
 	
 	
 	/**

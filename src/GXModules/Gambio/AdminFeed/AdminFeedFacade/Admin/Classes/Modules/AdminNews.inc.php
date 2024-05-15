@@ -69,7 +69,7 @@ class AdminNews
 			$userConfigurationService = StaticGXCoreLoader::getService('UserConfiguration');
 			$userId                   = new IdType((int)$_SESSION['customer_id']);
 			
-			preg_match('/<!--\s+news_content_stamp:\s*([\d]{4}-[\d]{2}-[\d]{2} [\d]{2}:[\d]{2})\s+-->/', $t_result,
+			preg_match('/<!--\s+news_content_stamp:\s*([\d]{4}-[\d]{2}-[\d]{2} [\d]{2}:[\d]{2})\s+-->/', (string) $t_result,
 			           $matches);
 			
 			if(isset($matches[1]))

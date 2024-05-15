@@ -30,7 +30,8 @@ class UpdatesDetailsReaderTest extends DbTestCase
 	private $reader;
 	
 	
-	public function setUp(): void
+	#[\Override]
+ public function setUp(): void
 	{
 		parent::setUp();
 		
@@ -43,7 +44,7 @@ class UpdatesDetailsReaderTest extends DbTestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedInstalledUpdatesData()
+	public function shouldReturnExpectedInstalledUpdatesData(): void
 	{
 		$expectedData = include __DIR__ . '/fixtures/update_details/expected_installed_updates.php';
 		$actualData   = $this->reader->getInstalledUpdatesData();
@@ -55,7 +56,7 @@ class UpdatesDetailsReaderTest extends DbTestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedDownloadedUpdatesData()
+	public function shouldReturnExpectedDownloadedUpdatesData(): void
 	{
 		$this->reader->setGxAdapter($this->mochGxAdpater());
 		
@@ -96,13 +97,15 @@ class UpdatesDetailsReaderTest extends DbTestCase
 	}
 	
 	
-	public static function setUpBeforeClass()
+	#[\Override]
+ public static function setUpBeforeClass()
 	{
 		static::exportDatabase(__DIR__ . '/backup.sql', ['version_history']);
 	}
 	
 	
-	public static function tearDownAfterClass()
+	#[\Override]
+ public static function tearDownAfterClass()
 	{
 		self::importDatabase(__DIR__ . '/backup.sql', true);
 	}

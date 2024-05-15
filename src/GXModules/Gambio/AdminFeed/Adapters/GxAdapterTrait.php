@@ -24,7 +24,7 @@ trait GxAdapterTrait
 	/**
 	 * @param \Gambio\AdminFeed\Adapters\GxAdapter $adapter
 	 */
-	public function setGxAdapter(GxAdapter $adapter)
+	public function setGxAdapter(GxAdapter $adapter): void
 	{
 		$this->gxAdapter = $adapter;
 	}

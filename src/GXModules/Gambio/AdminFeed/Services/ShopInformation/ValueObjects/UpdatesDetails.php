@@ -21,27 +21,14 @@ use Gambio\AdminFeed\Services\ShopInformation\Collections\UpdateDetailsCollectio
 class UpdatesDetails
 {
 	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\Collections\UpdateDetailsCollection
-	 */
-	private $installed;
-	
-	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\Collections\UpdateDetailsCollection
-	 */
-	private $downloaded;
-	
-	
-	/**
 	 * UpdatesDetails constructor.
 	 *
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\UpdateDetailsCollection $installed
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Collections\UpdateDetailsCollection $downloaded
 	 */
-	public function __construct(UpdateDetailsCollection $installed, UpdateDetailsCollection $downloaded)
-	{
-		$this->installed  = $installed;
-		$this->downloaded = $downloaded;
-	}
+	public function __construct(private readonly UpdateDetailsCollection $installed, private readonly UpdateDetailsCollection $downloaded)
+ {
+ }
 	
 	
 	/**

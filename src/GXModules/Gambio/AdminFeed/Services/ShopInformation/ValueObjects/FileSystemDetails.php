@@ -19,37 +19,6 @@ namespace Gambio\AdminFeed\Services\ShopInformation\ValueObjects;
 class FileSystemDetails
 {
 	/**
-	 * @var array
-	 */
-	private $usermods;
-	
-	/**
-	 * @var array
-	 */
-	private $gxModules;
-	
-	/**
-	 * @var array
-	 */
-	private $dangerousTools;
-	
-	/**
-	 * @var array
-	 */
-	private $receiptFiles;
-	
-	/**
-	 * @var bool
-	 */
-	private $globalUsermodDirectoryExists;
-	
-	/**
-	 * @var bool
-	 */
-	private $upmDirectoryExists;
-	
-	
-	/**
 	 * FileSystemDetails constructor.
 	 *
 	 * @param array  $usermods
@@ -59,20 +28,9 @@ class FileSystemDetails
 	 * @param string $globalUsermodDirectoryExists
 	 * @param string $upmDirectoryExists
 	 */
-	public function __construct(array $usermods,
-	                            array $gxModules,
-	                            array $dangerousTools,
-	                            array $receiptFiles,
-	                            $globalUsermodDirectoryExists,
-	                            $upmDirectoryExists)
-	{
-		$this->usermods                     = $usermods;
-		$this->gxModules                    = $gxModules;
-		$this->dangerousTools               = $dangerousTools;
-		$this->receiptFiles                 = $receiptFiles;
-		$this->globalUsermodDirectoryExists = $globalUsermodDirectoryExists;
-		$this->upmDirectoryExists           = $upmDirectoryExists;
-	}
+	public function __construct(private readonly array $usermods, private readonly array $gxModules, private readonly array $dangerousTools, private readonly array $receiptFiles, private $globalUsermodDirectoryExists, private $upmDirectoryExists)
+ {
+ }
 	
 	
 	/**

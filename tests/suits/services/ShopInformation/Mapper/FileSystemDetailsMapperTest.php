@@ -61,7 +61,8 @@ class FileSystemDetailsMapperTest extends TestCase
 	private $mapper;
 	
 	
-	public function setUp()
+	#[\Override]
+ public function setUp()
 	{
 		$this->reader = $this->mockReader();
 		
@@ -72,7 +73,7 @@ class FileSystemDetailsMapperTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedFileSystemDetails()
+	public function shouldReturnExpectedFileSystemDetails(): void
 	{
 		$expectedDetails = FileSystemDetails::create($this->userMods, $this->gxModules, $this->dangerousTools,
 		                                             $this->receiptFiles, $this->globalUsermodDirectoryFlag,

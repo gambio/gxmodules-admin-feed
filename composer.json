@@ -1,23 +1,25 @@
 {
-	"name": "gambio/admin-feed",
-	"description": "Admin Feed for the Gambio Shop.",
-	"minimum-stability": "dev",
-	"license": "GPL-2.0",
-	"repositories": [
-		{
-			"type": "vcs",
-			"url": "https://sources.gambio-server.net/gambio/codeigniter-db.git"
-		}
-	],
-	"require": {
-		"phpunit/phpunit": "7.1",
-		"phpunit/dbunit": "^4.0@dev",
-		"gambio/codeigniter-db": "dev-master"
-	},
-	"autoload": {
-		"psr-4": {
-			"Gambio\\AdminFeed\\": "src/GXModules/Gambio/AdminFeed",
-			"Gambio\\AdminFeed\\Tests\\": "tests/framework"
-		}
-	}
+  "name": "gambio/admin-feed",
+  "description": "Admin Feed for the Gambio Shop.",
+  "minimum-stability": "dev",
+  "license": "GPL-2.0",
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://sources.gambio-server.net/gambio/codeigniter-db.git"
+    }
+  ],
+  "require": {
+    "phpunit/phpunit": "^11.0",
+    "gambio/codeigniter-db": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "Gambio\\AdminFeed\\": "src/GXModules/Gambio/AdminFeed",
+      "Gambio\\AdminFeed\\Tests\\": "tests/framework"
+    }
+  },
+  "require-dev": {
+    "rector/rector": "dev-main"
+  }
 }

@@ -25,19 +25,9 @@ class ModulesDetailsReader
 	use GxAdapterTrait;
 	
 	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\Settings
-	 */
-	private $settings;
-	
-	/**
 	 * @var \CI_DB_query_builder
 	 */
 	private $db;
-	
-	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\HubClient
-	 */
-	private $hubClient;
 	
 	
 	/**
@@ -47,11 +37,9 @@ class ModulesDetailsReader
 	 * @param \CI_DB_query_builder                                 $db
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\HubClient $hubClient
 	 */
-	public function __construct(Settings $settings, \CI_DB_query_builder $db, HubClient $hubClient)
+	public function __construct(private Settings $settings, \CI_DB_query_builder $db, private HubClient $hubClient)
 	{
-		$this->settings  = $settings;
 		$this->db        = $db;
-		$this->hubClient = $hubClient;
 	}
 	
 	
@@ -145,7 +133,7 @@ class ModulesDetailsReader
 		foreach($moduleFiles as $moduleFile)
 		{
 			$moduleClass  = basename($moduleFile, '.php');
-			$moduleCode   = (substr($moduleClass, 0, 3) !== 'ot_') ? $moduleClass : substr($moduleClass, 3);
+			$moduleCode   = (!str_starts_with($moduleClass, 'ot_')) ? $moduleClass : substr($moduleClass, 3);
 			$moduleStatus = $this->getModuleStatus($moduleCode, 'order_total');
 			
 			$modules[$moduleClass] = [
@@ -302,9 +290,9 @@ class ModulesDetailsReader
 		$gxModuleFiles = $adapter->getGxModulesFiles();
 		foreach($gxModuleFiles as $file)
 		{
-			if(strpos($file, 'ModuleCenterModule.inc.php') !== false)
+			if(str_contains((string) $file, 'ModuleCenterModule.inc.php'))
 			{
-				$moduleName = strtok(basename($file), '.');
+				$moduleName = strtok(basename((string) $file), '.');
 				$modules[]  = $adapter->mainFactoryCreate($moduleName, $languageTextManager, $db, $cacheControl);
 			}
 		}
@@ -332,9 +320,9 @@ class ModulesDetailsReader
 		$gxModuleFiles = $adapter->getGxModulesFiles();
 		foreach($gxModuleFiles as $file)
 		{
-			if(stripos($file, 'GXModule.json') !== false)
+			if(stripos((string) $file, 'GXModule.json') !== false)
 			{
-				preg_match('/GXModules\/(.*)\/GXModule.json/', $file, $matches);
+				preg_match('/GXModules\/(.*)\/GXModule.json/', (string) $file, $matches);
 				$gxModuleName = $matches[1];
 				
 				$module = $adapter->mainFactoryCreate('GXModuleCenterModule', $languageTextManager, $db, $cacheControl);

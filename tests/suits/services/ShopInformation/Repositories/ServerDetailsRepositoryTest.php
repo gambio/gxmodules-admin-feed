@@ -35,7 +35,8 @@ class ServerDetailsRepositoryTest extends TestCase
 	private $repository;
 	
 	
-	public function setUp()
+	#[\Override]
+ public function setUp()
 	{
 		$this->details = $this->createMock(ServerDetails::class);
 		
@@ -49,7 +50,7 @@ class ServerDetailsRepositoryTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedServerDetails()
+	public function shouldReturnExpectedServerDetails(): void
 	{
 		$expectedDetails = $this->details;
 		$actualDetails   = $this->repository->getServerDetails();

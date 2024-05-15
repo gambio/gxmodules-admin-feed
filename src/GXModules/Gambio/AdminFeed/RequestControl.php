@@ -35,12 +35,7 @@ class RequestControl
 	/**
 	 * @var int
 	 */
-	private $tokenLifeSpan = 300; # 5 minutes
-	
-	/**
-	 * @var \Gambio\AdminFeed\CurlClient
-	 */
-	private $curl;
+	private $tokenLifeSpan = 300;
 	
 	
 	/**
@@ -48,10 +43,9 @@ class RequestControl
 	 *
 	 * @param \Gambio\AdminFeed\CurlClient $curl
 	 */
-	public function __construct(CurlClient $curl)
-	{
-		$this->curl = $curl;
-	}
+	public function __construct(private CurlClient $curl)
+ {
+ }
 	
 	
 	/**
@@ -118,15 +112,15 @@ class RequestControl
 				return false;
 			}
 			
-			$ipList = @json_decode($this->curl->getContent(), true);
+			$ipList = @json_decode((string) $this->curl->getContent(), true);
 			if(is_array($ipList))
 			{
 				$valid = false;
 				foreach($ipList as $allowedIp)
 				{
 					if($allowedIp === '*' || $allowedIp === $ip
-					   || (strpos($allowedIp, '*') !== false
-					       && strpos($ip, substr($allowedIp, 0, strpos($allowedIp, '*'))) === 0))
+					   || (str_contains((string) $allowedIp, '*')
+					       && str_starts_with($ip, substr((string) $allowedIp, 0, strpos((string) $allowedIp, '*')))))
 					{
 						$valid = true;
 						break;
@@ -138,7 +132,7 @@ class RequestControl
 			
 			return false;
 		}
-		catch(\Exception $e)
+		catch(\Exception)
 		{
 			return false;
 		}
@@ -179,7 +173,7 @@ class RequestControl
 	 *
 	 * @return void
 	 */
-	private function deleteOldRequestTokens()
+	private function deleteOldRequestTokens(): void
 	{
 		$dataCache = $this->gxAdapter()->getDataCache();
 		if(!$dataCache->key_exists($this->tokenDataCacheKey, true))

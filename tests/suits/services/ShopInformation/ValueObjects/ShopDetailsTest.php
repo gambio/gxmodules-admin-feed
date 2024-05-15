@@ -53,7 +53,8 @@ class ShopDetailsTest extends TestCase
 	private $shopDetails;
 	
 	
-	public function setUp()
+	#[\Override]
+ public function setUp()
 	{
 		$this->shopDetails = ShopDetails::create($this->version, $this->url, $this->key, $this->languages,
 		                                         $this->defaultLanguage, $this->countries);
@@ -63,7 +64,7 @@ class ShopDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldThrowInvalidArgumentExceptionIfGivenVersionIsEmpty()
+	public function shouldThrowInvalidArgumentExceptionIfGivenVersionIsEmpty(): void
 	{
 		$this->expectException(\InvalidArgumentException::class);
 		
@@ -74,7 +75,7 @@ class ShopDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldThrowInvalidArgumentExceptionIfGivenUrlIsEmpty()
+	public function shouldThrowInvalidArgumentExceptionIfGivenUrlIsEmpty(): void
 	{
 		$this->expectException(\InvalidArgumentException::class);
 		
@@ -85,7 +86,7 @@ class ShopDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldThrowInvalidArgumentExceptionIfGivenUrlIsInvalid()
+	public function shouldThrowInvalidArgumentExceptionIfGivenUrlIsInvalid(): void
 	{
 		$this->expectException(\InvalidArgumentException::class);
 		
@@ -97,7 +98,7 @@ class ShopDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnGivenVersion()
+	public function shouldReturnGivenVersion(): void
 	{
 		$this->assertSame($this->shopDetails->version(), $this->version);
 	}
@@ -106,7 +107,7 @@ class ShopDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnGivenUrl()
+	public function shouldReturnGivenUrl(): void
 	{
 		$this->assertSame($this->shopDetails->url(), $this->url);
 	}
@@ -115,7 +116,7 @@ class ShopDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnGivenKey()
+	public function shouldReturnGivenKey(): void
 	{
 		$this->assertSame($this->shopDetails->key(), $this->key);
 	}
@@ -124,7 +125,7 @@ class ShopDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnGivenLanguages()
+	public function shouldReturnGivenLanguages(): void
 	{
 		$this->assertSame($this->shopDetails->languages(), $this->languages);
 	}
@@ -133,7 +134,7 @@ class ShopDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnGivenDefaultLanguage()
+	public function shouldReturnGivenDefaultLanguage(): void
 	{
 		$this->assertSame($this->shopDetails->defaultLanguage(), $this->defaultLanguage);
 	}
@@ -142,7 +143,7 @@ class ShopDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnGivenCountries()
+	public function shouldReturnGivenCountries(): void
 	{
 		$this->assertSame($this->shopDetails->countries(), $this->countries);
 	}

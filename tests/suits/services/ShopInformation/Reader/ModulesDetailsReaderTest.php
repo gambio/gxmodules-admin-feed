@@ -42,7 +42,8 @@ class ModulesDetailsReaderTest extends DbTestCase
 	private $hubClient;
 	
 	
-	public function setUp(): void
+	#[\Override]
+ public function setUp(): void
 	{
 		parent::setUp();
 		
@@ -77,7 +78,7 @@ class ModulesDetailsReaderTest extends DbTestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedHubModulesData()
+	public function shouldReturnExpectedHubModulesData(): void
 	{
 		$expectedData = [
 			'MoneyOrderHub' => [
@@ -102,7 +103,7 @@ class ModulesDetailsReaderTest extends DbTestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedPaymentModulesData()
+	public function shouldReturnExpectedPaymentModulesData(): void
 	{
 		$expectedData = include __DIR__ . '/fixtures/modules_details/expected_payment_modules.php';
 		$actualData   = $this->reader->getPaymentModulesData();
@@ -114,7 +115,7 @@ class ModulesDetailsReaderTest extends DbTestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedShippingModulesData()
+	public function shouldReturnExpectedShippingModulesData(): void
 	{
 		$expectedData = include __DIR__ . '/fixtures/modules_details/expected_shipping_modules.php';
 		$actualData   = $this->reader->getShippingModulesData();
@@ -126,7 +127,7 @@ class ModulesDetailsReaderTest extends DbTestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedOrderTotalModulesData()
+	public function shouldReturnExpectedOrderTotalModulesData(): void
 	{
 		$expectedData = include __DIR__ . '/fixtures/modules_details/expected_order_total_modules.php';
 		$actualData   = $this->reader->getOrderTotalModulesData();
@@ -138,7 +139,7 @@ class ModulesDetailsReaderTest extends DbTestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedModuleCenterModulesData()
+	public function shouldReturnExpectedModuleCenterModulesData(): void
 	{
 		$this->reader->setGxAdapter($this->mockGxAdapter());
 		
@@ -226,13 +227,15 @@ class ModulesDetailsReaderTest extends DbTestCase
 	}
 	
 	
-	public static function setUpBeforeClass()
+	#[\Override]
+ public static function setUpBeforeClass()
 	{
 		static::exportDatabase(__DIR__ . '/backup.sql', ['configuration']);
 	}
 	
 	
-	public static function tearDownAfterClass()
+	#[\Override]
+ public static function tearDownAfterClass()
 	{
 		self::importDatabase(__DIR__ . '/backup.sql', true);
 	}

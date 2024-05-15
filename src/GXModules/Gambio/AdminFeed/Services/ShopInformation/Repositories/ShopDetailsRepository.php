@@ -21,20 +21,13 @@ use Gambio\AdminFeed\Services\ShopInformation\Mapper\ShopDetailsMapper;
 class ShopDetailsRepository
 {
 	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\Mapper\ShopDetailsMapper
-	 */
-	private $mapper;
-	
-	
-	/**
 	 * ShopDetailsRepository constructor.
 	 *
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Mapper\ShopDetailsMapper $mapper
 	 */
-	public function __construct(ShopDetailsMapper $mapper)
-	{
-		$this->mapper = $mapper;
-	}
+	public function __construct(private readonly ShopDetailsMapper $mapper)
+ {
+ }
 	
 	
 	/**

@@ -19,34 +19,15 @@ namespace Gambio\AdminFeed\Services\ShopInformation\ValueObjects;
 class ThemeDetails
 {
 	/**
-	 * @var array
-	 */
-	private $available;
-	
-	/**
-	 * @var string
-	 */
-	private $selected;
-	
-	/**
-	 * @var string
-	 */
-	private $version;
-	
-	
-	/**
 	 * TemplateDetails constructor.
 	 *
 	 * @param array  $available
 	 * @param string $selected
 	 * @param string $version
 	 */
-	public function __construct(array $available, $selected, $version)
-	{
-		$this->available = $available;
-		$this->selected  = $selected;
-		$this->version   = $version;
-	}
+	public function __construct(private readonly array $available, private $selected, private $version)
+ {
+ }
 	
 	
 	/**

@@ -38,7 +38,8 @@ class PhpServerDetailsTest extends TestCase
 	private $phpServerDetails;
 	
 	
-	public function setUp()
+	#[\Override]
+ public function setUp()
 	{
 		$this->phpServerDetails = PhpServerDetails::create($this->version, $this->extensions, $this->configuration);
 	}
@@ -47,7 +48,7 @@ class PhpServerDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnGivenVersion()
+	public function shouldReturnGivenVersion(): void
 	{
 		$this->assertSame($this->phpServerDetails->version(), $this->version);
 	}
@@ -56,7 +57,7 @@ class PhpServerDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnGivenExtensions()
+	public function shouldReturnGivenExtensions(): void
 	{
 		$this->assertSame($this->phpServerDetails->extensions(), $this->extensions);
 	}
@@ -65,7 +66,7 @@ class PhpServerDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnGivenConfiguration()
+	public function shouldReturnGivenConfiguration(): void
 	{
 		$this->assertSame($this->phpServerDetails->configuration(), $this->configuration);
 	}

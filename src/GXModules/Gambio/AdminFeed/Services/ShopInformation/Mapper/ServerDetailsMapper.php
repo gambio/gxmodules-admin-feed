@@ -24,20 +24,13 @@ use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ServerDetails;
 class ServerDetailsMapper
 {
 	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\Reader\ServerDetailsReader
-	 */
-	private $reader;
-	
-	
-	/**
 	 * ServerDetailsMapper constructor.
 	 *
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Reader\ServerDetailsReader $reader
 	 */
-	public function __construct(ServerDetailsReader $reader)
-	{
-		$this->reader = $reader;
-	}
+	public function __construct(private readonly ServerDetailsReader $reader)
+ {
+ }
 	
 	
 	/**

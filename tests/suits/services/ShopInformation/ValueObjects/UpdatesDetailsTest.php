@@ -36,7 +36,8 @@ class UpdatesDetailsTest extends TestCase
 	private $updatesDetails;
 	
 	
-	public function setUp()
+	#[\Override]
+ public function setUp()
 	{
 		$this->installed  = $this->createMock(UpdateDetailsCollection::class);
 		$this->downloaded = $this->createMock(UpdateDetailsCollection::class);
@@ -48,7 +49,7 @@ class UpdatesDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnGivenInstalledUpdates()
+	public function shouldReturnGivenInstalledUpdates(): void
 	{
 		$this->assertSame($this->updatesDetails->installed(), $this->installed);
 	}
@@ -57,7 +58,7 @@ class UpdatesDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnGivenDownloadedUpdates()
+	public function shouldReturnGivenDownloadedUpdates(): void
 	{
 		$this->assertSame($this->updatesDetails->downloaded(), $this->downloaded);
 	}

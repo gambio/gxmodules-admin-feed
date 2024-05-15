@@ -29,7 +29,8 @@ class ServerDetailsReaderTest extends DbTestCase
 	private $reader;
 	
 	
-	public function setUp(): void
+	#[\Override]
+ public function setUp(): void
 	{
 		parent::setUp();
 		
@@ -42,7 +43,7 @@ class ServerDetailsReaderTest extends DbTestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedPhpVersionData()
+	public function shouldReturnExpectedPhpVersionData(): void
 	{
 		$expectedData = phpversion();
 		$actualData   = $this->reader->getPhpVersion();
@@ -54,7 +55,7 @@ class ServerDetailsReaderTest extends DbTestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedPhpExtensionsData()
+	public function shouldReturnExpectedPhpExtensionsData(): void
 	{
 		$expectedData = get_loaded_extensions();
 		$actualData   = $this->reader->getPhpExtensions();
@@ -66,7 +67,7 @@ class ServerDetailsReaderTest extends DbTestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedPhpConfigurationData()
+	public function shouldReturnExpectedPhpConfigurationData(): void
 	{
 		$expectedData = ini_get_all();
 		$actualData   = $this->reader->getPhpConfiguration();
@@ -78,7 +79,7 @@ class ServerDetailsReaderTest extends DbTestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedMysqlVersionData()
+	public function shouldReturnExpectedMysqlVersionData(): void
 	{
 		$expectedData = $this->db->version();
 		$actualData   = $this->reader->getMysqlVersion();
@@ -90,7 +91,7 @@ class ServerDetailsReaderTest extends DbTestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedMysqlEnginesData()
+	public function shouldReturnExpectedMysqlEnginesData(): void
 	{
 		$expectedData = [];
 		
@@ -109,7 +110,7 @@ class ServerDetailsReaderTest extends DbTestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedMysqlDefaultEngineData()
+	public function shouldReturnExpectedMysqlDefaultEngineData(): void
 	{
 		$expectedData = '';
 		
@@ -132,9 +133,9 @@ class ServerDetailsReaderTest extends DbTestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedWebserverData()
+	public function shouldReturnExpectedWebserverData(): void
 	{
-		$expectedData = isset($_SERVER['SERVER_SOFTWARE']) ? $_SERVER['SERVER_SOFTWARE'] : '';
+		$expectedData = $_SERVER['SERVER_SOFTWARE'] ?? '';
 		$actualData   = $this->reader->getWebserver();
 		
 		$this->assertSame($expectedData, $actualData);
@@ -144,7 +145,7 @@ class ServerDetailsReaderTest extends DbTestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnExpectedOperatingSystemData()
+	public function shouldReturnExpectedOperatingSystemData(): void
 	{
 		$expectedData = defined('PHP_OS') ? PHP_OS : '';
 		$actualData   = $this->reader->getOperatingSystem();

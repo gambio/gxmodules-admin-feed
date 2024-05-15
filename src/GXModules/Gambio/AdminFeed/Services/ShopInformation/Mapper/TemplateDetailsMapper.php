@@ -22,20 +22,13 @@ use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ThemeDetails;
 class TemplateDetailsMapper
 {
 	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\Reader\TemplateDetailsReader
-	 */
-	private $reader;
-	
-	
-	/**
 	 * TemplateDetailsMapper constructor.
 	 *
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Reader\TemplateDetailsReader $reader
 	 */
-	public function __construct(TemplateDetailsReader $reader)
-	{
-		$this->reader = $reader;
-	}
+	public function __construct(private readonly TemplateDetailsReader $reader)
+ {
+ }
 	
 	
 	/**

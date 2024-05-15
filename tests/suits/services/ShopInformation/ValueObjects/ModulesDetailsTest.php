@@ -49,7 +49,8 @@ class ModulesDetailsTest extends TestCase
 	private $modulesDetails;
 	
 	
-	public function setUp()
+	#[\Override]
+ public function setUp()
 	{
 		$this->payment      = $this->createMock(ModuleDetailsCollection::class);
 		$this->shipping     = $this->createMock(ModuleDetailsCollection::class);
@@ -65,7 +66,7 @@ class ModulesDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnGivenPaymentModules()
+	public function shouldReturnGivenPaymentModules(): void
 	{
 		$this->assertEquals($this->modulesDetails->payment(), $this->payment);
 	}
@@ -74,7 +75,7 @@ class ModulesDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnGivenShippingModules()
+	public function shouldReturnGivenShippingModules(): void
 	{
 		$this->assertEquals($this->modulesDetails->shipping(), $this->shipping);
 	}
@@ -83,7 +84,7 @@ class ModulesDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnGivenOrderTotalsModules()
+	public function shouldReturnGivenOrderTotalsModules(): void
 	{
 		$this->assertEquals($this->modulesDetails->orderTotal(), $this->orderTotal);
 	}
@@ -92,7 +93,7 @@ class ModulesDetailsTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function shouldReturnGivenHubModules()
+	public function shouldReturnGivenHubModules(): void
 	{
 		$this->assertEquals($this->modulesDetails->hub(), $this->hub);
 	}

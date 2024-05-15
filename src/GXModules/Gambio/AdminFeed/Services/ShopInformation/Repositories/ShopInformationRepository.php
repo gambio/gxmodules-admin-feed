@@ -21,37 +21,6 @@ use Gambio\AdminFeed\Services\ShopInformation\Entities\ShopInformation;
 class ShopInformationRepository
 {
 	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\Repositories\ShopDetailsRepository
-	 */
-	private $shopDetailsRepository;
-	
-	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\Repositories\ServerDetailsRepository
-	 */
-	private $serverDetailsRepository;
-	
-	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\Repositories\ModulesDetailsRepository
-	 */
-	private $modulesDetailsRepository;
-	
-	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\Repositories\TemplateDetailsRepository
-	 */
-	private $templateDetailsRepository;
-	
-	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\Repositories\FileSystemDetailsRepository
-	 */
-	private $fileSystemDetailsRepository;
-	
-	/**
-	 * @var \Gambio\AdminFeed\Services\ShopInformation\Repositories\UpdatesDetailsRepository
-	 */
-	private $updatesDetailsRepository;
-	
-	
-	/**
 	 * ShopInformationRepository constructor.
 	 *
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Repositories\ShopDetailsRepository       $shopDetailsRepository
@@ -62,20 +31,9 @@ class ShopInformationRepository
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Repositories\MerchantDetailsRepository   $merchantDetailsRepository
 	 * @param \Gambio\AdminFeed\Services\ShopInformation\Repositories\UpdatesDetailsRepository    $updatesDetailsRepository
 	 */
-	public function __construct(ShopDetailsRepository $shopDetailsRepository,
-	                            ServerDetailsRepository $serverDetailsRepository,
-	                            ModulesDetailsRepository $modulesDetailsRepository,
-	                            TemplateDetailsRepository $templateDetailsRepository,
-	                            FileSystemDetailsRepository $fileSystemDetailsRepository,
-	                            UpdatesDetailsRepository $updatesDetailsRepository)
-	{
-		$this->shopDetailsRepository       = $shopDetailsRepository;
-		$this->serverDetailsRepository     = $serverDetailsRepository;
-		$this->modulesDetailsRepository    = $modulesDetailsRepository;
-		$this->templateDetailsRepository   = $templateDetailsRepository;
-		$this->fileSystemDetailsRepository = $fileSystemDetailsRepository;
-		$this->updatesDetailsRepository    = $updatesDetailsRepository;
-	}
+	public function __construct(private readonly ShopDetailsRepository $shopDetailsRepository, private readonly ServerDetailsRepository $serverDetailsRepository, private readonly ModulesDetailsRepository $modulesDetailsRepository, private readonly TemplateDetailsRepository $templateDetailsRepository, private readonly FileSystemDetailsRepository $fileSystemDetailsRepository, private readonly UpdatesDetailsRepository $updatesDetailsRepository)
+ {
+ }
 	
 	
 	/**
