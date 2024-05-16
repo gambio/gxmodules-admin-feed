@@ -31,15 +31,15 @@ class ModuleDetailsSerializer
     public function serialize(ModuleDetails $moduleDetails)
     {
         $json = [
-            'name'      => $moduleDetails->name(),
+            'name' => $moduleDetails->name(),
             'installed' => $moduleDetails->installed(),
-            'enabled'   => $moduleDetails->enabled(),
+            'enabled' => $moduleDetails->enabled(),
         ];
-        
+
         return $json;
     }
-    
-    
+
+
     /**
      * Returns a new ModuleDetails instance by using the data of a given array or json strings.
      *
@@ -52,13 +52,13 @@ class ModuleDetailsSerializer
         if (!is_array($json)) {
             $json = json_decode($json, true);
         }
-        
-        if (!isset($json['name'])
-            || !isset($json['installed'])
-            || !isset($json['enabled'])) {
+
+        if (!array_key_exists('name', $json)
+            || !array_key_exists('installed', $json)
+            || !array_key_exists('enabled', $json)) {
             throw new InvalidArgumentException('Given argument is invalid. Needed property is missing.');
         }
-        
+
         return ModuleDetails::create($json['name'], $json['installed'], $json['enabled']);
     }
 }
