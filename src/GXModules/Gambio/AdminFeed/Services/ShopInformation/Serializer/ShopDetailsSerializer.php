@@ -62,7 +62,12 @@ class ShopDetailsSerializer
             || !array_key_exists('languages', $json)
             || !array_key_exists('defaultLanguage', $json)
             || !array_key_exists('countries', $json)) {
-            throw new InvalidArgumentException('Given argument is invalid. Needed property is missing.');
+            throw new InvalidArgumentException(
+                'Given argument is invalid. Needed property is missing: version, url, key, languages, defaultLanguage, countries - Existing: ' . implode(
+                    ', ',
+                    array_keys($json)
+                )
+            );
         }
 
         return ShopDetails::create(
