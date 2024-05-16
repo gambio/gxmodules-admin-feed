@@ -31,18 +31,18 @@ class FileSystemDetailsSerializer
     public function serialize(FileSystemDetails $fileSystemDetails)
     {
         $json = [
-            'usermods'                     => $fileSystemDetails->usermods(),
-            'gxModules'                    => $fileSystemDetails->gxModules(),
-            'dangerousTools'               => $fileSystemDetails->dangerousTools(),
-            'receiptFiles'                 => $fileSystemDetails->receiptFiles(),
+            'usermods' => $fileSystemDetails->usermods(),
+            'gxModules' => $fileSystemDetails->gxModules(),
+            'dangerousTools' => $fileSystemDetails->dangerousTools(),
+            'receiptFiles' => $fileSystemDetails->receiptFiles(),
             'globalUsermodDirectoryExists' => $fileSystemDetails->globalUsermodDirectoryExists(),
-            'upmDirectoryExists'           => $fileSystemDetails->upmDirectoryExists(),
+            'upmDirectoryExists' => $fileSystemDetails->upmDirectoryExists(),
         ];
-        
+
         return $json;
     }
-    
-    
+
+
     /**
      * Returns a new FileSystemDetails instance by using the data of a given array or json strings.
      *
@@ -55,21 +55,23 @@ class FileSystemDetailsSerializer
         if (!is_array($json)) {
             $json = json_decode($json, true);
         }
-        
-        if (!isset($json['usermods'])
-            || !isset($json['gxModules'])
-            || !isset($json['dangerousTools'])
-            || !isset($json['receiptFiles'])
-            || !isset($json['globalUsermodDirectoryExists'])
-            || !isset($json['upmDirectoryExists'])) {
+
+        if (!array_key_exists('usermods', $json)
+            || !array_key_exists('gxModules', $json)
+            || !array_key_exists('dangerousTools', $json)
+            || !array_key_exists('receiptFiles', $json)
+            || !array_key_exists('globalUsermodDirectoryExists', $json)
+            || !array_key_exists('upmDirectoryExists', $json)) {
             throw new InvalidArgumentException('Given argument is invalid. Needed property is missing.');
         }
-        
-        return FileSystemDetails::create($json['usermods'],
-                                         $json['gxModules'],
-                                         $json['dangerousTools'],
-                                         $json['receiptFiles'],
-                                         $json['globalUsermodDirectoryExists'],
-                                         $json['upmDirectoryExists']);
+
+        return FileSystemDetails::create(
+            $json['usermods'],
+            $json['gxModules'],
+            $json['dangerousTools'],
+            $json['receiptFiles'],
+            $json['globalUsermodDirectoryExists'],
+            $json['upmDirectoryExists']
+        );
     }
 }

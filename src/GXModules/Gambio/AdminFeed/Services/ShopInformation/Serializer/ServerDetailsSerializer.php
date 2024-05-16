@@ -24,14 +24,16 @@ class ServerDetailsSerializer
     /**
      * ServerDetailsSerializer constructor.
      *
-     * @param PhpServerDetailsSerializer   $phpServerDetailsSerializer
+     * @param PhpServerDetailsSerializer $phpServerDetailsSerializer
      * @param MysqlServerDetailsSerializer $mysqlServerDetailsSerializer
      */
-    public function __construct(private readonly PhpServerDetailsSerializer $phpServerDetailsSerializer, private readonly MysqlServerDetailsSerializer $mysqlServerDetailsSerializer)
-    {
+    public function __construct(
+        private readonly PhpServerDetailsSerializer $phpServerDetailsSerializer,
+        private readonly MysqlServerDetailsSerializer $mysqlServerDetailsSerializer
+    ) {
     }
-    
-    
+
+
     /**
      * Serializes a given ServerDetails instance.
      *
@@ -42,16 +44,16 @@ class ServerDetailsSerializer
     public function serialize(ServerDetails $serverDetails)
     {
         $json = [
-            'php'       => $this->phpServerDetailsSerializer->serialize($serverDetails->php()),
-            'mysql'     => $this->mysqlServerDetailsSerializer->serialize($serverDetails->mysql()),
+            'php' => $this->phpServerDetailsSerializer->serialize($serverDetails->php()),
+            'mysql' => $this->mysqlServerDetailsSerializer->serialize($serverDetails->mysql()),
             'webserver' => $serverDetails->webserver(),
-            'os'        => $serverDetails->os(),
+            'os' => $serverDetails->os(),
         ];
-        
+
         return $json;
     }
-    
-    
+
+
     /**
      * Returns a new ServerDetails instance by using the data of a given array or json strings.
      *
@@ -64,17 +66,17 @@ class ServerDetailsSerializer
         if (!is_array($json)) {
             $json = json_decode($json, true);
         }
-        
-        if (!isset($json['php'])
-            || !isset($json['mysql'])
-            || !isset($json['webserver'])
-            || !isset($json['os'])) {
+
+        if (!array_key_exists('php', $json)
+            || !array_key_exists('mysql', $json)
+            || !array_key_exists('webserver', $json)
+            || !array_key_exists('os', $json)) {
             throw new InvalidArgumentException('Given argument is invalid. Needed property is missing.');
         }
-        
-        $php   = $this->phpServerDetailsSerializer->deserialize($json['php']);
+
+        $php = $this->phpServerDetailsSerializer->deserialize($json['php']);
         $mysql = $this->mysqlServerDetailsSerializer->deserialize($json['mysql']);
-        
+
         return ServerDetails::create($php, $mysql, $json['webserver'], $json['os']);
     }
 }

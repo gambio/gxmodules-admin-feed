@@ -32,14 +32,14 @@ class ThemeDetailsSerializer
     {
         $json = [
             'available' => $themeDetails->available(),
-            'selected'  => $themeDetails->selected(),
-            'version'   => $themeDetails->version(),
+            'selected' => $themeDetails->selected(),
+            'version' => $themeDetails->version(),
         ];
-        
+
         return $json;
     }
-    
-    
+
+
     /**
      * Returns a new ThemeDetails instance by using the data of a given array or json strings.
      *
@@ -52,13 +52,13 @@ class ThemeDetailsSerializer
         if (!is_array($json)) {
             $json = json_decode($json, true);
         }
-        
-        if (!isset($json['available'])
-            || !isset($json['selected'])
-            || !isset($json['version'])) {
+
+        if (!array_key_exists('available', $json)
+            || !array_key_exists('selected', $json)
+            || !array_key_exists('version', $json)) {
             throw new InvalidArgumentException('Given argument is invalid. Needed property is missing.');
         }
-        
+
         return ThemeDetails::create($json['available'], $json['selected'], $json['version']);
     }
 }

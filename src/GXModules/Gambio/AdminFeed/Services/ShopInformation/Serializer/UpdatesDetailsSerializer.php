@@ -30,8 +30,8 @@ class UpdatesDetailsSerializer
     public function __construct(private readonly UpdateDetailsSerializer $updateDetailsSerializer)
     {
     }
-    
-    
+
+
     /**
      * Serializes a given UpdatesDetails instance.
      *
@@ -45,21 +45,21 @@ class UpdatesDetailsSerializer
         foreach ($updatesDetails->installed() as $update) {
             $installedData[] = $this->updateDetailsSerializer->serialize($update);
         }
-        
+
         $downloadedData = [];
         foreach ($updatesDetails->downloaded() as $update) {
             $downloadedData[] = $this->updateDetailsSerializer->serialize($update);
         }
-        
+
         $json = [
-            'installed'  => $installedData,
+            'installed' => $installedData,
             'downloaded' => $downloadedData,
         ];
-        
+
         return $json;
     }
-    
-    
+
+
     /**
      * Returns a new UpdatesDetails instance by using the data of a given array or json strings.
      *
@@ -72,24 +72,24 @@ class UpdatesDetailsSerializer
         if (!is_array($json)) {
             $json = json_decode($json, true);
         }
-        
-        if (!isset($json['installed'])
-            || !isset($json['downloaded'])) {
+
+        if (!array_key_exists('installed', $json)
+            || !array_key_exists('downloaded', $json)) {
             throw new InvalidArgumentException('Given argument is invalid. Needed property is missing.');
         }
-        
+
         $installedUpdates = [];
         foreach ($json['installed'] as $updateData) {
             $installedUpdates[] = $this->updateDetailsSerializer->deserialize($updateData);
         }
         $installed = new UpdateDetailsCollection($installedUpdates);
-        
+
         $downloadedUpdates = [];
         foreach ($json['downloaded'] as $updateData) {
             $downloadedUpdates[] = $this->updateDetailsSerializer->deserialize($updateData);
         }
         $downloaded = new UpdateDetailsCollection($downloadedUpdates);
-        
+
         return UpdatesDetails::create($installed, $downloaded);
     }
 }

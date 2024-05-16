@@ -30,8 +30,8 @@ class ModulesDetailsSerializer
     public function __construct(private readonly ModuleDetailsSerializer $moduleDetailsSerializer)
     {
     }
-    
-    
+
+
     /**
      * Serializes a given ModulesDetails instance.
      *
@@ -45,39 +45,39 @@ class ModulesDetailsSerializer
         foreach ($modulesDetails->hub() as $module) {
             $hubData[] = $this->moduleDetailsSerializer->serialize($module);
         }
-        
+
         $paymentData = [];
         foreach ($modulesDetails->payment() as $module) {
             $paymentData[] = $this->moduleDetailsSerializer->serialize($module);
         }
-        
+
         $shippingData = [];
         foreach ($modulesDetails->shipping() as $module) {
             $shippingData[] = $this->moduleDetailsSerializer->serialize($module);
         }
-        
+
         $orderTotalData = [];
         foreach ($modulesDetails->orderTotal() as $module) {
             $orderTotalData[] = $this->moduleDetailsSerializer->serialize($module);
         }
-        
+
         $moduleCenterData = [];
         foreach ($modulesDetails->moduleCenter() as $module) {
             $moduleCenterData[] = $this->moduleDetailsSerializer->serialize($module);
         }
-        
+
         $json = [
-            'hub'          => $hubData,
-            'payment'      => $paymentData,
-            'shipping'     => $shippingData,
-            'orderTotal'   => $orderTotalData,
+            'hub' => $hubData,
+            'payment' => $paymentData,
+            'shipping' => $shippingData,
+            'orderTotal' => $orderTotalData,
             'moduleCenter' => $moduleCenterData,
         ];
-        
+
         return $json;
     }
-    
-    
+
+
     /**
      * Returns a new ModulesDetails instance by using the data of a given array or json strings.
      *
@@ -90,45 +90,45 @@ class ModulesDetailsSerializer
         if (!is_array($json)) {
             $json = json_decode($json, true);
         }
-        
-        if (!isset($json['hub'])
-            || !isset($json['payment'])
-            || !isset($json['shipping'])
-            || !isset($json['orderTotal'])
-            || !isset($json['moduleCenter'])) {
+
+        if (!array_key_exists('hub', $json)
+            || !array_key_exists('payment', $json)
+            || !array_key_exists('shipping', $json)
+            || !array_key_exists('orderTotal', $json)
+            || !array_key_exists('moduleCenter', $json)) {
             throw new InvalidArgumentException('Given argument is invalid. Needed property is missing.');
         }
-        
+
         $hubModules = [];
         foreach ($json['hub'] as $moduleData) {
             $hubModules[] = $this->moduleDetailsSerializer->deserialize($moduleData);
         }
         $hub = new ModuleDetailsCollection($hubModules);
-        
+
         $paymentModules = [];
         foreach ($json['payment'] as $moduleData) {
             $paymentModules[] = $this->moduleDetailsSerializer->deserialize($moduleData);
         }
         $payment = new ModuleDetailsCollection($paymentModules);
-        
+
         $shippingModules = [];
         foreach ($json['shipping'] as $moduleData) {
             $shippingModules[] = $this->moduleDetailsSerializer->deserialize($moduleData);
         }
         $shipping = new ModuleDetailsCollection($shippingModules);
-        
+
         $orderTotalModules = [];
         foreach ($json['orderTotal'] as $moduleData) {
             $orderTotalModules[] = $this->moduleDetailsSerializer->deserialize($moduleData);
         }
         $orderTotal = new ModuleDetailsCollection($orderTotalModules);
-        
+
         $moduleCenterModules = [];
         foreach ($json['moduleCenter'] as $moduleData) {
             $moduleCenterModules[] = $this->moduleDetailsSerializer->deserialize($moduleData);
         }
         $moduleCenter = new ModuleDetailsCollection($moduleCenterModules);
-        
+
         return ModulesDetails::create($hub, $payment, $shipping, $orderTotal, $moduleCenter);
     }
 }
