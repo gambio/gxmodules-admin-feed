@@ -304,7 +304,6 @@ class ShopInformationFactory
                 $this->createServerDetailsSerializer(),
                 $this->createModulesDetailsSerializer(),
                 $this->createTemplateDetailsSerializer(),
-                $this->createUpdatesDetailsSerializer()
             );
         }
 
