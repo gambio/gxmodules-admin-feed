@@ -24,22 +24,18 @@ class ShopInformationSerializer
     /**
      * ShopInformationSerializer constructor.
      *
-     * @param ShopDetailsSerializer $shopDetailsSerializer
-     * @param ServerDetailsSerializer $serverDetailsSerializer
-     * @param ModulesDetailsSerializer $modulesDetailsSerializer
-     * @param ThemeDetailsSerializer $themeDetailsSerializer
-     * @param UpdatesDetailsSerializer $updatesDetailsSerializer
+     * @param ShopDetailsSerializer       $shopDetailsSerializer
+     * @param ServerDetailsSerializer     $serverDetailsSerializer
+     * @param ModulesDetailsSerializer    $modulesDetailsSerializer
+     * @param ThemeDetailsSerializer      $themeDetailsSerializer
+     * @param FileSystemDetailsSerializer $fileSystemDetailsSerializer
+     * @param UpdatesDetailsSerializer    $updatesDetailsSerializer
      */
-    public function __construct(
-        private readonly ShopDetailsSerializer $shopDetailsSerializer,
-        private readonly ServerDetailsSerializer $serverDetailsSerializer,
-        private readonly ModulesDetailsSerializer $modulesDetailsSerializer,
-        private readonly ThemeDetailsSerializer $themeDetailsSerializer,
-        private readonly UpdatesDetailsSerializer $updatesDetailsSerializer
-    ) {
+    public function __construct(private readonly ShopDetailsSerializer $shopDetailsSerializer, private readonly ServerDetailsSerializer $serverDetailsSerializer, private readonly ModulesDetailsSerializer $modulesDetailsSerializer, private readonly ThemeDetailsSerializer $themeDetailsSerializer, private readonly FileSystemDetailsSerializer $fileSystemDetailsSerializer, private readonly UpdatesDetailsSerializer $updatesDetailsSerializer)
+    {
     }
-
-
+    
+    
     /**
      * Serializes a given ShopInformation instance.
      *
@@ -50,18 +46,19 @@ class ShopInformationSerializer
     public function serialize(ShopInformation $shopInformation)
     {
         $json = [
-            'shop' => $this->shopDetailsSerializer->serialize($shopInformation->shop()),
-            'server' => $this->serverDetailsSerializer->serialize($shopInformation->server()),
-            'modules' => $this->modulesDetailsSerializer->serialize($shopInformation->modules()),
-            'themes' => $this->themeDetailsSerializer->serialize($shopInformation->themes()),
-            'updates' => $this->updatesDetailsSerializer->serialize($shopInformation->updates()),
-            'version' => $shopInformation->version(),
+            'shop'       => $this->shopDetailsSerializer->serialize($shopInformation->shop()),
+            'server'     => $this->serverDetailsSerializer->serialize($shopInformation->server()),
+            'modules'    => $this->modulesDetailsSerializer->serialize($shopInformation->modules()),
+            'themes'     => $this->themeDetailsSerializer->serialize($shopInformation->themes()),
+            'filesystem' => $this->fileSystemDetailsSerializer->serialize($shopInformation->filesystem()),
+            'updates'    => $this->updatesDetailsSerializer->serialize($shopInformation->updates()),
+            'version'    => $shopInformation->version(),
         ];
-
+        
         return $json;
     }
-
-
+    
+    
     /**
      * Returns a new ShopInformation instance by using the data of a given array or json strings.
      *
@@ -74,30 +71,30 @@ class ShopInformationSerializer
         if (!is_array($json)) {
             $json = json_decode($json, true);
         }
-
+        
         $neededProperties = [
             'shop',
             'server',
             'modules',
             'themes',
+            'filesystem',
             'updates',
             'version',
         ];
         foreach ($neededProperties as $property) {
             if (!array_key_exists($property, $json)) {
-                throw new InvalidArgumentException(
-                    'Property "' . $property
-                    . '" is missing in ShopInformationSerializer.'
-                );
+                throw new InvalidArgumentException('Property "' . $property
+                                                   . '" is missing in ShopInformationSerializer.');
             }
         }
-
-        $shop = $this->shopDetailsSerializer->deserialize($json['shop']);
-        $server = $this->serverDetailsSerializer->deserialize($json['server']);
-        $modules = $this->modulesDetailsSerializer->deserialize($json['modules']);
-        $themes = $this->themeDetailsSerializer->deserialize($json['themes']);
-        $updates = $this->updatesDetailsSerializer->deserialize($json['updates']);
-
-        return ShopInformation::create($shop, $server, $modules, $themes, $updates, $json['version']);
+        
+        $shop       = $this->shopDetailsSerializer->deserialize($json['shop']);
+        $server     = $this->serverDetailsSerializer->deserialize($json['server']);
+        $modules    = $this->modulesDetailsSerializer->deserialize($json['modules']);
+        $themes     = $this->themeDetailsSerializer->deserialize($json['themes']);
+        $filesystem = $this->fileSystemDetailsSerializer->deserialize($json['filesystem']);
+        $updates    = $this->updatesDetailsSerializer->deserialize($json['updates']);
+        
+        return ShopInformation::create($shop, $server, $modules, $themes, $filesystem, $updates, $json['version']);
     }
 }
