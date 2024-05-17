@@ -101,6 +101,11 @@ class ShopInformationFactory
     private $templateDetailsRepository;
 
     /**
+     * @var FileSystemDetailsRepository
+     */
+    private $fileSystemDetailsRepository;
+
+    /**
      * @var MerchantDetailsRepository
      */
     private $merchantDetailsRepository;
@@ -205,6 +210,7 @@ class ShopInformationFactory
                 $this->createServerDetailsRepository(),
                 $this->createModulesDetailsRepository(),
                 $this->createTemplateDetailsRepository(),
+                $this->createFileSystemDetailsRepository(),
                 $this->createUpdatesDetailsRepository()
             );
         }
@@ -273,6 +279,21 @@ class ShopInformationFactory
     }
 
     /**
+     * @return FileSystemDetailsRepository
+     */
+    private function createFileSystemDetailsRepository()
+    {
+        if ($this->fileSystemDetailsRepository === null) {
+            $reader = new FileSystemDetailsReader($this->settings);
+            $mapper = new FileSystemDetailsMapper($reader);
+
+            $this->fileSystemDetailsRepository = new FileSystemDetailsRepository($mapper);
+        }
+
+        return $this->fileSystemDetailsRepository;
+    }
+
+    /**
      * @return UpdatesDetailsRepository
      */
     private function createUpdatesDetailsRepository()
@@ -330,6 +351,7 @@ class ShopInformationFactory
                 $this->createServerDetailsSerializer(),
                 $this->createModulesDetailsSerializer(),
                 $this->createTemplateDetailsSerializer(),
+                $this->createFileSystemDetailsSerializer(),
                 $this->createUpdatesDetailsSerializer()
             );
         }
@@ -436,6 +458,20 @@ class ShopInformationFactory
         }
 
         return $this->templateDetailsSerializer;
+    }
+
+    /**
+     * Returns an instance of the file system details serializer.
+     *
+     * @return FileSystemDetailsSerializer
+     */
+    public function createFileSystemDetailsSerializer()
+    {
+        if ($this->fileSystemDetailsSerializer === null) {
+            $this->fileSystemDetailsSerializer = new FileSystemDetailsSerializer();
+        }
+
+        return $this->fileSystemDetailsSerializer;
     }
 
     /**
