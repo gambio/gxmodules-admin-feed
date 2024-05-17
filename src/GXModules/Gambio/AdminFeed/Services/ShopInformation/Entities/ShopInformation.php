@@ -11,7 +11,6 @@
 
 namespace Gambio\AdminFeed\Services\ShopInformation\Entities;
 
-use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\FileSystemDetails;
 use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ModulesDetails;
 use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ServerDetails;
 use Gambio\AdminFeed\Services\ShopInformation\ValueObjects\ShopDetails;
@@ -28,29 +27,33 @@ class ShopInformation
     /**
      * ShopInformation constructor.
      *
-     * @param ShopDetails       $shop
-     * @param ServerDetails     $server
-     * @param ModulesDetails    $modules
-     * @param ThemeDetails      $themes
-     * @param FileSystemDetails $filesystem
-     * @param UpdatesDetails    $updates
-     * @param int               $version
+     * @param ShopDetails $shop
+     * @param ServerDetails $server
+     * @param ModulesDetails $modules
+     * @param ThemeDetails $themes
+     * @param UpdatesDetails $updates
+     * @param int $version
      */
-    public function __construct(private readonly ShopDetails $shop, private readonly ServerDetails $server, private readonly ModulesDetails $modules, private readonly ThemeDetails $themes, private readonly FileSystemDetails $filesystem, private readonly UpdatesDetails $updates, private $version = 1)
-    {
+    public function __construct(
+        private readonly ShopDetails $shop,
+        private readonly ServerDetails $server,
+        private readonly ModulesDetails $modules,
+        private readonly ThemeDetails $themes,
+        private readonly UpdatesDetails $updates,
+        private $version = 1
+    ) {
     }
-    
-    
+
+
     /**
      * Creates and returns a new ShopInformation instance.
      *
-     * @param ShopDetails       $shop
-     * @param ServerDetails     $server
-     * @param ModulesDetails    $modules
-     * @param ThemeDetails      $themes
-     * @param FileSystemDetails $filesystem
-     * @param UpdatesDetails    $updates
-     * @param int               $version
+     * @param ShopDetails $shop
+     * @param ServerDetails $server
+     * @param ModulesDetails $modules
+     * @param ThemeDetails $themes
+     * @param UpdatesDetails $updates
+     * @param int $version
      *
      * @return ShopInformation
      */
@@ -59,14 +62,13 @@ class ShopInformation
         ServerDetails $server,
         ModulesDetails $modules,
         ThemeDetails $themes,
-        FileSystemDetails $filesystem,
         UpdatesDetails $updates,
         $version = 1
     ) {
-        return new self($shop, $server, $modules, $themes, $filesystem, $updates, $version);
+        return new self($shop, $server, $modules, $themes, $updates, $version);
     }
-    
-    
+
+
     /**
      * Returns the shop details.
      *
@@ -76,8 +78,8 @@ class ShopInformation
     {
         return $this->shop;
     }
-    
-    
+
+
     /**
      * Returns the server details.
      *
@@ -87,8 +89,8 @@ class ShopInformation
     {
         return $this->server;
     }
-    
-    
+
+
     /**
      * Returns the modules details.
      *
@@ -98,8 +100,8 @@ class ShopInformation
     {
         return $this->modules;
     }
-    
-    
+
+
     /**
      * Returns the theme details.
      *
@@ -109,19 +111,7 @@ class ShopInformation
     {
         return $this->themes;
     }
-    
-    
-    /**
-     * Returns the filesystem details.
-     *
-     * @return FileSystemDetails
-     */
-    public function filesystem()
-    {
-        return $this->filesystem;
-    }
-    
-    
+
     /**
      * Returns the updates details.
      *
@@ -131,8 +121,8 @@ class ShopInformation
     {
         return $this->updates;
     }
-    
-    
+
+
     /**
      * Returns the version of these server information object.
      *
