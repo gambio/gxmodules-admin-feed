@@ -106,6 +106,16 @@ class ShopInformationFactory
     private $merchantDetailsRepository;
 
     /**
+     * @var UpdatesDetailsRepository
+     */
+    private $updatesDetailsRepository;
+
+    /**
+     * @var FileSystemDetailsSerializer
+     */
+    private $fileSystemDetailsSerializer;
+
+    /**
      * @var MerchantAddressDetailsSerializer
      */
     private $merchantAddressDetailsSerializer;
@@ -195,6 +205,7 @@ class ShopInformationFactory
                 $this->createServerDetailsRepository(),
                 $this->createModulesDetailsRepository(),
                 $this->createTemplateDetailsRepository(),
+                $this->createUpdatesDetailsRepository()
             );
         }
 
@@ -259,6 +270,21 @@ class ShopInformationFactory
         }
 
         return $this->templateDetailsRepository;
+    }
+
+    /**
+     * @return UpdatesDetailsRepository
+     */
+    private function createUpdatesDetailsRepository()
+    {
+        if ($this->updatesDetailsRepository === null) {
+            $reader = new UpdatesDetailsReader($this->db);
+            $mapper = new UpdatesDetailsMapper($reader);
+
+            $this->updatesDetailsRepository = new UpdatesDetailsRepository($mapper);
+        }
+
+        return $this->updatesDetailsRepository;
     }
 
     /**
@@ -410,6 +436,34 @@ class ShopInformationFactory
         }
 
         return $this->templateDetailsSerializer;
+    }
+
+    /**
+     * Returns an instance of the updates details serializer.
+     *
+     * @return UpdatesDetailsSerializer
+     */
+    public function createUpdatesDetailsSerializer()
+    {
+        if ($this->updatesDetailsSerializer === null) {
+            $this->updatesDetailsSerializer = new UpdatesDetailsSerializer($this->createUpdateDetailsSerializer());
+        }
+
+        return $this->updatesDetailsSerializer;
+    }
+
+    /**
+     * Returns an instance of the update details serializer.
+     *
+     * @return UpdateDetailsSerializer
+     */
+    public function createUpdateDetailsSerializer()
+    {
+        if ($this->updateDetailsSerializer === null) {
+            $this->updateDetailsSerializer = new UpdateDetailsSerializer();
+        }
+
+        return $this->updateDetailsSerializer;
     }
 
     /**

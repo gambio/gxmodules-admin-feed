@@ -28,12 +28,14 @@ class ShopInformationSerializer
      * @param ServerDetailsSerializer $serverDetailsSerializer
      * @param ModulesDetailsSerializer $modulesDetailsSerializer
      * @param ThemeDetailsSerializer $themeDetailsSerializer
+     * @param UpdatesDetailsSerializer $updatesDetailsSerializer
      */
     public function __construct(
         private readonly ShopDetailsSerializer $shopDetailsSerializer,
         private readonly ServerDetailsSerializer $serverDetailsSerializer,
         private readonly ModulesDetailsSerializer $modulesDetailsSerializer,
         private readonly ThemeDetailsSerializer $themeDetailsSerializer,
+        private readonly UpdatesDetailsSerializer $updatesDetailsSerializer
     ) {
     }
 
@@ -52,6 +54,7 @@ class ShopInformationSerializer
             'server' => $this->serverDetailsSerializer->serialize($shopInformation->server()),
             'modules' => $this->modulesDetailsSerializer->serialize($shopInformation->modules()),
             'themes' => $this->themeDetailsSerializer->serialize($shopInformation->themes()),
+            'updates' => $this->updatesDetailsSerializer->serialize($shopInformation->updates()),
             'version' => $shopInformation->version(),
         ];
 
@@ -77,6 +80,7 @@ class ShopInformationSerializer
             'server',
             'modules',
             'themes',
+            'updates',
             'version',
         ];
         foreach ($neededProperties as $property) {
@@ -92,7 +96,8 @@ class ShopInformationSerializer
         $server = $this->serverDetailsSerializer->deserialize($json['server']);
         $modules = $this->modulesDetailsSerializer->deserialize($json['modules']);
         $themes = $this->themeDetailsSerializer->deserialize($json['themes']);
+        $updates = $this->updatesDetailsSerializer->deserialize($json['updates']);
 
-        return ShopInformation::create($shop, $server, $modules, $themes, $json['version']);
+        return ShopInformation::create($shop, $server, $modules, $themes, $updates, $json['version']);
     }
 }

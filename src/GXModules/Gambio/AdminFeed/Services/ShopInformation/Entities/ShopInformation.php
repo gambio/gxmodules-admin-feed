@@ -31,6 +31,7 @@ class ShopInformation
      * @param ServerDetails $server
      * @param ModulesDetails $modules
      * @param ThemeDetails $themes
+     * @param UpdatesDetails $updates
      * @param int $version
      */
     public function __construct(
@@ -38,6 +39,7 @@ class ShopInformation
         private readonly ServerDetails $server,
         private readonly ModulesDetails $modules,
         private readonly ThemeDetails $themes,
+        private readonly UpdatesDetails $updates,
         private $version = 1
     ) {
     }
@@ -50,6 +52,7 @@ class ShopInformation
      * @param ServerDetails $server
      * @param ModulesDetails $modules
      * @param ThemeDetails $themes
+     * @param UpdatesDetails $updates
      * @param int $version
      *
      * @return ShopInformation
@@ -59,9 +62,10 @@ class ShopInformation
         ServerDetails $server,
         ModulesDetails $modules,
         ThemeDetails $themes,
+        UpdatesDetails $updates,
         $version = 1
     ) {
-        return new self($shop, $server, $modules, $themes, $version);
+        return new self($shop, $server, $modules, $themes, $updates, $version);
     }
 
 
@@ -106,6 +110,16 @@ class ShopInformation
     public function themes()
     {
         return $this->themes;
+    }
+
+    /**
+     * Returns the updates details.
+     *
+     * @return UpdatesDetails
+     */
+    public function updates()
+    {
+        return $this->updates;
     }
 
 
