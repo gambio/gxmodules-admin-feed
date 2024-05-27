@@ -4,14 +4,14 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e160c99af7cf62f601ef70eb1667fa51",
+    "content-hash": "8577a31814ad5672d2daf5aed421c0f3",
     "packages": [
         {
             "name": "gambio/codeigniter-db",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://sources.gambio-server.net/gambio/codeigniter-db.git",
+                "url": "git@github.com:gambio/codeigniter-db.git",
                 "reference": "c2519bca59f33576894bb8a769a171f6f1708e96"
             },
             "require": {
@@ -97,12 +97,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "c5ee33df86c06b3278c670f64273b1ba768a0744"
+                "reference": "d327cf2acf22ad3d1fac5a382b7420bb6fd73bb8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/c5ee33df86c06b3278c670f64273b1ba768a0744",
-                "reference": "c5ee33df86c06b3278c670f64273b1ba768a0744",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/d327cf2acf22ad3d1fac5a382b7420bb6fd73bb8",
+                "reference": "d327cf2acf22ad3d1fac5a382b7420bb6fd73bb8",
                 "shasum": ""
             },
             "require": {
@@ -148,7 +148,7 @@
                 "issues": "https://github.com/nikic/PHP-Parser/issues",
                 "source": "https://github.com/nikic/PHP-Parser/tree/master"
             },
-            "time": "2024-04-19T12:04:10+00:00"
+            "time": "2024-05-21T16:12:19+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -603,12 +603,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "450ca7684a02adb4eed46c4e9f64ef57fc7ac57b"
+                "reference": "3e6c0dc8062db243ebc8c6db3df353ad411dff4f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/450ca7684a02adb4eed46c4e9f64ef57fc7ac57b",
-                "reference": "450ca7684a02adb4eed46c4e9f64ef57fc7ac57b",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3e6c0dc8062db243ebc8c6db3df353ad411dff4f",
+                "reference": "3e6c0dc8062db243ebc8c6db3df353ad411dff4f",
                 "shasum": ""
             },
             "require": {
@@ -696,7 +696,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-05-14T14:32:54+00:00"
+            "time": "2024-05-19T12:52:56+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -704,12 +704,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/cli-parser.git",
-                "reference": "47c93ee55891788203dcb8efefa5abe46472266b"
+                "reference": "6900ec4367a8cdb9dd5be66239e7e2d014cf2b40"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/cli-parser/zipball/47c93ee55891788203dcb8efefa5abe46472266b",
-                "reference": "47c93ee55891788203dcb8efefa5abe46472266b",
+                "url": "https://api.github.com/repos/sebastianbergmann/cli-parser/zipball/6900ec4367a8cdb9dd5be66239e7e2d014cf2b40",
+                "reference": "6900ec4367a8cdb9dd5be66239e7e2d014cf2b40",
                 "shasum": ""
             },
             "require": {
@@ -754,7 +754,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-04-04T08:53:05+00:00"
+            "time": "2024-05-20T06:31:55+00:00"
         },
         {
             "name": "sebastian/code-unit",
@@ -762,12 +762,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/code-unit.git",
-                "reference": "2a4919d2c7eb2e17379ea1e878fc8c176042ecf4"
+                "reference": "9668a3e4c161eb6e0c2860c192f3f4bad197e067"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/code-unit/zipball/2a4919d2c7eb2e17379ea1e878fc8c176042ecf4",
-                "reference": "2a4919d2c7eb2e17379ea1e878fc8c176042ecf4",
+                "url": "https://api.github.com/repos/sebastianbergmann/code-unit/zipball/9668a3e4c161eb6e0c2860c192f3f4bad197e067",
+                "reference": "9668a3e4c161eb6e0c2860c192f3f4bad197e067",
                 "shasum": ""
             },
             "require": {
@@ -812,7 +812,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-04-03T07:55:50+00:00"
+            "time": "2024-05-20T07:08:36+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
@@ -1694,12 +1694,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "fd48871dd03e31cee30917ea7cc02fc0c1343e91"
+                "reference": "fc0567e81db8e1efcc6479f136d41a08f02d66e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/fd48871dd03e31cee30917ea7cc02fc0c1343e91",
-                "reference": "fd48871dd03e31cee30917ea7cc02fc0c1343e91",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/fc0567e81db8e1efcc6479f136d41a08f02d66e5",
+                "reference": "fc0567e81db8e1efcc6479f136d41a08f02d66e5",
                 "shasum": ""
             },
             "require": {
@@ -1745,7 +1745,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-05-15T06:29:13+00:00"
+            "time": "2024-05-27T05:27:10+00:00"
         },
         {
             "name": "rector/rector",
@@ -1753,17 +1753,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/rectorphp/rector.git",
-                "reference": "3c1e41f0062bd1f662a545122174b1fcdf761499"
+                "reference": "b6e05a08f9abe97597a3be328d1d81997ee503ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rectorphp/rector/zipball/3c1e41f0062bd1f662a545122174b1fcdf761499",
-                "reference": "3c1e41f0062bd1f662a545122174b1fcdf761499",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/b6e05a08f9abe97597a3be328d1d81997ee503ba",
+                "reference": "b6e05a08f9abe97597a3be328d1d81997ee503ba",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.2|^8.0",
-                "phpstan/phpstan": "^1.10.57"
+                "phpstan/phpstan": "^1.11"
             },
             "conflict": {
                 "rector/rector-doctrine": "*",
@@ -1805,13 +1805,14 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-05-15T02:19:05+00:00"
+            "time": "2024-05-26T16:28:54+00:00"
         }
     ],
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "gambio/codeigniter-db": 20
+        "gambio/codeigniter-db": 20,
+        "rector/rector": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
