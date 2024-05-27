@@ -5,8 +5,8 @@
   "license": "GPL-2.0",
   "repositories": [
     {
-      "type": "vcs",
-      "url": "https://sources.gambio-server.net/gambio/codeigniter-db.git"
+      "type": "git",
+      "url": "git@github.com:gambio/codeigniter-db.git"
     }
   ],
   "require": {
